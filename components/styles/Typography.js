@@ -15,6 +15,7 @@ const Typography = createGlobalStyle`
     font-family: edo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--black);
   }
+
   p, li {
     letter-spacing: 0.5px;
   }

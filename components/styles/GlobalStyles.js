@@ -25,8 +25,22 @@ const GlobalStyles = createGlobalStyle`
     line-height:2;
   }
 
+  /* Links */
+  a {
+  text-decoration: none;
+  color: var(---black);
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  button {
+    font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+  }
+
+  /* Style System */ 
+
   /* Scrollbar Styles */
-  body::-webkit-scrollbar {
+  /* body::-webkit-scrollbar {
   width: 12px;
   }
   html {
@@ -40,34 +54,9 @@ const GlobalStyles = createGlobalStyle`
     background-color: var(--blue) ;
     border-radius: 6px;
     border: 3px solid var(--white);
-  }
+  } */
 
-  /* Links */
-  a {
-    text-decoration: none;
-    color: var(---black);
-  }
-  a:hover {
-    text-decoration: underline;
-    /* color: red; */
-    /* text-decoration: none; */
-  }
-  button {
-    font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-  }
 
-  hr {
-    display: block;
-    height: 4px;
-    border: 0;
-    border-top: 1px solid black;
-    margin: 1em 0;
-    padding: 0;
-    width: 100%;
-    @media (max-width: 800px) {
-      width: 100vw;
-    }
-  }
 `;
 
 export default GlobalStyles;

@@ -2,14 +2,9 @@ import Head from 'next/head';
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import nookies from 'nookies';
+import Products from '../components/Products';
 
-// const HomeStyles = styled.div`
-//  */
-// `;
-
-export default function Home({ user: { email, id, isUser } }) {
-  console.log(isUser);
+export default function Home() {
   return (
     <>
       <div className="container">
@@ -17,16 +12,7 @@ export default function Home({ user: { email, id, isUser } }) {
           <title>Auth Examples</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        {isUser && (
-          <>
-            <h1>Logged IN</h1>
-            <ul>
-              <li>{email}</li>
-              <li>{id}</li>
-            </ul>
-          </>
-        )}
-        {!isUser && <p>LOGGED OUT</p>}
+        <Products />
       </div>
     </>
   );

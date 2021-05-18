@@ -1,26 +1,25 @@
-import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { signIn, signOut, useSession, getSession } from 'next-auth/client';
+import styled, { ThemeProvider } from 'styled-components';
 import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
+import theme from './styles/theme';
 import Typography from './styles/Typography';
 
 const InnerStyles = styled.div`
   max-width: var(--maxWidth);
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
 `;
 
 function Page({ children }) {
   // const [session, loading] = useSession();
   return (
-    <div>
+    <>
       <GlobalStyles />
       <Typography />
       <Header />
-      <InnerStyles>{children}</InnerStyles>
-    </div>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </>
   );
 }
 
