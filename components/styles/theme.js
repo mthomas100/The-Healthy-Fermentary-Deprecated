@@ -55,7 +55,8 @@ const theme = {
 
 export default theme;
 
-// // https://material-ui.com/customization/breakpoints/
+// https://material-ui.com/customization/breakpoints/
+
 // breakpoints: {
 //   xs: '0',
 //   sm: '600px',

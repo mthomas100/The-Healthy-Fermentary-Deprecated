@@ -11,6 +11,8 @@ export default function Products(props) {
         display: 'grid',
         gridGap: 3, // theme.space[3]
         gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+        width: ['100%', '100%', '100%', '1000px'],
+        margin: '0 auto',
       }}
     >
       <Product />

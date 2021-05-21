@@ -4,8 +4,8 @@ import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 
-const InnerStyles = styled.div`3
-  max-width: var(--maxWidth);
+const InnerStyles = styled.div`
+  /* max-width: var(--maxWidth); */
   margin: 0 auto;
   /* padding: 2rem; */
 `;
