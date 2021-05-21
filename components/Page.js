@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
+import theme from './styles/theme';
 import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
-import theme from './styles/theme';
 import Typography from './styles/Typography';
 
-const InnerStyles = styled.div`
+const InnerStyles = styled.div`3
   max-width: var(--maxWidth);
   margin: 0 auto;
   /* padding: 2rem; */
@@ -18,7 +17,9 @@ function Page({ children }) {
       <GlobalStyles />
       <Typography />
       <Header />
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <InnerStyles>{children}</InnerStyles>
+      </ThemeProvider>
     </>
   );
 }

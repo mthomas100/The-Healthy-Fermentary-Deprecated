@@ -1,3 +1,4 @@
+import App from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import NProgress from 'nprogress';
 import Router from 'next/router';
@@ -19,18 +20,9 @@ function MyApp({ Component, pageProps, apollo, user }) {
   );
 }
 
-MyApp.getInitialProps = async function ({ Component, ctx }) {
-  let pageProps = {};
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-  pageProps.query = ctx.query;
-
-  return {
-    pageProps: {
-      ...pageProps,
-    },
-  };
+MyApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  return { ...appProps };
 };
 
 export default withData(MyApp);

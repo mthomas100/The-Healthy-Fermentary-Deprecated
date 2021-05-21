@@ -1,54 +1,65 @@
+const primaryColor = 'orange';
 const theme = {
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  fontSizes: {
-    small: 14,
-    medium: 16,
-    large: 18,
-
-    h5: {
-      sm: 12,
-      md: 14,
-      lg: 16,
-    },
-    h4: {
-      sm: 16,
-      md: 18,
-      lg: 22,
-    },
-    h3: {
-      sm: 19,
-      md: 22,
-      lg: 28,
-    },
-    h2: {
-      sm: 20,
-      md: 22,
-      lg: 24,
-    },
-    h1: {
-      sm: 24,
-      md: 26,
-      lg: 30,
-    },
+  fonts: {
+    sans: 'Open Sans, sans-serif',
+    serif: 'EB Garamond, serif',
   },
-  fontWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-  width: [16, 32, 64, 128, 256],
-  heights: [16, 32, 64, 128, 256],
   colors: {
-    black: '#000',
-    gray: ' #777',
-    'dark-gray': '#333',
-    'light-gray': '#eee',
+    primary: primaryColor,
+    gray: '#f0f0f0',
+    lighterGray: '#f8f8f8',
+    lightGray: '#e8e8e8',
+    offWhite: '#f7f7f7',
+    darkGray: '#4e4e4e',
   },
-
-  // https://material-ui.com/customization/breakpoints/
-  breakpoints: {
-    xs: '0',
-    sm: '600px',
-    md: '960px',
-    lg: '1280px',
-    xl: '1920px',
+  breakpoints: ['576px', '768px', '992px', '1200px'],
+  space: [0, 4, 8, 16, 32, 64, 128, 256],
+  fontSizes: [6, 8, 10, 12, 14, 16, 20, 24, 32, 48, 64],
+  fontWeights: {
+    normal: 400,
+    bold: 700,
+  },
+  shadows: {
+    tiny: '0 1.5px 5px 0 rgba(0, 0, 0, 0.1)',
+    small: '0px 0px 5px 0px rgba(0,0,0,0.2)',
+    tabs: '0 0 4px 0 rgba(0, 0, 0, 0.1)',
+  },
+  buttons: {
+    primary: {
+      backgroundColor: primaryColor,
+    },
+    transparent: {
+      backgroundColor: 'transparent',
+      color: primaryColor,
+      borderColor: primaryColor,
+      border: '1px solid',
+    },
+    grey: {
+      fontSize: '10px',
+      color: '#333',
+      backgroundColor: '#e5e5e5',
+    },
+    white: {
+      backgroundColor: '#ffffff',
+      boxShadow: '0 1.5px 5px 0 rgba(0, 0, 0, 0.1)',
+      color: 'black',
+    },
+  },
+  cards: {
+    primary: {
+      backgroundColor: primaryColor,
+      boxShadow: '0 1.5px 5px 0 rgba(0, 0, 0, 0.1)',
+    },
   },
 };
 
 export default theme;
+
+// // https://material-ui.com/customization/breakpoints/
+// breakpoints: {
+//   xs: '0',
+//   sm: '600px',
+//   md: '960px',
+//   lg: '1280px',
+//   xl: '1920px',
+// },
