@@ -22,7 +22,6 @@ export default function Product({
         flexDirection: 'column',
         justifyContent: 'space-between',
       }}
-      bg="white"
     >
       <Image
         src={imageUrl}
