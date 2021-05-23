@@ -3,12 +3,7 @@ import theme from './styles/theme';
 import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
-
-const InnerStyles = styled.div`
-  /* max-width: var(--maxWidth); */
-  margin: 0 auto;
-  /* padding: 2rem; */
-`;
+import Layout from './Layout';
 
 function Page({ children }) {
   // const [session, loading] = useSession();
@@ -16,10 +11,12 @@ function Page({ children }) {
     <>
       <GlobalStyles />
       <Typography />
-      <Header />
-      <ThemeProvider theme={theme}>
-        <InnerStyles>{children}</InnerStyles>
-      </ThemeProvider>
+      <Layout>
+        <ThemeProvider theme={theme}>
+          <Header />
+          {children}
+        </ThemeProvider>
+      </Layout>
     </>
   );
 }

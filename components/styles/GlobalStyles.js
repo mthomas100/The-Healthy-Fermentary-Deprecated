@@ -24,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
     /* font-size: 2rem; */
     line-height:2;
   }
-
+  
   /* Links */
   a {
   text-decoration: none;

@@ -1,31 +1,92 @@
 import Link from 'next/link';
-import { Box, Flex, Text } from 'rebass';
-import { BiBeer } from 'react-icons/bi';
+import { Box, Flex } from 'rebass';
+import { GiHeartBottle } from 'react-icons/gi';
+import { FiShoppingCart } from 'react-icons/fi';
 import styled from 'styled-components';
-import { layout } from 'styled-system';
+import { flexbox, typography } from 'styled-system';
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
+import HeaderLink from './HeaderLink';
+import Button from './ButtonBottomBar';
 
-const HeaderWrapper = styled.div`
-  ${layout}
+function TopBar() {
+  return (
+    <Flex
+      mx={2}
+      px={2}
+      color="black"
+      alignItems="center"
+      sx={{
+        height: 'auto',
+        padding: '2em',
+      }}
+    >
+      <HeaderLink
+        fontFamilyCSS="'Reenie Beanie', cursive;"
+        fontSize={['24px', '24px', '26px', '36px']}
+        lineHeight={['24px', '24px', '26px', '36px']}
+      >
+        <GiHeartBottle
+          style={{
+            height: '100%',
+            width: 'auto',
+            paddingRight: '0.5em',
+          }}
+        />
+        <Link href="/">Local Dehli Mead</Link>
+      </HeaderLink>
+
+      <Box mx="auto" />
+      <HeaderLink
+        variant="nav"
+        href="#!"
+        fontSize={['24px', '24px', '24px', '30px']}
+        lineHeight={['24px', '24px', '24px', '30px']}
+      >
+        <FiShoppingCart />
+      </HeaderLink>
+    </Flex>
+  );
+}
+
+const BottomBarStyles = styled.div`
+  ${flexbox}
+  ${typography}
+  display: flex;
+  margin: 0 auto;
+  margin-left: 16px;
 `;
+
+const CATEGORIES_QUERY = gql`
+  query CATEGORIES_QUERY {
+    categories {
+      name
+    }
+  }
+`;
+
+function BottomBar() {
+  const { data, error, loading } = useQuery(CATEGORIES_QUERY);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  return (
+    <BottomBarStyles
+      justifyContent={['left', 'left', 'left', 'left']}
+      fontSize={['24px', '24px', '24px', '30px']}
+      lineHeight={['24px', '24px', '24px', '30px']}
+    >
+      {data.categories.map((category) => (
+        <Button>{category.name}</Button>
+      ))}
+    </BottomBarStyles>
+  );
+}
 
 export default function Header() {
   return (
-    <HeaderWrapper
-      height={{
-        xs: '100px',
-        sm: '200px',
-        md: '300px',
-        lg: '400px',
-        xl: '500px',
-      }}
-    >
-      <Flex px={2} color="white" bg="black" alignItems="center">
-        <BiBeer />
-        <Box mx="auto" />
-        <Link variant="nav" href="#!">
-          Profile
-        </Link>
-      </Flex>
-    </HeaderWrapper>
+    <>
+      <TopBar />
+      <BottomBar />
+    </>
   );
 }

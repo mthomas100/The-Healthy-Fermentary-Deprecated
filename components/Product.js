@@ -1,19 +1,43 @@
-import { Box, Card, Image, Heading, Text } from 'rebass';
+import { Box, Card, Heading, Text } from 'rebass';
+import Image from 'next/image';
+import Link from 'next/link';
+import Button from './ButtonAdd';
 
-export default function rebass() {
+export default function Product({
+  title,
+  description,
+  imageUrl,
+  price,
+  id,
+  slug,
+}) {
+  console.log({ title, description, imageUrl, price, id, slug });
   return (
     <Card
       sx={{
         p: 1,
         borderRadius: 2,
         boxShadow: '0 0 16px rgba(0, 0, 0, .25)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
       }}
+      bg="white"
     >
-      <Image src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=2048&q=20" />
+      <Image
+        src={imageUrl}
+        width="100%"
+        height="auto"
+        layout="responsive"
+        objectFit="cover"
+      />
       <Box px={2}>
-        <Heading as="h3">Card Demo</Heading>
-        <Text fontSize={0}>You can edit this code</Text>
+        <Heading as="h3">{title}</Heading>
+        <Text fontSize={0}>{description}</Text>
       </Box>
+      <Button width="100%">
+        <Link href={`/products/${slug}`}>Add to Cart</Link>
+      </Button>
     </Card>
   );
 }
