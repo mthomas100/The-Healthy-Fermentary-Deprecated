@@ -23,8 +23,8 @@ function TopBar() {
     >
       <HeaderLink
         fontFamilyCSS="'Reenie Beanie', cursive;"
-        fontSize={['24px', '24px', '26px', '36px']}
-        lineHeight={['24px', '24px', '26px', '36px']}
+        fontSize={['26px', '30px', '36px', '36px']}
+        lineHeight={['26px', '30px', '36px', '36px']}
       >
         <GiHeartBottle
           style={{
@@ -37,12 +37,7 @@ function TopBar() {
       </HeaderLink>
 
       <Box mx="auto" />
-      <HeaderLink
-        variant="nav"
-        href="#!"
-        fontSize={['24px', '24px', '24px', '30px']}
-        lineHeight={['24px', '24px', '24px', '30px']}
-      >
+      <HeaderLink variant="nav" href="#!" fontSize="30px" lineHeight="30px">
         <FiShoppingCart />
       </HeaderLink>
     </Flex>
@@ -70,11 +65,7 @@ function BottomBar() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
-    <BottomBarStyles
-      justifyContent={['left', 'left', 'left', 'left']}
-      fontSize={['24px', '24px', '24px', '30px']}
-      lineHeight={['24px', '24px', '24px', '30px']}
-    >
+    <BottomBarStyles justifyContent="left" fontSize="30px" lineHeight="30px">
       {data.categories.map((category) => (
         <Button>{category.name}</Button>
       ))}

@@ -15,6 +15,7 @@ const theme = {
   breakpoints: ['576px', '768px', '992px', '1200px'],
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fontSizes: [6, 8, 10, 12, 14, 16, 20, 24, 32, 48, 64],
+  lineHeights: [6, 8, 10, 12, 14, 16, 20, 24, 32, 48, 64],
   fontWeights: {
     normal: 400,
     bold: 700,
