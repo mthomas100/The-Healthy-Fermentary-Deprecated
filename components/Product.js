@@ -1,7 +1,6 @@
 import { Box, Card, Flex, Heading, Text } from 'rebass';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Button from './ButtonAdd';
 
@@ -12,35 +11,20 @@ export default function Product({
   price,
   id,
   slug,
-  initialTextHeight,
-  setInitialTextHeight,
-  textHeight,
-  setTextHeight,
 }) {
-  const textRef = useRef(null);
-
   const InfoStyles = styled(Box)`
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
-  `;
+    display: block;
 
-  useEffect(() => {
-    function handleWindowEvent() {
-      const { offsetHeight } = textRef.current;
-      setInitialTextHeight((prev) => [...prev, offsetHeight]);
-      console.log(initialTextHeight);
-      setTextHeight(Math.max(...initialTextHeight));
+    .title {
+      font-family: 'Chivo', cursive;
+      font-weight: 600;
     }
 
-    window.addEventListener('resize', handleWindowEvent);
-    window.addEventListener('load', handleWindowEvent);
+    .description {
+      font-family: Noto Sans;
+    }
+  `;
 
-    return () => {
-      window.removeEventListener('resize', handleWindowEvent);
-      window.removeEventListener('load', handleWindowEvent);
-    };
-  }, [setInitialTextHeight, setTextHeight, initialTextHeight]);
   return (
     <Card
       sx={{
@@ -59,13 +43,9 @@ export default function Product({
         layout="responsive"
         objectFit="cover"
       />
-      <InfoStyles m={2} ref={textRef} height={textHeight}>
-        <Text fontSize={3} py={0}>
-          {title}
-        </Text>
-        <Text fontSize={0} fontWeight="normal">
-          {description}
-        </Text>
+      <InfoStyles>
+        <div className="title">{title}</div>
+        <div className="description">{description}</div>
       </InfoStyles>
       <Button width="100%">
         <Link href={`/products/${slug}`}>Add to Cart</Link>
