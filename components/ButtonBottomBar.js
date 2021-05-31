@@ -11,7 +11,7 @@ export default function Button({ children }) {
       sx={{
         border: '1px solid black',
         fontFamily: "'Pathway Gothic One', sans-serif;",
-        fontSize: ['12px', '14px', '14px', '20px'],
+        fontSize: [3],
         lineHeight: ['12px', '14px', '14px', '20px'],
         letterSpacing: '1px',
         backgroundColor: 'transparent',

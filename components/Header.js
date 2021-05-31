@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import HeaderLink from './HeaderLink';
 import Button from './ButtonBottomBar';
+import Cart from './Cart';
 
 function TopBar() {
   return (
@@ -65,10 +66,17 @@ function BottomBar() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
-    <BottomBarStyles justifyContent="left" fontSize="30px" lineHeight="30px">
-      {data.categories.map((category) => (
-        <Button>{category.name}</Button>
-      ))}
+    <BottomBarStyles
+      justifyContent="left"
+      fontSize={0}
+      lineHeight="30px"
+      width="100%"
+    >
+      <Flex flexWrap="wrap">
+        {data.categories.map((category) => (
+          <Button>{category.name}</Button>
+        ))}
+      </Flex>
     </BottomBarStyles>
   );
 }
@@ -78,6 +86,7 @@ export default function Header() {
     <>
       <TopBar />
       <BottomBar />
+      <Cart />
     </>
   );
 }

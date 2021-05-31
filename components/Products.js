@@ -1,5 +1,5 @@
 // example grid layout component
-import { Box, Heading } from 'rebass';
+import { Box, Heading } from 'rebass/styled-components';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
@@ -21,9 +21,6 @@ const ALL_PRODUCTS_QUERY = gql`
 `;
 
 export default function Products(props) {
-  const [initialTextHeight, setInitialTextHeight] = useState([]);
-  const [textHeight, setTextHeight] = useState(undefined);
-
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -39,17 +36,7 @@ export default function Products(props) {
       }}
     >
       {data.products.map((product) => (
-        <Product
-          title={product.title}
-          description={product.description}
-          imageUrl={product.image.url}
-          id={product.id}
-          slug={product.slug}
-          initialTextHeight={initialTextHeight}
-          setInitialTextHeight={setInitialTextHeight}
-          textHeight={textHeight}
-          setTextHeight={setTextHeight}
-        />
+        <Product {...product} />
       ))}
     </Box>
   );
