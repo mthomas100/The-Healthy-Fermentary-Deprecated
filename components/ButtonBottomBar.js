@@ -1,4 +1,4 @@
-import { Button as ButtonRebass } from 'rebass';
+import { Button as ButtonRebass } from 'rebass/styled-components';
 
 export default function Button({ children }) {
   return (

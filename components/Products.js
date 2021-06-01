@@ -36,7 +36,7 @@ export default function Products(props) {
       }}
     >
       {data.products.map((product) => (
-        <Product {...product} />
+        <Product key={product.id} {...product} />
       ))}
     </Box>
   );

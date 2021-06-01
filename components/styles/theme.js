@@ -35,7 +35,7 @@ export default {
       color: 'black',
       border: '1px solid black',
       fontFamily: "'Pathway Gothic One', sans-serif;",
-      fontSize: '20px',
+      fontSize: '20px', // maybe better specified in tag
       lineHeight: '20px',
       letterSpacing: '1px',
       backgroundColor: 'transparent',
@@ -44,6 +44,18 @@ export default {
       borderTopRightRadius: '2px',
       display: 'block',
       width: `100%`,
+    },
+    bottomBar: {
+      border: '1px solid black',
+      fontFamily: "'Pathway Gothic One', sans-serif;",
+      fontSize: [3],
+      lineHeight: ['12px', '14px', '14px', '20px'],
+      letterSpacing: '1px',
+      backgroundColor: 'transparent',
+      borderRadius: '0px',
+      borderTopLeftRadius: '2px',
+      borderTopRightRadius: '2px',
+      minWidth: 'fit-content',
     },
   },
 };

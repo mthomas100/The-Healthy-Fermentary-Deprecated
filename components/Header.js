@@ -57,6 +57,7 @@ const CATEGORIES_QUERY = gql`
   query CATEGORIES_QUERY {
     categories {
       name
+      id
     }
   }
 `;
@@ -74,7 +75,7 @@ function BottomBar() {
     >
       <Flex flexWrap="wrap">
         {data.categories.map((category) => (
-          <Button>{category.name}</Button>
+          <Button key={category.id}>{category.name}</Button>
         ))}
       </Flex>
     </BottomBarStyles>
