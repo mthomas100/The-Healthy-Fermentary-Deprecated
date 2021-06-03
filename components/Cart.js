@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Box, Flex } from 'rebass/styled-components';
 import CartStyles from './styles/CartStyles';
 import CloseButton from './styles/CloseButton';
 import formatMoney from '../lib/formatMoney';
@@ -6,6 +7,7 @@ import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
 import RemoveFromCart from './RemoveFromCart';
+import RemoveFromCartButton from './RemoveFromCartButton';
 // import { Checkout } from './Checkout';
 
 const CartItemStyles = styled.li`
@@ -47,7 +49,10 @@ function CartItem({ cartItem }) {
 }
 
 export default function Cart() {
-  const { cartOpen, closeCart } = useCart();
+  const { cartOpen, closeCart, cartContents } = useCart();
+  cartContents.map((item) => {
+    console.log(item.id);
+  });
   return (
     <CartStyles open={cartOpen}>
       <header>
@@ -55,9 +60,16 @@ export default function Cart() {
         <CloseButton onClick={closeCart}>&times;</CloseButton>
       </header>
       <ul>
-        {/* {me.cart.map((cartItem) => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
-        ))} */}
+        {cartContents.map((product) => (
+          <Flex>
+            <Box sx={{ border: '1px solid red' }} m={3} width="50%">
+              <li>{product.id}</li>
+              <li>{product.title}</li>
+              <li>{product.quantity}</li>
+            </Box>
+            <RemoveFromCartButton id={product.id} width="50%" />
+          </Flex>
+        ))}
       </ul>
       <footer>
         {/* <p>{formatMoney(calcTotalPrice(me.cart))}</p> */}
