@@ -1,9 +1,8 @@
-import { Button } from 'rebass/styled-components';
 import styled from 'styled-components';
 import { useCart } from '../lib/cartState';
 
-export default function RemoveFromCartButton(product) {
-  const { openCart, removeFromCart } = useCart();
+export default function RemoveFromCartButton({ id }) {
+  const { removeFromCart } = useCart();
 
   const RemoveFromCartButtonStyles = styled.div`
     display: flex;
@@ -14,8 +13,7 @@ export default function RemoveFromCartButton(product) {
   `;
 
   function handleRemoveFromCart() {
-    openCart();
-    removeFromCart(product);
+    removeFromCart(id);
   }
 
   return (

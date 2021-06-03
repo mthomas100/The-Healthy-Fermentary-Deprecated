@@ -1,6 +1,7 @@
+import { Box } from 'rebass/styled-components';
 import styled from 'styled-components';
 
-const CartStyles = styled.div`
+const CartStyles = styled(Box)`
   padding: 20px;
   position: relative;
   background: white;
@@ -8,7 +9,6 @@ const CartStyles = styled.div`
   height: 100%;
   top: 0;
   right: 0;
-  width: 40%;
   min-width: 500px;
   bottom: 0;
   transform: translateX(100%);
