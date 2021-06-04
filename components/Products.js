@@ -3,7 +3,9 @@ import { Box, Heading } from 'rebass/styled-components';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
+import { withSize } from 'react-sizeme';
 import Product from './Product';
+import { useSize } from '../lib/sizeState';
 
 const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY {
@@ -20,14 +22,20 @@ const ALL_PRODUCTS_QUERY = gql`
   }
 `;
 
-export default function Products(props) {
+function Products({ size }) {
+  const { setProductSize, windowSize } = useSize();
+
+  useEffect(() => {
+    setProductSize(size);
+    return () => {};
+  }, [windowSize]);
+
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <Box
-      {...props}
       sx={{
         display: 'grid',
         gridGap: 3, // theme.space[3]
@@ -41,3 +49,5 @@ export default function Products(props) {
     </Box>
   );
 }
+
+export default withSize()(Products);

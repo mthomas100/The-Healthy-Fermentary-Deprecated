@@ -6,7 +6,6 @@ import formatMoney from '../lib/formatMoney';
 // import { useUser } from './User';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
-import RemoveFromCart from './RemoveFromCart';
 import RemoveFromCartButton from './RemoveFromCartButton';
 import ModifyCart from './ModifyCart';
 import EmptyCart from './EmptyCart';
@@ -18,7 +17,7 @@ export default function Cart() {
     console.log(item.id);
   });
   return (
-    <CartStyles open={cartOpen} width={['40%', '40%', '40%', '40%']}>
+    <CartStyles open={cartOpen} width="500px">
       <header>
         Your cart
         <CloseButton onClick={closeCart}>&times;</CloseButton>

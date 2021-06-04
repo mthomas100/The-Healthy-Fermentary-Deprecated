@@ -7,6 +7,7 @@ import Page from '../components/Page';
 import '../components/styles/nprogress.css';
 import withData from '../lib/withData';
 import { CartStateProvider } from '../lib/cartState';
+import { SizeStateProvider } from '../lib/sizeState';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -19,13 +20,15 @@ const InnerStyles = styled.div`
 function MyApp({ Component, pageProps, apollo, user }) {
   return (
     <ApolloProvider client={apollo}>
-      <CartStateProvider>
-        <InnerStyles>
-          <Page>
-            <Component {...pageProps} {...user} />
-          </Page>
-        </InnerStyles>
-      </CartStateProvider>
+      <SizeStateProvider>
+        <CartStateProvider>
+          <InnerStyles>
+            <Page>
+              <Component {...pageProps} {...user} />
+            </Page>
+          </InnerStyles>
+        </CartStateProvider>
+      </SizeStateProvider>
     </ApolloProvider>
   );
 }
