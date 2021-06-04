@@ -87,7 +87,6 @@ export default function Header() {
     <>
       <TopBar />
       <BottomBar />
-      <Cart />
     </>
   );
 }

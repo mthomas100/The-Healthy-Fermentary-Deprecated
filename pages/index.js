@@ -5,26 +5,18 @@ import Products from '../components/Products';
 import { useCart } from '../lib/cartState';
 import { useSize } from '../lib/sizeState';
 
+const ShopStyles = styled.div``;
+
 export default function Home() {
   const { cartOpen } = useCart();
   const { sideSpaceSize } = useSize();
-
-  const ShopStyles = styled.div``;
+  console.log('render');
   // console.log(sideSpaceSize?.width > 500);
 
   return (
     <>
-      {/* CART OPEN, SIDESPACE > 500px */}
-      {cartOpen && sideSpaceSize?.width > 500 && (
-        <>
-          <Products />
-          <Cart />
-        </>
-      )}
-      {/* CART OPEN, SIDESPACE < 500px */}
-      {cartOpen && sideSpaceSize?.width < 500 && <Cart />}
-      {/* CART CLOSED */}
-      {!cartOpen && <Products />}
+      <Products />
+      <Cart />
     </>
   );
 }
