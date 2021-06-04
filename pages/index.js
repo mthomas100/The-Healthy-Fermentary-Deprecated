@@ -13,7 +13,7 @@ export default function Home() {
   // console.log(sideSpaceSize?.width > 500);
 
   return (
-    <ShopStyles>
+    <>
       {/* CART OPEN, SIDESPACE > 500px */}
       {cartOpen && sideSpaceSize?.width > 500 && (
         <>
@@ -25,6 +25,6 @@ export default function Home() {
       {cartOpen && sideSpaceSize?.width < 500 && <Cart />}
       {/* CART CLOSED */}
       {!cartOpen && <Products />}
-    </ShopStyles>
+    </>
   );
 }
