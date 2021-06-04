@@ -9,13 +9,14 @@ import { useCart } from '../lib/cartState';
 import RemoveFromCartButton from './RemoveFromCartButton';
 import ModifyCart from './ModifyCart';
 import EmptyCart from './EmptyCart';
+import { useSize } from '../lib/sizeState';
 // import { Checkout } from './Checkout';
 
 export default function Cart() {
   const { cartOpen, closeCart, cartContents } = useCart();
-  cartContents.map((item) => {
-    console.log(item.id);
-  });
+
+  // const { sideSpaceSize } = useSize();
+  // console.log(sideSpaceSize);
   return (
     <CartStyles open={cartOpen} width="500px">
       <header>

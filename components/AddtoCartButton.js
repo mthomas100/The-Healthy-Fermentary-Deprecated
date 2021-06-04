@@ -2,7 +2,7 @@ import { Button } from 'rebass/styled-components';
 import { useCart } from '../lib/cartState';
 
 export default function AddtoCartButton(product) {
-  const { openCartResponsive, addToCart } = useCart();
+  const { openCart, addToCart } = useCart();
 
   function handleAddToCart() {
     // add to cart animation (always)
@@ -10,7 +10,7 @@ export default function AddtoCartButton(product) {
     // 2) the shopping cart items red circle number updates
     // if the screen is big enough, openCart as sidebar
     // (if screen is too small don't)
-    openCartResponsive();
+    openCart();
     addToCart(product);
   }
 
