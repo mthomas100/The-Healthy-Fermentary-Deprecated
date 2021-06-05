@@ -29,7 +29,19 @@ export default {
   buttons: {
     primary: {
       color: 'white',
-      bg: 'primary',
+      bg: 'blue',
+      display: 'block',
+      width: `100%`,
+    },
+    danger: {
+      color: 'white',
+      bg: 'tomato',
+      display: 'block',
+      width: `100%`,
+      paddingTop: 2,
+      paddingBottom: 2,
+      marginTop: 2,
+      marginBottom: 2,
     },
     minimalistic: {
       color: 'black',

@@ -5,7 +5,12 @@ import Products from '../components/Products';
 import { useCart } from '../lib/cartState';
 import { useSize } from '../lib/sizeState';
 
-const ShopStyles = styled.div``;
+const ShopStyles = styled.div`
+  /* width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; */
+`;
 
 export default function Home() {
   const { cartOpen } = useCart();
@@ -16,7 +21,6 @@ export default function Home() {
   return (
     <>
       <Products />
-      <Cart />
     </>
   );
 }
