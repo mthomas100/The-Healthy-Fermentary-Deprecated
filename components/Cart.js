@@ -68,28 +68,51 @@ const ItemStyles = styled(Box)`
   }
 
   .details {
+    padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 20px 1fr 1fr;
-    grid-template-areas:
+    /* grid-template-areas:
       'title title'
-      'price . '
-      'remove quantity';
-    align-items: center;
-
-    .title {
-      grid-area: title;
+      'price .'
+      'remove quantity'; */
+    /* align-items: flex-start; */
+    .lhs {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .title {
+        font-family: 'Nunito';
+        font-size: 14px;
+        font-weight: 600;
+        /* grid-area: title; */
+      }
+      .price {
+        font-family: 'Nunito';
+        font-size: 14px;
+        font-weight: 600;
+        /* grid-area: price; */
+      }
+      .remove {
+        font-family: 'Nunito';
+        font-size: 14px;
+        /* grid-area: remove; */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
     }
-    .price {
-      grid-area: price;
-    }
+    .rhs {
+      .quantity {
+        display: flex;
+        flex-direction: row;
+        justify-items: flex-start;
+        margin: 0 auto;
+        /* grid-area: quantity;  */
 
-    .remove {
-      grid-area: remove;
-    }
-
-    .quantity {
-      grid-area: quantity;
+        .value {
+          margin: 0 5px;
+        }
+      }
     }
   }
 `;
@@ -128,9 +151,11 @@ export default function Cart() {
                 layout="responsive"
               />
               <div className="details">
-                <div className="title">{product.title}</div>
-                <div className="price">$10.00</div>
-                <div className="remove">remove</div>
+                <div className="lhs">
+                  <div className="title">{product.title}</div>
+                  <div className="price">$10.00</div>
+                  <div className="remove">remove</div>
+                </div>
 
                 <div className="quantity">
                   <div
