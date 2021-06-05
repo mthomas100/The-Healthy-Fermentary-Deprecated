@@ -61,58 +61,62 @@ const ItemStyles = styled(Box)`
   width: 100%;
   height: 125px;
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 100px 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    'thumbnail title title'
+    'thumbnail price quantity'
+    'thumbnail remove .';
+  column-gap: 20px;
+  font-family: 'Nunito';
   /* align-items: center; */
   .image {
     border-radius: 3px;
+    grid-area: thumbnail;
+    font-weight: 400;
   }
 
-  .details {
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* grid-template-areas:
-      'title title'
-      'price .'
-      'remove quantity'; */
-    /* align-items: flex-start; */
-    .lhs {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      .title {
-        font-family: 'Nunito';
-        font-size: 14px;
-        font-weight: 600;
-        /* grid-area: title; */
-      }
-      .price {
-        font-family: 'Nunito';
-        font-size: 14px;
-        font-weight: 600;
-        /* grid-area: price; */
-      }
-      .remove {
-        font-family: 'Nunito';
-        font-size: 14px;
-        /* grid-area: remove; */
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-      }
-    }
-    .rhs {
-      .quantity {
-        display: flex;
-        flex-direction: row;
-        justify-items: flex-start;
-        margin: 0 auto;
-        /* grid-area: quantity;  */
+  .title {
+    font-weight: 600;
+    grid-area: title;
+    display: flex;
+    align-items: flex-end;
+  }
+  .price {
+    grid-area: price;
+    display: flex;
+    align-items: center;
+  }
 
-        .value {
-          margin: 0 5px;
-        }
-      }
+  .remove {
+    grid-area: remove;
+    display: flex;
+    align-items: flex-start;
+    font-weight: 600;
+    color: #a8a4a4;
+    font-style: italic;
+  }
+
+  .quantity {
+    grid-area: quantity;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    border: 1px solid #141414b9;
+    width: fit-content;
+    border-radius: 5px;
+
+    .val {
+      padding: 0 5px;
+    }
+    .quantityButton {
+      padding: 0 10px;
+    }
+    .quantityButton.dec {
+      border-right: 1px solid #141414b9;
+    }
+    .quantityButton.inc {
+      border-left: 1px solid #141414b9;
     }
   }
 `;
@@ -142,35 +146,32 @@ export default function Cart() {
         {cartContents.map((product) => (
           <>
             <ItemStyles className="item">
-              <Image
-                className="image"
-                src={product.image.url}
-                width="50px"
-                height="50px"
-                objectFit="cover"
-                layout="responsive"
-              />
-              <div className="details">
-                <div className="lhs">
-                  <div className="title">{product.title}</div>
-                  <div className="price">$10.00</div>
-                  <div className="remove">remove</div>
-                </div>
+              <div className="image">
+                <Image
+                  src={product.image.url}
+                  width="auto"
+                  height="100%"
+                  objectFit="cover"
+                  layout="responsive"
+                />
+              </div>
+              <div className="title">{product.title}</div>
+              <div className="price">$10.00</div>
+              <div className="remove">remove</div>
 
-                <div className="quantity">
-                  <div
-                    className="dec"
-                    onClick={() => modifyCart(product.id, 'dec')}
-                  >
-                    -
-                  </div>
-                  <div className="value">{product.quantity}</div>
-                  <div
-                    className="inc"
-                    onClick={() => modifyCart(product.id, 'inc')}
-                  >
-                    +
-                  </div>
+              <div className="quantity">
+                <div
+                  className="quantityButton dec"
+                  onClick={() => modifyCart(product.id, 'dec')}
+                >
+                  -
+                </div>
+                <div className="val">{product.quantity}</div>
+                <div
+                  className="quantityButton inc"
+                  onClick={() => modifyCart(product.id, 'inc')}
+                >
+                  +
                 </div>
               </div>
             </ItemStyles>
