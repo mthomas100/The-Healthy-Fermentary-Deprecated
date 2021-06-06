@@ -15,7 +15,9 @@ import { useSize } from '../lib/sizeState';
 
 const CartStyles = styled(Box)`
   background: white;
-  position: relative;
+  position: fixed;
+  right: 0;
+  overflow: hidden;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
   width: 500px;
   min-width: 500px;
@@ -23,6 +25,7 @@ const CartStyles = styled(Box)`
   transform: translateX(100%);
   ${(props) => props.open && `transform: translateX(0);`};
   transition: 1s all;
+  height: 100vh;
   /* display: grid;
   grid-template-rows: auto 1fr auto; */
 
@@ -107,7 +110,7 @@ const ItemStyles = styled(Box)`
     border-radius: 5px;
 
     .val {
-      padding: 0 5px;
+      padding: 0 7px;
     }
     .quantityButton {
       padding: 0 10px;
@@ -121,73 +124,95 @@ const ItemStyles = styled(Box)`
   }
 `;
 
+const CartDummy = styled.div`
+  width: 0px;
+  min-width: 0px;
+  ${(props) =>
+    props.open &&
+    `
+  width: 500px;
+  min-width: 500px;
+  `};
+  transition: 1s all;
+`;
+
 export default function Cart() {
-  const { cartOpen, closeCart, cartContents, modifyCart } = useCart();
+  const { cartOpen, closeCart, cartContents, modifyCart, removeFromCart } =
+    useCart();
 
   // const { sideSpaceSize } = useSize();
   // console.log(sideSpaceSize);
 
   return (
-    <CartStyles open={cartOpen} py={3} px={4}>
-      <HeaderStyles py={0}>
-        <Text fontSize={6} fontFamily="Nunito" fontWeight="600">
-          &times;
-        </Text>
-        <Text
-          fontSize={5}
-          fontFamily="Nunito"
-          fontWeight="600"
-          sx={{ whiteSpace: 'nowrap' }}
-        >
-          Your Cart
-        </Text>
-      </HeaderStyles>
-      <ItemContainerStyles>
-        {cartContents.map((product) => (
-          <>
-            <ItemStyles className="item">
-              <div className="image">
-                <Image
-                  src={product.image.url}
-                  width="auto"
-                  height="100%"
-                  objectFit="cover"
-                  layout="responsive"
-                />
-              </div>
-              <div className="title">{product.title}</div>
-              <div className="price">$10.00</div>
-              <div className="remove">remove</div>
+    <>
+      <CartDummy open={cartOpen} />
+      <CartStyles open={cartOpen} py={3} px={4}>
+        <HeaderStyles py={0}>
+          <Text
+            fontSize={6}
+            fontFamily="Nunito"
+            fontWeight="600"
+            onClick={closeCart}
+          >
+            &times;
+          </Text>
+          <Text
+            fontSize={5}
+            fontFamily="Nunito"
+            fontWeight="600"
+            sx={{ whiteSpace: 'nowrap' }}
+          >
+            Your Cart
+          </Text>
+        </HeaderStyles>
+        <ItemContainerStyles>
+          {cartContents.map((product) => (
+            <>
+              <ItemStyles className="item">
+                <div className="image">
+                  <Image
+                    src={product.image.url}
+                    width="auto"
+                    height="100%"
+                    objectFit="cover"
+                    layout="responsive"
+                  />
+                </div>
+                <div className="title">{product.title}</div>
+                <div className="price">$10.00</div>
+                <div
+                  className="remove"
+                  onClick={() => removeFromCart(product.id)}
+                >
+                  remove
+                </div>
 
-              <div className="quantity">
-                <div
-                  className="quantityButton dec"
-                  onClick={() => modifyCart(product.id, 'dec')}
-                >
-                  -
+                <div className="quantity">
+                  <div
+                    className="quantityButton dec"
+                    onClick={() => modifyCart(product.id, 'dec')}
+                  >
+                    -
+                  </div>
+                  <div className="val">{product.quantity}</div>
+                  <div
+                    className="quantityButton inc"
+                    onClick={() => modifyCart(product.id, 'inc')}
+                  >
+                    +
+                  </div>
                 </div>
-                <div className="val">{product.quantity}</div>
-                <div
-                  className="quantityButton inc"
-                  onClick={() => modifyCart(product.id, 'inc')}
-                >
-                  +
-                </div>
-              </div>
-            </ItemStyles>
-            {/* <RemoveFromCartButton id={product.id} width="50%" />
+              </ItemStyles>
+              {/* <RemoveFromCartButton id={product.id} width="50%" />
             <ModifyCart id={product.id} width="50%" /> */}
-          </>
-        ))}
-      </ItemContainerStyles>
-      <EmptyCart />
-      <Button variant="danger" onClick={closeCart}>
-        X
-      </Button>
-      <footer>
-        {/* <p>{formatMoney(calcTotalPrice(me.cart))}</p> */}
-        {/* <Checkout /> */}
-      </footer>
-    </CartStyles>
+            </>
+          ))}
+        </ItemContainerStyles>
+        <footer>
+          {/* <p>{formatMoney(calcTotalPrice(me.cart))}</p> */}
+          {/* <Checkout /> */}
+        </footer>
+      </CartStyles>
+    </>
   );
 }

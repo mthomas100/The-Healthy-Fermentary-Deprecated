@@ -9,8 +9,16 @@ import gql from 'graphql-tag';
 import HeaderLink from './HeaderLink';
 import Button from './ButtonBottomBar';
 import Cart from './Cart';
+import { useCart } from '../lib/cartState';
 
 function TopBar() {
+  const { cartOpen, openCart, closeCart } = useCart();
+
+  function cartHandler() {
+    if (cartOpen) closeCart();
+    if (!cartOpen) openCart();
+  }
+
   return (
     <Flex
       mx={2}
@@ -39,7 +47,7 @@ function TopBar() {
 
       <Box mx="auto" />
       <HeaderLink variant="nav" href="#!" fontSize="30px" lineHeight="30px">
-        <FiShoppingCart />
+        <FiShoppingCart onClick={cartHandler} />
       </HeaderLink>
     </Flex>
   );
