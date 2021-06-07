@@ -33,6 +33,12 @@ export default {
       display: 'block',
       width: `100%`,
     },
+    business: {
+      color: 'white',
+      bg: 'black',
+      display: 'block',
+      width: `100%`,
+    },
     danger: {
       color: 'white',
       bg: 'tomato',

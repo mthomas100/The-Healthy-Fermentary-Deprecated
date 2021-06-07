@@ -25,18 +25,13 @@ const CartStyles = styled(Box)`
   transform: translateX(100%);
   ${(props) => props.open && `transform: translateX(0);`};
   transition: 1s all;
-  height: 100vh;
+  height: 100%;
   /* display: grid;
   grid-template-rows: auto 1fr auto; */
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    overflow: scroll;
-  }
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
 `;
-
 const HeaderStyles = styled(Box)`
   display: grid;
   justify-content: flex-start;
@@ -124,6 +119,40 @@ const ItemStyles = styled(Box)`
   }
 `;
 
+const FooterStyles = styled.div`
+  /* position: relative;
+  bottom: 0;
+  left: 0; */
+  width: 100%;
+  padding: inherit;
+  box-shadow: 0px 0 5px 0px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  justify-content: flex-end;
+  margin-top: auto;
+
+  .price {
+    padding: 30px;
+    /* background-color: #f4f3f3; */
+    display: flex;
+    font-family: 'Nunito';
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    .text {
+      width: 50%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .number {
+      width: 50%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+`;
+
 const CartDummy = styled.div`
   width: 0px;
   min-width: 0px;
@@ -179,7 +208,7 @@ export default function Cart() {
                   />
                 </div>
                 <div className="title">{product.title}</div>
-                <div className="price">$10.00</div>
+                <div className="price">${product.price}</div>
                 <div
                   className="remove"
                   onClick={() => removeFromCart(product.id)}
@@ -208,10 +237,23 @@ export default function Cart() {
             </>
           ))}
         </ItemContainerStyles>
-        <footer>
+        <FooterStyles>
           {/* <p>{formatMoney(calcTotalPrice(me.cart))}</p> */}
           {/* <Checkout /> */}
-        </footer>
+          <div className="price">
+            <div className="text">SUBTOTAL</div>
+            <div className="number">${calcTotalPrice(cartContents)}</div>
+          </div>
+          <Button
+            variant="business"
+            fontSize={4}
+            p={3}
+            fontFamily="Nunito"
+            letterSpacing={4}
+          >
+            Checkout
+          </Button>
+        </FooterStyles>
       </CartStyles>
     </>
   );
