@@ -39,7 +39,7 @@ function Products({ size }) {
       sx={{
         display: 'grid',
         gridGap: 3, // theme.space[3]
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
         margin: '0 auto',
       }}
     >

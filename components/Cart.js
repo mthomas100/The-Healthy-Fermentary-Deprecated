@@ -31,6 +31,7 @@ const CartStyles = styled(Box)`
   overflow: scroll;
   display: flex;
   flex-direction: column;
+  transform: scale(0.8);
 `;
 const HeaderStyles = styled(Box)`
   display: grid;
@@ -197,7 +198,7 @@ export default function Cart() {
         <ItemContainerStyles>
           {cartContents.map((product) => (
             <>
-              <ItemStyles className="item">
+              <ItemStyles className="item" key={product.id}>
                 <div className="image">
                   <Image
                     src={product.image.url}
