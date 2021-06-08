@@ -1,38 +1,64 @@
-import Document, { Html, Head, NextScript, Main } from 'next/document';
+import React from 'react';
+import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheets } from '@material-ui/styles';
+// import theme from '../src/theme';
+import { theme, useStyle } from '../components/styles/materialStyles';
 
-export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
-    const sheet = new ServerStyleSheet();
-    const page = renderPage(
-      (App) => (props) => sheet.collectStyles(<App {...props} />)
-    );
-    const styleTags = sheet.getStyleElement();
-    return { ...page, styleTags };
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const styledComponentsSheet = new ServerStyleSheet();
+    const materialSheets = new ServerStyleSheets();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            styledComponentsSheet.collectStyles(
+              materialSheets.collect(<App {...props} />)
+            ),
+        });
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {materialSheets.getStyleElement()}
+            {styledComponentsSheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      styledComponentsSheet.seal();
+    }
   }
 
   render() {
     return (
-      <Html lang="en-CA">
+      <html lang="en" dir="ltr">
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap"
-            rel="stylesheet"
+          <meta charSet="utf-8" />
+          {/* Use minimum-scale=1 to enable GPU rasterization */}
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
           />
+          {/* PWA primary color */}
+          <meta name="theme-color" content={theme.palette.primary.main} />
           <link
-            href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap"
             rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat&family=Reenie+Beanie&display=swap"
-            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </Html>
+      </html>
     );
   }
 }
+
+export default MyDocument;
