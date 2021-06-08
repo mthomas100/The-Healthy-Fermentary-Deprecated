@@ -13,21 +13,19 @@ const Layout = styled.div`
   flex-direction: row;
   justify-content: center;
   position: relative;
-  /* transform: translateX(250px); half of the amount of space occupied by cart */
-  /* ${(props) => props.open && `transform: translateX(0);`} */
   transition: 0.7s all;
 `;
 
 function Page({ children }) {
   // const [session, loading] = useSession();
-  const { cartOpen } = useCart();
+  console.log(children);
 
   return (
     <>
       <GlobalStyles />
       <Typography />
       <ThemeProvider theme={theme}>
-        <Layout open={cartOpen}>
+        <Layout>
           <Content>{children}</Content>
           <Cart />
         </Layout>

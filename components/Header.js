@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Box, Flex } from 'rebass';
+import { Box, Flex } from 'rebass/styled-components';
 import { GiHeartBottle } from 'react-icons/gi';
 import { FiShoppingCart } from 'react-icons/fi';
 import styled from 'styled-components';
@@ -11,8 +11,44 @@ import Button from './ButtonBottomBar';
 import Cart from './Cart';
 import { useCart } from '../lib/cartState';
 
+const CartIconStyles = styled(Box)`
+  position: relative;
+
+  .itemCount {
+    top: -3px;
+    right: 6px;
+    position: absolute;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    .bubble {
+      position: absolute;
+      background-color: tomato;
+      width: 13px;
+      height: 13px;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      ${(props) =>
+        props.cartItemTotal >= 10 &&
+        `width: 15px;
+         height: 15px;
+      `};
+    }
+
+    .number {
+      position: relative;
+      top: 0px;
+      font-size: 9px;
+      line-height: 9px;
+      color: white;
+    }
+  }
+`;
+
 function TopBar() {
-  const { cartOpen, openCart, closeCart } = useCart();
+  const { cartOpen, openCart, closeCart, cartItemTotal } = useCart();
 
   function cartHandler() {
     if (cartOpen) closeCart();
@@ -46,47 +82,22 @@ function TopBar() {
       </HeaderLink>
 
       <Box mx="auto" />
-      <HeaderLink variant="nav" href="#!" fontSize="30px" lineHeight="30px">
+      <CartIconStyles
+        cartItemTotal={cartItemTotal}
+        fontSize={['22px', '22px', '26px', '26px']}
+        lineHeight={['22px', '22px', '26px', '26px']}
+      >
+        {cartItemTotal >= 1 && (
+          <div className="itemCount">
+            <div className="bubble">
+              <div className="number">{cartItemTotal}</div>
+            </div>
+          </div>
+        )}
+
         <FiShoppingCart onClick={cartHandler} />
-      </HeaderLink>
+      </CartIconStyles>
     </Flex>
-  );
-}
-
-const BottomBarStyles = styled.div`
-  ${flexbox}
-  ${typography}
-  display: flex;
-  margin: 0 auto;
-  margin-left: 16px;
-`;
-
-const CATEGORIES_QUERY = gql`
-  query CATEGORIES_QUERY {
-    categories {
-      name
-      id
-    }
-  }
-`;
-
-function BottomBar() {
-  const { data, error, loading } = useQuery(CATEGORIES_QUERY);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  return (
-    <BottomBarStyles
-      justifyContent="left"
-      fontSize={0}
-      lineHeight="30px"
-      width="100%"
-    >
-      <Flex flexWrap="wrap">
-        {data.categories.map((category) => (
-          <Button key={category.id}>{category.name}</Button>
-        ))}
-      </Flex>
-    </BottomBarStyles>
   );
 }
 
@@ -94,7 +105,6 @@ export default function Header() {
   return (
     <>
       <TopBar />
-      <BottomBar />
     </>
   );
 }

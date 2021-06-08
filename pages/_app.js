@@ -13,18 +13,14 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-const InnerStyles = styled.div``;
-
 function MyApp({ Component, pageProps, apollo, user }) {
   return (
     <ApolloProvider client={apollo}>
       <SizeStateProvider>
         <CartStateProvider>
-          <InnerStyles>
-            <Page>
-              <Component {...pageProps} {...user} />
-            </Page>
-          </InnerStyles>
+          <Page>
+            <Component {...pageProps} {...user} />
+          </Page>
         </CartStateProvider>
       </SizeStateProvider>
     </ApolloProvider>

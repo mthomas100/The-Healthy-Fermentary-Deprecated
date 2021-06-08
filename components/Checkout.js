@@ -8,9 +8,10 @@ import {
 } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 import nProgress from 'nprogress';
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/client';
+// import gql from 'graphql-tag';
+// import { useMutation } from '@apollo/client';
 import { Router, useRouter } from 'next/dist/client/router';
+import { Button } from 'rebass/styled-components';
 import SickButton from './styles/SickButton';
 import { useCart } from '../lib/cartState';
 
@@ -23,19 +24,20 @@ const CheckoutFormStyles = styled.form`
   grid-gap: 1rem;
 `;
 
-const CREATE_ORDER_MUTATION = gql`
-  mutation CREATE_ORDER_MUTATION($token: String!) {
-    checkout(token: $token) {
-      id
-      charge
-      total
-      items {
-        id
-        name
-      }
-    }
-  }
-`;
+// GET ORDER FROM CONTEXT INSEAD OF A GQL MUTATION
+// const CREATE_ORDER_MUTATION = gql`
+//   mutation CREATE_ORDER_MUTATION($token: String!) {
+//     checkout(token: $token) {
+//       id
+//       charge
+//       total
+//       items {
+//         id
+//         name
+//       }
+//     }
+//   }
+// `;
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
@@ -97,9 +99,9 @@ function CheckoutForm() {
   return (
     <CheckoutFormStyles onSubmit={handleSubmit}>
       {error && <p style={{ fontSize: 12 }}>{error.message}</p>}
-      {graphQLError && <p style={{ fontSize: 12 }}>{graphQLError.message}</p>}
+      {/* {graphQLError && <p style={{ fontSize: 12 }}>{graphQLError.message}</p>} */}
       <CardElement />
-      <SickButton>Check Out Now</SickButton>
+      <Button variant="business">Check Out Now</Button>
     </CheckoutFormStyles>
   );
 }

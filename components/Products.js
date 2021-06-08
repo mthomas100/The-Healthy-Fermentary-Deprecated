@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { withSize } from 'react-sizeme';
 import Product from './Product';
 import { useSize } from '../lib/sizeState';
+import Categories from './Categories';
 
 const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY {
@@ -35,18 +36,21 @@ function Products({ size }) {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <Box
-      sx={{
-        display: 'grid',
-        gridGap: 3, // theme.space[3]
-        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-        margin: '0 auto',
-      }}
-    >
-      {data.products.map((product) => (
-        <Product key={product.id} {...product} />
-      ))}
-    </Box>
+    <>
+      <Categories />
+      <Box
+        sx={{
+          display: 'grid',
+          gridGap: 3, // theme.space[3]
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          margin: '0 auto',
+        }}
+      >
+        {data.products.map((product) => (
+          <Product key={product.id} {...product} />
+        ))}
+      </Box>
+    </>
   );
 }
 

@@ -31,7 +31,6 @@ const CartStyles = styled(Box)`
   overflow: scroll;
   display: flex;
   flex-direction: column;
-  transform: scale(0.8);
 `;
 const HeaderStyles = styled(Box)`
   display: grid;
