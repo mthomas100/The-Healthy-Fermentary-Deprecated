@@ -51,6 +51,34 @@ const Typography = createGlobalStyle`
         url('/fonts/nunito-v16-latin-800.svg#Nunito') format('svg'); /* Legacy iOS */
   }
 
+    /* reenie-beanie-regular - latin */
+  @font-face {
+    font-family: 'Reenie Beanie';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/reenie-beanie-v11-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/reenie-beanie-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('../fonts/reenie-beanie-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/reenie-beanie-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
+        url('../fonts/reenie-beanie-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('../fonts/reenie-beanie-v11-latin-regular.svg#ReenieBeanie') format('svg'); /* Legacy iOS */
+  }
+
+      /* pathway-gothic-one-regular - latin */
+    @font-face {
+      font-family: 'Pathway Gothic One';
+      font-style: normal;
+      font-weight: 400;
+      src: url('/fonts/pathway-gothic-one-v9-latin-regular.eot'); /* IE9 Compat Modes */
+      src: local(''),
+          url('../fonts/pathway-gothic-one-v9-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+          url('../fonts/pathway-gothic-one-v9-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+          url('../fonts/pathway-gothic-one-v9-latin-regular.woff') format('woff'), /* Modern Browsers */
+          url('../fonts/pathway-gothic-one-v9-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+          url('../fonts/pathway-gothic-one-v9-latin-regular.svg#PathwayGothicOne') format('svg'); /* Legacy iOS */
+    }
+
   html {
     font-family: edo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--black);

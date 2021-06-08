@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Box, Flex, Text, Card, Button } from 'rebass/styled-components';
 // import CartStyles from './styles/CartStyles';
 import Image from 'next/image';
+import Link from 'next/link';
 import CloseButton from './styles/CloseButton';
 import formatMoney from '../lib/formatMoney';
 // import { useUser } from './User';
@@ -244,15 +245,17 @@ export default function Cart() {
             <div className="text">SUBTOTAL</div>
             <div className="number">${calcTotalPrice(cartContents)}</div>
           </div>
-          <Button
-            variant="business"
-            fontSize={4}
-            p={3}
-            fontFamily="Nunito"
-            letterSpacing={4}
-          >
-            Checkout
-          </Button>
+          <Link href="/checkout">
+            <Button
+              variant="business"
+              fontSize={4}
+              p={3}
+              fontFamily="Nunito"
+              letterSpacing={4}
+            >
+              Checkout
+            </Button>
+          </Link>
         </FooterStyles>
       </CartStyles>
     </>
