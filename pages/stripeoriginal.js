@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Grid, Typography } from '@material-ui/core';
 import { loadStripe } from '@stripe/stripe-js';
 import {
   CardElement,
@@ -8,7 +7,7 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import styled from 'styled-components';
-import { InputField, DatePickerField } from '../../FormFields';
+import nProgress from 'nprogress';
 
 const CheckoutFormStyles = styled.form`
   box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.04);
@@ -36,6 +35,20 @@ const SickButton = styled.button`
   }
 `;
 
+const CREATE_ORDER_MUTATION = gql`
+  mutation CREATE_ORDER_MUTATION($token: String!) {
+    checkout(token: $token) {
+      id
+      charge
+      total
+      items {
+        id
+        name
+      }
+    }
+  }
+`;
+
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 function CheckoutForm() {
@@ -44,13 +57,20 @@ function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
+  const [checkout, { error: graphQLError }] = useMutation(
+    CREATE_ORDER_MUTATION,
+    {
+      refetchQueries: [{ query: CURRENT_USER_QUERY }],
+    }
+  );
+
   async function handleSubmit(e) {
     // 1. Stop the form from submitting and turn the loader one
-    e.stopPropagation();
+    e.preventDefault();
     setLoading(true);
     console.log('We gotta do some work..');
     // 2. Start the page transition
-    // nProgress.start();
+    nProgress.start();
     // 3. Create the payment method via stripe (Token comes back here if successful)
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
@@ -60,7 +80,7 @@ function CheckoutForm() {
     // 4. Handle any errors from stripe
     if (error) {
       setError(error);
-      // nProgress.done();
+      nProgress.done();
       return; // stops the checkout from happening
     }
     // 5. Send the token from step 3 to our keystone server, via a custom mutation!
@@ -96,49 +116,10 @@ function CheckoutForm() {
   );
 }
 
-export default function PaymentForm(props) {
-  const {
-    formField: { nameOnCard, cardNumber, expiryDate, cvv },
-  } = props;
-
+export default function StripeComponent() {
   return (
-    <>
-      <Elements stripe={stripeLib}>
-        <CheckoutForm />
-      </Elements>
-      <Typography variant="h6" gutterBottom>
-        Payment method
-      </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <InputField
-            name={nameOnCard.name}
-            label={nameOnCard.label}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <InputField
-            name={cardNumber.name}
-            label={cardNumber.label}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <DatePickerField
-            name={expiryDate.name}
-            label={expiryDate.label}
-            format="MM/yy"
-            views={['year', 'month']}
-            minDate={new Date()}
-            maxDate={new Date('2050/12/31')}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <InputField name={cvv.name} label={cvv.label} fullWidth />
-        </Grid>
-      </Grid>
-    </>
+    <Elements stripe={stripeLib}>
+      <CheckoutForm />
+    </Elements>
   );
 }

@@ -5,7 +5,7 @@ import {
   StepLabel,
   Button,
   Typography,
-  CircularProgress
+  CircularProgress,
 } from '@material-ui/core';
 import { Formik, Form } from 'formik';
 
@@ -43,7 +43,7 @@ export default function CheckoutPage() {
   const isLastStep = activeStep === steps.length - 1;
 
   function _sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   async function _submitForm(values, actions) {
@@ -69,18 +69,18 @@ export default function CheckoutPage() {
   }
 
   return (
-    <React.Fragment>
+    <>
       <Typography component="h1" variant="h4" align="center">
         Checkout
       </Typography>
       <Stepper activeStep={activeStep} className={classes.stepper}>
-        {steps.map(label => (
+        {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
-      <React.Fragment>
+      <>
         {activeStep === steps.length ? (
           <CheckoutSuccess />
         ) : (
@@ -121,7 +121,7 @@ export default function CheckoutPage() {
             )}
           </Formik>
         )}
-      </React.Fragment>
-    </React.Fragment>
+      </>
+    </>
   );
 }

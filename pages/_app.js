@@ -13,23 +13,18 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-function MyApp({ Component, pageProps, apollo, user }) {
+function MyApp({ Component, pageProps, apollo }) {
   return (
     <ApolloProvider client={apollo}>
       <SizeStateProvider>
         <CartStateProvider>
           <Page>
-            <Component {...pageProps} {...user} />
+            <Component {...pageProps} />
           </Page>
         </CartStateProvider>
       </SizeStateProvider>
     </ApolloProvider>
   );
 }
-
-MyApp.getInitialProps = async (appContext) => {
-  const appProps = await App.getInitialProps(appContext);
-  return { ...appProps };
-};
 
 export default withData(MyApp);

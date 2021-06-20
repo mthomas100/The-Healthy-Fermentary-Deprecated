@@ -10,7 +10,7 @@ export default function Product(product) {
     <Card
       sx={{
         p: 3,
-        borderRadius: 2,
+        borderRadius: 10,
         boxShadow: '0 0 16px rgba(0, 0, 0, .25)',
         display: 'flex',
         flexDirection: 'column',

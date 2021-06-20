@@ -19,6 +19,7 @@ const useStyle = makeStyles(() => ({
       marginLeft: 'auto',
       marginRight: 'auto',
     },
+    // backgroundColor: theme.palette.background.default,
     backgroundColor: theme.palette.background.default,
     color: theme.palette.text.primary,
   },

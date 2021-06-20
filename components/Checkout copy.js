@@ -74,38 +74,26 @@ function CheckoutForm() {
       return; // stops the checkout from happening
     }
     // 5. Send the token from step 3 to our keystone server, via a custom mutation!
-    // const order = await checkout({
-    //   variables: {
-    //     token: paymentMethod.id,
-    //   },
-    // });
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
-      method: 'POST',
-      //   headers: userToken && { Authorization: `Bearer ${userToken}` },
-      body: JSON.stringify({
-        total: '20', // USE CALCTOTAL FUNCTION HERE (OR) GRAB RUNNING TOTAL FROM USECART [CAN IT BE APPENDED TO OBJECT UPON ===> CHECKOUT]
-        cartContents: 'PASS CARTCONTENTS HERE',
-        email: 'PASS EMAIL HERE',
-        name: 'PASS NAME HERE',
-        token: paymentMethod.id 
-      }),
+    const order = await checkout({
+      variables: {
+        token: paymentMethod.id,
+      },
     });
-
     console.log(`Finished with the order!!`);
-    console.log(response);
+    console.log(order);
     // 6. Change the page to view the order
-    // router.push({
-    //   pathname: `/order/[id]`,
-    //   query: {
-    //     id: order.data.checkout.id,
-    //   },
-    // });
+    router.push({
+      pathname: `/order/[id]`,
+      query: {
+        id: order.data.checkout.id,
+      },
+    });
     // 7. Close the cart
-    // closeCart();
+    closeCart();
 
     // 8. turn the loader off
     setLoading(false);
-    // nProgress.done();
+    nProgress.done();
   }
 
   return (

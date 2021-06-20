@@ -2,61 +2,177 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../FormFields';
 
-const cities = [
-  {
-    value: undefined,
-    label: 'None'
-  },
-  {
-    value: '1',
-    label: 'New York'
-  },
-  {
-    value: '2',
-    label: 'Chicago'
-  },
-  {
-    value: '3',
-    label: 'Saigon'
-  }
-];
+// const cities = [
+//   {
+//     value: undefined,
+//     label: 'None',
+//   },
+//   {
+//     value: '1',
+//     label: 'New York',
+//   },
+//   {
+//     value: '2',
+//     label: 'Chicago',
+//   },
+//   {
+//     value: '3',
+//     label: 'Saigon',
+//   },
+// ];
 
 const states = [
   {
-    value: undefined,
-    label: 'None'
+    value: 'AN',
+    label: 'Andaman and Nicobar Islands',
   },
   {
-    value: '11',
-    label: 'Florida'
+    value: 'AP',
+    label: 'Andhra Pradesh',
   },
   {
-    value: '22',
-    label: 'Michigan'
+    value: 'AR',
+    label: 'Arunachal Pradesh',
   },
   {
-    value: '33',
-    label: 'Texas'
-  }
+    value: 'AS',
+    label: 'Assam',
+  },
+  {
+    value: 'BR',
+    label: 'Bihar',
+  },
+  {
+    value: 'CG',
+    label: 'Chandigarh',
+  },
+  {
+    value: 'CH',
+    label: 'Chhattisgarh',
+  },
+  {
+    value: 'DH',
+    label: 'Dadra and Nagar Haveli',
+  },
+  {
+    value: 'DD',
+    label: 'Daman and Diu',
+  },
+  {
+    value: 'DL',
+    label: 'Delhi',
+  },
+  {
+    value: 'GA',
+    label: 'Goa',
+  },
+  {
+    value: 'GJ',
+    label: 'Gujarat',
+  },
+  {
+    value: 'HR',
+    label: 'Haryana',
+  },
+  {
+    value: 'HP',
+    label: 'Himachal Pradesh',
+  },
+  {
+    value: 'JK',
+    label: 'Jammu and Kashmir',
+  },
+  {
+    value: 'JH',
+    label: 'Jharkhand',
+  },
+  {
+    value: 'KA',
+    label: 'Karnataka',
+  },
+  {
+    value: 'KL',
+    label: 'Kerala',
+  },
+  {
+    value: 'LD',
+    label: 'Lakshadweep',
+  },
+  {
+    value: 'MP',
+    label: 'Madhya Pradesh',
+  },
+  {
+    value: 'MH',
+    label: 'Maharashtra',
+  },
+  {
+    value: 'MN',
+    label: 'Manipur',
+  },
+  {
+    value: 'ML',
+    label: 'Meghalaya',
+  },
+  {
+    value: 'MZ',
+    label: 'Mizoram',
+  },
+  {
+    value: 'NL',
+    label: 'Nagaland',
+  },
+  {
+    value: 'OR',
+    label: 'Odisha',
+  },
+  {
+    value: 'PY',
+    label: 'Puducherry',
+  },
+  {
+    value: 'PB',
+    label: 'Punjab',
+  },
+  {
+    value: 'RJ',
+    label: 'Rajasthan',
+  },
+  {
+    value: 'SK',
+    label: 'Sikkim',
+  },
+  {
+    value: 'TN',
+    label: 'Tamil Nadu',
+  },
+  {
+    value: 'TS',
+    label: 'Telangana',
+  },
+  {
+    value: 'TR',
+    label: 'Tripura',
+  },
+  {
+    value: 'UK',
+    label: 'Uttar Pradesh',
+  },
+  {
+    value: 'UP',
+    label: 'Uttarakhand',
+  },
+  {
+    value: 'WB',
+    label: 'West Bengal',
+  },
 ];
 
 const countries = [
   {
-    value: null,
-    label: 'None'
-  },
-  {
     value: '111',
-    label: 'United States'
+    label: 'India',
   },
-  {
-    value: '222',
-    label: 'Italy'
-  },
-  {
-    value: '333',
-    label: 'Vietnam'
-  }
 ];
 
 export default function AddressForm(props) {
@@ -70,11 +186,11 @@ export default function AddressForm(props) {
       state,
       zipcode,
       country,
-      useAddressForPaymentDetails
-    }
+      useAddressForPaymentDetails,
+    },
   } = props;
   return (
-    <React.Fragment>
+    <>
       <Typography variant="h6" gutterBottom>
         Shipping address
       </Typography>
@@ -92,12 +208,7 @@ export default function AddressForm(props) {
           <InputField name={address2.name} label={address2.label} fullWidth />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <SelectField
-            name={city.name}
-            label={city.label}
-            data={cities}
-            fullWidth
-          />
+          <InputField name={city.name} label={city.label} fullWidth />
         </Grid>
         <Grid item xs={12} sm={6}>
           <SelectField
@@ -125,6 +236,6 @@ export default function AddressForm(props) {
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </>
   );
 }
