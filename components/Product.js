@@ -11,18 +11,18 @@ const ProductStyles = styled(Card)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 7px;
 
   .details {
     display: flex;
     flex-direction: column;
     font-family: Nunito;
-    margin: 8px;
+    margin: 0.6em 0 0.6em;
   }
 
   .title {
     font-size: 2em;
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 4px;
   }
 
@@ -35,8 +35,7 @@ const ProductStyles = styled(Card)`
     font-size: 2em;
     line-height: 2em;
     background-color: white;
-    border: 1px solid black;
-    padding: 5px;
+    border: 0.05em solid black;
     font-family: 'Pathway Gothic One', sans-serif;
     display: block;
     width: 100%;
