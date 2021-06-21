@@ -24,111 +24,192 @@ const ALL_PRODUCTS_QUERY = gql`
 `;
 
 const ProductsStyles = styled.div`
-  font-family: 'Noto Sans JP', sans-serif;
+  /* --------- Card Animation ---------- */
+  .card:not(:empty):hover,
+  .card:not(:empty):focus {
+    z-index: 1;
+    color: #fff;
+    background: #ea124f;
+    opacity: 1;
+    transform: scale(1) rotateZ(0deg);
+    cursor: pointer;
 
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 0;
-    list-style-type: none;
+    &:after {
+      opacity: 1;
+    }
+
+    &:before {
+      opacity: 0;
+    }
   }
 
   .card {
-    position: relative;
-    display: block;
-    height: 100%;
-    border-radius: calc(var(--curve) * 1px);
-    overflow: hidden;
-    text-decoration: none;
-  }
-
-  .card__image {
-    width: 100%;
-    height: auto;
-  }
-
-  .card__overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    border-radius: calc(var(--curve) * 1px);
-    background-color: #fff;
-    transform: translateY(100%);
-    transition: 0.2s ease-in-out;
-  }
-
-  .card:hover .card__overlay {
-    transform: translateY(0);
-  }
-
-  .card__header {
-    position: relative;
+    padding: 10px;
+    background: #fcc99e;
+    border-radius: 0.7em;
+    opacity: 0.6;
     display: flex;
-    align-items: center;
-    gap: 2em;
-    padding: 2em;
-    border-radius: calc(var(--curve) * 1px) 0 0 0;
-    background-color: #fff;
-    transform: translateY(-100%);
-    transition: 0.2s ease-in-out;
-  }
+    justify-content: flex-start;
+    align-items: flex-end;
 
-  .card__arc {
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    bottom: 100%;
-    right: 0;
-    z-index: 1;
-  }
+    transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+    transition-property: background, transform, color, opacity;
 
-  .card__arc path {
-    fill: #fff;
-    d: path('M 40 80 c 22 0 40 -22 40 -40 v 40 Z');
-  }
+    &:not(:empty):before {
+      box-shadow: -2px 2px 8px 2px hsla(0, 0%, 0%, 0.2);
+    }
 
-  .card:hover .card__header {
-    transform: translateY(0);
-  }
+    &:empty {
+      opacity: 0.3;
+    }
 
-  .card__thumb {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      border-radius: 0.7em;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+    }
 
-  .card__title {
-    font-size: 1em;
-    margin: 0 0 0.3em;
-    color: #6a515e;
+    &:after {
+      box-shadow: -20px 20px 12px 6px hsla(0, 0%, 0%, 0.2);
+      opacity: 0;
+    }
   }
-
-  .card__tagline {
-    display: block;
-    margin: 1em 0;
-    font-family: 'MockFlowFont';
-    font-size: 0.8em;
-    color: #d7bdca;
-  }
-
-  .card__status {
-    font-size: 0.8em;
-    color: #d7bdca;
-  }
-
-  .card__description {
-    padding: 0 2em 2em;
-    margin: 0;
-    color: #d7bdca;
-    font-family: 'MockFlowFont';
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+  /* --------- Grid ---------- */
+  .grid {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: grid;
     overflow: hidden;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
+
+  .item1 {
+    grid-area: 1 / 1 / 3 / 3;
+  }
+  .item2 {
+    grid-area: 3 / 3 / 4 / 4;
+    &.card:hover,
+    &.card:focus {
+      background: #00005c;
+    }
+  }
+  .item3 {
+    grid-area: 4 / 1 / 5 / 4;
+  }
+  .item4 {
+    grid-area: 1 / 3 / 2 / 5;
+  }
+  .item5 {
+    grid-area: 2 / 4 / 3 / 5;
+  }
+  .item6 {
+    grid-area: 3 / 4 / 4 / 5;
+  }
+  .item7 {
+    grid-area: 3 / 4 / 5 / 5;
+  }
+  .item8 {
+    grid-area: 1 / 5 / 2 / 6;
+    &.card:hover,
+    &.card:focus {
+      background: #f57b51;
+    }
+  }
+  .item9 {
+    grid-area: 2 / 5 / 3 / 6;
+  }
+  .item10 {
+    grid-area: 3 / 5 / 4 / 6;
+  }
+  .item11 {
+    grid-area: 4 / 5 / 5 / 6;
+    &.card:hover,
+    &.card:focus {
+      background: #00a8cc;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /*--------- Layout -------- */
+  *,
+  *:before,
+  *:after {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  body,
+  html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'PT Sans', sans-serif;
+    background: #fff6d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 2.75rem 0 1.05rem;
+    line-height: 1.2;
+    font-family: 'Jost', sans-serif;
+  }
+
+  h1 {
+    margin-top: 0;
+    font-size: 3.052em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  p {
+    line-height: 1.3;
+  }
+
+  /* --------- Responsive ---------- */
+  @media only screen and (max-width: 600px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(6, minmax(auto, 300px));
+      overflow-y: scroll;
+    }
+
+    .item1 {
+      grid-area: 1 / 1 / 2 / 3;
+    }
+    .card {
+      grid-area: auto;
+      text-align: left;
+
+      &:empty {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -141,43 +222,32 @@ function Products() {
     <>
       <Categories />
       <ProductsStyles>
-        <ul className="cards">
-          {data.products.map((product) => (
-            <li>
-              <a href="" className="card">
-                <Image
-                  src={product.image.url}
-                  width="100%"
-                  height="100em"
-                  layout="responsive"
-                  objectFit="cover"
-                />
-                <div className="card__overlay">
-                  <div className="card__header">
-                    <svg
-                      className="card__arc"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path />
-                    </svg>
-                    <img
-                      className="card__thumb"
-                      src="https://i.imgur.com/7D7I6dI.png"
-                      alt=""
-                    />
-                    <div className="card__header-text">
-                      <h3 className="card__title">{product.title}</h3>
-                      {/* <span className="card__status">
-                        {product.description}
-                      </span> */}
-                    </div>
-                  </div>
-                  <p className="card__description">{product.description}</p>
-                </div>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <main className="grid">
+          {/* <section className="content item1">
+            <h1>Hover Card Animation</h1>
+            <p>
+              By animating a few CSS paint & composite properties, we can create
+              fun interactions on hover & focus
+            </p>
+          </section> */}
+          <section className="card item2">
+            <h2>Hover the cards</h2>
+          </section>
+          <section className="card item3" />
+          <section className="card item4" />
+          <section className="card item5">
+            <h2>because interactions make it more fun</h2>
+          </section>
+          <section className="card item7" />
+          <section className="card item8">
+            <h2>animating the shadow on the pseudo element makes it pop out</h2>
+          </section>
+          <section className="card item9" />
+          <section className="card item10" />
+          <section className="card item11">
+            <h2>add a :focus state too!</h2>
+          </section>
+        </main>
       </ProductsStyles>
     </>
   );
