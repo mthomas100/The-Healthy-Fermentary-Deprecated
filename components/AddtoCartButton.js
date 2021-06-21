@@ -1,4 +1,4 @@
-import { Button } from 'rebass/styled-components';
+// import { Button } from 'rebass/styled-components';
 import { useCart } from '../lib/cartState';
 
 export default function AddtoCartButton(product) {
@@ -15,10 +15,10 @@ export default function AddtoCartButton(product) {
   }
 
   return (
-    <Button variant="minimalistic" onClick={handleAddToCart}>
+    <button variant="minimalistic" onClick={handleAddToCart}>
       {/* <Link href="/products/slug"> */}
       Add to Cart
       {/* </Link> */}
-    </Button>
+    </button>
   );
 }
