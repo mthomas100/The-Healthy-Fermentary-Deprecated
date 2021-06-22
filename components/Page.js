@@ -9,10 +9,10 @@ import Content from './Content';
 import { useCart } from '../lib/cartState';
 
 const Layout = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   justify-content: center;
-  position: relative;
+  position: relative; */
   /* transition: 0.7s all; */
 `;
 
@@ -27,7 +27,7 @@ function Page({ children }) {
       <ThemeProvider theme={theme}>
         <Layout>
           <Content>{children}</Content>
-          <Cart />
+          {/* <Cart /> */}
         </Layout>
       </ThemeProvider>
     </>

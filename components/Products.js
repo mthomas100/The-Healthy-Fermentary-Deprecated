@@ -24,192 +24,33 @@ const ALL_PRODUCTS_QUERY = gql`
 `;
 
 const ProductsStyles = styled.div`
-  /* --------- Card Animation ---------- */
-  .card:not(:empty):hover,
-  .card:not(:empty):focus {
-    z-index: 1;
-    color: #fff;
-    background: #ea124f;
-    opacity: 1;
-    transform: scale(1) rotateZ(0deg);
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin: 0 auto;
 
-    &:after {
-      opacity: 1;
-    }
-
-    &:before {
-      opacity: 0;
-    }
-  }
-
-  .card {
-    padding: 10px;
-    background: #fcc99e;
-    border-radius: 0.7em;
-    opacity: 0.6;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-
-    transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
-    transition-property: background, transform, color, opacity;
-
-    &:not(:empty):before {
-      box-shadow: -2px 2px 8px 2px hsla(0, 0%, 0%, 0.2);
-    }
-
-    &:empty {
-      opacity: 0.3;
-    }
-
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      border-radius: 0.7em;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transition: opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1);
-    }
-
-    &:after {
-      box-shadow: -20px 20px 12px 6px hsla(0, 0%, 0%, 0.2);
-      opacity: 0;
-    }
-  }
-  /* --------- Grid ---------- */
-  .grid {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    display: grid;
-    overflow: hidden;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 20px;
-  }
-
-  .item1 {
-    grid-area: 1 / 1 / 3 / 3;
-  }
-  .item2 {
-    grid-area: 3 / 3 / 4 / 4;
-    &.card:hover,
-    &.card:focus {
-      background: #00005c;
-    }
-  }
-  .item3 {
-    grid-area: 4 / 1 / 5 / 4;
-  }
-  .item4 {
-    grid-area: 1 / 3 / 2 / 5;
-  }
-  .item5 {
-    grid-area: 2 / 4 / 3 / 5;
-  }
-  .item6 {
-    grid-area: 3 / 4 / 4 / 5;
-  }
-  .item7 {
-    grid-area: 3 / 4 / 5 / 5;
-  }
-  .item8 {
-    grid-area: 1 / 5 / 2 / 6;
-    &.card:hover,
-    &.card:focus {
-      background: #f57b51;
-    }
-  }
-  .item9 {
-    grid-area: 2 / 5 / 3 / 6;
-  }
-  .item10 {
-    grid-area: 3 / 5 / 4 / 6;
-  }
-  .item11 {
-    grid-area: 4 / 5 / 5 / 6;
-    &.card:hover,
-    &.card:focus {
-      background: #00a8cc;
-    }
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  /*--------- Layout -------- */
-  *,
-  *:before,
-  *:after {
+  .sidebar {
+    width: 250px;
+    height: auto;
     position: relative;
-    box-sizing: border-box;
+    border: 3px solid blue;
   }
-
-  body,
-  html {
-    height: 100%;
+  .products {
+    background-color: #00000022;
+    border: 5px solid black;
     width: 100%;
-    margin: 0;
-    padding: 0;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-auto-rows: 300px;
+    grid-column-gap: 2rem;
+    padding: 2rem;
+    grid-row-gap: 5rem;
+    justify-content: space-evenly;
+    margin: 0 auto;
   }
-  body {
-    font-family: 'PT Sans', sans-serif;
-    background: #fff6d9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    margin: 2.75rem 0 1.05rem;
-    line-height: 1.2;
-    font-family: 'Jost', sans-serif;
-  }
-
-  h1 {
-    margin-top: 0;
-    font-size: 3.052em;
-  }
-
-  h2 {
-    font-size: 1em;
-  }
-
-  p {
-    line-height: 1.3;
-  }
-
-  /* --------- Responsive ---------- */
-  @media only screen and (max-width: 600px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(6, minmax(auto, 300px));
-      overflow-y: scroll;
-    }
-
-    .item1 {
-      grid-area: 1 / 1 / 2 / 3;
-    }
-    .card {
-      grid-area: auto;
-      text-align: left;
-
-      &:empty {
-        display: none;
-      }
-    }
+  .product {
+    border: 1px solid red;
   }
 `;
 
@@ -220,8 +61,19 @@ function Products() {
 
   return (
     <>
-      <Categories />
-      <ProductsStyles />
+      <ProductsStyles>
+        <div className="sidebar" />
+        <div className="products">
+          <div className="product" />
+          <div className="product" />
+          <div className="product" />
+          <div className="product" />
+          <div className="product" />
+          <div className="product" />
+          <div className="product" />
+          <div className="product" />
+        </div>
+      </ProductsStyles>
     </>
   );
 }
