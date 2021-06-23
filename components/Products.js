@@ -8,7 +8,8 @@ const ProductsStyles = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
-  grid-auto-rows: 300px;
+  /* grid-auto-rows: 450px;
+  grid */
   grid-column-gap: 2rem;
   padding: 2rem;
   grid-row-gap: 5rem;
