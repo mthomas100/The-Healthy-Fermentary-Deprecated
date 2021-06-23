@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useState } from 'react';
+import { CartAdd } from '@styled-icons/boxicons-solid/CartAdd';
 import AddtoCartButton from './AddtoCartButton';
 import { useCart } from '../lib/cartState';
 
@@ -20,7 +21,53 @@ const ProductStyles = styled.div`
 
   .imageWrapper {
     position: relative;
+
+    /* .imageOverlay {
+      position: absolute;
+      z-index: 10;
+      background-color: black;
+      opacity: 0.4;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      height: 100%;
+      width: 100%;
+      margin: 0 auto;
+    } */
+
+    .image {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cartAddWrapper {
+      opacity: ${(props) => (props.mouseIsOver ? 1 : 0)};
+      transition: 0.5s all;
+      position: absolute;
+      bottom: 0;
+      height: 30px;
+      margin-left: 1.6em;
+      z-index: 10;
+      padding: 2px;
+      border: 0.5px solid black;
+      border-radius: 50%;
+      /* background-color: #ffa600a6; */
+    }
+
+    .cartAddWrapper:hover {
+      /* background-color: #ff6600a6; */
+      background-color: #00000029;
+      transition: 0.2s all;
+    }
+
+    .cartAdd {
+      height: 100%;
+      width: auto;
+      position: relative;
+      right: 1px;
+      padding: 3px;
+    }
   }
+
   .details {
     height: auto;
     background-color: #e4e4e41a;
@@ -68,10 +115,14 @@ export default function Product({ product }) {
       onMouseDown={handleAddToCart}
       onMouseOver={() => setMouseIsOver(true)}
       onMouseOut={() => setMouseIsOver(false)}
+      onMouseEnter={() => setMouseIsOver(true)}
       mouseIsOver={mouseIsOver}
     >
       <a>
         <div className="imageWrapper">
+          <div className="cartAddWrapper">
+            <CartAdd className="cartAdd" />
+          </div>
           <Image
             src={image.url}
             width="100%"
@@ -80,8 +131,6 @@ export default function Product({ product }) {
             objectFit="fill"
             className="image"
           />
-
-          <AddtoCartButton product={product} mouseIsOver={mouseIsOver} />
         </div>
 
         <div className="details">

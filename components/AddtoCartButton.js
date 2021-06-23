@@ -45,7 +45,6 @@ export default function AddtoCartButton({ product, mouseIsOver }) {
 
   return (
     <ButtonStyles mouseIsOver={mouseIsOver}>
-      {/* <div className="price">{product.price}</div> */}
       <CartAdd className="cartAdd" />
     </ButtonStyles>
   );
