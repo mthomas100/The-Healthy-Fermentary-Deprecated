@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import AddtoCartButton from './AddtoCartButton';
-// import {CartAdd} from @styled-icons/boxicons-solid/CartAdd;
 
 const ProductStyles = styled.div`
   background-color: #ffffffb9;
@@ -12,7 +11,11 @@ const ProductStyles = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
 
+  .imageWrapper {
+    position: relative;
+  }
   .details {
     height: auto;
     background-color: #e4e4e41a;
@@ -32,7 +35,7 @@ const ProductStyles = styled.div`
   }
 
   .description {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: 600;
     color: #0000007b;
   }
@@ -52,6 +55,8 @@ export default function Product({ product }) {
           objectFit="fill"
           className="image"
         />
+
+        <AddtoCartButton />
       </div>
 
       <div className="details">

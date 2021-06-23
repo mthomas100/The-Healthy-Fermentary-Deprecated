@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/matthewthomas/.nvm/versions/node/v14.15.0/bin/node /usr/local/bin/yarn add @styled-icons/boxicons-solid/CartAdd
+  /Users/matthewthomas/.nvm/versions/node/v14.15.0/bin/node /usr/local/bin/yarn add @styled-icons
 
 PATH: 
   /Users/matthewthomas/.nvm/versions/node/v14.15.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@styled-icons%2fboxicons-solid/CartAdd: Request "https://registry.yarnpkg.com/@styled-icons%2fboxicons-solid/CartAdd" returned a 405
+  Error: https://registry.yarnpkg.com/@styled-icons: Request "https://registry.yarnpkg.com/@styled-icons" returned a 405
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66997:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140662:22)
       at Request.emit (events.js:315:20)

@@ -24,6 +24,8 @@
     "@rebass/preset": "^4.0.5",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.15.0",
+    "@styled-icons/boxicons-solid": "^10.34.0",
+    "@styled-icons/octicons": "^10.35.0",
     "apollo-link-context": "^1.0.20",
     "apollo-link-http": "^1.5.17",
     "apollo-upload-client": "^14.1.3",
