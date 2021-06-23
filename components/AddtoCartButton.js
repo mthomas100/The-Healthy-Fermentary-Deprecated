@@ -1,51 +1,52 @@
 import { CartAdd } from '@styled-icons/boxicons-solid/CartAdd';
+
 import styled from 'styled-components';
 // import { Button } from 'rebass/styled-components';
 import { useCart } from '../lib/cartState';
 
 const ButtonStyles = styled.button`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   background-color: transparent;
   position: absolute;
+  top: 0;
   bottom: 0;
-  border: 0.5px solid #00000034;
-  /* border-radius: 5px; */
-  padding-left: 1.6rem;
-  /* padding: 2px; */
-  /* margin-left: 2rem; */
-  background-color: #ffffff;
-  /* width: 100%; */
+  padding: 2rem;
+  border: none;
+  font-family: 'Nunito';
+  justify-content: space-between;
+  color: #0a0a0ae4;
+  transition: 1s all;
+  opacity: ${(props) => (props.mouseIsOver ? '1' : '0')};
 
-  .circle {
-    height: 1.5rem;
-    width: auto;
+  .price {
+    align-self: flex-start;
+    /* justify-self: flex-start; */
+    margin: 0 auto;
+    font-size: 2rem;
   }
 
-  .text {
-    font-size: 1.5rem;
-    margin-left: 0.8rem;
+  .cartAdd {
+    height: 3rem;
+    width: auto;
+    opacity: 0.7;
+    align-self: flex-end;
+    margin: 0 auto;
+  }
+
+  .cartAdd:hover {
+    color: #00000039;
   }
 `;
 
-export default function AddtoCartButton(product) {
+export default function AddtoCartButton({ product, mouseIsOver }) {
   const { openCart, addToCart } = useCart();
 
-  function handleAddToCart() {
-    // add to cart animation (always)
-    // 1) the button animates
-    // 2) the shopping cart items red circle number updates
-    // if the screen is big enough, openCart as sidebar
-    // (if screen is too small don't)
-    openCart();
-    addToCart(product);
-  }
-
   return (
-    <ButtonStyles onClick={handleAddToCart}>
-      <CartAdd className="circle" />
-      <div className="text">Add to Cart</div>
+    <ButtonStyles mouseIsOver={mouseIsOver}>
+      {/* <div className="price">{product.price}</div> */}
+      <CartAdd className="cartAdd" />
     </ButtonStyles>
   );
 }
