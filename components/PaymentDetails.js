@@ -1,9 +1,18 @@
 import { TextField } from '@material-ui/core';
 import { loadStripe } from '@stripe/stripe-js';
-import { Elements, useElements, useStripe } from '@stripe/react-stripe-js';
+import {
+  CardCvcElement,
+  CardExpiryElement,
+  CardNumberElement,
+  Elements,
+  useElements,
+  useStripe,
+} from '@stripe/react-stripe-js';
 import { useState } from 'react';
 import InjectedCheckoutForm from './checkout/CheckoutForm';
 import CardSection from './CardSection';
+// GIST
+import StripeElementWrapper from './StripeElementWrapper';
 
 export default function PaymentDetails() {
   // consider replacing any below state with context
@@ -82,7 +91,13 @@ export default function PaymentDetails() {
   return (
     <>
       {/* <InjectedCheckoutForm /> */}
-      <CardSection data={data} stripeError={error} submitOrder={submitOrder} />
+      {/* <CardSection data={data} stripeError={error} submitOrder={submitOrder} /> */}
+      <StripeElementWrapper label="Card Number" component={CardNumberElement} />
+      <StripeElementWrapper
+        label="Expiry (MM / YY)"
+        component={CardExpiryElement}
+      />
+      <StripeElementWrapper label="CVC" component={CardCvcElement} />
 
       <TextField
         id="firstName"
