@@ -11,9 +11,9 @@ import {
 import { useState } from 'react';
 import InjectedCheckoutForm from './checkout/CheckoutForm';
 import CardSection from './CardSection';
-// GIST
-import StripeElementWrapper from './StripeElementWrapper';
-
+import CreditCardDetail from './CreditCardDetail';
+// Material Design Linked
+3;
 export default function PaymentDetails() {
   // consider replacing any below state with context
   const [data, setData] = useState({
@@ -92,12 +92,7 @@ export default function PaymentDetails() {
     <>
       {/* <InjectedCheckoutForm /> */}
       {/* <CardSection data={data} stripeError={error} submitOrder={submitOrder} /> */}
-      <StripeElementWrapper label="Card Number" component={CardNumberElement} />
-      <StripeElementWrapper
-        label="Expiry (MM / YY)"
-        component={CardExpiryElement}
-      />
-      <StripeElementWrapper label="CVC" component={CardCvcElement} />
+      <CreditCardDetail />
 
       <TextField
         id="firstName"
