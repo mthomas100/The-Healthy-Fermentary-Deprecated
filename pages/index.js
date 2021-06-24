@@ -16,7 +16,6 @@ export default function Home() {
   const { cartOpen } = useCart();
   const { sideSpaceSize } = useSize();
   console.log('render');
-  // console.log(sideSpaceSize?.width > 500);
 
   return (
     <>

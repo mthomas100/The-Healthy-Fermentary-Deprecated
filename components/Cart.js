@@ -203,12 +203,14 @@ export default function Cart() {
   return (
     <>
       <CartDummy
+        initial="dummyClosed"
         open={cartOpen}
         animate={cartOpen ? 'dummyOpen' : 'dummyClosed'}
         transition="transition"
         variants={variants}
       />
       <CartStyles
+        initial="closed"
         open={cartOpen}
         animate={cartOpen ? 'open' : 'closed'}
         transition="transition"
