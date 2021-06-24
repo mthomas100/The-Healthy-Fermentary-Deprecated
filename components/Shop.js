@@ -44,7 +44,7 @@ function Shop() {
 
   return (
     <>
-      <TopStyles />
+      {/* <TopStyles /> */}
       <ShopContainerStyles>
         <Sidebar />
         <Products products={data.products} />

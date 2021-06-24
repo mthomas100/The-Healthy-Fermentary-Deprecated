@@ -3,6 +3,8 @@ import { Box, Flex, Text, Card, Button } from 'rebass/styled-components';
 // import CartStyles from './styles/CartStyles';
 import Image from 'next/image';
 import Link from 'next/link';
+import { CSSTransition } from 'react-transition-group';
+import { motion } from 'framer-motion';
 import CloseButton from './styles/CloseButton';
 import formatMoney from '../lib/formatMoney';
 // import { useUser } from './User';
@@ -12,32 +14,29 @@ import RemoveFromCartButton from './RemoveFromCartButton';
 import ModifyCart from './ModifyCart';
 import EmptyCart from './EmptyCart';
 import { useSize } from '../lib/sizeState';
+
 // import { Checkout } from './Checkout';
 
-const CartStyles = styled(Box)`
+const CartStyles = styled(motion.div)`
   background: white;
   position: fixed;
   right: 0;
   overflow: hidden;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
-  width: 500px;
-  min-width: 500px;
-  /* height: 100vw; */
-  transform: translateX(100%);
-  ${(props) => props.open && `transform: translateX(0);`};
-  transition: 1s all;
+  width: 350px;
+  min-width: 350px;
   height: 100%;
-  /* display: grid;
-  grid-template-rows: auto 1fr auto; */
   overflow: scroll;
   display: flex;
   flex-direction: column;
+  cursor: default;
 `;
 const HeaderStyles = styled(Box)`
   display: grid;
   justify-content: flex-start;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
+  margin-top: 20px;
 `;
 
 const ItemContainerStyles = styled(Flex)`
@@ -80,30 +79,44 @@ const ItemStyles = styled(Box)`
     grid-area: title;
     display: flex;
     align-items: flex-end;
+    font-size: 1.4rem;
   }
   .price {
     grid-area: price;
     display: flex;
     align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .removeWrapper {
+    grid-area: remove;
+    height: auto;
   }
 
   .remove {
-    grid-area: remove;
-    display: flex;
-    align-items: flex-start;
     font-weight: 600;
     color: #a8a4a4;
     font-style: italic;
+    font-size: 1.2rem;
+    /* line-height: 1rem; */
+    padding: 0;
+  }
+
+  .remove:hover {
+    color: #0000009d;
   }
 
   .quantity {
     grid-area: quantity;
     display: flex;
     justify-self: center;
-    align-self: center;
-    border: 1px solid #141414b9;
+    align-items: center;
+    border: 1px solid #14141484;
     width: fit-content;
     border-radius: 5px;
+    height: 20px;
+    line-height: 18px;
+    font-weight: 600;
 
     .val {
       padding: 0 7px;
@@ -111,11 +124,16 @@ const ItemStyles = styled(Box)`
     .quantityButton {
       padding: 0 10px;
     }
-    .quantityButton.dec {
-      border-right: 1px solid #141414b9;
+
+    .quantityButton.dec:hover,
+    .quantityButton.inc:hover {
+      background-color: #91919120;
     }
-    .quantityButton.inc {
-      border-left: 1px solid #141414b9;
+
+    .quantityButton.inc,
+    .quantityButton.dec {
+      border-left: 0px solid #141414b9;
+      height: 100%;
     }
   }
 `;
@@ -154,45 +172,65 @@ const FooterStyles = styled.div`
   }
 `;
 
-const CartDummy = styled.div`
-  width: 0px;
-  min-width: 0px;
-  ${(props) =>
-    props.open &&
-    `
-  width: 500px;
-  min-width: 500px;
-  `};
-  transition: 1s all;
-`;
+const CartDummy = styled(motion.div)``;
+
+const variants = {
+  open: {
+    x: 0,
+  },
+  dummyOpen: {
+    width: '350px',
+    minWidth: '350px',
+  },
+  closed: {
+    x: '100%',
+  },
+  dummyClosed: {
+    width: '0px',
+    minWidth: '0px',
+  },
+  transition: {
+    duration: 1,
+  },
+};
 
 export default function Cart() {
   const { cartOpen, closeCart, cartContents, modifyCart, removeFromCart } =
     useCart();
 
-  // const { sideSpaceSize } = useSize();
-  // console.log(sideSpaceSize);
+  console.log(cartOpen);
 
   return (
     <>
-      <CartDummy open={cartOpen} />
-      <CartStyles open={cartOpen} py={3} px={4}>
-        <HeaderStyles py={0}>
+      <CartDummy
+        open={cartOpen}
+        animate={cartOpen ? 'dummyOpen' : 'dummyClosed'}
+        transition="transition"
+        variants={variants}
+      />
+      <CartStyles
+        open={cartOpen}
+        animate={cartOpen ? 'open' : 'closed'}
+        transition="transition"
+        variants={variants}
+      >
+        <HeaderStyles>
           <Text
-            fontSize={6}
+            fontSize="4rem"
             fontFamily="Nunito"
             fontWeight="600"
             onClick={closeCart}
+            sx={{ marginLeft: '40px' }}
           >
             &times;
           </Text>
           <Text
             fontSize={5}
             fontFamily="Nunito"
-            fontWeight="600"
+            fontWeight="400"
             sx={{ whiteSpace: 'nowrap' }}
           >
-            Your Cart
+            Cart
           </Text>
         </HeaderStyles>
         <ItemContainerStyles>
@@ -209,12 +247,12 @@ export default function Cart() {
                   />
                 </div>
                 <div className="title">{product.title}</div>
-                <div className="price">${product.price}</div>
+                <div className="price">{product.price}</div>
                 <div
-                  className="remove"
+                  className="removeWrapper"
                   onClick={() => removeFromCart(product.id)}
                 >
-                  remove
+                  <div className="remove">remove</div>
                 </div>
 
                 <div className="quantity">
@@ -243,7 +281,9 @@ export default function Cart() {
           {/* <Checkout /> */}
           <div className="price">
             <div className="text">SUBTOTAL</div>
-            <div className="number">${calcTotalPrice(cartContents)}</div>
+            <div className="number">
+              ${calcTotalPrice(cartContents).toFixed(2)}
+            </div>
           </div>
           <Link href="/stripe">
             <Button

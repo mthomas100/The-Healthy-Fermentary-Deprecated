@@ -46,6 +46,7 @@ const ProductStyles = styled.div`
       bottom: 0;
       height: 30px;
       margin-left: 1.6em;
+      margin-bottom: 10px;
       z-index: 10;
       padding: 2px;
       border: 0.5px solid black;
@@ -70,11 +71,13 @@ const ProductStyles = styled.div`
 
   .details {
     height: auto;
-    background-color: #e4e4e41a;
+    /* background-color: #9696961c; */
     /* box-shadow: 0 -2px 20px 0 rgba(94, 94, 94, 0.2); */
     padding: 1em 2em;
     display: flex;
     flex-direction: column;
+    height: auto;
+    background-color: #9696961c;
   }
 
   .title {
@@ -112,7 +115,6 @@ export default function Product({ product }) {
 
   return (
     <ProductStyles
-      onMouseDown={handleAddToCart}
       onMouseOver={() => setMouseIsOver(true)}
       onMouseOut={() => setMouseIsOver(false)}
       onMouseEnter={() => setMouseIsOver(true)}
@@ -121,7 +123,7 @@ export default function Product({ product }) {
       <a>
         <div className="imageWrapper">
           <div className="cartAddWrapper">
-            <CartAdd className="cartAdd" />
+            <CartAdd className="cartAdd" onMouseDown={handleAddToCart} />
           </div>
           <Image
             src={image.url}
