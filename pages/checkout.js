@@ -56,7 +56,7 @@ export default function Checkout() {
         <FormControl
           className="formControl" /* noValidate autoComplete="off" */
         >
-          {/* <Address /> */}
+          <Address />
 
           <PaymentDetails />
         </FormControl>

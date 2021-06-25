@@ -1,20 +1,10 @@
 import { TextField } from '@material-ui/core';
 import { loadStripe } from '@stripe/stripe-js';
-import {
-  CardCvcElement,
-  CardExpiryElement,
-  CardNumberElement,
-  Elements,
-  useElements,
-  useStripe,
-} from '@stripe/react-stripe-js';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useState } from 'react';
-import InjectedCheckoutForm from './checkout/CheckoutForm';
-import CardSection from './CardSection';
-import CreditCardDetail from './CreditCardDetail';
-// Material Design Linked
-3;
-export default function PaymentDetails() {
+import StripeTextField from './StripeTextField';
+
+export default function PaymentDetails(props) {
   // consider replacing any below state with context
   const [data, setData] = useState({
     address: '',
@@ -72,84 +62,17 @@ export default function PaymentDetails() {
     }
 
     console.log(response);
-
-    // OTHER stripe methods you can use depending on app
-    // // or createPaymentMethod - https://stripe.com/docs/js/payment_intents/create_payment_method
-    // stripe.createPaymentMethod({
-    //   type: "card",
-    //   card: cardElement,
-    // });
-
-    // // or confirmCardPayment - https://stripe.com/docs/js/payment_intents/confirm_card_payment
-    // stripe.confirmCardPayment(paymentIntentClientSecret, {
-    //   payment_method: {
-    //     card: cardElement,
-    //   },
-    // });
   }
 
   return (
     <>
       {/* <InjectedCheckoutForm /> */}
-      {/* <CardSection data={data} stripeError={error} submitOrder={submitOrder} /> */}
-      <CreditCardDetail />
-
-      <TextField
-        id="firstName"
-        className="firstName"
-        label="First Name"
-        required
-        autocomplete="given-name"
-      />
-      <TextField
-        id="lastName"
-        className="lastName"
-        label="Last Name"
-        required
-        autocomplete="family-name"
-      />
-      <TextField
-        id="address1"
-        className="address1 fullWidth"
-        label="Address Line 1"
-        required
-        autocomplete="address-line1"
-      />
-
-      <TextField
-        id="address2"
-        className="address2 fullWidth"
-        label="Address Line 2"
-        autocomplete="address-line2"
-      />
-      <TextField
-        id="city"
-        className="city"
-        label="City"
-        required
-        autocomplete="city"
-      />
-      <TextField
-        id="country"
-        className="country"
-        label="State / Province / Region"
-        required
-        autocomplete="country-name"
-      />
-      <TextField
-        id="zipCode"
-        className="zipCode"
-        label="Zip Code"
-        required
-        autocomplete="postal-coded"
-      />
-      <TextField
-        id="country"
-        className="country"
-        label="Country"
-        autocomplete="country-name"
-        required
-      />
+      <div className="stripeWrapper fullWidth" style={{ fontSize: '10px' }}>
+        <StripeTextField label="Credit Card" stripeElement={CardElement} />
+        <button type="button" onClick={submitOrder}>
+          Submit Order
+        </button>
+      </div>
     </>
   );
 }

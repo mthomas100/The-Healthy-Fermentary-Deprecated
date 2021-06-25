@@ -287,7 +287,7 @@ export default function Cart() {
               ${calcTotalPrice(cartContents).toFixed(2)}
             </div>
           </div>
-          <Link href="/stripe">
+          <Link href="/checkout">
             <Button
               variant="business"
               fontSize={4}
