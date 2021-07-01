@@ -1,21 +1,10 @@
 import styled from 'styled-components';
 import { Box, Flex, Text, Card, Button } from 'rebass/styled-components';
-// import CartStyles from './styles/CartStyles';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CSSTransition } from 'react-transition-group';
-import { motion } from 'framer-motion';
-import CloseButton from './styles/CloseButton';
-import formatMoney from '../lib/formatMoney';
-// import { useUser } from './User';
+import { motion, useAnimation } from 'framer-motion';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
-import RemoveFromCartButton from './RemoveFromCartButton';
-import ModifyCart from './ModifyCart';
-import EmptyCart from './EmptyCart';
-import { useSize } from '../lib/sizeState';
-
-// import { Checkout } from './Checkout';
 
 const CartStyles = styled(motion.div)`
   background: white;
@@ -200,6 +189,10 @@ export default function Cart() {
 
   console.log(cartOpen);
 
+  const controls = useAnimation();
+
+  console.log(controls);
+
   return (
     <>
       <CartDummy
@@ -249,7 +242,7 @@ export default function Cart() {
                   />
                 </div>
                 <div className="title">{product.title}</div>
-                <div className="price">{product.price}</div>
+                <div className="price">₹ {product.price}</div>
                 <div
                   className="removeWrapper"
                   onClick={() => removeFromCart(product.id)}
@@ -283,9 +276,7 @@ export default function Cart() {
           {/* <Checkout /> */}
           <div className="price">
             <div className="text">SUBTOTAL</div>
-            <div className="number">
-              ${calcTotalPrice(cartContents).toFixed(2)}
-            </div>
+            <div className="number">₹ {calcTotalPrice(cartContents)}</div>
           </div>
           <Link href="/checkout">
             <Button

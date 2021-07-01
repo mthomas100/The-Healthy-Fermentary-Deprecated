@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     --blue: #0e6588;
     --darkBlue: #0b506b;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
+    --lightBlue: #4fceb999;
     box-sizing: border-box;
     font-size: 62.5%;
 

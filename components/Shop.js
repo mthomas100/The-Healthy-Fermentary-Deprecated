@@ -9,6 +9,7 @@ import Product from './Product';
 import Categories from './Categories';
 import Sidebar from './Sidebar';
 import Products from './Products';
+import Loading from './Loading';
 
 const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY {
@@ -39,7 +40,7 @@ const ShopContainerStyles = styled.div`
 
 function Shop() {
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (

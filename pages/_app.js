@@ -8,6 +8,7 @@ import '../components/styles/nprogress.css';
 import withData from '../lib/withData';
 import { CartStateProvider } from '../lib/cartState';
 import { SizeStateProvider } from '../lib/sizeState';
+import { CheckoutStateProvider } from '../lib/checkoutState';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -18,9 +19,11 @@ function MyApp({ Component, pageProps, apollo }) {
     <ApolloProvider client={apollo}>
       <SizeStateProvider>
         <CartStateProvider>
-          <Page>
-            <Component {...pageProps} />
-          </Page>
+          <CheckoutStateProvider>
+            <Page>
+              <Component {...pageProps} />
+            </Page>
+          </CheckoutStateProvider>
         </CartStateProvider>
       </SizeStateProvider>
     </ApolloProvider>
