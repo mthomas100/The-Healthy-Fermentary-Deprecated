@@ -49,7 +49,7 @@ const ProductStyles = styled.div`
       margin-bottom: 10px;
       z-index: 10;
       padding: 2px;
-      border: 0.5px solid black;
+      border: 0.5px solid #2d2d2d;
       border-radius: 50%;
       /* background-color: #ffa600a6; */
     }

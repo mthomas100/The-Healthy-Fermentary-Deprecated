@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useCheckout } from '../lib/checkoutState';
 import useForm from '../lib/useForm';
 
-export default function Address() {
+export default function Address({ variant }) {
   const { inputs, handleChange, resetForm } = useCheckout();
 
   useEffect(() => {
@@ -22,6 +22,7 @@ export default function Address() {
         autocomplete="given-name"
         value={inputs.firstName}
         onChange={handleChange}
+        variant={variant}
       />
       <TextField
         id="lastName"
@@ -32,6 +33,7 @@ export default function Address() {
         autocomplete="family-name"
         value={inputs.lastName}
         onChange={handleChange}
+        variant={variant}
       />
       <TextField
         id="address1"
@@ -42,6 +44,7 @@ export default function Address() {
         autocomplete="address-line1"
         value={inputs.address1}
         onChange={handleChange}
+        variant={variant}
       />
 
       <TextField
@@ -52,6 +55,7 @@ export default function Address() {
         autocomplete="address-line2"
         value={inputs.address2}
         onChange={handleChange}
+        variant={variant}
       />
       <TextField
         id="city"
@@ -62,6 +66,7 @@ export default function Address() {
         autocomplete="city"
         value={inputs.city}
         onChange={handleChange}
+        variant={variant}
       />
       <TextField
         id="region"
@@ -72,6 +77,7 @@ export default function Address() {
         autocomplete="country-name"
         value={inputs.region}
         onChange={handleChange}
+        variant={variant}
       />
       <TextField
         id="zipCode"
@@ -82,6 +88,7 @@ export default function Address() {
         autocomplete="postal-coded"
         value={inputs.zipCode}
         onChange={handleChange}
+        variant={variant}
       />
       <TextField
         id="country"
@@ -92,6 +99,7 @@ export default function Address() {
         required
         value={inputs.country}
         onChange={handleChange}
+        variant={variant}
       />
     </>
   );

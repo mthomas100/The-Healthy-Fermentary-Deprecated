@@ -89,7 +89,7 @@ export default function SubmitOrder() {
     // TODO: configure a set loading thing for portions of the multistep form to disallow editing
   }
   return (
-    <button type="button" onClick={submitOrder}>
+    <button type="button" onClick={submitOrder} className="fullWidth">
       Submit
     </button>
   );

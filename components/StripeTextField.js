@@ -4,6 +4,7 @@ import React, { useImperativeHandle } from "react";
 import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import { fade, useTheme } from "@material-ui/core/styles";
+import styled from "styled-components";
 
 function StripeInput(props) {
   const {
@@ -49,7 +50,7 @@ function StripeInput(props) {
             fontFamily: theme.typography.fontFamily,
             "::placeholder": {
               color: fade(theme.palette.text.primary, 0.42)
-            }
+            },
           },
           invalid: {
             color: theme.palette.text.primary
@@ -79,6 +80,10 @@ StripeInput.propTypes = {
   options: PropTypes.object
 };
 
+const TextFieldStyles = styled.div`
+
+}
+`;
 export default function StripeTextField(props) {
   const {
     InputLabelProps,
@@ -89,9 +94,11 @@ export default function StripeTextField(props) {
   } = props;
 
   return (
+    <TextFieldStyles>
     <TextField
       fullWidth
-      variant="outlined"
+      variant={props.variant}
+      label='none'
       InputLabelProps={{
         ...InputLabelProps,
         shrink: true,
@@ -106,10 +113,10 @@ export default function StripeTextField(props) {
         },
         inputComponent: StripeInput
       }}
-      size="small"
+      size="medium"
       {...other}
-      
     />
+    </TextFieldStyles>
   );
 }
 

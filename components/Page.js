@@ -13,6 +13,7 @@ const Layout = styled.div`
   flex-direction: row;
   justify-content: center;
   position: relative;
+
   /* transition: 0.7s all; */
 `;
 
