@@ -1,20 +1,17 @@
 import { FormControl } from '@material-ui/core';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const CheckoutContainer = styled.div`
-  position: relative;
-  top: 2rem;
-  padding: 1rem;
+const FormSectionStyles = styled.div`
+  padding: 2rem 0;
   height: auto;
-  max-width: 500px;
-  min-width: 180px;
-  margin: 0 auto;
+  max-width: 100%;
+  min-width: 100%;
 
   h1 {
     /* margin: 0 auto; */
     font-family: 'Nunito';
   }
-
   .formControl {
     box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -75,12 +72,21 @@ const CheckoutContainer = styled.div`
   }
 `;
 
-export default function FormSection({ children }) {
+function FormSection({ children }) {
   return (
-    <CheckoutContainer>
+    <FormSectionStyles>
       <FormControl className="formControl" /* noValidate autoComplete="off" */>
         {children}
       </FormControl>
-    </CheckoutContainer>
+    </FormSectionStyles>
   );
 }
+
+FormSection.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
+
+export default FormSection;

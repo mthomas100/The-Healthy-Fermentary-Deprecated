@@ -97,6 +97,10 @@ const Typography = createGlobalStyle`
     text-align: center;
   }
 
+  .left {
+    text-align: left;
+  }
+
   .tilt {
     transform: rotate(-2deg);
   }

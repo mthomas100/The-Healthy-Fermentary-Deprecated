@@ -13,7 +13,6 @@ const GlobalStyles = createGlobalStyle`
     --lightBlue: #4fceb999;
     box-sizing: border-box;
     font-size: 62.5%;
-
   }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -22,7 +21,11 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 0;
     margin: 0;
-    
+  }
+
+  h1 {
+    /* margin: 0 auto; */
+    font-family: 'Nunito';
   }
   
   /* Links */
