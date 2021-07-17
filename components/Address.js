@@ -1,7 +1,6 @@
 import { TextField } from '@material-ui/core';
 import { useEffect } from 'react';
 import { useCheckout } from '../lib/checkoutState';
-import useForm from '../lib/useForm';
 
 export default function Address({ variant }) {
   const { inputs, handleChange, resetForm } = useCheckout();

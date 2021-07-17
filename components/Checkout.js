@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import CartSummary from './CartSummary';
-import CheckoutForm from './CheckoutForm';
 import Stepper from './Stepper';
 
 const CheckoutStyles = styled.div`

@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Product from './Product';
-import Categories from './Categories';
 import Sidebar from './Sidebar';
 import Products from './Products';
 import Loading from './Loading';

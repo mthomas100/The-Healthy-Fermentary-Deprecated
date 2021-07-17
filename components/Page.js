@@ -5,7 +5,6 @@ import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import Cart from './Cart';
-import Content from './Content';
 import { useCart } from '../lib/cartState';
 
 const Layout = styled.div`
@@ -13,9 +12,23 @@ const Layout = styled.div`
   flex-direction: row;
   justify-content: center;
   position: relative;
-
-  /* transition: 0.7s all; */
 `;
+
+function Content({ children }) {
+  return (
+    <Box
+      padding="3"
+      sx={{
+        width: '100%',
+        margin: '0 auto',
+        height: '100%',
+      }}
+    >
+      <Header />
+      {children}
+    </Box>
+  );
+}
 
 function Page({ children }) {
   // const [session, loading] = useSession();

@@ -2,7 +2,6 @@
 // import { Normalize } from 'styled-normalize';
 import { useEffect, useState } from 'react';
 import Checkout from '../components/Checkout';
-import Loading from '../components/Loading';
 
 export default function CheckoutPage() {
   const [isLoaded, setIsLoaded] = useState(false);

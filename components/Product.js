@@ -4,7 +4,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { CartAdd } from '@styled-icons/boxicons-solid/CartAdd';
-import AddtoCartButton from './AddtoCartButton';
 import { useCart } from '../lib/cartState';
 
 const ProductStyles = styled.div`
