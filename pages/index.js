@@ -13,10 +13,6 @@ const ShopStyles = styled.div`
 `;
 
 export default function Home() {
-  const { cartOpen } = useCart();
-  const { sideSpaceSize } = useSize();
-  console.log('render');
-
   return (
     <>
       <Shop />

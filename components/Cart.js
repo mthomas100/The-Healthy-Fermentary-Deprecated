@@ -161,8 +161,6 @@ const FooterStyles = styled.div`
   }
 `;
 
-const CartDummy = styled(motion.div)``;
-
 const variants = {
   open: {
     x: 0,
@@ -191,13 +189,6 @@ export default function Cart() {
 
   return (
     <>
-      <CartDummy
-        initial="dummyClosed"
-        open={cartOpen}
-        animate={cartOpen ? 'dummyOpen' : 'dummyClosed'}
-        transition="transition"
-        variants={variants}
-      />
       <CartStyles
         initial="closed"
         open={cartOpen}
