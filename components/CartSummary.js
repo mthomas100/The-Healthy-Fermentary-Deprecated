@@ -6,12 +6,13 @@ import { useCart } from '../lib/cartState';
 import calcTotalPrice from '../lib/calcTotalPrice';
 
 const CartSummaryStyles = styled.div`
-  width: 500px;
+  width: 100%;
   height: fit-content;
   box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.5);
   margin-top: 2rem;
   border-radius: 2rem;
   padding: 5rem 3rem;
+  margin: 0 auto;
 `;
 
 const ItemContainerStyles = styled(Flex)`
@@ -123,7 +124,6 @@ const FooterStyles = styled.div`
 
 function CartSummary() {
   const { cartItemTotal, cartContents, modifyCart, removeFromCart } = useCart();
-  console.log(cartContents);
   return (
     <CartSummaryStyles>
       <h1 className="left">Cart Summary ({cartItemTotal} items)</h1>

@@ -187,11 +187,7 @@ export default function Cart() {
   const { cartOpen, closeCart, cartContents, modifyCart, removeFromCart } =
     useCart();
 
-  console.log(cartOpen);
-
   const controls = useAnimation();
-
-  console.log(controls);
 
   return (
     <>
@@ -285,6 +281,7 @@ export default function Cart() {
               p={3}
               fontFamily="Nunito"
               letterSpacing={4}
+              onClick={closeCart}
             >
               Checkout
             </Button>

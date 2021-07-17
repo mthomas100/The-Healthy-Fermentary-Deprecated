@@ -7,7 +7,6 @@ export default function HeaderLink({
   fontSize,
   lineHeight,
 }) {
-  console.log(fontSize);
   return (
     <Text
       font="sans"
