@@ -6,6 +6,8 @@ import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import Cart from './Cart';
 import { useCart } from '../lib/cartState';
+import CartIcon from './CartIcon';
+import CartBar from './CartBar';
 
 const Layout = styled.div`
   display: flex;
@@ -14,24 +16,14 @@ const Layout = styled.div`
   position: relative;
 `;
 
-function Content({ children }) {
-  return (
-    <Box
-      padding="3"
-      sx={{
-        width: '100%',
-        margin: '0 auto',
-        height: '100%',
-      }}
-    >
-      <Header />
-      {children}
-    </Box>
-  );
-}
+const ContentStyles = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  padding: 4rem;
+`;
 
 function Page({ children }) {
-  // const [session, loading] = useSession();
   console.log(children);
 
   return (
@@ -40,7 +32,11 @@ function Page({ children }) {
       <Typography />
       <ThemeProvider theme={theme}>
         <Layout>
-          <Content>{children}</Content>
+          <ContentStyles>
+            <Header />
+            {children}
+          </ContentStyles>
+          <CartBar />
           <Cart />
         </Layout>
       </ThemeProvider>

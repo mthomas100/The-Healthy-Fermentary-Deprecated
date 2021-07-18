@@ -47,8 +47,8 @@ export default function CartIcon() {
   return (
     <CartIconStyles
       cartItemTotal={cartItemTotal}
-      fontSize={['22px', '22px', '26px', '26px']}
-      lineHeight={['22px', '22px', '26px', '26px']}
+      fontSize="30px"
+      lineHeight="30px"
     >
       {cartItemTotal >= 1 && (
         <div className="itemCount">
