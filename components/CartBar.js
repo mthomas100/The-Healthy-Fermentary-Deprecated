@@ -18,6 +18,8 @@ const CartBarStyles = styled.div`
   /* margin-top: 4rem; */
   transition: 0.3s width;
   transform: translateX(100%);
+  position: absolute;
+  right: 0;
 
   .cartWrapper {
     display: flex;

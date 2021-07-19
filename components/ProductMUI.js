@@ -14,13 +14,20 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 345,
     borderRadius: '10px',
-    backgroundColor: '#ffee99',
+    backgroundColor: 'var(--productThemeColor)',
   },
-  cartContent: {
-    backgroundColor: '#b3b3b34b',
-    flex: 'auto',
+  image: {
+    backgroundColor: 'var(--productThemeColor)',
+    filter: 'brightness(90%)',
+  },
+  cartContent: {},
+  typography: {
+    lineHeight: '2',
+    fontSize: '1.3rem',
   },
 });
+
+const TypographyStyled = styled(Typography)``;
 
 export default function ImgMediaCard({ product }) {
   const classes = useStyles();
@@ -30,30 +37,36 @@ export default function ImgMediaCard({ product }) {
       <CardActionArea>
         <Image
           src={product.image.url}
+          color="green"
           width="100%"
           height="auto"
           layout="responsive"
           objectFit="fill"
-          className="image"
+          className={classes.image}
         />
 
         <CardContent className={classes.cartContent}>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h4" component="h4">
             {product.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography
+            variant="subtitle1"
+            color="textSecondary"
+            component="p"
+            className={classes.typography}
+          >
             {product.description}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions className={classes.cartContent}>
+      {/* <CardActions className={classes.cartContent}>
         <Button size="small" color="primary">
           Share
         </Button>
         <Button size="small" color="primary">
           Learn More
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }
