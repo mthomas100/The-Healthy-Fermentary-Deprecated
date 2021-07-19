@@ -11,6 +11,7 @@ const CheckoutStyles = styled.div`
   justify-content: center;
   margin: 0 auto;
   max-width: 600px;
+  height: 100vh;
 `;
 
 // Step Circle with # inside it
@@ -23,14 +24,12 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 export default function Checkout() {
   return (
-    <>
-      <CheckoutStyles>
-        <Elements stripe={stripePromise}>
-          <Stepper />
-          {/* <CheckoutForm />
+    <CheckoutStyles>
+      <Elements stripe={stripePromise}>
+        <Stepper />
+        {/* <CheckoutForm />
         <CartSummary /> */}
-        </Elements>
-      </CheckoutStyles>
-    </>
+      </Elements>
+    </CheckoutStyles>
   );
 }

@@ -108,7 +108,7 @@ export default function Product({ product }) {
     // 2) the shopping cart items red circle number updates
     // if the screen is big enough, openCart as sidebar
     // (if screen is too small don't)
-    openCart();
+    // openCart();
     addToCart(product);
   }
 

@@ -1,121 +1,101 @@
 import styled from 'styled-components';
-import Image from 'next/image';
-import React, { useEffect, useRef } from 'react';
-
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 import CartIcon from './CartIcon';
 import { useCart } from '../lib/cartState';
+import CartItem from './CartItem';
+import calcTotalPrice from '../lib/calcTotalPrice';
 
 const CartBarStyles = styled.div`
-  width: 100px;
+  width: ${(props) => (props.cartItemTotal > 0 ? '200px' : '75px')};
+  minwidth: ${(props) => (props.cartItemTotal > 0 ? '200px' : '75px')};
   background-color: #ffffff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   border-top-left-radius: 5px;
-  height: 100vh;
+  min-height: 100%; //this may need to be on _app.js
   /* margin-top: 4rem; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 2rem;
+  transition: 0.3s width;
+
+  .cartWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    height: auto;
+    position: sticky;
+    top: 0;
+    right: 0;
+  }
 
   .cartIconWrapper {
     padding-top: 4rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+    font-family: 'Nunito';
   }
 
-  .cartItem {
-    width: 100%;
-    margin-bottom: 3rem;
+  .itemCount {
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    font-family: 'Nunito';
+    /* margin: 0.5rem 0; */
   }
 
-  .MuiSelect-icon {
-    top: unset !important;
+  .totalValue {
+    font-weight: 800;
+    white-space: nowrap;
+    margin: 0.5rem auto 2rem auto;
+    font-size: 1.4rem;
+    font-family: 'Nunito';
+    color: #af1313;
   }
 `;
 
 const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: '1.75rem 0',
-    minWidth: '100%',
-  },
-  selectEmpty: {
-    marginTop: '0',
-    textAlign: 'center',
-  },
-  inputLabel: {
+  checkoutButton: {
+    margin: '0 0 2rem 0',
     width: '100%',
-    fontSize: '1.3rem',
-    position: 'relative',
+    border: '1px solid #0000006a',
   },
 }));
 
 export default function CartBar() {
-  const { cartContents, openCart, modifyCartQuantity } = useCart();
-  console.log(cartContents);
-
+  const { cartContents, openCart, cartItemTotal } = useCart();
   const classes = useStyles();
-
-  const quantityArrMap = Array.from(Array(10).keys());
-
-  const firstUpdate = useRef(true);
-  useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      return;
-    }
-    console.log('cartContents has changed');
-  }, [cartContents]);
+  // const CartBarRef = useRef(null);
 
   return (
-    <CartBarStyles>
-      <div className="cartIconWrapper">
-        <CartIcon onClick={openCart} />
+    <CartBarStyles cartItemTotal={cartItemTotal}>
+      <div className="cartWrapper">
+        <div className="cartIconWrapper">
+          <CartIcon onClick={openCart} />
+        </div>
+        {cartItemTotal > 0 && (
+          <>
+            <div className="itemCount">{cartItemTotal} items</div>
+            {cartItemTotal !== 0 && (
+              <div className="totalValue">
+                <b>₹</b> {calcTotalPrice(cartContents)}
+              </div>
+            )}
+            <Link href="/checkout">
+              <Button
+                variant="outlined"
+                size="large"
+                className={classes.checkoutButton}
+              >
+                Checkout
+              </Button>
+            </Link>
+          </>
+        )}
+
+        {cartContents.map((product) => (
+          <CartItem product={product} />
+        ))}
       </div>
-      {cartContents.map((product) => {
-        console.log(product.quantity);
-        return (
-          <div className="cartItem">
-            <Image
-              src={product.image.url}
-              alt="Picture of the author"
-              width="100%"
-              height="auto"
-              layout="responsive"
-            />
-            <FormControl
-              className={classes.formControl}
-              variant="outlined"
-              size="small"
-            >
-              <InputLabel
-                shrink
-                id="demo-simple-select-placeholder-label-label"
-                className={classes.inputLabel}
-              >
-                Quantity
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-placeholder-label-label"
-                id="demo-simple-select-placeholder-label"
-                value={product.quantity}
-                onChange={(e) => modifyCartQuantity(product.id, e.target.value)}
-                displayEmpty
-                className={classes.selectEmpty}
-              >
-                {quantityArrMap.map((_, i) => (
-                  <MenuItem value={i}>{i}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
-        );
-      })}
     </CartBarStyles>
   );
 }
