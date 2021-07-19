@@ -17,6 +17,7 @@ const CartBarStyles = styled.div`
   min-height: 100%; //this may need to be on _app.js
   /* margin-top: 4rem; */
   transition: 0.3s width;
+  transform: translateX(100%);
 
   .cartWrapper {
     display: flex;

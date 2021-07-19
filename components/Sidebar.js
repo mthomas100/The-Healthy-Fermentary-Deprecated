@@ -6,7 +6,7 @@ const SideBarStyles = styled.div`
   height: auto;
   position: relative;
   /* border: 1px solid black; */
-  padding: 0 2rem;
+  padding: 0 0 0 2rem;
   font-family: 'Nunito';
   /* top: -10px; */
   /* display: flex;
