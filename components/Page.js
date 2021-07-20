@@ -37,7 +37,6 @@ function Page({ children }) {
             {children}
           </ContentStyles>
           <CartBar />
-          <Cart />
         </Layout>
       </ThemeProvider>
     </>

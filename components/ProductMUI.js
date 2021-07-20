@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { useCart } from '../lib/cartState';
 
 const useStyles = makeStyles({
   root: {
@@ -21,16 +22,22 @@ const useStyles = makeStyles({
     filter: 'brightness(90%)',
   },
   cartContent: {},
-  typography: {
-    lineHeight: '2',
-    fontSize: '1.3rem',
-  },
+  // typography: {
+  //   lineHeight: '2',
+  //   fontSize: '1.3rem',
+  // },
 });
 
-const TypographyStyled = styled(Typography)``;
+const TypographyStyled = styled(Typography)`
+  && {
+    line-height: 2;
+    font-size: 1.3rem;
+  }
+`;
 
 export default function ImgMediaCard({ product }) {
   const classes = useStyles();
+  const { addToCart, openCart } = useCart();
 
   return (
     <Card className={classes.root}>
@@ -49,24 +56,27 @@ export default function ImgMediaCard({ product }) {
           <Typography gutterBottom variant="h4" component="h4">
             {product.title}
           </Typography>
-          <Typography
+          <TypographyStyled
             variant="subtitle1"
             color="textSecondary"
             component="p"
-            className={classes.typography}
           >
             {product.description}
-          </Typography>
+          </TypographyStyled>
         </CardContent>
       </CardActionArea>
-      {/* <CardActions className={classes.cartContent}>
-        <Button size="small" color="primary">
-          Share
+      <CardActions className={classes.cartContent}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            addToCart(product);
+            openCart();
+          }}
+        >
+          Add to Cart
         </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions> */}
+      </CardActions>
     </Card>
   );
 }

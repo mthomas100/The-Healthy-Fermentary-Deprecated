@@ -40,8 +40,8 @@ export default function CartIcon() {
   const { cartOpen, openCart, closeCart, cartItemTotal } = useCart();
 
   function cartHandler() {
-    // if (cartOpen) closeCart();
-    // if (!cartOpen) openCart();
+    if (cartOpen) closeCart();
+    if (!cartOpen) openCart();
   }
 
   return (

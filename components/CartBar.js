@@ -5,19 +5,20 @@ import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import CartIcon from './CartIcon';
 import { useCart } from '../lib/cartState';
-import CartItem from './CartItem';
+import CartBarItem from './CartBarItem';
 import calcTotalPrice from '../lib/calcTotalPrice';
 
 const CartBarStyles = styled.div`
-  width: ${(props) => (props.cartItemTotal > 0 ? '200px' : '75px')};
-  minwidth: ${(props) => (props.cartItemTotal > 0 ? '200px' : '75px')};
+  min-width: 75px;
+  max-width: ${(props) => (props.cartHover ? `200px` : `100px`)};
   background-color: #ffffff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   border-top-left-radius: 5px;
   min-height: 100%; //this may need to be on _app.js
   /* margin-top: 4rem; */
-  transition: 0.3s width;
-  transform: translateX(100%);
+  transition: 0.4s all;
+  transform: ${(props) =>
+    props.cartOpen ? `translateX(0%)` : `translateX(100%)`};
   position: absolute;
   right: 0;
 
@@ -26,7 +27,6 @@ const CartBarStyles = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 2rem;
     height: auto;
     position: sticky;
     top: 0;
@@ -54,6 +54,11 @@ const CartBarStyles = styled.div`
     font-family: 'Nunito';
     color: #af1313;
   }
+
+  .buttonWrapper {
+    width: 100%;
+    padding: 1rem 2rem 0 2rem;
+  }
 `;
 
 const useStyles = makeStyles((theme) => ({
@@ -65,12 +70,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CartBar() {
-  const { cartContents, openCart, cartItemTotal } = useCart();
+  const { cartContents, openCart, cartItemTotal, cartOpen } = useCart();
   const classes = useStyles();
   // const CartBarRef = useRef(null);
+  const [cartHover, setCartHover] = useState(false);
 
   return (
-    <CartBarStyles cartItemTotal={cartItemTotal}>
+    <CartBarStyles
+      cartItemTotal={cartItemTotal}
+      cartOpen={cartOpen}
+      cartHover={cartHover}
+      onMouseOver={() => setCartHover(true)}
+      onMouseEnter={() => setCartHover(true)}
+      onMouseLeave={() => setCartHover(false)}
+      onMouseOut={() => setCartHover(false)}
+    >
       <div className="cartWrapper">
         <div className="cartIconWrapper">
           <CartIcon onClick={openCart} />
@@ -84,19 +98,21 @@ export default function CartBar() {
               </div>
             )}
             <Link href="/checkout">
-              <Button
-                variant="outlined"
-                size="large"
-                className={classes.checkoutButton}
-              >
-                Checkout
-              </Button>
+              <div className="buttonWrapper">
+                <Button
+                  variant="outlined"
+                  size="large"
+                  className={classes.checkoutButton}
+                >
+                  Checkout
+                </Button>
+              </div>
             </Link>
           </>
         )}
 
-        {cartContents.map((product) => (
-          <CartItem product={product} />
+        {cartContents.map((product, i) => (
+          <CartBarItem product={product} i={i} cartHover={cartHover} />
         ))}
       </div>
     </CartBarStyles>

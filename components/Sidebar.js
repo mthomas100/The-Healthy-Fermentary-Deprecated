@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { Checkbox } from '@material-ui/core';
 
 const SideBarStyles = styled.div`
-  width: 250px;
+  width: 160px;
   height: auto;
   position: relative;
   /* border: 1px solid black; */
-  padding: 0 0 0 2rem;
+  /* padding: 0 0 0 2rem; */
   font-family: 'Nunito';
   /* top: -10px; */
   /* display: flex;
