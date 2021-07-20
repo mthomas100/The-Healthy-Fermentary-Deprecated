@@ -20,6 +20,9 @@ const useStyles = makeStyles({
   image: {
     backgroundColor: 'var(--productThemeColor)',
     filter: 'brightness(90%)',
+    height: '100%',
+    width: 'auto',
+    display: 'block',
   },
   cartContent: {},
   // typography: {
@@ -45,10 +48,9 @@ export default function ImgMediaCard({ product }) {
         <Image
           src={product.image.url}
           color="green"
+          height="100%"
           width="100%"
-          height="auto"
           layout="responsive"
-          objectFit="fill"
           className={classes.image}
         />
 
