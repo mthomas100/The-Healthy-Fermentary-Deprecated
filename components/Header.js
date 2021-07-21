@@ -1,14 +1,36 @@
 import styled from 'styled-components';
+import Image from 'next/image';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
 import Logo from './Logo';
+import Loading from './Loading';
 
 const HeaderStyles = styled.div`
-  /* padding: 2rem; */
+  /* display: flex;
+  flex-direction: column; */
+  margin-bottom: 2rem;
+`;
+
+// TODO: get this on initial site query
+const HEADER_QUERY = gql`
+  query HEADER_QUERY {
+    header {
+      company
+      image {
+        url
+      }
+    }
+  }
 `;
 
 export default function Header() {
+  const { data, error, loading } = useQuery(HEADER_QUERY);
+  if (loading) return <Loading />;
+  if (error) return <p>Error: {error.message}</p>;
+  const { company, image } = data.header;
   return (
     <HeaderStyles>
-      <Logo />
+      <Logo company={company} />
     </HeaderStyles>
   );
 }

@@ -10,10 +10,9 @@ const LogoStyles = styled.div`
   /* font-size: 26px;
   line-height: 26px; */
   font-size: 36px;
-  padding-bottom: 2rem;
 `;
 
-export default function Logo() {
+export default function Logo({ company }) {
   return (
     <LogoStyles>
       <GiHeartBottle
@@ -23,7 +22,9 @@ export default function Logo() {
           paddingRight: '0.5em',
         }}
       />
-      <Link href="/">Sa-Cha</Link>
+      <Link href="/">
+        <a>{company}</a>
+      </Link>
     </LogoStyles>
   );
 }

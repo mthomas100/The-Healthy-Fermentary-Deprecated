@@ -8,6 +8,7 @@ import Cart from './Cart';
 import { useCart } from '../lib/cartState';
 import CartIcon from './CartIcon';
 import CartBar from './CartBar';
+import TopImage from './TopImage';
 
 const Layout = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ const ContentStyles = styled.div`
   width: 100%;
   margin: 0 auto;
   height: 100%;
-  padding: 4rem;
+  padding: 2rem 4rem 4rem 4rem;
 `;
 
 function Page({ children }) {
@@ -31,6 +32,8 @@ function Page({ children }) {
       <GlobalStyles />
       <Typography />
       <ThemeProvider theme={theme}>
+        {/* <TopImage /> */}
+
         <Layout>
           <ContentStyles>
             <Header />

@@ -29,11 +29,10 @@ export default function QuantitySelector({ product }) {
 
   function modifyQuantityHandler(e) {
     const selectedValue = e.target.value;
-    const { id } = product;
     if (selectedValue === 0) {
-      return removeFromCart(id);
+      return removeFromCart(product.id);
     }
-    modifyCartQuantity(id, selectedValue);
+    modifyCartQuantity(product, selectedValue);
   }
 
   return (

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { useCart } from '../lib/cartState';
+import QuantitySelector from './QuantitySelector';
 
 const useStyles = makeStyles({
   root: {
@@ -18,8 +19,8 @@ const useStyles = makeStyles({
     backgroundColor: 'var(--productThemeColor)',
   },
   image: {
-    backgroundColor: 'var(--productThemeColor)',
-    filter: 'brightness(90%)',
+    // backgroundColor: 'var(--productThemeColor)',
+    // filter: 'brightness(90%)',
     height: '100%',
     width: 'auto',
     display: 'block',
@@ -38,47 +39,56 @@ const TypographyStyled = styled(Typography)`
   }
 `;
 
+const ProductStyles = styled.div`
+  /* box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2); */
+  border-radius: 10px;
+
+  .wrapper {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+`;
+
 export default function ImgMediaCard({ product }) {
   const classes = useStyles();
   const { addToCart, openCart } = useCart();
 
-  return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <Image
-          src={product.image.url}
-          color="green"
-          height="100%"
-          width="100%"
-          layout="responsive"
-          className={classes.image}
-        />
+  function cartAddHandler() {
+    addToCart(product);
+    openCart();
+  }
 
-        <CardContent className={classes.cartContent}>
-          <Typography gutterBottom variant="h4" component="h4">
-            {product.title}
-          </Typography>
-          <TypographyStyled
-            variant="subtitle1"
-            color="textSecondary"
-            component="p"
-          >
-            {product.description}
-          </TypographyStyled>
-        </CardContent>
-      </CardActionArea>
-      <CardActions className={classes.cartContent}>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {
-            addToCart(product);
-            openCart();
-          }}
-        >
-          Add to Cart
-        </Button>
-      </CardActions>
-    </Card>
+  return (
+    <ProductStyles>
+      <div className="wrapper">
+        <CardActionArea>
+          <Image
+            src={product.image.url}
+            color="green"
+            height="100%"
+            width="100%"
+            layout="responsive"
+            className={classes.image}
+          />
+
+          <CardContent className={classes.cartContent}>
+            <Typography gutterBottom variant="h4" component="h4">
+              {product.title}
+            </Typography>
+            <TypographyStyled
+              variant="subtitle1"
+              color="textSecondary"
+              component="p"
+            >
+              {product.description}
+            </TypographyStyled>
+            <Button variant="outlined" onClick={cartAddHandler}>
+              Add
+            </Button>
+            <QuantitySelector product={product} />
+          </CardContent>
+        </CardActionArea>
+      </div>
+    </ProductStyles>
   );
 }
