@@ -2,9 +2,9 @@ import Image from 'next/image';
 import QuantitySelector from './QuantitySelector';
 import CartBarItemStyles from './styles/CartBarItemStyles';
 
-export default function CartBarItem({ product, i, cartHover }) {
+export default function CartBarItem({ product, index, cartHover }) {
   return (
-    <CartBarItemStyles i={i} cartHover={cartHover}>
+    <CartBarItemStyles index={index} cartHover={cartHover}>
       <div className="pictureWrapper picture">
         <Image
           src={product.image.url}

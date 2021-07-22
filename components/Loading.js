@@ -24,7 +24,7 @@ export default function Loading() {
   return (
     <LoadingContainerStyles>
       <PulseStyles>
-        <PulseLoader color="#000000d8" speedMultiplier="0.5" size="20" />
+        <PulseLoader color="#000000d8" speedMultiplier="0.5" size="20px" />
       </PulseStyles>
     </LoadingContainerStyles>
   );

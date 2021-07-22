@@ -9,28 +9,30 @@ import CartBarItem from './CartBarItem';
 import calcTotalPrice from '../lib/calcTotalPrice';
 
 const CartBarStyles = styled.div`
-  min-width: 75px;
-  max-width: ${(props) => (props.cartHover ? `200px` : `100px`)};
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
-  border-top-left-radius: 5px;
-  min-height: 100%; //this may need to be on _app.js
-  /* margin-top: 4rem; */
-  transition: 0.4s all;
-  transform: ${(props) =>
-    props.cartOpen ? `translateX(0%)` : `translateX(100%)`};
   position: absolute;
+  /* display: flex; */
+  top: 0;
   right: 0;
+  height: auto;
+  min-height: 100%;
 
-  .cartWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: auto;
-    position: sticky;
+  .cartBarWrapper {
+    align-self: flex-start;
     top: 0;
-    right: 0;
+    position: sticky;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 0.5rem;
+    /* height: auto;
+    min-height: 60rem; //this may need to be on _app.js */
+    transition: 0.4s all;
+    transform: ${(props) =>
+      props.cartOpen ? `translateX(0%)` : `translateX(100%)`};
+    background-color: rgba(255, 255, 255, 0.5);
+    min-height: 40rem;
   }
 
   .cartIconWrapper {
@@ -39,20 +41,27 @@ const CartBarStyles = styled.div`
     font-family: 'Nunito';
   }
 
-  .itemCount {
-    font-size: 1.4rem;
-    letter-spacing: 0.1rem;
-    font-family: 'Nunito';
-    /* margin: 0.5rem 0; */
-  }
+  .cartDetails {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  .totalValue {
-    font-weight: 800;
-    white-space: nowrap;
-    margin: 0.5rem auto 2rem auto;
-    font-size: 1.4rem;
-    font-family: 'Nunito';
-    color: #af1313;
+    .itemCount {
+      font-size: 1.4rem;
+      letter-spacing: 0.1rem;
+      font-family: 'Nunito';
+      margin: 0 auto;
+    }
+
+    .totalValue {
+      font-weight: 800;
+      white-space: nowrap;
+      margin: 0.5rem auto 2rem auto;
+      font-size: 1.4rem;
+      font-family: 'Nunito';
+      color: #af1313;
+    }
   }
 
   .buttonWrapper {
@@ -85,18 +94,21 @@ export default function CartBar() {
       onMouseLeave={() => setCartHover(false)}
       onMouseOut={() => setCartHover(false)}
     >
-      <div className="cartWrapper">
+      <div className="cartBarWrapper">
         <div className="cartIconWrapper">
           <CartIcon onClick={openCart} />
         </div>
         {cartItemTotal > 0 && (
           <>
-            <div className="itemCount">{cartItemTotal} items</div>
-            {cartItemTotal !== 0 && (
-              <div className="totalValue">
-                <b>₹</b> {calcTotalPrice(cartContents)}
-              </div>
-            )}
+            <div className="cartDetails">
+              <div className="itemCount">{cartItemTotal} items</div>
+              {cartItemTotal !== 0 && (
+                <div className="totalValue">
+                  <b>₹</b> {calcTotalPrice(cartContents)}
+                </div>
+              )}
+            </div>
+
             <Link href="/checkout">
               <div className="buttonWrapper">
                 <Button
@@ -111,8 +123,8 @@ export default function CartBar() {
           </>
         )}
 
-        {cartContents.map((product, i) => (
-          <CartBarItem product={product} i={i} cartHover={cartHover} />
+        {cartContents.map((product, index) => (
+          <CartBarItem product={product} index={index} cartHover={cartHover} />
         ))}
       </div>
     </CartBarStyles>

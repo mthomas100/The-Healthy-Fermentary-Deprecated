@@ -44,19 +44,14 @@ const ProductStyles = styled.div`
   border-radius: 10px;
 
   .wrapper {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    /* border-radius: 10px; */
   }
 `;
 
 export default function ImgMediaCard({ product }) {
   const classes = useStyles();
   const { addToCart, openCart } = useCart();
-
-  function cartAddHandler() {
-    addToCart(product);
-    openCart();
-  }
 
   return (
     <ProductStyles>
@@ -82,10 +77,8 @@ export default function ImgMediaCard({ product }) {
             >
               {product.description}
             </TypographyStyled>
-            <Button variant="outlined" onClick={cartAddHandler}>
-              Add
-            </Button>
-            <QuantitySelector product={product} />
+
+            <QuantitySelector product={product} componentOrigin="product" />
           </CardContent>
         </CardActionArea>
       </div>

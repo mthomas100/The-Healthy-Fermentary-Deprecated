@@ -6,7 +6,8 @@ const CartBarItemStyles = styled.div`
   grid-template-columns: ${(props) =>
     props.cartHover ? 'auto 1fr' : 'auto 0fr'};
   grid-template-rows: auto;
-  background-color: ${(props) => (props.i % 2 === 0 ? `#ffffff` : `#f4f3f3`)};
+  /* background-color: ${(props) =>
+    props.index % 2 === 0 ? `#ffffff` : `#f4f3f3`}; */
   padding: 2rem 2rem;
   transition: 0.4s all;
 

@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 import { Checkbox } from '@material-ui/core';
 
+// TODO: make background color variable global
 const SideBarStyles = styled.div`
-  width: 160px;
+  width: 250px;
+  min-height: 60rem;
   height: auto;
   position: relative;
-  /* border: 1px solid black; */
-  /* padding: 0 0 0 2rem; */
   font-family: 'Nunito';
-  /* top: -10px; */
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-left: 4rem;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-right-radius: 2rem;
 
   hr {
     margin: 3rem 0;

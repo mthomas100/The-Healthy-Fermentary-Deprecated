@@ -24,16 +24,11 @@ const ALL_PRODUCTS_QUERY = gql`
     }
   }
 `;
-const TopStyles = styled.div`
-  height: 50px;
-  width: 100%;
-  border: 1px solid black;
-`;
 
 const ShopContainerStyles = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100%;
+  /* height: 100%; */
   margin: 0 auto;
 `;
 

@@ -79,6 +79,20 @@ const Typography = createGlobalStyle`
           url('../fonts/pathway-gothic-one-v9-latin-regular.svg#PathwayGothicOne') format('svg'); /* Legacy iOS */
     }
 
+    /* roboto-regular - latin */
+    @font-face {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      src: url('../fonts/roboto-v27-latin-regular.eot'); /* IE9 Compat Modes */
+      src: local(''),
+          url('../fonts/roboto-v27-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+          url('../fonts/roboto-v27-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+          url('../fonts/roboto-v27-latin-regular.woff') format('woff'), /* Modern Browsers */
+          url('../fonts/roboto-v27-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+          url('../fonts/roboto-v27-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+    }
+
   html {
     font-family: edo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--black);

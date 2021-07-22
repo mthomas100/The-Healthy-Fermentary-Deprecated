@@ -3,6 +3,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import styled from 'styled-components';
 import { useCart } from '../lib/cartState';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,18 +15,37 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '0',
     textAlign: 'center',
   },
-  inputLabel: {
-    width: '100%',
-    fontSize: '1.3rem',
-    position: 'relative',
-  },
 }));
 
 const quantityArrMap = Array.from(Array(10).keys());
 
-export default function QuantitySelector({ product }) {
+const QuantitySelectorStyles = styled.div`
+  font-family: 'Roboto';
+  font-size: 1rem;
+  font-weight: 400;
+
+  .inputLabelWrapper {
+    position: relative;
+  }
+
+  .inputLabel {
+    position: relative;
+    bottom: 4px;
+    margin: 0 auto;
+
+    font-family: 'Nunito';
+  }
+
+  .inputLabelProduct {
+    position: relative;
+    bottom: 5px;
+    left: 1px;
+  }
+`;
+
+export default function QuantitySelector({ product, componentOrigin }) {
   const classes = useStyles();
-  const { modifyCartQuantity, removeFromCart, cartItemTotal } = useCart();
+  const { modifyCartQuantity, removeFromCart, openCart } = useCart();
 
   function modifyQuantityHandler(e) {
     const selectedValue = e.target.value;
@@ -33,38 +53,41 @@ export default function QuantitySelector({ product }) {
       return removeFromCart(product.id);
     }
     modifyCartQuantity(product, selectedValue);
+    if (componentOrigin === 'product') openCart();
   }
 
   return (
-    <div className="quantity">
-      <FormControl
-        className={`${classes.formControl}`}
-        variant="outlined"
-        size="small"
-      >
-        <InputLabel
-          shrink
-          id="demo-simple-select-placeholder-label-label"
-          className={classes.inputLabel}
+    <QuantitySelectorStyles>
+      <div className="quantity">
+        <FormControl
+          className={`${classes.formControl}`}
+          variant="outlined"
+          size="small"
         >
-          Quantity
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-placeholder-label-label"
-          id="demo-simple-select-placeholder-label"
-          value={product.quantity}
-          onChange={modifyQuantityHandler}
-          displayEmpty
-          className={classes.selectEmpty}
-        >
-          {quantityArrMap.map((_, i) => {
-            if (i === 0) {
-              return <MenuItem value={i}>{i} (remove) </MenuItem>;
-            }
-            return <MenuItem value={i}>{i}</MenuItem>;
-          })}
-        </Select>
-      </FormControl>
-    </div>
+          {componentOrigin === 'product' ? (
+            <div className="inputLabelProduct">Add to Cart</div>
+          ) : (
+            <div className="inputLabel">Quantity</div>
+          )}
+
+          <Select
+            labelId="demo-simple-select-placeholder-label-label"
+            id="demo-simple-select-placeholder-label"
+            value={product.quantity}
+            onChange={modifyQuantityHandler}
+            displayEmpty
+            className={classes.selectEmpty}
+          >
+            {quantityArrMap.map((_, i) => {
+              if (i === 0) {
+                if (componentOrigin === 'product') return;
+                return <MenuItem value={i}>{i} (remove) </MenuItem>;
+              }
+              return <MenuItem value={i}>{i}</MenuItem>;
+            })}
+          </Select>
+        </FormControl>
+      </div>
+    </QuantitySelectorStyles>
   );
 }

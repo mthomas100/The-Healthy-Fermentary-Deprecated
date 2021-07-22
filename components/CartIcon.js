@@ -5,11 +5,14 @@ import { useCart } from '../lib/cartState';
 
 const CartIconStyles = styled(Box)`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .itemCount {
-    top: -3px;
-    right: 6px;
-    position: absolute;
+    top: -7px;
+    left: 8px;
+    position: relative;
     .bubble {
       position: absolute;
       background-color: tomato;

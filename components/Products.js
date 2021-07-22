@@ -11,7 +11,7 @@ const ProductsStyles = styled.div`
   /* grid-auto-rows: 450px;
   grid */
   grid-column-gap: 2rem;
-  padding: 2rem;
+  padding: 2rem 12rem 2rem 6rem;
   grid-row-gap: 5rem;
   justify-content: space-evenly;
   margin: 0 auto;

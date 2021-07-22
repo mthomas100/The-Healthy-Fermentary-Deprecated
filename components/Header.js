@@ -8,7 +8,7 @@ import Loading from './Loading';
 const HeaderStyles = styled.div`
   /* display: flex;
   flex-direction: column; */
-  margin-bottom: 2rem;
+  margin: 4rem 0 4rem 4rem;
 `;
 
 // TODO: get this on initial site query
