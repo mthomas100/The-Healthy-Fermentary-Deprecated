@@ -1,6 +1,4 @@
-import { TextField } from '@material-ui/core';
 import { CardElement } from '@stripe/react-stripe-js';
-import { useCheckout } from '../lib/checkoutState';
 import StripeTextField from './StripeTextField';
 
 export default function PaymentDetails({ variant }) {
@@ -9,7 +7,7 @@ export default function PaymentDetails({ variant }) {
       <h1>Payment Details</h1>
       <div
         className="textField stripeWrapper fullWidth"
-        style={{ fontSize: '2px' }}
+        style={{ fontSize: '2px', backgroundColor: 'transparent' }}
       >
         <StripeTextField
           label="" //  "Credit Card"

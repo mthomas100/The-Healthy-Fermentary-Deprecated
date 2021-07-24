@@ -12,11 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import { MdPayment } from 'react-icons/md';
 import { GoPackage } from 'react-icons/go';
 import { TiShoppingCart } from 'react-icons/ti';
-
 import styled from 'styled-components';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import nProgress from 'nprogress';
-import { v4 as uuidv4 } from 'uuid';
 import FormSection from './FormSection';
 import Address from './Address';
 import PaymentDetails from './PaymentDetails';
@@ -26,7 +24,7 @@ import { useCart } from '../lib/cartState';
 
 const useQontoStepIconStyles = makeStyles({
   root: {
-    color: '#eaeaf0',
+    color: '#0000b8',
     display: 'flex',
     height: 22,
     alignItems: 'center',
@@ -336,7 +334,11 @@ export default function CustomizedSteppers() {
         alternativeLabel
         activeStep={activeStep}
         connector={<ColorlibConnector />}
-        style={{ paddingLeft: '0', paddingRight: '0' }}
+        style={{
+          paddingLeft: '0',
+          paddingRight: '0',
+          backgroundColor: 'transparent',
+        }}
       >
         {steps.map((label) => (
           <Step key={label}>
@@ -378,7 +380,7 @@ export default function CustomizedSteppers() {
                 }
                 className={classes.button}
                 size="large"
-                fullwidth
+                fullWidth
                 disabled={submitIsDisabled}
               >
                 {activeStep === steps.length - 1 ? 'Submit Order' : 'Next'}
@@ -387,7 +389,7 @@ export default function CustomizedSteppers() {
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 className={classes.button}
-                fullwidth
+                fullWidth
                 size="large"
               >
                 Back

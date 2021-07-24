@@ -36,13 +36,10 @@ function Shop() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <>
-      {/* <TopStyles /> */}
-      <ShopContainerStyles>
-        {/* <Sidebar /> */}
-        <Products products={data.products} />
-      </ShopContainerStyles>
-    </>
+    <ShopContainerStyles>
+      {/* <Sidebar /> */}
+      <Products products={data.products} />
+    </ShopContainerStyles>
   );
 }
 

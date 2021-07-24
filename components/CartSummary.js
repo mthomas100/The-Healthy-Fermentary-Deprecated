@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import { Box, Flex, Text, Card, Button } from 'rebass/styled-components';
+import { Box, Flex } from 'rebass/styled-components';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Divider, Typography } from '@material-ui/core';
 import { useCart } from '../lib/cartState';
 import calcTotalPrice from '../lib/calcTotalPrice';
 
 const CartSummaryStyles = styled.div`
   width: 100%;
   height: fit-content;
-  box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.5); */
   margin-top: 2rem;
   border-radius: 2rem;
-  padding: 5rem 3rem;
+  padding: 3rem 3rem 0 3rem;
   margin: 0 auto;
 `;
 
@@ -20,11 +20,11 @@ const ItemContainerStyles = styled(Flex)`
   justify-content: flex-start;
   width: 100%;
   .item:nth-child(even) {
-    background-color: #f4f3f3;
+    background-color: transparent;
     box-shadow: 0px 0 5px 0px rgba(0, 0, 0, 0.2);
   }
   .item:nth-child(odd) {
-    background-color: #ffffff;
+    background-color: transparent;
     box-shadow: 0px 0 5px 0px rgba(0, 0, 0, 0.1);
   }
 `;
@@ -94,7 +94,7 @@ const FooterStyles = styled.div`
   width: 100%;
   padding: 1rem 0;
   /* box-shadow: 0px 0 5px 0px rgba(0, 0, 0, 0.2); */
-  background-color: white;
+  background-color: 'transparent';
   justify-content: flex-end;
   margin-top: auto;
 
@@ -126,7 +126,8 @@ function CartSummary() {
   const { cartItemTotal, cartContents, modifyCart, removeFromCart } = useCart();
   return (
     <CartSummaryStyles>
-      <h1 className="left">Cart Summary ({cartItemTotal} items)</h1>
+      {/* <h1 className="left">Cart Summary ({cartItemTotal} items)</h1> */}
+      <h1>Cart Summary ({cartItemTotal} items)</h1>
       <ItemContainerStyles>
         {cartContents.map((product) => (
           <>
@@ -134,7 +135,7 @@ function CartSummary() {
               <div className="image">
                 <Image
                   src={product.image.url}
-                  width="auto"
+                  width="100%"
                   height="100%"
                   objectFit="cover"
                   layout="responsive"
@@ -159,7 +160,7 @@ function CartSummary() {
           <div className="text">SHIPPING</div>
           <div className="number">₹ 80</div>
         </div>
-        <hr />
+        <Divider />
         <div className="price">
           <div className="text">TOTAL</div>
           <div className="number">₹ 1050</div>

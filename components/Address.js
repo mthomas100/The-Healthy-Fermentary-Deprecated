@@ -18,7 +18,6 @@ export default function Address({ variant }) {
         className="firstName"
         label="First Name"
         required
-        autocomplete="given-name"
         value={inputs.firstName}
         onChange={handleChange}
         variant={variant}
@@ -29,7 +28,6 @@ export default function Address({ variant }) {
         className="lastName"
         label="Last Name"
         required
-        autocomplete="family-name"
         value={inputs.lastName}
         onChange={handleChange}
         variant={variant}
@@ -40,7 +38,6 @@ export default function Address({ variant }) {
         className="address1 fullWidth"
         label="Address Line 1"
         required
-        autocomplete="address-line1"
         value={inputs.address1}
         onChange={handleChange}
         variant={variant}
@@ -51,7 +48,6 @@ export default function Address({ variant }) {
         name="address2"
         className="address2 fullWidth"
         label="Address Line 2"
-        autocomplete="address-line2"
         value={inputs.address2}
         onChange={handleChange}
         variant={variant}
@@ -62,7 +58,6 @@ export default function Address({ variant }) {
         className="city"
         label="City"
         required
-        autocomplete="city"
         value={inputs.city}
         onChange={handleChange}
         variant={variant}
@@ -73,7 +68,6 @@ export default function Address({ variant }) {
         className="region"
         label="State / Province / Region"
         required
-        autocomplete="country-name"
         value={inputs.region}
         onChange={handleChange}
         variant={variant}
@@ -84,7 +78,6 @@ export default function Address({ variant }) {
         className="zipCode"
         label="Zip Code"
         required
-        autocomplete="postal-coded"
         value={inputs.zipCode}
         onChange={handleChange}
         variant={variant}
@@ -94,7 +87,6 @@ export default function Address({ variant }) {
         name="country"
         className="country"
         label="Country"
-        autocomplete="country-name"
         required
         value={inputs.country}
         onChange={handleChange}

@@ -13,7 +13,7 @@ const FormSectionStyles = styled.div`
     font-family: 'Nunito';
   }
   .formControl {
-    box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.5); */
     width: 100%;
     height: 100%;
     display: grid;
@@ -26,7 +26,7 @@ const FormSectionStyles = styled.div`
     grid-row-gap: 2rem;
     border-radius: 2rem;
     /* background-color: #78c9f8; */
-    padding: 5rem 3rem;
+    padding: 1rem 3rem;
 
     .formControl * {
       background-color: white;
