@@ -9,7 +9,7 @@ const HeaderStyles = styled.div`
   /* display: flex;
   flex-direction: column; */
   /* margin: 4rem 0 4rem 4rem; */
-  padding: 4rem 0 4rem 4rem;
+  padding: 4rem 0 4rem 14rem;
 `;
 
 // TODO: get this on initial site query

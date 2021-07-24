@@ -55,7 +55,7 @@ export default function Product({ product }) {
   return (
     <ProductStyles>
       <div className="productWrapper">
-        <CardActionArea>
+        <CardActionArea disableRipple>
           <Image
             src={product.image.url}
             color="green"

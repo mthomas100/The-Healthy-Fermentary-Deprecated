@@ -4,13 +4,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import styled from 'styled-components';
-import { Button, FormHelperText } from '@material-ui/core';
+import { Button as ButtonMUI, FormHelperText } from '@material-ui/core';
 import { useState } from 'react';
 import { useCart } from '../lib/cartState';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: '1.75rem 0',
+    margin: '1rem 0',
     minWidth: '100%',
   },
   selectEmpty: {
@@ -18,6 +18,17 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
 }));
+
+const Button = styled(ButtonMUI)`
+  && {
+    background-color: #000000c5;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: #01050373;
+    }
+  }
+`;
 
 const quantityArrMap = Array.from(Array(10).keys());
 
@@ -60,7 +71,7 @@ export default function AddToCart({ product }) {
   }
 
   return (
-    <QuantitySelectorStyles>
+    <>
       <div className="quantity">
         <FormControl
           className={`${classes.formControl}`}
@@ -80,9 +91,16 @@ export default function AddToCart({ product }) {
               if (i > 0) return <MenuItem value={i}>{i}</MenuItem>;
             })}
           </Select>
-          <Button onClick={handleAddToCart}>Add to Cart</Button>
+          <Button
+            onClick={handleAddToCart}
+            variant="contained"
+            color="primary"
+            classes={classes.btn}
+          >
+            Add to Cart
+          </Button>
         </FormControl>
       </div>
-    </QuantitySelectorStyles>
+    </>
   );
 }

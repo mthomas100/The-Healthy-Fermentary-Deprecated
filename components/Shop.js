@@ -25,6 +25,7 @@ const ShopContainerStyles = styled.div`
   display: flex;
   flex-direction: row;
   /* height: 100%; */
+  padding: 4rem;
   margin: 0 auto;
 `;
 
@@ -37,7 +38,7 @@ function Shop() {
     <>
       {/* <TopStyles /> */}
       <ShopContainerStyles>
-        <Sidebar />
+        {/* <Sidebar /> */}
         <Products products={data.products} />
       </ShopContainerStyles>
     </>
