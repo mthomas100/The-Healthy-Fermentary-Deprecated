@@ -6,6 +6,7 @@ import Select from '@material-ui/core/Select';
 import styled from 'styled-components';
 import { Button as ButtonMUI, FormHelperText } from '@material-ui/core';
 import { useState } from 'react';
+import uuid from 'react-uuid';
 import { useCart } from '../lib/cartState';
 
 const useStyles = makeStyles((theme) => ({
@@ -71,36 +72,39 @@ export default function AddToCart({ product }) {
   }
 
   return (
-    <>
-      <div className="quantity">
-        <FormControl
-          className={`${classes.formControl}`}
-          variant="outlined"
-          size="small"
+    <div className="quantity">
+      <FormControl
+        className={`${classes.formControl}`}
+        variant="outlined"
+        size="small"
+      >
+        <Select
+          labelId="demo-simple-select-placeholder-label-label"
+          id="demo-simple-select-placeholder-label"
+          defaultValue="something"
+          value={selectValue}
+          onChange={(e) => setSelectValue(e.target.value)}
+          className={classes.selectEmpty}
+          displayEmpty
         >
-          <Select
-            labelId="demo-simple-select-placeholder-label-label"
-            id="demo-simple-select-placeholder-label"
-            defaultValue="something"
-            value={selectValue}
-            onChange={(e) => setSelectValue(e.target.value)}
-            className={classes.selectEmpty}
-            displayEmpty
-          >
-            {quantityArrMap.map((_, i) => {
-              if (i > 0) return <MenuItem value={i}>{i}</MenuItem>;
-            })}
-          </Select>
-          <Button
-            onClick={handleAddToCart}
-            variant="contained"
-            color="primary"
-            classes={classes.btn}
-          >
-            Add to Cart
-          </Button>
-        </FormControl>
-      </div>
-    </>
+          {quantityArrMap.map((_, i) => {
+            if (i > 0)
+              return (
+                <MenuItem value={i} key={uuid()}>
+                  {i}
+                </MenuItem>
+              );
+          })}
+        </Select>
+        <Button
+          onClick={handleAddToCart}
+          variant="contained"
+          color="primary"
+          classes={classes.btn}
+        >
+          Add to Cart
+        </Button>
+      </FormControl>
+    </div>
   );
 }

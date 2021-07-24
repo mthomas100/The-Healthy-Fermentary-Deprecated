@@ -109,8 +109,8 @@ export default function CartBar() {
               )}
             </div>
 
-            <Link href="/checkout">
-              <div className="buttonWrapper">
+            <div className="buttonWrapper">
+              <Link href="/checkout" passHref>
                 <Button
                   variant="outlined"
                   size="large"
@@ -118,13 +118,18 @@ export default function CartBar() {
                 >
                   Checkout
                 </Button>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </>
         )}
 
         {cartContents.map((product, index) => (
-          <CartBarItem product={product} index={index} cartHover={cartHover} />
+          <CartBarItem
+            key={product.id}
+            product={product}
+            index={index}
+            cartHover={cartHover}
+          />
         ))}
       </div>
     </CartBarStyles>

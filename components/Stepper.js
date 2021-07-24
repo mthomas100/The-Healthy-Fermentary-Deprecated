@@ -347,7 +347,7 @@ export default function CustomizedSteppers() {
       <div>
         {activeStep === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>
+            <Typography className={classes.instructions} component="div">
               Successful Order
               <b>To Do: </b> route to completed order page
             </Typography>
@@ -357,7 +357,7 @@ export default function CustomizedSteppers() {
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>
+            <Typography className={classes.instructions} component="div">
               {getStepContent(activeStep)}
             </Typography>
 

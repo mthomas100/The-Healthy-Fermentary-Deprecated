@@ -21,7 +21,7 @@ export default function Products({ products }) {
   return (
     <ProductsStyles>
       {products.map((product) => (
-        <Product product={product} />
+        <Product product={product} key={product.id} />
       ))}
     </ProductsStyles>
   );

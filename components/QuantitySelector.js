@@ -5,6 +5,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import styled from 'styled-components';
 import { FormHelperText } from '@material-ui/core';
+import uuid from 'react-uuid';
 import { useCart } from '../lib/cartState';
 
 const useStyles = makeStyles((theme) => ({
@@ -73,8 +74,17 @@ export default function QuantitySelector({ product, componentOrigin }) {
             displayEmpty
           >
             {quantityArrMap.map((_, i) => {
-              if (i === 0) return <MenuItem value={i}>{i} (remove) </MenuItem>;
-              return <MenuItem value={i}>{i}</MenuItem>;
+              if (i === 0)
+                return (
+                  <MenuItem key={uuid()} value={i}>
+                    {i} (remove){' '}
+                  </MenuItem>
+                );
+              return (
+                <MenuItem key={uuid()} value={i}>
+                  {i}
+                </MenuItem>
+              );
             })}
           </Select>
         </FormControl>

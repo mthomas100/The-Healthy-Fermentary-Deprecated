@@ -10,12 +10,6 @@ import CartIcon from './CartIcon';
 import CartBar from './CartBar';
 import TopImage from './TopImage';
 
-const Layout = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: relative;
-`;
 // TODO: assign a global programmable value to color pattern background
 // TODO: create optional background insertable objects via backend
 
@@ -44,7 +38,7 @@ const OuterWrapperStyles = styled.div`
 const ContentStyles = styled.div`
   max-width: 100rem;
   margin: 0 auto;
-  height: 100%;
+  height: auto;
   padding: 0rem 0rem 0rem 0rem;
   box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2rem;
@@ -52,18 +46,6 @@ const ContentStyles = styled.div`
   overflow: hidden;
   background: linear-gradient(-45deg, #23a6d5f0, #23d5abf0);
   animation: gradient 10s ease infinite;
-
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
 
   &:before {
     content: '';
@@ -92,17 +74,16 @@ function Page({ children }) {
       <Typography />
       <ThemeProvider theme={theme}>
         {/* <TopImage /> */}
-        <Layout>
-          <OuterWrapperStyles>
-            <ContentStyles>
-              <Header />
-              <div className="inner">
-                {children}
-                <CartBar />
-              </div>
-            </ContentStyles>
-          </OuterWrapperStyles>
-        </Layout>
+
+        <OuterWrapperStyles>
+          <ContentStyles>
+            <Header />
+            <div className="inner">
+              {children}
+              <CartBar />
+            </div>
+          </ContentStyles>
+        </OuterWrapperStyles>
       </ThemeProvider>
     </>
   );

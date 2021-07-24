@@ -1,15 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import { Typography as TypographyMUI } from '@material-ui/core';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { useCart } from '../lib/cartState';
-import QuantitySelector from './QuantitySelector';
 import AddToCart from './AddToCart';
 
 const useStyles = makeStyles({
@@ -54,33 +50,31 @@ export default function Product({ product }) {
 
   return (
     <ProductStyles>
-      <div className="productWrapper">
-        <CardActionArea disableRipple>
-          <Image
-            src={product.image.url}
-            color="green"
-            height="100%"
-            width="100%"
-            layout="responsive"
-            className={classes.image}
-          />
+      <CardActionArea disableRipple>
+        <Image
+          src={product.image.url}
+          color="green"
+          height="100%"
+          width="100%"
+          layout="responsive"
+          className={classes.image}
+        />
 
-          <CardContent className={classes.cartContent}>
-            <TypographyPrimary gutterBottom variant="h4" component="h4">
-              {product.title}
-            </TypographyPrimary>
-            <TypographySecondary
-              variant="subtitle1"
-              color="textSecondary"
-              component="p"
-            >
-              {product.description}
-            </TypographySecondary>
+        <CardContent className={classes.cartContent}>
+          <TypographyPrimary gutterBottom variant="h4" component="h4">
+            {product.title}
+          </TypographyPrimary>
+          <TypographySecondary
+            variant="subtitle1"
+            color="textSecondary"
+            component="p"
+          >
+            {product.description}
+          </TypographySecondary>
 
-            <AddToCart product={product} />
-          </CardContent>
-        </CardActionArea>
-      </div>
+          <AddToCart product={product} />
+        </CardContent>
+      </CardActionArea>
     </ProductStyles>
   );
 }

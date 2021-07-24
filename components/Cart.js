@@ -265,7 +265,7 @@ export default function Cart() {
             <div className="text">SUBTOTAL</div>
             <div className="number">₹ {calcTotalPrice(cartContents)}</div>
           </div>
-          <Link href="/checkout">
+          <Link href="/checkout" passHref>
             <Button
               variant="business"
               fontSize={4}
