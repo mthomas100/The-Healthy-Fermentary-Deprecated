@@ -1,22 +1,24 @@
 import styled from 'styled-components';
-import { Checkbox } from '@material-ui/core';
+import { Checkbox, Divider as DividerMUI } from '@material-ui/core';
 
 // TODO: make background color variable global
 const SideBarStyles = styled.div`
   width: 250px;
-  min-height: 60rem;
-  height: auto;
+  /* min-height: 1rem; */
+  height: 60rem;
   position: relative;
   font-family: 'Nunito';
-  background-color: rgba(255, 255, 255, 0.5);
+  margin-left: 2rem;
   padding-left: 4rem;
+  padding-bottom: 5rem;
   border-top-right-radius: 2rem;
-  border-top-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  border-top-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  overflow: scroll;
 
-  hr {
-    margin: 3rem 0;
+  .sideBar {
+    filter: blur(5px);
   }
 
   .categorySection {
@@ -24,13 +26,19 @@ const SideBarStyles = styled.div`
   }
 
   .categoryTitle {
-    font-size: 2em;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
   }
 
   .categoryItem {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin-bottom: -0.5rem;
+  }
+`;
+
+const Divider = styled(DividerMUI)`
+  && {
+    margin: 3rem 0;
   }
 `;
 
@@ -52,7 +60,7 @@ export default function Sidebar() {
           Kefir
         </div>
       </section>
-      <hr />
+      <Divider />
       <section className="Ingredients">
         <div className="categoryTitle">Ingredients</div>
         <div className="categoryItem">

@@ -1,11 +1,7 @@
 // example grid layout component
-import { Box, Heading } from 'rebass/styled-components';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
-import Product from './Product';
 import Sidebar from './Sidebar';
 import Products from './Products';
 import Loading from './Loading';

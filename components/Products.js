@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Product from './ProductMUI';
+import Product from './Product';
 
 const ProductsStyles = styled.div`
   /* background-color: #00000022; */

@@ -4,7 +4,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import styled from 'styled-components';
-import { FormHelperText } from '@material-ui/core';
+import { Button, FormHelperText } from '@material-ui/core';
+import { useState } from 'react';
 import { useCart } from '../lib/cartState';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,16 +45,18 @@ const QuantitySelectorStyles = styled.div`
   }
 `;
 
-export default function QuantitySelector({ product, componentOrigin }) {
+export default function AddToCart({ product }) {
   const classes = useStyles();
-  const { modifyCartQuantity, removeFromCart, openCart } = useCart();
+  const { modifyCartQuantity, openCart } = useCart();
+  const [selectValue, setSelectValue] = useState(1);
 
-  function modifyQuantityHandler(e) {
-    const selectedValue = e.target.value;
-    if (selectedValue === 0) {
-      return removeFromCart(product.id);
-    }
-    modifyCartQuantity(product, selectedValue);
+  function handleQuantityChange(e) {
+    setSelectValue(e.target.value);
+  }
+
+  function handleAddToCart() {
+    modifyCartQuantity(product, selectValue); // TODO: Needs to add X to whats already there
+    openCart();
   }
 
   return (
@@ -67,16 +70,17 @@ export default function QuantitySelector({ product, componentOrigin }) {
           <Select
             labelId="demo-simple-select-placeholder-label-label"
             id="demo-simple-select-placeholder-label"
-            value={product.quantity}
-            onChange={modifyQuantityHandler}
+            defaultValue="something"
+            value={selectValue}
+            onChange={(e) => setSelectValue(e.target.value)}
             className={classes.selectEmpty}
             displayEmpty
           >
             {quantityArrMap.map((_, i) => {
-              if (i === 0) return <MenuItem value={i}>{i} (remove) </MenuItem>;
-              return <MenuItem value={i}>{i}</MenuItem>;
+              if (i > 0) return <MenuItem value={i}>{i}</MenuItem>;
             })}
           </Select>
+          <Button onClick={handleAddToCart}>Add to Cart</Button>
         </FormControl>
       </div>
     </QuantitySelectorStyles>
