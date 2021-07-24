@@ -12,7 +12,7 @@ const CartBarStyles = styled.div`
   position: absolute;
   /* display: flex; */
   top: 0;
-  right: 0;
+  right: 4px;
   height: auto;
   min-height: 100%;
 
@@ -31,7 +31,7 @@ const CartBarStyles = styled.div`
     transition: 0.4s all;
     transform: ${(props) =>
       props.cartOpen ? `translateX(0%)` : `translateX(100%)`};
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.02);
     min-height: 40rem;
   }
 

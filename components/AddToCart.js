@@ -87,20 +87,21 @@ export default function AddToCart({ product }) {
           className={classes.selectEmpty}
           displayEmpty
         >
-          {quantityArrMap.map((_, i) => {
-            if (i > 0)
-              return (
+          {quantityArrMap.map(
+            (_, i) =>
+              i > 0 && (
                 <MenuItem value={i} key={uuid()}>
                   {i}
                 </MenuItem>
-              );
-          })}
+              )
+          )}
         </Select>
         <Button
           onClick={handleAddToCart}
           variant="contained"
           color="primary"
           classes={classes.btn}
+          size="large"
         >
           Add to Cart
         </Button>

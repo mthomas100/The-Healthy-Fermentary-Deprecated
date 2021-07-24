@@ -1,14 +1,9 @@
 import styled, { ThemeProvider } from 'styled-components';
-import { Box, Flex } from 'rebass/styled-components';
 import theme from './styles/theme';
 import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
-import Cart from './Cart';
-import { useCart } from '../lib/cartState';
-import CartIcon from './CartIcon';
 import CartBar from './CartBar';
-import TopImage from './TopImage';
 
 // TODO: assign a global programmable value to color pattern background
 // TODO: create optional background insertable objects via backend
@@ -19,8 +14,23 @@ const OuterWrapperStyles = styled.div`
   z-index: 0;
   padding-top: 8rem;
   width: 100%;
-  background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='20' height='20' patternTransform='scale(3) rotate(75)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(166, 56%, 57%, 1)'/><path d='M10-10L20 0v10L10 0zM20 0L10-10V0l10 10zm0 10L10 0v10l10 10zm0 10L10 10v10l10 10zM0 20l10-10v10L0 30zm0-10L10 0v10L0 20zM0 0l10-10V0L0 10z'  stroke-width='5' stroke='hsla(347, 78%, 71%, 1)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+  background-image: url('https://images.unsplash.com/photo-1626080308347-a806a7c0570b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3334&q=80');
+  background-size: 50%;
   /* animation: gradient 60s ease infinite; */
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+    filter: blur(20px);
+    margin: -20px;
+  }
 
   /* @keyframes gradient {
     0% {
@@ -44,7 +54,7 @@ const ContentStyles = styled.div`
   border-radius: 2rem;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(-45deg, #23a6d5f0, #23d5abf0);
+  background: #ffffff37;
   animation: gradient 10s ease infinite;
 
   &:before {
