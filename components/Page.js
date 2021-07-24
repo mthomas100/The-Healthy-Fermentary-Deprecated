@@ -42,7 +42,7 @@ const OuterWrapperStyles = styled.div`
 `;
 
 const ContentStyles = styled.div`
-  width: 100rem;
+  max-width: 100rem;
   margin: 0 auto;
   height: 100%;
   padding: 0rem 0rem 0rem 0rem;

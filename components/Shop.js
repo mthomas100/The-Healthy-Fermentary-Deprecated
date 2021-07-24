@@ -27,6 +27,7 @@ const ShopContainerStyles = styled.div`
   /* height: 100%; */
   padding: 4rem;
   margin: 0 auto;
+  align-items: center;
 `;
 
 function Shop() {
