@@ -72,40 +72,43 @@ export default function AddToCart({ product }) {
   }
 
   return (
-    <div className="quantity">
-      <FormControl
-        className={`${classes.formControl}`}
-        variant="outlined"
-        size="small"
+    <FormControl
+      className={`${classes.formControl}`}
+      variant="outlined"
+      size="small"
+      style={{
+        padding: '2rem',
+        borderRadius: '1rem',
+        boxShadow: 'inset 4px 4px 8px 0 rgba(0, 0, 0, 0.1)',
+      }}
+    >
+      <Select
+        labelId="demo-simple-select-placeholder-label-label"
+        id="demo-simple-select-placeholder-label"
+        defaultValue="something"
+        value={selectValue}
+        onChange={(e) => setSelectValue(e.target.value)}
+        className={classes.selectEmpty}
+        displayEmpty
       >
-        <Select
-          labelId="demo-simple-select-placeholder-label-label"
-          id="demo-simple-select-placeholder-label"
-          defaultValue="something"
-          value={selectValue}
-          onChange={(e) => setSelectValue(e.target.value)}
-          className={classes.selectEmpty}
-          displayEmpty
-        >
-          {quantityArrMap.map(
-            (_, i) =>
-              i > 0 && (
-                <MenuItem value={i} key={uuid()}>
-                  {i}
-                </MenuItem>
-              )
-          )}
-        </Select>
-        <Button
-          onClick={handleAddToCart}
-          variant="contained"
-          color="primary"
-          classes={classes.btn}
-          size="large"
-        >
-          Add to Cart
-        </Button>
-      </FormControl>
-    </div>
+        {quantityArrMap.map(
+          (_, i) =>
+            i > 0 && (
+              <MenuItem value={i} key={uuid()}>
+                {i}
+              </MenuItem>
+            )
+        )}
+      </Select>
+      <Button
+        onClick={handleAddToCart}
+        variant="contained"
+        color="primary"
+        classes={classes.btn}
+        size="large"
+      >
+        Add to Cart
+      </Button>
+    </FormControl>
   );
 }
