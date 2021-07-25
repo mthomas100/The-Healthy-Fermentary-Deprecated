@@ -3,11 +3,11 @@ import styled from 'styled-components';
 const CartBarItemStyles = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: ${(props) =>
-    props.cartHover ? 'auto 1fr' : 'auto 0fr'};
+
+  /* grid-template-columns: ${(props) =>
+    props.cartHover ? 'auto 1fr' : 'auto 0fr'}; */
+
   grid-template-rows: auto;
-  /* background-color: ${(props) =>
-    props.index % 2 === 0 ? `#ffffff` : `#f4f3f3`}; */
   padding: 2rem 2rem;
   transition: 0.4s all;
 

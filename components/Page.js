@@ -53,7 +53,7 @@ const ContentStyles = styled.div`
   box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2rem;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   background: #ffffff37;
   animation: gradient 10s ease infinite;
 
@@ -68,11 +68,7 @@ const ContentStyles = styled.div`
     bottom: 0;
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
     filter: blur(10px);
-    margin: -20px;
-  }
-
-  .inner {
-    position: relative;
+    /* margin: -20px; */
   }
 `;
 
@@ -84,14 +80,11 @@ function Page({ children }) {
       <Typography />
       <ThemeProvider theme={theme}>
         {/* <TopImage /> */}
-
         <OuterWrapperStyles>
           <ContentStyles>
             <Header />
-            <div className="inner">
-              {children}
-              <CartBar />
-            </div>
+            {children}
+            <CartBar />
           </ContentStyles>
         </OuterWrapperStyles>
       </ThemeProvider>

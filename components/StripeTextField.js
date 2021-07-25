@@ -3,7 +3,7 @@
 import React, { useImperativeHandle } from "react";
 import PropTypes from "prop-types";
 import {TextField as TextFieldMUI }from "@material-ui/core";
-import { fade, useTheme } from "@material-ui/core/styles";
+import { alpha, useTheme } from "@material-ui/core/styles";
 import styled from "styled-components";
 
 function StripeInput(props) {
@@ -49,7 +49,7 @@ function StripeInput(props) {
             fontSize: `${theme.typography.fontSize}px`,
             fontFamily: theme.typography.fontFamily,
             "::placeholder": {
-              color: fade(theme.palette.text.primary, 0.42)
+              color: alpha(theme.palette.text.primary, 0.42)
             },
           },
           invalid: {

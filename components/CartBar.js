@@ -3,34 +3,38 @@ import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
 import CartIcon from './CartIcon';
 import { useCart } from '../lib/cartState';
 import CartBarItem from './CartBarItem';
 import calcTotalPrice from '../lib/calcTotalPrice';
 
-const CartBarStyles = styled.div`
+const CartBarStyles = styled(motion.div)`
   position: absolute;
   /* display: flex; */
-  top: 0;
+  top: 12rem;
   right: 4px;
   height: auto;
   min-height: 100%;
 
   .cartBarWrapper {
-    align-self: flex-start;
-    top: 0;
-    position: sticky;
-    background-color: #ffffff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    position: sticky;
+    top: 0;
     border-top-left-radius: 2rem;
     border-top-right-radius: 0.5rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 0.5rem;
-    /* height: auto;
-    min-height: 60rem; //this may need to be on _app.js */
-    transition: 0.4s all;
+  }
+
+  .cartBar {
+    align-self: flex-start;
+    background-color: #ffffff;
+
+    /* transition: 0.4s all;
     transform: ${(props) =>
-      props.cartOpen ? `translateX(0%)` : `translateX(100%)`};
+      props.cartOpen ? `translateX(0%)` : `translateX(100%)`}; */
+
     background-color: rgba(255, 255, 255, 0.02);
     min-height: 40rem;
   }
@@ -79,59 +83,108 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CartBar() {
-  const { cartContents, openCart, cartItemTotal, cartOpen } = useCart();
+  const {
+    cartContents,
+    cartItemTotal,
+    openCart,
+    cartOpen,
+    cartHover,
+    setCartHover,
+  } = useCart();
   const classes = useStyles();
   // const CartBarRef = useRef(null);
-  const [cartHover, setCartHover] = useState(false);
+
+  const variantsFade = {
+    open: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+      },
+    },
+    closed: {
+      opacity: 0,
+    },
+  };
+
+  const variantsShrink = {
+    open: {
+      width: 'auto',
+      transition: {
+        damping: 100,
+      },
+    },
+    closed: {
+      width: 0,
+      transition: {
+        delay: 0.3,
+      },
+    },
+  };
 
   return (
-    <CartBarStyles
-      cartItemTotal={cartItemTotal}
-      cartOpen={cartOpen}
-      cartHover={cartHover}
-      onMouseOver={() => setCartHover(true)}
-      onMouseEnter={() => setCartHover(true)}
-      onMouseLeave={() => setCartHover(false)}
-      onMouseOut={() => setCartHover(false)}
-    >
-      <div className="cartBarWrapper">
-        <div className="cartIconWrapper">
-          <CartIcon onClick={openCart} />
-        </div>
-        {cartItemTotal > 0 && (
-          <>
-            <div className="cartDetails">
-              <div className="itemCount">{cartItemTotal} items</div>
-              {cartItemTotal !== 0 && (
-                <div className="totalValue">
-                  <b>₹</b> {calcTotalPrice(cartContents)}
-                </div>
+    <AnimatePresence>
+      {cartOpen && (
+        <CartBarStyles
+          variants={variantsShrink}
+          initial="closed"
+          animate="open"
+          exit="closed"
+          cartItemTotal={cartItemTotal}
+          cartOpen={cartOpen}
+          cartHover={cartHover}
+          onMouseOver={() => setCartHover(true)}
+          onMouseEnter={() => setCartHover(true)}
+          onMouseLeave={() => setCartHover(false)}
+          onMouseOut={() => setCartHover(false)}
+        >
+          <div className="cartBarWrapper">
+            <motion.div
+              className="cartBar"
+              variants={variantsFade}
+              initial="closed"
+              animate="open"
+              exit="closed"
+            >
+              <div className="cartIconWrapper">
+                <CartIcon onClick={openCart} />
+              </div>
+              {cartItemTotal > 0 && (
+                <>
+                  <div className="cartDetails">
+                    <div className="itemCount">{cartItemTotal} items</div>
+                    {cartItemTotal !== 0 && (
+                      <div className="totalValue">
+                        <b>₹</b> {calcTotalPrice(cartContents)}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="buttonWrapper">
+                    <Link href="/checkout" passHref>
+                      <Button
+                        variant="outlined"
+                        size="large"
+                        className={classes.checkoutButton}
+                      >
+                        Checkout
+                      </Button>
+                    </Link>
+                  </div>
+                </>
               )}
-            </div>
 
-            <div className="buttonWrapper">
-              <Link href="/checkout" passHref>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  className={classes.checkoutButton}
-                >
-                  Checkout
-                </Button>
-              </Link>
-            </div>
-          </>
-        )}
-
-        {cartContents.map((product, index) => (
-          <CartBarItem
-            key={product.id}
-            product={product}
-            index={index}
-            cartHover={cartHover}
-          />
-        ))}
-      </div>
-    </CartBarStyles>
+              {cartContents.map((product, index) => (
+                <CartBarItem
+                  key={product.id}
+                  product={product}
+                  index={index}
+                  cartHover={cartHover}
+                />
+              ))}
+            </motion.div>
+          </div>
+        </CartBarStyles>
+      )}
+    </AnimatePresence>
   );
 }

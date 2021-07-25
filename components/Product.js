@@ -46,11 +46,10 @@ const ProductStyles = styled.div`
 
 export default function Product({ product }) {
   const classes = useStyles();
-  const { addToCart, openCart } = useCart();
 
   return (
     <ProductStyles>
-      <CardActionArea disableRipple>
+      <CardActionArea disableRipple component="div">
         <Image
           src={product.image.url}
           color="green"

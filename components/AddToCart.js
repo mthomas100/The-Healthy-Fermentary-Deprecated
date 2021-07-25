@@ -79,7 +79,7 @@ export default function AddToCart({ product }) {
       style={{
         padding: '2rem',
         borderRadius: '1rem',
-        boxShadow: 'inset 4px 4px 8px 0 rgba(0, 0, 0, 0.1)',
+        boxShadow: 'inset 4px 0px 8px 0 rgba(0, 0, 0, 0.1)',
       }}
     >
       <Select
