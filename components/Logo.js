@@ -9,7 +9,7 @@ const LogoStyles = styled.div`
   font-family: 'Reenie Beanie';
   /* font-size: 26px;
   line-height: 26px; */
-  font-size: 36px;
+  font-size: 45px;
 `;
 
 export default function Logo({ company }) {

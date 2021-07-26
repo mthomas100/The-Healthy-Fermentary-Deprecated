@@ -4,8 +4,8 @@ const CartBarItemStyles = styled.div`
   width: 100%;
   display: grid;
 
-  /* grid-template-columns: ${(props) =>
-    props.cartHover ? 'auto 1fr' : 'auto 0fr'}; */
+  grid-template-columns: ${(props) =>
+    props.cartHovering ? 'auto 1fr' : 'auto 0fr'};
 
   grid-template-rows: auto;
   padding: 2rem 2rem;

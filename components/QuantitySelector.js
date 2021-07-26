@@ -59,36 +59,36 @@ export default function QuantitySelector({ product, componentOrigin }) {
 
   return (
     <QuantitySelectorStyles>
-      <div className="quantity">
-        <FormControl
-          className={`${classes.formControl}`}
-          variant="outlined"
-          size="small"
+      {/* <div className="quantity"> */}
+      <FormControl
+        className={`${classes.formControl}`}
+        variant="outlined"
+        size="small"
+      >
+        <Select
+          labelId="demo-simple-select-placeholder-label-label"
+          id="demo-simple-select-placeholder-label"
+          value={product.quantity}
+          onChange={modifyQuantityHandler}
+          className={classes.selectEmpty}
+          displayEmpty
         >
-          <Select
-            labelId="demo-simple-select-placeholder-label-label"
-            id="demo-simple-select-placeholder-label"
-            value={product.quantity}
-            onChange={modifyQuantityHandler}
-            className={classes.selectEmpty}
-            displayEmpty
-          >
-            {quantityArrMap.map((_, i) => {
-              if (i === 0)
-                return (
-                  <MenuItem key={uuid()} value={i}>
-                    {i} (remove){' '}
-                  </MenuItem>
-                );
+          {quantityArrMap.map((_, i) => {
+            if (i === 0)
               return (
                 <MenuItem key={uuid()} value={i}>
-                  {i}
+                  {i} (remove){' '}
                 </MenuItem>
               );
-            })}
-          </Select>
-        </FormControl>
-      </div>
+            return (
+              <MenuItem key={uuid()} value={i}>
+                {i}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
+      {/* </div> */}
     </QuantitySelectorStyles>
   );
 }

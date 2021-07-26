@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
+import { Button as ButtonMUI } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
@@ -25,16 +25,30 @@ const CartBarStyles = styled(motion.div)`
     border-top-right-radius: 0.5rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 0.5rem;
+    padding: 0 1rem;
+    // TODO: props based paddding with adjustment (if not done in FM) */
+
+    &:before {
+      content: '';
+      position: absolute;
+      background: inherit;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+      filter: blur(5px);
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 0.5rem;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 0.5rem;
+    }
   }
 
   .cartBar {
     align-self: flex-start;
     background-color: #ffffff;
-
-    /* transition: 0.4s all;
-    transform: ${(props) =>
-      props.cartOpen ? `translateX(0%)` : `translateX(100%)`}; */
-
     background-color: rgba(255, 255, 255, 0.02);
     min-height: 40rem;
   }
@@ -67,20 +81,41 @@ const CartBarStyles = styled(motion.div)`
       color: #af1313;
     }
   }
+`;
 
-  .buttonWrapper {
+const Button = styled(ButtonMUI)`
+  && {
+    margin: 1rem 0rem;
     width: 100%;
-    padding: 1rem 2rem 0 2rem;
   }
 `;
 
-const useStyles = makeStyles((theme) => ({
-  checkoutButton: {
-    margin: '0 0 2rem 0',
-    width: '100%',
-    border: '1px solid #0000006a',
+const variantsFade = {
+  open: {
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+    },
   },
-}));
+  closed: {
+    opacity: 0,
+  },
+};
+
+const variantsShrink = {
+  open: {
+    width: 'auto',
+    transition: {
+      damping: 100,
+    },
+  },
+  closed: {
+    width: 0,
+    transition: {
+      delay: 0.4,
+    },
+  },
+};
 
 export default function CartBar() {
   const {
@@ -88,42 +123,16 @@ export default function CartBar() {
     cartItemTotal,
     openCart,
     cartOpen,
-    cartHover,
-    setCartHover,
+    cartIsHovering,
+    setCartIsHovering,
   } = useCart();
-  const classes = useStyles();
+
   // const CartBarRef = useRef(null);
 
-  const variantsFade = {
-    open: {
-      opacity: 1,
-      transition: {
-        delay: 0.3,
-      },
-    },
-    closed: {
-      opacity: 0,
-    },
-  };
-
-  const variantsShrink = {
-    open: {
-      width: 'auto',
-      transition: {
-        damping: 100,
-      },
-    },
-    closed: {
-      width: 0,
-      transition: {
-        delay: 0.3,
-      },
-    },
-  };
-
   return (
-    <AnimatePresence>
-      {cartOpen && (
+    <AnimatePresence before>
+      {cartOpen && cartContents.length > 0 && (
+        // this
         <CartBarStyles
           variants={variantsShrink}
           initial="closed"
@@ -131,11 +140,7 @@ export default function CartBar() {
           exit="closed"
           cartItemTotal={cartItemTotal}
           cartOpen={cartOpen}
-          cartHover={cartHover}
-          onMouseOver={() => setCartHover(true)}
-          onMouseEnter={() => setCartHover(true)}
-          onMouseLeave={() => setCartHover(false)}
-          onMouseOut={() => setCartHover(false)}
+          cartIsHovering={cartIsHovering}
         >
           <div className="cartBarWrapper">
             <motion.div
@@ -144,6 +149,9 @@ export default function CartBar() {
               initial="closed"
               animate="open"
               exit="closed"
+              onMouseLeave={() => setCartIsHovering(false)}
+              onMouseEnter={() => setCartIsHovering(true)}
+              onMouseOver={() => setCartIsHovering(true)}
             >
               <div className="cartIconWrapper">
                 <CartIcon onClick={openCart} />
@@ -159,17 +167,11 @@ export default function CartBar() {
                     )}
                   </div>
 
-                  <div className="buttonWrapper">
-                    <Link href="/checkout" passHref>
-                      <Button
-                        variant="outlined"
-                        size="large"
-                        className={classes.checkoutButton}
-                      >
-                        Checkout
-                      </Button>
-                    </Link>
-                  </div>
+                  <Link href="/checkout" passHref>
+                    <Button variant="outlined" size="large">
+                      Checkout
+                    </Button>
+                  </Link>
                 </>
               )}
 
@@ -178,7 +180,7 @@ export default function CartBar() {
                   key={product.id}
                   product={product}
                   index={index}
-                  cartHover={cartHover}
+                  cartIsHovering={cartIsHovering}
                 />
               ))}
             </motion.div>

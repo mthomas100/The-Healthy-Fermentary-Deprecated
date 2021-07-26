@@ -49,31 +49,31 @@ export default function Product({ product }) {
 
   return (
     <ProductStyles>
-      <CardActionArea disableRipple component="div">
-        <Image
-          src={product.image.url}
-          color="green"
-          height="100%"
-          width="100%"
-          layout="responsive"
-          className={classes.image}
-        />
+      {/* <CardActionArea disableRipple component="div"> */}
+      <Image
+        src={product.image.url}
+        color="green"
+        height="100%"
+        width="100%"
+        layout="responsive"
+        className={classes.image}
+      />
 
-        <CardContent className={classes.cartContent}>
-          <TypographyPrimary gutterBottom variant="h4" component="h4">
-            {product.title}
-          </TypographyPrimary>
-          <TypographySecondary
-            variant="subtitle1"
-            color="textSecondary"
-            component="p"
-          >
-            {product.description}
-          </TypographySecondary>
+      <CardContent className={classes.cartContent}>
+        <TypographyPrimary gutterBottom variant="h4" component="h4">
+          {product.title}
+        </TypographyPrimary>
+        <TypographySecondary
+          variant="subtitle1"
+          color="textSecondary"
+          component="p"
+        >
+          {product.description}
+        </TypographySecondary>
 
-          <AddToCart product={product} />
-        </CardContent>
-      </CardActionArea>
+        <AddToCart product={product} />
+      </CardContent>
+      {/* </CardActionArea> */}
     </ProductStyles>
   );
 }
