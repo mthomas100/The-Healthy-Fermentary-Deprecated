@@ -8,7 +8,6 @@ import CartBarHeader from './CartBarHeader';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
-  /* display: flex; */
   top: 12rem;
   right: 4px;
   height: auto;
@@ -54,33 +53,14 @@ const CartBarStyles = styled(motion.div)`
   }
 `;
 
-const variantsFade = {
+const variants = {
   open: {
     opacity: 1,
-    transition: {
-      delay: 0.2,
-    },
   },
   closed: {
     opacity: 0,
   },
 };
-
-const variantsShrink = {
-  open: {
-    transform: 'translateZ(0deg)',
-    width: 'auto',
-    opacity: 1,
-  },
-  closed: {
-    transform: 'translateZ(360deg)',
-    width: 'auto',
-    opacity: 0,
-  },
-};
-
-// animate={{ opacity: [0, 1, 0, 1] }}
-// transition={{ duration: 5, times: [0, 0.2, 0.3, 1] }}
 
 export default function CartBar() {
   const {
@@ -96,7 +76,7 @@ export default function CartBar() {
       {cartOpen && cartContents.length > 0 && (
         <CartBarStyles
           className="carBarStyledComponent"
-          variants={variantsShrink}
+          variants={variants}
           initial="closed"
           animate="open"
           exit="closed"
