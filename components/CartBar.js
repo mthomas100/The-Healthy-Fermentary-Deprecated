@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { Button as ButtonMUI } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import { useEffect, useState, useRef } from 'react';
+import { Button as ButtonMUI, Divider } from '@material-ui/core';
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValue } from 'framer-motion';
+import { useLayoutEffect } from 'react';
 import CartIcon from './CartIcon';
 import { useCart } from '../lib/cartState';
 import CartBarItem from './CartBarItem';
@@ -26,6 +25,7 @@ const CartBarStyles = styled(motion.div)`
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 0.5rem;
     padding: 0 1rem;
+
     // TODO: props based paddding with adjustment (if not done in FM) */
 
     &:before {
@@ -50,7 +50,6 @@ const CartBarStyles = styled(motion.div)`
     align-self: flex-start;
     background-color: #ffffff;
     background-color: rgba(255, 255, 255, 0.02);
-    min-height: 40rem;
   }
 
   .cartIconWrapper {
@@ -129,11 +128,13 @@ export default function CartBar() {
 
   // const CartBarRef = useRef(null);
 
+  // const x = useMotionValue(0);
+
   return (
     <AnimatePresence before>
       {cartOpen && cartContents.length > 0 && (
-        // this
         <CartBarStyles
+          className="carBarStyledComponent"
           variants={variantsShrink}
           initial="closed"
           animate="open"
@@ -141,17 +142,25 @@ export default function CartBar() {
           cartItemTotal={cartItemTotal}
           cartOpen={cartOpen}
           cartIsHovering={cartIsHovering}
+          onAnimationComplete={() => console.log('animation complete')} // TODO: set some state/css that allows INNER contents to be visible when complete
         >
-          <div className="cartBarWrapper">
+          <div
+            className="cartBarWrapper"
+            onMouseLeave={(e) => {
+              e.stopPropagation();
+              setCartIsHovering(false);
+            }}
+            onMouseEnter={(e) => {
+              e.stopPropagation();
+              setCartIsHovering(true);
+            }}
+          >
             <motion.div
               className="cartBar"
               variants={variantsFade}
               initial="closed"
               animate="open"
               exit="closed"
-              onMouseLeave={() => setCartIsHovering(false)}
-              onMouseEnter={() => setCartIsHovering(true)}
-              onMouseOver={() => setCartIsHovering(true)}
             >
               <div className="cartIconWrapper">
                 <CartIcon onClick={openCart} />
@@ -176,12 +185,15 @@ export default function CartBar() {
               )}
 
               {cartContents.map((product, index) => (
-                <CartBarItem
-                  key={product.id}
-                  product={product}
-                  index={index}
-                  cartIsHovering={cartIsHovering}
-                />
+                <>
+                  <CartBarItem
+                    key={product.id}
+                    product={product}
+                    index={index}
+                    cartIsHovering={cartIsHovering}
+                  />
+                  <Divider style={{ margin: '0 1rem' }} light />
+                </>
               ))}
             </motion.div>
           </div>

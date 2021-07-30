@@ -7,10 +7,10 @@ const ProductsStyles = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-columns: 300px 300px;
   /* grid-auto-rows: 450px;
   grid */
-  grid-column-gap: 2rem;
+  grid-column-gap: 4rem;
   padding: 2rem 6rem 2rem 6rem;
   grid-row-gap: 5rem;
   justify-content: space-evenly;

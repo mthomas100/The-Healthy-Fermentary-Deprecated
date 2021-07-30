@@ -61,7 +61,7 @@ export default function CartIcon() {
         </div>
       )}
 
-      <FiShoppingCart onClick={cartHandler} />
+      <FiShoppingCart /* onClick={cartHandler} */ />
     </CartIconStyles>
   );
 }

@@ -46,7 +46,7 @@ const OuterWrapperStyles = styled.div`
 `;
 
 const ContentStyles = styled.div`
-  max-width: 100rem;
+  max-width: 120rem;
   margin: 0 auto;
   height: auto;
   padding: 0rem 0rem 0rem 0rem;
@@ -73,7 +73,6 @@ const ContentStyles = styled.div`
 `;
 
 function Page({ children }) {
-  console.log(ContentStyles);
   return (
     <>
       <GlobalStyles />
