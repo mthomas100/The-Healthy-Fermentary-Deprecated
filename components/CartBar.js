@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import { Button as ButtonMUI, Divider } from '@material-ui/core';
-import Link from 'next/link';
 import { AnimatePresence, motion, useMotionValue } from 'framer-motion';
-import { useLayoutEffect } from 'react';
-import CartIcon from './CartIcon';
+import { Divider } from '@material-ui/core';
 import { useCart } from '../lib/cartState';
 import CartBarItem from './CartBarItem';
-import calcTotalPrice from '../lib/calcTotalPrice';
+import CheckoutButton from './CheckoutButton';
+import CartBarHeader from './CartBarHeader';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
@@ -15,16 +13,19 @@ const CartBarStyles = styled(motion.div)`
   right: 4px;
   height: auto;
   min-height: 100%;
+  width: auto;
 
   .cartBarWrapper {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     position: sticky;
     top: 0;
+    right: 0;
     border-top-left-radius: 2rem;
     border-top-right-radius: 0.5rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 0.5rem;
     padding: 0 1rem;
+    overflow: 'hidden';
 
     // TODO: props based paddding with adjustment (if not done in FM) */
 
@@ -51,42 +52,6 @@ const CartBarStyles = styled(motion.div)`
     background-color: #ffffff;
     background-color: rgba(255, 255, 255, 0.02);
   }
-
-  .cartIconWrapper {
-    padding-top: 4rem;
-    margin-bottom: 2rem;
-    font-family: 'Nunito';
-  }
-
-  .cartDetails {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .itemCount {
-      font-size: 1.4rem;
-      letter-spacing: 0.1rem;
-      font-family: 'Nunito';
-      margin: 0 auto;
-    }
-
-    .totalValue {
-      font-weight: 800;
-      white-space: nowrap;
-      margin: 0.5rem auto 2rem auto;
-      font-size: 1.4rem;
-      font-family: 'Nunito';
-      color: #af1313;
-    }
-  }
-`;
-
-const Button = styled(ButtonMUI)`
-  && {
-    margin: 1rem 0rem;
-    width: 100%;
-  }
 `;
 
 const variantsFade = {
@@ -103,32 +68,28 @@ const variantsFade = {
 
 const variantsShrink = {
   open: {
+    transform: 'translateZ(0deg)',
     width: 'auto',
-    transition: {
-      damping: 100,
-    },
+    opacity: 1,
   },
   closed: {
-    width: 0,
-    transition: {
-      delay: 0.4,
-    },
+    transform: 'translateZ(360deg)',
+    width: 'auto',
+    opacity: 0,
   },
 };
+
+// animate={{ opacity: [0, 1, 0, 1] }}
+// transition={{ duration: 5, times: [0, 0.2, 0.3, 1] }}
 
 export default function CartBar() {
   const {
     cartContents,
     cartItemTotal,
-    openCart,
     cartOpen,
     cartIsHovering,
     setCartIsHovering,
   } = useCart();
-
-  // const CartBarRef = useRef(null);
-
-  // const x = useMotionValue(0);
 
   return (
     <AnimatePresence before>
@@ -155,34 +116,10 @@ export default function CartBar() {
               setCartIsHovering(true);
             }}
           >
-            <motion.div
-              className="cartBar"
-              variants={variantsFade}
-              initial="closed"
-              animate="open"
-              exit="closed"
-            >
-              <div className="cartIconWrapper">
-                <CartIcon onClick={openCart} />
-              </div>
-              {cartItemTotal > 0 && (
-                <>
-                  <div className="cartDetails">
-                    <div className="itemCount">{cartItemTotal} items</div>
-                    {cartItemTotal !== 0 && (
-                      <div className="totalValue">
-                        <b>₹</b> {calcTotalPrice(cartContents)}
-                      </div>
-                    )}
-                  </div>
+            <motion.div className="cartBar">
+              <CartBarHeader />
 
-                  <Link href="/checkout" passHref>
-                    <Button variant="outlined" size="large">
-                      Checkout
-                    </Button>
-                  </Link>
-                </>
-              )}
+              <CheckoutButton />
 
               {cartContents.map((product, index) => (
                 <>
