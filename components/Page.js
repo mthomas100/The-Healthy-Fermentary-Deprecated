@@ -14,9 +14,10 @@ const OuterWrapperStyles = styled.div`
   z-index: 0;
   padding-top: 8rem;
   width: 100%;
-  background-image: url('https://images.unsplash.com/photo-1626080308347-a806a7c0570b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3334&q=80');
-  background-size: 50%;
-  /* animation: gradient 60s ease infinite; */
+  /* background-image: url('https://images.unsplash.com/photo-1626080308347-a806a7c0570b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3334&q=80'); */
+  background-image: url('https://images.unsplash.com/photo-1624514134741-a3035dfcabb3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80');
+  background-size: 400%;
+  padding: 10rem 0;
 
   &:before {
     content: '';
@@ -28,8 +29,7 @@ const OuterWrapperStyles = styled.div`
     right: 0;
     bottom: 0;
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
-    filter: blur(20px);
-    margin: -20px;
+    filter: blur(0px);
   }
 
   /* @keyframes gradient {
@@ -54,8 +54,7 @@ const ContentStyles = styled.div`
   border-radius: 2rem;
   position: relative;
   /* overflow: hidden; */
-  background: #ffffff37;
-  animation: gradient 10s ease infinite;
+  background: rgba(255, 255, 255, 0.5);
 
   &:before {
     content: '';
@@ -66,7 +65,7 @@ const ContentStyles = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, 1);
     filter: blur(10px);
     /* margin: -20px; */
   }

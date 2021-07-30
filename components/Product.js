@@ -15,17 +15,11 @@ const useStyles = makeStyles({
     backgroundColor: 'var(--productThemeColor)',
   },
   image: {
-    // backgroundColor: 'var(--productThemeColor)',
-    // filter: 'brightness(90%)',
     height: '100%',
     width: 'auto',
     display: 'block',
   },
   cartContent: {},
-  // typography: {
-  //   lineHeight: '2',
-  //   fontSize: '1.3rem',
-  // },
 });
 
 const TypographySecondary = styled(TypographyMUI)`
@@ -38,6 +32,8 @@ const TypographySecondary = styled(TypographyMUI)`
 const TypographyPrimary = styled(TypographyMUI)``;
 
 const ProductStyles = styled.div`
+  min-width: 300px;
+  width: 300px;
   .addToCart {
     display: flex;
     flex-direction: row;

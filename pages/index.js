@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
-import Shop from '../components/Shop';
-import { useCart } from '../lib/cartState';
+import React from 'react';
+import Products from '../components/Products';
 
 export default function Home() {
   return (
     <>
-      <Shop />
+      <Products />
     </>
   );
 }

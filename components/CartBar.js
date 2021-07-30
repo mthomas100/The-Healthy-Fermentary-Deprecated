@@ -8,7 +8,7 @@ import CartBarHeader from './CartBarHeader';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
-  top: 12rem;
+  top: 30rem;
   right: 4px;
   height: auto;
   min-height: 100%;
@@ -45,17 +45,14 @@ const CartBarStyles = styled(motion.div)`
       border-bottom-right-radius: 0.5rem;
     }
   }
-
-  .cartBar {
-    align-self: flex-start;
-    background-color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.02);
-  }
 `;
 
 const variants = {
   open: {
     opacity: 1,
+    transition: {
+      duration: 0.2,
+    },
   },
   closed: {
     opacity: 0,
@@ -85,7 +82,7 @@ export default function CartBar() {
           cartIsHovering={cartIsHovering}
           onAnimationComplete={() => console.log('animation complete')} // TODO: set some state/css that allows INNER contents to be visible when complete
         >
-          <div
+          <motion.div
             className="cartBarWrapper"
             onMouseLeave={(e) => {
               e.stopPropagation();
@@ -95,25 +92,31 @@ export default function CartBar() {
               e.stopPropagation();
               setCartIsHovering(true);
             }}
+            animate={{
+              backgroundColor: `${
+                cartIsHovering
+                  ? 'rgba(255, 255, 255, 0.5)'
+                  : 'rgba(255, 255, 255, 0.2)'
+              }`,
+            }}
+            transition={{ duration: 2 }}
           >
-            <motion.div className="cartBar">
-              <CartBarHeader />
+            <CartBarHeader />
 
-              <CheckoutButton />
+            <CheckoutButton />
 
-              {cartContents.map((product, index) => (
-                <>
-                  <CartBarItem
-                    key={product.id}
-                    product={product}
-                    index={index}
-                    cartIsHovering={cartIsHovering}
-                  />
-                  <Divider style={{ margin: '0 1rem' }} light />
-                </>
-              ))}
-            </motion.div>
-          </div>
+            {cartContents.map((product, index) => (
+              <div key={product.id}>
+                <CartBarItem
+                  key={product.id}
+                  product={product}
+                  index={index}
+                  cartIsHovering={cartIsHovering}
+                />
+                <Divider style={{ margin: '0 1rem' }} light />
+              </div>
+            ))}
+          </motion.div>
         </CartBarStyles>
       )}
     </AnimatePresence>
