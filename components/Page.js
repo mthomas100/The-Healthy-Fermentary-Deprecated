@@ -16,8 +16,12 @@ const OuterWrapperStyles = styled.div`
   width: 100%;
   /* background-image: url('https://images.unsplash.com/photo-1626080308347-a806a7c0570b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3334&q=80'); */
   /* background-image: url('https://images.unsplash.com/photo-1624514134741-a3035dfcabb3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80'); */
+<<<<<<< HEAD
   background-image: url('https://images.unsplash.com/photo-1536998003793-b13c28fae74b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3358&q=80');
   background-size: 100%;
+=======
+  background-size: 400%;
+>>>>>>> saniya
   padding: 10rem 0;
 
   &:before {
@@ -55,7 +59,12 @@ const ContentStyles = styled.div`
   border-radius: 2rem;
   position: relative;
   /* overflow: hidden; */
+<<<<<<< HEAD
   background: rgba(139, 139, 139, 0.5);
+=======
+  /* background: rgba(255, 255, 255, 0.5); */
+  background-color: #efeee9cf;
+>>>>>>> saniya
 
   &:before {
     content: '';
