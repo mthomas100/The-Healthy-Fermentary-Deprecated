@@ -7,8 +7,6 @@ const LogoStyles = styled.div`
   flex-direction: row;
   align-items: center;
   font-family: 'Reenie Beanie';
-  /* font-size: 26px;
-  line-height: 26px; */
   font-size: 45px;
 `;
 

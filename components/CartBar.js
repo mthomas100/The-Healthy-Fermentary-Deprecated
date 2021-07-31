@@ -8,7 +8,7 @@ import CartBarHeader from './CartBarHeader';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
-  top: 30rem;
+  top: 20rem;
   right: 4px;
   height: auto;
   min-height: 100%;
@@ -25,6 +25,7 @@ const CartBarStyles = styled(motion.div)`
     border-bottom-right-radius: 0.5rem;
     padding: 0 1rem;
     overflow: 'hidden';
+    background-color: rgba(255, 255, 255, 1);
 
     // TODO: props based paddding with adjustment (if not done in FM) */
 
@@ -92,13 +93,13 @@ export default function CartBar() {
               e.stopPropagation();
               setCartIsHovering(true);
             }}
-            animate={{
+            /* animate={{
               backgroundColor: `${
                 cartIsHovering
                   ? 'rgba(255, 255, 255, 0.5)'
                   : 'rgba(255, 255, 255, 0.2)'
               }`,
-            }}
+            }} */
             transition={{ duration: 2 }}
           >
             <CartBarHeader />

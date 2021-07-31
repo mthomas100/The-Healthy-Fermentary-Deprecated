@@ -32,8 +32,8 @@ const TypographySecondary = styled(TypographyMUI)`
 const TypographyPrimary = styled(TypographyMUI)``;
 
 const ProductStyles = styled.div`
-  min-width: 300px;
-  width: 300px;
+  min-width: 30rem;
+  width: 30rem;
   .addToCart {
     display: flex;
     flex-direction: row;

@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/styles';
 // import theme from '../src/theme';
-import { theme, useStyle } from '../components/styles/materialStyles';
+import { theme } from '../components/styles/materialStyles';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {

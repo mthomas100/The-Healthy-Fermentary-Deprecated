@@ -24,7 +24,7 @@ const ALL_PRODUCTS_QUERY = gql`
 const ProductsStyles = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 6rem;
+  padding: 6rem 0;
   margin: 0 auto;
   align-items: center;
 
@@ -35,7 +35,7 @@ const ProductsStyles = styled.div`
     flex-wrap: wrap;
     flex-basis: auto;
     column-gap: 4rem;
-    padding: 2rem 6rem 2rem 6rem;
+    padding: 2rem 0rem;
     grid-row-gap: 5rem;
     justify-content: space-evenly;
     margin: 0 auto;
