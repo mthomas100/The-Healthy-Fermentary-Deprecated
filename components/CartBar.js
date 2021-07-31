@@ -10,8 +10,8 @@ const CartBarStyles = styled(motion.div)`
   position: absolute;
   top: 20rem;
   right: 4px;
-  height: auto;
-  min-height: 100vh;
+  min-height: 100%;
+  min-height: 100%;
   width: auto;
 
   .cartBarWrapper {

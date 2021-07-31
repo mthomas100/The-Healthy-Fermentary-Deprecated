@@ -30,18 +30,6 @@ const OuterWrapperStyles = styled.div`
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
     filter: blur(0px);
   }
-
-  /* @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  } */
 `;
 
 const ContentStyles = styled.div`
