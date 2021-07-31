@@ -33,38 +33,10 @@ const Button = styled(ButtonMUI)`
 
 const quantityArrMap = Array.from(Array(10).keys());
 
-const QuantitySelectorStyles = styled.div`
-  font-family: 'Roboto';
-  font-size: 1rem;
-  font-weight: 400;
-
-  .inputLabelWrapper {
-    position: relative;
-  }
-
-  .inputLabel {
-    position: relative;
-    bottom: 4px;
-    margin: 0 auto;
-
-    font-family: 'Nunito';
-  }
-
-  .inputLabelProduct {
-    position: relative;
-    bottom: 5px;
-    left: 1px;
-  }
-`;
-
 export default function AddToCart({ product }) {
   const classes = useStyles();
   const { modifyCartQuantity, openCart } = useCart();
   const [selectValue, setSelectValue] = useState(1);
-
-  function handleQuantityChange(e) {
-    setSelectValue(e.target.value);
-  }
 
   function handleAddToCart() {
     modifyCartQuantity(product, selectValue); // TODO: Needs to add X to whats already there

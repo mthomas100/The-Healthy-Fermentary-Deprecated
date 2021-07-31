@@ -46,7 +46,7 @@ export default function CartBarHeader() {
         <div className="itemCount">{cartItemTotal} items</div>
         {cartItemTotal !== 0 && (
           <div className="totalValue">
-            <b>₹</b> {calcTotalPrice(cartContents)}
+            <b>$</b> {calcTotalPrice(cartContents)}
           </div>
         )}
       </div>
