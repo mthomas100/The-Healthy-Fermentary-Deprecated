@@ -1,8 +1,8 @@
-import PulseLoader from 'react-spinners/PulseLoader';
 import styled from 'styled-components';
+import PulseLoaderEl from './PulseLoaderEl';
 
 const LoadingContainerStyles = styled.div`
-  display: fixed;
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
@@ -10,22 +10,14 @@ const LoadingContainerStyles = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-`;
-
-const PulseStyles = styled.div`
-  span {
-    margin: 10px;
-  }
 `;
 
 export default function Loading() {
   return (
     <LoadingContainerStyles>
-      <PulseStyles>
-        <PulseLoader color="#000000d8" speedMultiplier="0.5" size="20px" />
-      </PulseStyles>
+      <PulseLoaderEl />
     </LoadingContainerStyles>
   );
 }

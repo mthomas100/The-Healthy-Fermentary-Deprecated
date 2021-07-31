@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Flex } from 'rebass/styled-components';
-import Image from 'next/image';
 import { useCart } from '../lib/cartState';
 import CartSummaryFooter from './CartSummaryFooter';
 import CheckoutHeader from './CheckoutHeader';
@@ -30,10 +29,9 @@ const ItemContainerStyles = styled(Flex)`
 `;
 
 function CartSummary() {
-  const { cartItemTotal, cartContents, modifyCart, removeFromCart } = useCart();
+  const { cartItemTotal, cartContents } = useCart();
   return (
     <CartSummaryStyles>
-      {/* <h1 className="left">Cart Summary ({cartItemTotal} items)</h1> */}
       <CheckoutHeader>Cart Summary ({cartItemTotal} items)</CheckoutHeader>
       <ItemContainerStyles>
         {cartContents.map((product) => (

@@ -8,7 +8,7 @@ import CartBarHeader from './CartBarHeader';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
-  top: 20rem;
+  top: 24rem;
   right: 4px;
   min-height: 100%;
   min-height: 100%;

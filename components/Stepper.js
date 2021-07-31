@@ -21,6 +21,7 @@ import PaymentDetails from './PaymentDetails';
 import CartSummary from './CartSummary';
 import { useCheckout } from '../lib/checkoutState';
 import { useCart } from '../lib/cartState';
+import CheckoutHeader from './CheckoutHeader';
 
 const useQontoStepIconStyles = makeStyles({
   root: {
@@ -196,7 +197,7 @@ function getStepContent(step) {
     case 1:
       return (
         <FormSection>
-          <h1 className="fullWidth">Shipping Details</h1>
+          <CheckoutHeader>Shipping Details</CheckoutHeader>
           <Address variant="outlined" />
         </FormSection>
       );

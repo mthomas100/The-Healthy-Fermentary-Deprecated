@@ -1,3 +1,3 @@
 export default function CheckoutHeader({ children }) {
-  return <h1>{children}</h1>;
+  return <h1 className="fullWidth">{children}</h1>;
 }
