@@ -17,8 +17,7 @@ const HeaderStyles = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: left;
-  /* width: 100%; */
-  /* border: 1px solid red; */
+  width: 300px; //TODO: calculate appropriate using useLayout hook
 `;
 
 // TODO: get this on initial site query
