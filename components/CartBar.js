@@ -26,7 +26,6 @@ const CartBarStyles = styled(motion.div)`
     padding: 0 1rem;
     overflow: 'hidden';
     background-color: rgba(255, 255, 255, 1);
-
     // TODO: props based paddding with adjustment (if not done in FM) */
 
     &:before {

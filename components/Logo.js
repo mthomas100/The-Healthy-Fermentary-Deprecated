@@ -4,10 +4,13 @@ import styled from 'styled-components';
 
 const LogoStyles = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: row;
+  justify-content: left;
   align-items: center;
   font-family: 'Reenie Beanie';
   font-size: 45px;
+  /* border: 1px solid blue; */
 `;
 
 export default function Logo({ company }) {
@@ -17,7 +20,7 @@ export default function Logo({ company }) {
         style={{
           height: '100%',
           width: 'auto',
-          paddingRight: '0.5em',
+          marginRight: '0.5em',
         }}
       />
       <Link href="/">

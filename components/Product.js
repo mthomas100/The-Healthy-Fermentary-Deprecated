@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import { Typography as TypographyMUI } from '@material-ui/core';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { useCart } from '../lib/cartState';
 import AddToCart from './AddToCart';
 
 const useStyles = makeStyles({
@@ -40,11 +38,16 @@ const ProductStyles = styled.div`
   }
 `;
 
-export default function Product({ product }) {
+export default function Product({ product, productsArr }) {
+  const productRef = useRef();
   const classes = useStyles();
 
+  useEffect(() => {
+    productsArr.push(productRef);
+  }, [productsArr]);
+
   return (
-    <ProductStyles>
+    <ProductStyles ref={productRef}>
       {/* <CardActionArea disableRipple component="div"> */}
       <Image
         src={product.image.url}

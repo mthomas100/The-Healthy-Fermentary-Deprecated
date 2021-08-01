@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import '@fontsource/montserrat';
-import '@fontsource/reenie-beanie';
+// import '@fontsource/reenie-beanie';
 
 const Typography = createGlobalStyle`
 
@@ -51,19 +51,7 @@ const Typography = createGlobalStyle`
         url('/fonts/nunito-v16-latin-800.svg#Nunito') format('svg'); /* Legacy iOS */
   }
 
-    /* reenie-beanie-regular - latin */
-  @font-face {
-    font-family: 'Reenie Beanie';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/fonts/reenie-beanie-v11-latin-regular.eot'); /* IE9 Compat Modes */
-    src: local(''),
-        url('../fonts/reenie-beanie-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('../fonts/reenie-beanie-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-        url('../fonts/reenie-beanie-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
-        url('../fonts/reenie-beanie-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('../fonts/reenie-beanie-v11-latin-regular.svg#ReenieBeanie') format('svg'); /* Legacy iOS */
-  }
+    /* reenie-beanie-regular - latin */ /*SEE GIT HISTORY TO GET THIS BACK */
 
       /* pathway-gothic-one-regular - latin */
     @font-face {

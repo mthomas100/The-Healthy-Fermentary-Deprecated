@@ -4,12 +4,20 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import Logo from './Logo';
 import Loading from './Loading';
+import { useLayout } from '../lib/layoutState';
 
 const HeaderStyles = styled.div`
   /* display: flex;
   flex-direction: column; */
   /* margin: 4rem 0 4rem 4rem; */
-  padding: 4rem 0 4rem 14rem;
+  padding: 4rem 0;
+  /* border: 1px solid red; */
+  position: absolute;
+  left: ${(props) => props.productsLeftOffset}px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  /* width: 100%; */
   /* border: 1px solid red; */
 `;
 
@@ -26,12 +34,13 @@ const HEADER_QUERY = gql`
 `;
 
 export default function Header() {
+  const { productsLeftOffset } = useLayout();
   const { data, error, loading } = useQuery(HEADER_QUERY);
   if (loading) return <Loading />;
   if (error) return <p>Error: {error.message}</p>;
-  const { company, image } = data.header;
+  const { company } = data.header;
   return (
-    <HeaderStyles>
+    <HeaderStyles productsLeftOffset={productsLeftOffset}>
       <Logo company={company} />
     </HeaderStyles>
   );
