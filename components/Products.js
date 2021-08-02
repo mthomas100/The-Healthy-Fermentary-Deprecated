@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Product from './Product';
 import Loading from './Loading';
 import { useCart } from '../lib/cartState';
@@ -46,22 +46,24 @@ const ProductsStyles = styled.div`
 
 function Products() {
   const productsArr = [];
+  const productsRef = useRef();
   const { setCartIsHovering } = useCart();
-  const { setProductsLeftOffset } = useLayout();
+  const { setHeaderParentOffsetLeft } = useLayout();
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
   const windowSize = useWindowSize();
 
   useEffect(() => {
-    const firstProduct = productsArr[0];
-    setProductsLeftOffset(firstProduct.current.offsetLeft);
-  }, [productsArr, windowSize, setProductsLeftOffset]);
+    const productsLeftOffset = productsArr[0].current.offsetLeft;
+    const productLeftOffset = productsRef.current.offsetLeft;
+    setHeaderParentOffsetLeft(productsLeftOffset - productLeftOffset);
+  }, [productsArr, windowSize, setHeaderParentOffsetLeft]);
 
   if (loading) return <Loading />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <ProductsStyles onMouseOver={() => setCartIsHovering(false)}>
-      <div className="products">
+      <div className="products" ref={productsRef}>
         {data.products.map((product) => (
           <Product
             product={product}
