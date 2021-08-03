@@ -7,13 +7,13 @@ import Loading from './Loading';
 import { useLayout } from '../lib/layoutState';
 
 const HeaderStyles = styled.div`
-  padding: 4rem 0;
-  position: relative;
-  left: 0px;
+  padding: 10rem 0;
+  position: absolute;
+  left: ${(props) => props.productsLeftOffset}px;
   display: flex;
   flex-direction: row;
   justify-content: left;
-  width: 100%; //TODO: calculate appropriate using useLayout hook
+  width: 300px; //TODO: calculate appropriate using useLayout hook
 `;
 
 // TODO: get this on initial site query
@@ -29,13 +29,13 @@ const HEADER_QUERY = gql`
 `;
 
 export default function Header() {
-  const { headerParentOffsetLeft } = useLayout();
+  const { productsLeftOffset } = useLayout();
   const { data, error, loading } = useQuery(HEADER_QUERY);
   if (loading) return <Loading />;
   if (error) return <p>Error: {error.message}</p>;
   const { company } = data.header;
   return (
-    <HeaderStyles headerParentOffsetLeft={headerParentOffsetLeft}>
+    <HeaderStyles productsLeftOffset={productsLeftOffset}>
       <Logo company={company} />
     </HeaderStyles>
   );

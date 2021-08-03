@@ -5,6 +5,9 @@ import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import CartBar from './CartBar';
 
+import { useWindowSize } from '../lib/useWindowSize';
+import CartBarMobile from './CartBarMobile';
+
 // TODO: assign a global programmable value to color pattern background
 // TODO: create optional background insertable objects via backend
 
@@ -60,6 +63,7 @@ const ContentStyles = styled.div`
 `;
 
 function Page({ children }) {
+  const windowSize = useWindowSize();
   return (
     <>
       <GlobalStyles />
@@ -70,7 +74,7 @@ function Page({ children }) {
           <ContentStyles>
             <Header />
             {children}
-            <CartBar />
+            {windowSize.width >= 700 ? <CartBar /> : <CartBarMobile />}
           </ContentStyles>
         </OuterWrapperStyles>
       </ThemeProvider>

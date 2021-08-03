@@ -41,6 +41,7 @@ const ProductStyles = styled.div`
 export default function Product({ product, productsArr }) {
   const productRef = useRef();
   const classes = useStyles();
+
   useEffect(() => {
     productsArr.push(productRef);
   }, [productsArr]);

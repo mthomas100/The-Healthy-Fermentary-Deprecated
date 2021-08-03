@@ -49,14 +49,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap"
             rel="stylesheet"
           />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap"
-            rel="stylesheet"
-          />
         </Head>
         <body>
           <Main />
