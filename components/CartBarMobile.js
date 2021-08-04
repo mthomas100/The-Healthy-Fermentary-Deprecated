@@ -8,6 +8,7 @@ import CheckoutButton from './CheckoutButton';
 import CartBarHeader from './CartBarHeader';
 import CartBarContents from './CartBarContents';
 import CartIcon from './CartIcon';
+import CartIconClosed from './CartIconClosed';
 
 const CartBarMobileStyles = styled(motion.div)`
   position: absolute;
@@ -27,6 +28,7 @@ const CartBarMobileStyles = styled(motion.div)`
     border-radius: 50%;
     height: 5rem;
     width: 5rem;
+    transform: rotate
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,13 +50,18 @@ const CartBarMobileStyles = styled(motion.div)`
       border-bottom-left-radius: 2rem;
       border-bottom-right-radius: 0.5rem;
     }
-
-    .cartIconWrapper {
-      position: absolute;
-      top: 12px;
-      left: 9px;
-      transform: scale(0.9);
-    }
+  }
+  .cartIconWrapper {
+    position: absolute;
+    top: 12px;
+    left: 9px;
+    transform: scale(0.9);
+  }
+  .cartIconClosedWrapper {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform: scale(0.9);
   }
 `;
 
@@ -70,15 +77,24 @@ const variants = {
   },
 };
 
-const variantsButton = {
-  open: {
-    opacity: 1,
+const CartMobileComponentSM = styled(motion.div)``;
+
+const variantsSM = {
+  initial: {
+    transform: 'translateY(0deg)',
     transition: {
-      duration: 0.2,
+      type: 'spring',
+      stiffness: 500,
+      damping: 10,
     },
   },
-  closed: {
-    opacity: 0,
+  pressed: {
+    transform: 'translateY(2rem)',
+    transition: {
+      type: 'spring',
+      stiffness: 500,
+      damping: 10,
+    },
   },
 };
 
@@ -86,52 +102,52 @@ export default function CartBarMobile() {
   const { cartItemTotal, cartOpen, cartIsHovering, setCartIsHovering } =
     useCart();
   const [isPressed, setIsPressed] = useState(false);
-  const active = true;
-
-  // 1) circle around cart IN flow (just this if not active, always)
-  // 2) remove circle, animate in the other components needed (within same div)
-  // OR 2b) full screen view of cart
-  // 2) ++ make overflow hidden and original cart
 
   return (
-    <AnimatePresence before>
-      {/* {cartOpen && cartContents.length > 0 && ( */}
-      {active && (
-        <CartBarMobileStyles
-          className="carBarStyledComponent"
-          cartItemTotal={cartItemTotal}
-          cartOpen={cartOpen}
-          onAnimationComplete={() => console.log('animation complete')} // TODO: set some state/css that allows INNER contents to be visible when complete
-        >
-          <motion.div
-            className="cartBarWrapper"
-            onMouseLeave={(e) => {
-              e.stopPropagation();
-              setCartIsHovering(false);
-            }}
-            onMouseEnter={(e) => {
-              e.stopPropagation();
-              setCartIsHovering(true);
-            }}
-            /* animate={{
+    <>
+      <CartBarMobileStyles
+        className="carBarStyledComponent"
+        cartItemTotal={cartItemTotal}
+        cartOpen={cartOpen}
+        cartIsHovering={cartIsHovering}
+        onAnimationComplete={() => console.log('animation complete')} // TODO: set some state/css that allows INNER contents to be visible when complete
+      >
+        <motion.div
+          className="cartBarWrapper"
+          variants={variantsSM}
+          animate={isPressed ? 'pressed' : 'initial'}
+          transition={{ duration: 0.1 }}
+          onClick={() => setIsPressed((prev) => !prev)}
+          onMouseLeave={(e) => {
+            e.stopPropagation();
+            setCartIsHovering(false);
+          }}
+          onMouseEnter={(e) => {
+            e.stopPropagation();
+            setCartIsHovering(true);
+          }}
+          /* animate={{
               backgroundColor: `${
                 cartIsHovering
                   ? 'rgba(255, 255, 255, 0.5)'
                   : 'rgba(255, 255, 255, 0.2)'
               }`,
             }} */
-            transition={{ duration: 2 }}
-          >
-            <motion.div
-              className="cartIconWrapper"
-              variants={variantsButton}
-              animate={isPressed ? 'pressed' : 'initial'}
-            >
-              <CartIcon />
-            </motion.div>
-          </motion.div>
-        </CartBarMobileStyles>
-      )}
-    </AnimatePresence>
+          transition={{ duration: 2 }}
+        >
+          <AnimatePresence>
+            {isPressed ? (
+              <div className="cartIconWrapper">
+                <CartIcon />
+              </div>
+            ) : (
+              <div className="cartIconClosedWrapper">
+                <CartIconClosed />
+              </div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </CartBarMobileStyles>
+    </>
   );
 }
