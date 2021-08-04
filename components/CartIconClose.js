@@ -39,7 +39,7 @@ const CartIconCloseStyles = styled(Box)`
   }
 `;
 
-export default function CartIconClosed() {
+export default function CartIconClose() {
   const { cartItemTotal } = useCart();
 
   return (
@@ -48,14 +48,6 @@ export default function CartIconClosed() {
       fontSize="30px"
       lineHeight="30px"
     >
-      {cartItemTotal >= 1 && (
-        <div className="itemCount">
-          <div className="bubble">
-            <div className="number">{cartItemTotal}</div>
-          </div>
-        </div>
-      )}
-
       <GrClose />
     </CartIconCloseStyles>
   );

@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import CartBarButton from './CartBarButton';
-import CartBarButtonClose from './CartBarButtonClose';
 import CartBarMobileStyles from './styles/CartBarMobileStyles';
 
 export default function CartBarMobile() {
@@ -24,14 +23,14 @@ export default function CartBarMobile() {
           style={{ position: 'fixed', bottom: '4rem' }}
           variants={variants}
           animate={isPressed ? 'cartOpen' : 'cartClosed'}
+          transform={{ duration: 3 }}
         >
-          {isPressed ? (
-            <CartBarButton isPressed={isPressed} />
-          ) : (
-            <CartBarButtonClose isPressed={isPressed} />
-          )}
+          <CartBarButton isPressed={isPressed} />
         </motion.div>
       </AnimatePresence>
     </CartBarMobileStyles>
   );
 }
+
+// cart open is a thing in mobile, but not in desktop
+// desktop is automatic and

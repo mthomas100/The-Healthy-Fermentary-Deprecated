@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 import CartIcon from './CartIcon';
+import CartIconClose from './CartIconClose';
 
 const CartBarButtonStyles = styled.div`
   .cartBarWrapper {
@@ -35,22 +36,64 @@ const CartBarButtonStyles = styled.div`
       border-bottom-right-radius: 0.5rem;
     }
   }
-  .cartIconWrapper {
-    position: absolute;
-    top: 12px;
-    left: 9px;
-    transform: scale(0.9);
-  }
 `;
 
-export default function CartBarButton() {
+const variantsClose = {
+  initial: {
+    opacity: 0,
+    transform: 'rotate(0deg)',
+  },
+  animate: {
+    opacity: 1,
+    transform: 'rotate(180deg)',
+  },
+};
+const variants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
+};
+
+export default function CartBarButton({ isPressed }) {
   return (
-    <CartBarButtonStyles>
+    <>
       <div className="cartBarWrapper">
-        <motion.div className="cartIconWrapper">
-          <CartIcon />
-        </motion.div>
+        {isPressed ? (
+          <AnimatePresence>
+            <motion.div
+              variants={variantsClose}
+              initial="initial"
+              animate="animate"
+              exit="initial"
+              transition={{ duration: 0.3 }}
+              className="iconWrapper"
+              style={{
+                position: 'relative',
+              }}
+            >
+              <CartIconClose />
+            </motion.div>
+          </AnimatePresence>
+        ) : (
+          <motion.div
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit="initial"
+            transition={{ duration: 0.3 }}
+            style={{
+              position: 'relative',
+              top: '3px',
+              transform: 'scale(0.9)',
+            }}
+          >
+            <CartIcon />
+          </motion.div>
+        )}
       </div>
-    </CartBarButtonStyles>
+    </>
   );
 }
