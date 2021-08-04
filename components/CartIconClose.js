@@ -3,7 +3,7 @@ import { Box } from 'rebass/styled-components';
 import { GrClose } from 'react-icons/gr';
 import { useCart } from '../lib/cartState';
 
-const CartIconClosedStyles = styled(Box)`
+const CartIconCloseStyles = styled(Box)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@ export default function CartIconClosed() {
   const { cartItemTotal } = useCart();
 
   return (
-    <CartIconClosedStyles
+    <CartIconCloseStyles
       cartItemTotal={cartItemTotal}
       fontSize="30px"
       lineHeight="30px"
@@ -57,6 +57,6 @@ export default function CartIconClosed() {
       )}
 
       <GrClose />
-    </CartIconClosedStyles>
+    </CartIconCloseStyles>
   );
 }
