@@ -16,6 +16,7 @@ const CartControllerStyles = styled.div`
   .cartIconWrapper {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     position: absolute;
+    z-index: 3;
     right: 2rem;
     bottom: 8rem;
     background-color: rgba(255, 255, 255, 1);
@@ -25,6 +26,7 @@ const CartControllerStyles = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* overflow: hidden; */
     // TODO: props based paddding with adjustment (if not done in FM) */
 
     &:before {
@@ -56,7 +58,7 @@ export default function CartController() {
           onClick={() => toggleCartMobile()}
           variants={variants}
           animate={cartMobileOpen ? 'cartOpen' : 'cartClosed'}
-          transition={{ type: 'spring', bounce: 0.35 }}
+          transition={{ type: 'spring', bounce: 0.25 }}
         >
           <CartButton />
         </motion.div>
