@@ -19,7 +19,9 @@ const CartMobileStyles = styled(motion.div)`
   .mobileCart {
     position: absolute;
     z-index: 2;
-    border: 5px solid blue;
+    border: 5px solid #808080a2;
+    border-radius: 2rem;
+    margin: 1rem;
     background-color: #80808036;
     top: 0;
     bottom: 0;
@@ -44,6 +46,19 @@ export default function CartMobile() {
       `,
       /* eslint-enable */
     },
+    transitionIn: {
+      type: 'spring',
+      duration: 1.15,
+    },
+    transitionOut: {
+      ease: 'easeIn',
+      duration: 0.5,
+    },
+    // transitionIn: { type: 'spring' },
+    // transitionOut: {
+    //   ease: `${cartMobileOpen ? 'easeOut' : 'easeIn'}`,
+    //   duration: 0.5,
+    // },
   };
 
   return (
@@ -55,15 +70,10 @@ export default function CartMobile() {
         variants={variants}
         animate="animate"
         className="mobileCart"
-        transition={{ type: 'spring' }}
-        /* transition={{
-          ease: `${cartMobileOpen ? 'easeOut' : 'easeIn'}`,
-          duration: 0.5,
-        }}
-        */
-      >
-        mobile cart
-      </motion.h1>
+        transition={
+          cartMobileOpen ? variants.transitionIn : variants.transitionOut
+        }
+      />
     </CartMobileStyles>
   );
 }
