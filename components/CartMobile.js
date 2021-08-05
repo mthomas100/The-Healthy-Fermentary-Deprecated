@@ -1,33 +1,33 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 import { useCart } from '../lib/cartState';
-import CartButton from './CartButton';
-import CartMobileStyles from './styles/CartMobileStyles';
+// import CartMobileStyles from './styles/CartMobileStyles';
+import CartController from './CartController';
+
+const CartMobileStyles = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
 
 export default function CartMobile() {
   const { toggleCartMobile, cartMobileOpen } = useCart();
 
-  const variants = {
-    cartClosed: {
-      transform: 'translateY(-4rem)',
-    },
-    cartOpen: {
-      transform: 'translateY(4rem)',
-    },
-  };
+  const mobileCartOpen = true;
 
   return (
     <CartMobileStyles>
-      <AnimatePresence>
-        <motion.div
-          onClick={() => toggleCartMobile()}
-          style={{ position: 'fixed', bottom: '4rem' }}
-          variants={variants}
-          animate={cartMobileOpen ? 'cartOpen' : 'cartClosed'}
-          transform={{ duration: 3 }}
+      <CartController />
+      {/* {mobileCartOpen && (
+        <div
+          className="mobileCart"
+          style={{ position: 'absolute', bottom: 0, right: 1 }}
         >
-          <CartButton />
-        </motion.div>
-      </AnimatePresence>
+          mobile cart
+        </div>
+      )} */}
     </CartMobileStyles>
   );
 }

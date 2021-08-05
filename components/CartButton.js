@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect } from 'react';
 import { useCart } from '../lib/cartState';
 import CartIcon from './CartIcon';
 import CartIconClose from './CartIconClose';
@@ -28,40 +27,38 @@ export default function CartButton({ isPressed }) {
 
   return (
     <>
-      <div className="cartBarWrapper">
-        {cartMobileOpen ? (
-          <AnimatePresence>
-            <motion.div
-              variants={variantsClose}
-              initial="initial"
-              animate="animate"
-              exit="initial"
-              transition={{ duration: 0.3 }}
-              className="iconWrapper"
-              style={{
-                position: 'relative',
-              }}
-            >
-              <CartIconClose />
-            </motion.div>
-          </AnimatePresence>
-        ) : (
+      {cartMobileOpen ? (
+        <AnimatePresence>
           <motion.div
-            variants={variants}
+            variants={variantsClose}
             initial="initial"
             animate="animate"
             exit="initial"
             transition={{ duration: 0.3 }}
+            className="iconWrapper"
             style={{
               position: 'relative',
-              top: '3px',
-              transform: 'scale(0.9)',
             }}
           >
-            <CartIcon />
+            <CartIconClose />
           </motion.div>
-        )}
-      </div>
+        </AnimatePresence>
+      ) : (
+        <motion.div
+          variants={variants}
+          initial="initial"
+          animate="animate"
+          exit="initial"
+          transition={{ duration: 0.3 }}
+          style={{
+            position: 'relative',
+            top: '3px',
+            transform: 'scale(0.9)',
+          }}
+        >
+          <CartIcon />
+        </motion.div>
+      )}
     </>
   );
 }
