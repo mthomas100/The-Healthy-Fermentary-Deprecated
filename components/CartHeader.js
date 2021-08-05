@@ -3,7 +3,7 @@ import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
 import CartIcon from './CartIcon';
 
-const CartBarHeaderStyles = styled.div`
+const CartHeaderStyles = styled.div`
   .cartIconWrapper {
     padding-top: 4rem;
     margin-bottom: 2rem;
@@ -34,10 +34,10 @@ const CartBarHeaderStyles = styled.div`
   }
 `;
 
-export default function CartBarHeader() {
+export default function CartHeader() {
   const { openCart, cartItemTotal, cartContents } = useCart();
   return (
-    <CartBarHeaderStyles>
+    <CartHeaderStyles>
       <div className="cartIconWrapper">
         <CartIcon onClick={openCart} />
       </div>
@@ -50,6 +50,6 @@ export default function CartBarHeader() {
           </div>
         )}
       </div>
-    </CartBarHeaderStyles>
+    </CartHeaderStyles>
   );
 }

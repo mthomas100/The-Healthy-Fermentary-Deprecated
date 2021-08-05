@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
-import CartBarButton from './CartBarButton';
-import CartBarMobileStyles from './styles/CartBarMobileStyles';
+import { useCart } from '../lib/cartState';
+import CartButton from './CartButton';
+import CartMobileStyles from './styles/CartMobileStyles';
 
-export default function CartBarMobile() {
-  const [isPressed, setIsPressed] = useState(false);
+export default function CartMobile() {
+  const { toggleCartMobile, cartMobileOpen } = useCart();
 
   const variants = {
     cartClosed: {
@@ -16,21 +16,22 @@ export default function CartBarMobile() {
   };
 
   return (
-    <CartBarMobileStyles>
+    <CartMobileStyles>
       <AnimatePresence>
         <motion.div
-          onClick={() => setIsPressed((prev) => !prev)}
+          onClick={() => toggleCartMobile()}
           style={{ position: 'fixed', bottom: '4rem' }}
           variants={variants}
-          animate={isPressed ? 'cartOpen' : 'cartClosed'}
+          animate={cartMobileOpen ? 'cartOpen' : 'cartClosed'}
           transform={{ duration: 3 }}
         >
-          <CartBarButton isPressed={isPressed} />
+          <CartButton />
         </motion.div>
       </AnimatePresence>
-    </CartBarMobileStyles>
+    </CartMobileStyles>
   );
 }
 
 // cart open is a thing in mobile, but not in desktop
 // desktop is automatic and
+// idea to make cart bubble draggable

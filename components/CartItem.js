@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import QuantityIncrementor from './QuantityIncrementor';
 import QuantitySelector from './QuantitySelector';
 
-const CartBarItemStyles = styled(motion.div)``;
+const CartItemStyles = styled(motion.div)``;
 
-const CartBarItemStylesSM = styled(motion.div)`
+const CartItemStylesSM = styled(motion.div)`
   width: 100%;
   display: grid;
   grid-template-columns: 'auto';
@@ -29,7 +29,7 @@ const CartBarItemStylesSM = styled(motion.div)`
   }
 `;
 
-const CartBarItemStylesLG = styled(motion.div)`
+const CartItemStylesLG = styled(motion.div)`
   width: 100%;
   display: grid;
   grid-template-columns: 'auto auto';
@@ -103,16 +103,16 @@ const variantsWidth = {
 // animate={{ width: `${cartIsHovering ? '184px' : '102px'}` }}
 // transition={{ duration: 5 }}
 
-export default function CartBarItem({ product, index, cartIsHovering }) {
+export default function CartItem({ product, index, cartIsHovering }) {
   return (
-    <CartBarItemStyles
+    <CartItemStyles
       animate={{ width: `${cartIsHovering ? '18.4rem' : '10.2rem'}` }}
       style={{ overflow: 'hidden' }}
     >
       <AnimatePresence>
         {cartIsHovering ? (
           <motion.div>
-            <CartBarItemStylesLG
+            <CartItemStylesLG
               index={index}
               cartIsHovering={cartIsHovering}
               variants={variantsOpacity}
@@ -142,11 +142,11 @@ export default function CartBarItem({ product, index, cartIsHovering }) {
                   <b>₹</b> {product.price}
                 </div>
               </div>
-            </CartBarItemStylesLG>
+            </CartItemStylesLG>
           </motion.div>
         ) : (
           <motion.div>
-            <CartBarItemStylesSM
+            <CartItemStylesSM
               index={index}
               cartIsHovering={cartIsHovering}
               variants={variantsOpacity}
@@ -168,10 +168,10 @@ export default function CartBarItem({ product, index, cartIsHovering }) {
               <div className="quantity">
                 <QuantityIncrementor product={product} />
               </div>
-            </CartBarItemStylesSM>
+            </CartItemStylesSM>
           </motion.div>
         )}
       </AnimatePresence>
-    </CartBarItemStyles>
+    </CartItemStyles>
   );
 }

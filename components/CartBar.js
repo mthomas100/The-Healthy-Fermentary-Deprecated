@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import { AnimatePresence, motion, useMotionValue } from 'framer-motion';
-import { Divider } from '@material-ui/core';
 import { useCart } from '../lib/cartState';
-import CartBarItem from './CartBarItem';
 import CheckoutButton from './CheckoutButton';
-import CartBarHeader from './CartBarHeader';
-import CartBarContents from './CartBarContents';
+import CartHeader from './CartHeader';
+import CartContents from './CartContents';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
@@ -103,11 +101,11 @@ export default function CartBar() {
             }} */
             transition={{ duration: 2 }}
           >
-            <CartBarHeader />
+            <CartHeader />
 
             <CheckoutButton />
 
-            <CartBarContents />
+            <CartContents />
           </motion.div>
         </CartBarStyles>
       )}

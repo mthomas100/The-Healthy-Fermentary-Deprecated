@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const CartBarMobileStyles = styled(motion.div)`
+const CartMobileStyles = styled(motion.div)`
   position: absolute;
   top: 28rem;
   right: 4px;
@@ -42,4 +42,4 @@ const CartBarMobileStyles = styled(motion.div)`
   }
 `;
 
-export default CartBarMobileStyles;
+export default CartMobileStyles;

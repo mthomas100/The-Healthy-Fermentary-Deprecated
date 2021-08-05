@@ -1,8 +1,8 @@
 import { Divider } from '@material-ui/core';
 import { useCart } from '../lib/cartState';
-import CartBarItem from './CartBarItem';
+import CartItem from './CartItem';
 
-export default function CartBarContents() {
+export default function CartContents() {
   const { cartContents, cartIsHovering } = useCart();
 
   if (cartContents.length > 0) {
@@ -10,7 +10,7 @@ export default function CartBarContents() {
       <>
         {cartContents.map((product, index) => (
           <div key={product.id}>
-            <CartBarItem
+            <CartItem
               key={product.id}
               product={product}
               index={index}
@@ -22,6 +22,5 @@ export default function CartBarContents() {
       </>
     );
   }
-  // return <h1>add to cart plz</h1>;
   return null;
 }
