@@ -4,7 +4,10 @@ import styled from 'styled-components';
 import QuantityIncrementor from './QuantityIncrementor';
 import QuantitySelector from './QuantitySelector';
 
-const CartItemStyles = styled(motion.div)``;
+const CartItemStyles = styled(motion.div)`
+  margin: 0 auto;
+  overflow: 'hidden';
+`;
 
 const CartItemStylesSM = styled(motion.div)`
   width: 100%;
@@ -54,8 +57,11 @@ const CartItemStylesLG = styled(motion.div)`
   .title {
     grid-area: title;
     align-self: center;
+    justify-self: center;
     font-family: 'Nunito';
     font-size: 1.4rem;
+    font-style: italic;
+    font-weight: 400;
     letter-spacing: 0.1rem;
   }
 
@@ -100,14 +106,10 @@ const variantsWidth = {
   },
 };
 
-// animate={{ width: `${cartIsHovering ? '184px' : '102px'}` }}
-// transition={{ duration: 5 }}
-
 export default function CartItem({ product, index, cartIsHovering }) {
   return (
     <CartItemStyles
       animate={{ width: `${cartIsHovering ? '18.4rem' : '10.2rem'}` }}
-      style={{ overflow: 'hidden' }}
     >
       <AnimatePresence>
         {cartIsHovering ? (

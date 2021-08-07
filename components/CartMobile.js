@@ -1,8 +1,10 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { Button as ButtonMUI, Typography } from '@material-ui/core';
 import { useCart } from '../lib/cartState';
-// import CartMobileStyles from './styles/CartMobileStyles';
+import CartContents from './CartContents';
 import CartController from './CartController';
+import CartHeader from './CartHeader';
 
 const CartMobileStyles = styled(motion.div)`
   position: fixed;
@@ -15,22 +17,79 @@ const CartMobileStyles = styled(motion.div)`
   & * {
     pointer-events: all;
   }
+`;
 
-  .mobileCart {
+const CartPane = styled(motion.h1)`
+  position: absolute;
+  z-index: 2;
+  /* border: 3px solid #808080a2; */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 2rem;
+  margin: 2rem;
+  background-color: #80808036;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .cartWrapper {
     position: absolute;
-    z-index: 2;
-    border: 5px solid #808080a2;
-    border-radius: 2rem;
-    margin: 1rem;
-    background-color: #80808036;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    border-radius: 2rem;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 4rem;
+    background-color: #efeee9cf;
+
+    &:before {
+      content: '';
+      position: absolute;
+      background: inherit;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+      filter: blur(5px);
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 0.5rem;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+
+    .header {
+      position: relative;
+      top: 0;
+      height: 20rem;
+      width: 100%;
+      grid-area: header;
+    }
+    .body {
+      height: 100%;
+      width: 100%;
+      max-width: 30rem;
+      grid-area: body;
+      overflow: scroll;
+      box-shadow: inset 0px 0px 16px 4px rgba(0, 0, 0, 0.04);
+      border-radius: 2rem;
+      margin: 0 auto;
+    }
+    .footer {
+      bottom: 0;
+      height: 20rem;
+      width: 100%;
+      max-width: 50rem;
+      grid-area: footer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
   }
 `;
 
@@ -54,26 +113,54 @@ export default function CartMobile() {
       ease: 'easeIn',
       duration: 0.5,
     },
-    // transitionIn: { type: 'spring' },
-    // transitionOut: {
-    //   ease: `${cartMobileOpen ? 'easeOut' : 'easeIn'}`,
-    //   duration: 0.5,
-    // },
   };
+
+  const Button = styled(ButtonMUI)`
+    && {
+      background-color: #000000c5;
+      margin-top: 1rem;
+      width: 100%;
+      height: 5rem;
+      font-size: 2rem;
+      border-radius: 2rem;
+
+      &:hover {
+        background-color: #01050373;
+      }
+    }
+  `;
 
   return (
     <CartMobileStyles>
       <CartController />
-      {/* TODO: animate presence to the left ease in on cart is open(?) */}
 
-      <motion.h1
+      <CartPane
         variants={variants}
         animate="animate"
         className="mobileCart"
         transition={
           cartMobileOpen ? variants.transitionIn : variants.transitionOut
         }
-      />
+      >
+        <div className="cartWrapper">
+          <div className="header">
+            <CartHeader />
+          </div>
+          <div className="body">
+            <CartContents view="mobile" />
+          </div>
+          <div className="footer">
+            <Button
+              onClick={() => console.log('clicked')}
+              variant="contained"
+              color="primary"
+              size="large"
+            >
+              <Typography variant="subtitle1">Checkout</Typography>
+            </Button>
+          </div>
+        </div>
+      </CartPane>
     </CartMobileStyles>
   );
 }

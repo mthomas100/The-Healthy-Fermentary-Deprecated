@@ -22,7 +22,7 @@ const variants = {
   },
 };
 
-export default function CartButton({ isPressed }) {
+export default function CartButton() {
   const { cartMobileOpen } = useCart();
 
   return (

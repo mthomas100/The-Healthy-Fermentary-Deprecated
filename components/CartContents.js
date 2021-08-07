@@ -2,7 +2,7 @@ import { Divider } from '@material-ui/core';
 import { useCart } from '../lib/cartState';
 import CartItem from './CartItem';
 
-export default function CartContents() {
+export default function CartContents({ view }) {
   const { cartContents, cartIsHovering } = useCart();
 
   if (cartContents.length > 0) {
@@ -14,7 +14,7 @@ export default function CartContents() {
               key={product.id}
               product={product}
               index={index}
-              cartIsHovering={cartIsHovering}
+              cartIsHovering={view === 'mobile' || cartIsHovering}
             />
             <Divider style={{ margin: '0 1rem' }} light />
           </div>
