@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { AnimatePresence, motion, useMotionValue } from 'framer-motion';
+import { useEffect } from 'react';
 import { useCart } from '../lib/cartState';
 import CheckoutButton from './CheckoutButton';
 import CartHeader from './CartHeader';
 import CartContents from './CartContents';
+import { useWindowSize } from '../lib/useWindowSize';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
@@ -14,22 +16,27 @@ const CartBarStyles = styled(motion.div)`
   width: auto;
 
   .cartBarWrapper {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     position: sticky;
-    top: 0;
-    right: 0;
+    top: 10rem; //double this for carBar maxHeight
+    /* bottom: 10px; */
+  }
+
+  .cartBar {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     border-top-left-radius: 2rem;
     border-top-right-radius: 0.5rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 0.5rem;
+    max-height: calc(${(props) => props.windowHeight}px - 20rem);
     padding: 0 1rem;
-    overflow: 'hidden';
+    overflow-y: scroll;
+    overflow-x: hidden;
     background-color: rgba(255, 255, 255, 1);
     // TODO: props based paddding with adjustment (if not done in FM) */
 
     &:before {
       content: '';
-      position: absolute;
+      position: relative;
       background: inherit;
       z-index: -1;
       top: 0;
@@ -67,11 +74,14 @@ export default function CartBar() {
     setCartIsHovering,
   } = useCart();
 
+  const { height: windowHeight } = useWindowSize();
+
   return (
     <AnimatePresence before>
       {/* {cartOpen && cartContents.length > 0 && ( */}
       {cartOpen && (
         <CartBarStyles
+          windowHeight={windowHeight}
           className="carBarStyledComponent"
           variants={variants}
           initial="closed"
@@ -82,31 +92,33 @@ export default function CartBar() {
           cartIsHovering={cartIsHovering}
           onAnimationComplete={() => console.log('animation complete')} // TODO: set some state/css that allows INNER contents to be visible when complete
         >
-          <motion.div
-            className="cartBarWrapper"
-            onMouseLeave={(e) => {
-              e.stopPropagation();
-              setCartIsHovering(false);
-            }}
-            onMouseEnter={(e) => {
-              e.stopPropagation();
-              setCartIsHovering(true);
-            }}
-            /* animate={{
+          <div className="cartBarWrapper">
+            <motion.div
+              className="cartBar"
+              onMouseLeave={(e) => {
+                e.stopPropagation();
+                setCartIsHovering(false);
+              }}
+              onMouseEnter={(e) => {
+                e.stopPropagation();
+                setCartIsHovering(true);
+              }}
+              /* animate={{
               backgroundColor: `${
                 cartIsHovering
                   ? 'rgba(255, 255, 255, 0.5)'
                   : 'rgba(255, 255, 255, 0.2)'
               }`,
             }} */
-            transition={{ duration: 2 }}
-          >
-            <CartHeader />
+              transition={{ duration: 2 }}
+            >
+              <CartHeader />
 
-            <CheckoutButton />
+              <CheckoutButton />
 
-            <CartContents />
-          </motion.div>
+              <CartContents />
+            </motion.div>
+          </div>
         </CartBarStyles>
       )}
     </AnimatePresence>

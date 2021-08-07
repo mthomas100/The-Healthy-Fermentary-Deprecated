@@ -93,6 +93,21 @@ const CartPane = styled(motion.h1)`
   }
 `;
 
+const Button = styled(ButtonMUI)`
+  && {
+    background-color: #000000c5;
+    margin-top: 1rem;
+    width: 100%;
+    height: 5rem;
+    font-size: 2rem;
+    border-radius: 2rem;
+
+    &:hover {
+      background-color: #01050373;
+    }
+  }
+`;
+
 export default function CartMobile() {
   const { toggleCartMobile, cartMobileOpen } = useCart();
 
@@ -114,21 +129,6 @@ export default function CartMobile() {
       duration: 0.5,
     },
   };
-
-  const Button = styled(ButtonMUI)`
-    && {
-      background-color: #000000c5;
-      margin-top: 1rem;
-      width: 100%;
-      height: 5rem;
-      font-size: 2rem;
-      border-radius: 2rem;
-
-      &:hover {
-        background-color: #01050373;
-      }
-    }
-  `;
 
   return (
     <CartMobileStyles>
