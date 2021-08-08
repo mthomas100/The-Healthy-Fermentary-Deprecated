@@ -13,7 +13,6 @@ const CartMobileStyles = styled(motion.div)`
   left: 0;
   right: 0;
   pointer-events: none;
-
   & * {
     pointer-events: all;
   }
