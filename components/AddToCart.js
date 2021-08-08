@@ -39,7 +39,6 @@ export default function AddToCart({ product }) {
   const [selectValue, setSelectValue] = useState(1);
 
   function handleAddToCart(e) {
-    console.log(e);
     modifyCartQuantity(product, selectValue); // TODO: Needs to add X to whats already there
     openCart();
   }

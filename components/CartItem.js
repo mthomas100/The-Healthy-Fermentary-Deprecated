@@ -1,6 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
+import { useRef, useEffect, useLayoutEffect } from 'react';
 import styled from 'styled-components';
+import { useLayout } from '../lib/layoutState';
+import useComponentSize from '../lib/useComponentSize';
 import QuantityIncrementor from './QuantityIncrementor';
 import QuantitySelector from './QuantitySelector';
 
@@ -107,9 +110,18 @@ const variantsWidth = {
 };
 
 export default function CartItem({ product, index, cartIsHovering }) {
+  const cartItemRef = useRef(null);
+  const { setCartItemSize } = useLayout();
+  const cartItemSize = useComponentSize(cartItemRef);
+
+  useLayoutEffect(() => {
+    setCartItemSize(cartItemSize.height);
+  }, [cartItemSize]);
+
   return (
     <CartItemStyles
       animate={{ width: `${cartIsHovering ? '18.4rem' : '10.2rem'}` }}
+      ref={cartItemRef}
     >
       <AnimatePresence>
         {cartIsHovering ? (

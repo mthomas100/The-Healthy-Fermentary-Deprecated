@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import { useRef, useLayoutEffect } from 'react';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
 import CartIcon from './CartIcon';
+import useComponentSize from '../lib/useComponentSize';
+import { useLayout } from '../lib/layoutState';
 
 const CartHeaderStyles = styled.div`
   .cartIconWrapper {
@@ -35,20 +38,27 @@ const CartHeaderStyles = styled.div`
 `;
 
 export default function CartHeader() {
+  const cartHeaderRef = useRef(null);
+  const cartHeaderSize = useComponentSize(cartHeaderRef);
   const { openCart, cartItemTotal, cartContents } = useCart();
+  const { setCartHeaderSize } = useLayout();
+
+  useLayoutEffect(() => {
+    setCartHeaderSize(cartHeaderSize.height);
+  }, [cartHeaderSize, cartItemTotal]);
+
   return (
-    <CartHeaderStyles>
+    <CartHeaderStyles ref={cartHeaderRef}>
       <div className="cartIconWrapper">
         <CartIcon onClick={openCart} />
       </div>
 
       <div className="cartDetails">
         <div className="itemCount">{cartItemTotal} items</div>
-        {cartItemTotal !== 0 && (
-          <div className="totalValue">
-            <b>$</b> {calcTotalPrice(cartContents)}
-          </div>
-        )}
+
+        <div className="totalValue">
+          <b>$</b> {calcTotalPrice(cartContents)}
+        </div>
       </div>
     </CartHeaderStyles>
   );

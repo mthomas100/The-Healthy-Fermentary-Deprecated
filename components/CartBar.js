@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { AnimatePresence, motion, useMotionValue } from 'framer-motion';
-import { useEffect } from 'react';
-import { useCart } from '../lib/cartState';
+import { useEffect, useState } from 'react';
 import CheckoutButton from './CheckoutButton';
 import CartHeader from './CartHeader';
 import CartContents from './CartContents';
 import { useWindowSize } from '../lib/useWindowSize';
+import { useCart } from '../lib/cartState';
+import { useLayout } from '../lib/layoutState';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
@@ -27,9 +28,10 @@ const CartBarStyles = styled(motion.div)`
     border-top-right-radius: 0.5rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 0.5rem;
+    min-height: ${(props) => props.cartBarSizeMinimum}px;
     max-height: calc(${(props) => props.windowHeight}px - 20rem);
     padding: 0 1rem;
-    overflow-y: scroll;
+    overflow-y: ${(props) => (props.cartIsHovering ? 'scroll' : 'hidden')};
     overflow-x: hidden;
     background-color: rgba(255, 255, 255, 1);
     // TODO: props based paddding with adjustment (if not done in FM) */
@@ -74,7 +76,13 @@ export default function CartBar() {
     setCartIsHovering,
   } = useCart();
 
+  const { cartBarSizeMinimum } = useLayout();
+
   const { height: windowHeight } = useWindowSize();
+
+  useEffect(() => {
+    console.log({ cartBarSizeMinimum });
+  }, [cartBarSizeMinimum]);
 
   return (
     <AnimatePresence before>
@@ -90,7 +98,7 @@ export default function CartBar() {
           cartItemTotal={cartItemTotal}
           cartOpen={cartOpen}
           cartIsHovering={cartIsHovering}
-          onAnimationComplete={() => console.log('animation complete')} // TODO: set some state/css that allows INNER contents to be visible when complete
+          cartBarSizeMinimum={cartBarSizeMinimum}
         >
           <div className="cartBarWrapper">
             <motion.div
