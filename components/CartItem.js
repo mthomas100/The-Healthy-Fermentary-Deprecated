@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRef, useEffect, useLayoutEffect } from 'react';
@@ -20,7 +21,7 @@ const CartItemStylesSM = styled(motion.div)`
   grid-template-areas:
     'picture'
     'quantity';
-  padding: 2rem 2rem;
+  padding: ${(props) => (props.cartEmpty ? '2rem 1rem' : '2rem 2rem')};
   max-height: 14rem; //TODO: calculate with use layout to make consistent rather than hardcoding + guess checking
 
   .MuiSelect-icon {
@@ -43,7 +44,7 @@ const CartItemStylesLG = styled(motion.div)`
   grid-template-areas:
     'picture title'
     'quantity price';
-  padding: 2rem 2rem;
+  padding: ${(props) => (props.cartEmpty ? '2rem 1rem' : '2rem 2rem')};
   max-height: 17.2rem;
 
   .MuiSelect-icon {
@@ -91,6 +92,30 @@ const CartItemStylesLG = styled(motion.div)`
   }
 `;
 
+const CartEmptyStyles = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  p {
+    font-family: Nunito;
+    font-weight: 400;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+  }
+`;
+
+function CartEmpty() {
+  return (
+    <CartEmptyStyles>
+      <p>Cart is empty</p>
+    </CartEmptyStyles>
+  );
+}
+
 const variantsOpacity = {
   open: {
     opacity: 1,
@@ -109,7 +134,12 @@ const variantsWidth = {
   },
 };
 
-export default function CartItem({ product, index, cartIsHovering }) {
+export default function CartItem({
+  product,
+  index,
+  cartIsHovering,
+  cartEmpty = false,
+}) {
   const cartItemRef = useRef(null);
   const { setCartItemSize } = useLayout();
   const cartItemSize = useComponentSize(cartItemRef);
@@ -134,28 +164,35 @@ export default function CartItem({ product, index, cartIsHovering }) {
               animate="open"
               exit="closed"
               transition={{ duration: 1 }}
+              cartEmpty={cartEmpty}
             >
-              <div className="pictureWrapper picture">
-                <Image
-                  src={product.image.url}
-                  alt="Picture of the author"
-                  height="100%"
-                  width="100%"
-                  layout="responsive"
-                />
-              </div>
+              {!cartEmpty ? (
+                <>
+                  <div className="pictureWrapper picture">
+                    <Image
+                      src={product.image.url}
+                      alt="Picture of the author"
+                      height="100%"
+                      width="100%"
+                      layout="responsive"
+                    />
+                  </div>
 
-              <div className="quantity">
-                <QuantityIncrementor product={product} />
-              </div>
+                  <div className="quantity">
+                    <QuantityIncrementor product={product} />
+                  </div>
 
-              <div className="title rhs">{product.title}</div>
-              <div className="price rhs">
-                <div>&#xd7;</div>
-                <div className="value">
-                  <b>₹</b> {product.price}
-                </div>
-              </div>
+                  <div className="title rhs">{product.title}</div>
+                  <div className="price rhs">
+                    <div>&#xd7;</div>
+                    <div className="value">
+                      <b>₹</b> {product.price}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <CartEmpty />
+              )}
             </CartItemStylesLG>
           </motion.div>
         ) : (
@@ -168,20 +205,27 @@ export default function CartItem({ product, index, cartIsHovering }) {
               animate="open"
               exit="closed"
               transition={{ duration: 1 }}
+              cartEmpty={cartEmpty}
             >
-              <div className="pictureWrapper picture">
-                <Image
-                  src={product.image.url}
-                  alt="Picture of the author"
-                  height="100%"
-                  width="100%"
-                  layout="responsive"
-                />
-              </div>
+              {!cartEmpty ? (
+                <>
+                  <div className="pictureWrapper picture">
+                    <Image
+                      src={product.image.url}
+                      alt="Picture of the author"
+                      height="100%"
+                      width="100%"
+                      layout="responsive"
+                    />
+                  </div>
 
-              <div className="quantity">
-                <QuantityIncrementor product={product} />
-              </div>
+                  <div className="quantity">
+                    <QuantityIncrementor product={product} />
+                  </div>
+                </>
+              ) : (
+                <CartEmpty />
+              )}
             </CartItemStylesSM>
           </motion.div>
         )}

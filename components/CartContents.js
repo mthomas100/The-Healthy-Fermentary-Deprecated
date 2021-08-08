@@ -41,6 +41,6 @@ export default function CartContents({ view }) {
       </CartContentsStyles>
     );
   }
-  return null;
+  return <CartItem cartEmpty />;
   // TODO: say something like "No items in cart currently"
 }
