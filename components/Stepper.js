@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -22,6 +22,7 @@ import CartSummary from './CartSummary';
 import { useCheckout } from '../lib/checkoutState';
 import { useCart } from '../lib/cartState';
 import CheckoutHeader from './CheckoutHeader';
+import { useLayout } from '../lib/layoutState';
 
 const useQontoStepIconStyles = makeStyles({
   root: {
@@ -240,6 +241,8 @@ export default function CustomizedSteppers() {
   const [submitIsDisabled, setSubmitIsDisabled] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+
+  const { setStepperLeftOffset } = useLayout();
 
   async function submitOrder(e) {
     setSubmitIsDisabled(true);

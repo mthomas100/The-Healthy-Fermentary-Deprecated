@@ -25,16 +25,24 @@ export default function Logo({ company }) {
   const windowSize = useWindowSize();
 
   return (
-    <LogoStyles windowSize={windowSize}>
-      <GiHeartBottle
-        style={{
-          height: '100%',
-          width: 'auto',
-          marginRight: '0.5em',
-        }}
-      />
+    <LogoStyles windowSize={windowSize} onClick={() => console.log('clicked')}>
       <Link href="/">
-        <a>{company}</a>
+        <a
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
+          <GiHeartBottle
+            style={{
+              height: '100%',
+              width: 'auto',
+              marginRight: '0.5em',
+            }}
+          />
+          {company}
+        </a>
       </Link>
     </LogoStyles>
   );
