@@ -15,6 +15,7 @@ import { TiShoppingCart } from 'react-icons/ti';
 import styled from 'styled-components';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import nProgress from 'nprogress';
+import { useRouter } from 'next/router';
 import FormSection from './FormSection';
 import Address from './Address';
 import PaymentDetails from './PaymentDetails';
@@ -233,7 +234,7 @@ export default function CustomizedSteppers() {
   const handleReset = () => {
     setActiveStep(0);
   };
-
+  const router = useRouter();
   const { inputs } = useCheckout();
   const { cartContents } = useCart();
 
@@ -391,8 +392,7 @@ export default function CustomizedSteppers() {
                 {activeStep === steps.length - 1 ? 'Submit Order' : 'Next'}
               </Button>
               <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
+                onClick={activeStep === 0 ? () => router.push('/') : handleBack}
                 className={classes.button}
                 fullWidth
                 size="large"
