@@ -1,10 +1,10 @@
 import styled, { ThemeProvider } from 'styled-components';
+import { useRouter } from 'next/router';
 import theme from './styles/theme';
 import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import CartBar from './CartBar';
-
 import { useWindowSize } from '../lib/useWindowSize';
 import CartMobile from './CartMobile';
 
@@ -63,6 +63,8 @@ const ContentStyles = styled.div`
 `;
 
 function Page({ children }) {
+  const { pathname } = useRouter();
+  console.log(pathname);
   const windowSize = useWindowSize();
   return (
     <>
@@ -74,7 +76,8 @@ function Page({ children }) {
           <ContentStyles>
             <Header />
             {children}
-            {windowSize.width >= 700 ? <CartBar /> : <CartMobile />}
+            {pathname !== '/checkout' &&
+              (windowSize.width >= 700 ? <CartBar /> : <CartMobile />)}
           </ContentStyles>
         </OuterWrapperStyles>
       </ThemeProvider>

@@ -19,6 +19,7 @@ import FormSection from './FormSection';
 import Address from './Address';
 import PaymentDetails from './PaymentDetails';
 import CartSummary from './CartSummary';
+import CartSummaryNew from './CartSummaryNew';
 import { useCheckout } from '../lib/checkoutState';
 import { useCart } from '../lib/cartState';
 import CheckoutHeader from './CheckoutHeader';
@@ -194,7 +195,7 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <CartSummary />;
+      return <CartSummaryNew />;
     case 1:
       return (
         <FormSection>

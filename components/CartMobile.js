@@ -20,7 +20,6 @@ const CartMobileStyles = styled(motion.div)`
 
 const CartPane = styled(motion.h1)`
   position: absolute;
-  z-index: 2;
   /* border: 3px solid #808080a2; */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 2rem;

@@ -6,11 +6,7 @@ import CartItem from './CartItem';
 import useComponentSize from '../lib/useComponentSize';
 import { useLayout } from '../lib/layoutState';
 
-const CartContentsStyles = styled.div`
-  .cartEmpty {
-    background-color: red;
-  }
-`;
+const CartContentsStyles = styled.div``;
 
 export default function CartContents({ view }) {
   const cartContentsRef = useRef(null);

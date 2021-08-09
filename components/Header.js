@@ -10,7 +10,7 @@ import { useLayout } from '../lib/layoutState';
 const HeaderStyles = styled.div`
   padding: 10rem 0;
   position: absolute;
-  z-index: 100;
+  /* z-index: 100; */
   left: ${(props) =>
     props.pathname === '/'
       ? props.productsLeftOffset
