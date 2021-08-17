@@ -64,7 +64,7 @@ const ContentStyles = styled.div`
 
 function Page({ children }) {
   const { pathname } = useRouter();
-  console.log(pathname);
+  console.log({ pathname });
   const windowSize = useWindowSize();
   return (
     <>

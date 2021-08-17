@@ -50,11 +50,12 @@ function Products() {
   const { setProductsLeftOffset } = useLayout();
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
   const windowSize = useWindowSize();
+  console.log(data);
 
-  useEffect(() => {
-    const firstProduct = productsArr[0];
-    setProductsLeftOffset(firstProduct.current.offsetLeft);
-  }, [productsArr, windowSize, setProductsLeftOffset]);
+  // useEffect(() => {
+  //   const firstProduct = productsArr[0];
+  //   setProductsLeftOffset(firstProduct.current.offsetLeft);
+  // }, [productsArr, windowSize, setProductsLeftOffset]);
 
   if (loading) return <Loading />;
   if (error) return <p>Error: {error.message}</p>;

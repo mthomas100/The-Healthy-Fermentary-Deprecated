@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/matthewthomas/.nvm/versions/node/v14.15.0/bin/node /usr/local/bin/yarn add webhookHandler
+  /Users/matthewthomas/.nvm/versions/node/v14.15.0/bin/node /usr/local/bin/yarn dev
 
 PATH: 
   /Users/matthewthomas/.nvm/versions/node/v14.15.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,17 +14,12 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/webhookHandler: Not found
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66988:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140662:22)
-      at Request.emit (events.js:315:20)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141634:10)
-      at Request.emit (events.js:315:20)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141556:12)
-      at Object.onceWrapper (events.js:421:28)
-      at IncomingMessage.emit (events.js:327:22)
-      at endReadableNT (_stream_readable.js:1327:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  SyntaxError: /Users/matthewthomas/SATIYN/eCommerce/CODE/Frontend/package.json: Unexpected number in JSON at position 1759
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -83,7 +78,7 @@ npm manifest:
       "mongodb": "^3.6.5",
       "next": "^11.0.1",
       "next-auth": "^3.13.3",
-      "next-with-apollo": "^5.2.1",
+      "next-with-apollo": "^5.2.1",2
       "nookies": "^2.5.2",
       "nprogress": "^0.2.0",
       "pg": "^8.5.1",
