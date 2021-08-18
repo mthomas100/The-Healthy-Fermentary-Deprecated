@@ -110,6 +110,12 @@ export default function CartMobile() {
   const { toggleCartMobile, cartMobileOpen } = useCart();
 
   const variants = {
+    initial: {
+      transform: `
+        rotate(0deg)
+        translateX(-150%)
+      `,
+    },
     animate: {
       /* eslint-disable */
       transform: `
@@ -119,7 +125,7 @@ export default function CartMobile() {
       /* eslint-enable */
     },
     transitionIn: {
-      type: 'spring',
+      type: 'bounce',
       duration: 1.15,
     },
     transitionOut: {
@@ -134,6 +140,7 @@ export default function CartMobile() {
 
       <CartPane
         variants={variants}
+        initial={variants.initial}
         animate="animate"
         className="mobileCart"
         transition={
@@ -148,12 +155,7 @@ export default function CartMobile() {
             <CartContents view="mobile" />
           </div>
           <div className="footer">
-            <Button
-              onClick={() => console.log('clicked')}
-              variant="contained"
-              color="primary"
-              size="large"
-            >
+            <Button variant="contained" color="primary" size="large">
               <Typography variant="subtitle1">Checkout</Typography>
             </Button>
           </div>

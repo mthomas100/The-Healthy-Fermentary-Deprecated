@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import gql from 'graphql-tag';
@@ -8,17 +9,23 @@ import Loading from './Loading';
 import { useLayout } from '../lib/layoutState';
 
 const HeaderStyles = styled.div`
-  padding: 10rem 0;
-  position: absolute;
   /* z-index: 100; */
-  left: ${(props) =>
-    props.pathname === '/'
-      ? props.productsLeftOffset
-      : props.checkoutLeftOffset}px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
   display: flex;
   flex-direction: row;
-  justify-content: left;
-  width: 300px; //TODO: calculate appropriate using useLayout hook
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: 'Reenie Beanie';
+  font-size: 45px;
+  background-color: #1d1d1d;
+
+  a {
+    color: white;
+  }
 `;
 
 // TODO: get this on initial site query
@@ -42,12 +49,10 @@ export default function Header() {
   if (error) return <p>Error: {error.message}</p>;
   const { company } = data.header;
   return (
-    <HeaderStyles
-      productsLeftOffset={productsLeftOffset}
-      checkoutLeftOffset={checkoutLeftOffset}
-      pathname={pathname}
-    >
-      <Logo company={company} />
+    <HeaderStyles pathname={pathname}>
+      <Link href="/">
+        <a>{company}</a>
+      </Link>
     </HeaderStyles>
   );
 }

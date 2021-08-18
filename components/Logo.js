@@ -7,15 +7,14 @@ import { useWindowSize } from '../lib/useWindowSize';
 const LogoStyles = styled.div`
   display: flex;
   width: 100%;
-  flex-direction: row;
-  justify-content: ${(props) =>
-    props.windowSize.width >= 900 ? 'left' : 'center'};
-  align-items: center;
   font-family: 'Reenie Beanie';
   font-size: 45px;
 
   a {
-    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 
   /* border: 1px solid blue; */
@@ -26,24 +25,7 @@ export default function Logo({ company }) {
 
   return (
     <LogoStyles windowSize={windowSize} onClick={() => console.log('clicked')}>
-      <Link href="/">
-        <a
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-          }}
-        >
-          <GiHeartBottle
-            style={{
-              height: '100%',
-              width: 'auto',
-              marginRight: '0.5em',
-            }}
-          />
-          {company}
-        </a>
-      </Link>
+      <Link href="/">{company}</Link>
     </LogoStyles>
   );
 }
