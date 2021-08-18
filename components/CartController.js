@@ -15,8 +15,7 @@ const variants = {
 const CartControllerStyles = styled.div`
   position: absolute;
   right: 2rem;
-  top: 20rem;
-  padding-top: 4rem;
+  top: 24rem;
 
   .cartIconWrapper {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
