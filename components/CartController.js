@@ -13,12 +13,16 @@ const variants = {
 };
 
 const CartControllerStyles = styled.div`
+  position: absolute;
+  right: 4rem;
+  top: 20rem;
+  padding-top: 4rem;
+
   .cartIconWrapper {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
-    position: absolute;
+    position: sticky;
+    top: 4rem;
     z-index: 3;
-    right: 2rem;
-    bottom: 8rem;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 50%;
     height: 5rem;

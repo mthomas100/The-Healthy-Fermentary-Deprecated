@@ -13,15 +13,16 @@ const HeaderStyles = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   height: 100px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
   font-family: 'Reenie Beanie';
   font-size: 45px;
   background-color: #1d1d1d;
+  text-align: center;
 
   a {
     color: white;
