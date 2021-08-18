@@ -1,10 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import Image from 'next/image';
-import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
-import Logo from './Logo';
 import Loading from './Loading';
 import { useLayout } from '../lib/layoutState';
 
@@ -29,30 +26,13 @@ const HeaderStyles = styled.div`
   }
 `;
 
-// TODO: get this on initial site query
-const HEADER_QUERY = gql`
-  query HEADER_QUERY {
-    header {
-      company
-      image {
-        url
-      }
-    }
-  }
-`;
-
 export default function Header() {
   const { productsLeftOffset, checkoutLeftOffset } = useLayout();
-  const { data, error, loading } = useQuery(HEADER_QUERY);
   const { pathname } = useRouter();
-
-  if (loading) return <Loading />;
-  if (error) return <p>Error: {error.message}</p>;
-  const { company } = data.header;
   return (
     <HeaderStyles pathname={pathname}>
       <Link href="/">
-        <a>{company}</a>
+        <a>The Healthy Fermentary</a>
       </Link>
     </HeaderStyles>
   );
