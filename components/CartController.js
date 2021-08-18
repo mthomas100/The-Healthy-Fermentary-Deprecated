@@ -14,7 +14,7 @@ const variants = {
 
 const CartControllerStyles = styled.div`
   position: absolute;
-  right: 4rem;
+  right: 2rem;
   top: 20rem;
   padding-top: 4rem;
 
