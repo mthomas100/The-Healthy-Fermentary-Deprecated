@@ -1,14 +1,17 @@
 import gql from 'graphql-tag';
 import client from '../../lib/apollo-client';
 
-export default function Products({ products }) {
-  return (
-    <>
-      <p>dynamic data here</p>
-    </>
-  );
+export default function Products({ error, product }) {
+  if (!error) {
+    return (
+      <>
+        <h1>{product.title}</h1>
+        <p>{product.description}</p>
+      </>
+    );
+  }
+  return <p>{error.message}</p>;
 }
-
 export async function getStaticPaths() {
   const { data } = await client.query({
     query: gql`
@@ -19,8 +22,6 @@ export async function getStaticPaths() {
       }
     `,
   });
-
-  console.log(data);
 
   const paths = data.products.map((product) => ({
     params: { slug: product.slug },
@@ -33,14 +34,25 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // const { data } = await client.query({
-  //   query: POST_DATA,
-  //   variables: { id: params.slug, idType: 'SLUG' },
-  // });
+  const { slug } = params;
+
+  const { data, error } = await client.query({
+    variables: { slug },
+    query: gql`
+      query PRODUCTS_QUERY($slug: String!) {
+        products(where: { slug: $slug }) {
+          slug
+          title
+          description
+        }
+      }
+    `,
+  });
 
   return {
     props: {
-      product: undefined,
+      product: data.products[0] || null,
+      error: error || null,
     },
   };
 }
