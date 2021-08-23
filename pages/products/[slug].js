@@ -8,12 +8,13 @@ export default function Products({ error, product }) {
   if (!error) {
     return (
       <>
+        <h2>NO ERROR</h2>
         <h1>{product.title}</h1>
         <p>{product.description}</p>
       </>
     );
   }
-  return <p>{error.message}</p>;
+  return <h2>NO ERROR</h2>;
 }
 export async function getStaticPaths() {
   const { data } = await client.query({
