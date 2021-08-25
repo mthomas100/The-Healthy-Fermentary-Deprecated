@@ -4,6 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { Typography as TypographyMUI } from '@material-ui/core';
 import Image from 'next/image';
 import styled from 'styled-components';
+import Link from 'next/link';
 import AddToCart from './AddToCart';
 
 const useStyles = makeStyles({
@@ -49,6 +50,8 @@ export default function Product({ product, productsArr }) {
   return (
     <ProductStyles ref={productRef}>
       {/* <CardActionArea disableRipple component="div"> */}
+      {/* <Link href={`/products/${product.slug}`}>
+        <a> */}
       <Image
         src={product.image.url}
         color="green"
@@ -57,6 +60,8 @@ export default function Product({ product, productsArr }) {
         layout="responsive"
         className={classes.image}
       />
+      {/* </a>
+      </Link> */}
 
       <CardContent className={classes.cartContent}>
         <TypographyPrimary gutterBottom variant="h4" component="h4">
