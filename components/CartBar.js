@@ -79,9 +79,7 @@ export default function CartBar() {
 
   const { height: windowHeight } = useWindowSize();
 
-  useEffect(() => {
-    console.log({ cartBarSizeMinimum });
-  }, [cartBarSizeMinimum]);
+  useEffect(() => {}, [cartBarSizeMinimum]);
 
   return (
     <AnimatePresence before>

@@ -58,6 +58,6 @@ export async function getStaticProps({ params }) {
       product: data.products[0] || null,
       error: error || null,
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 }
