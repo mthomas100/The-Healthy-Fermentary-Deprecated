@@ -16,7 +16,8 @@ const OuterWrapperStyles = styled.div`
   z-index: 0;
   width: 100%;
   background-size: 400%;
-  padding: 4rem 1rem;
+  padding: 2rem 1rem;
+  background-color: beige;
 
   &:before {
     content: '';
@@ -36,7 +37,7 @@ const ContentStyles = styled.div`
   max-width: 120rem;
   margin: 0 auto;
   height: auto;
-  padding: 4rem 12rem;
+  padding: 0rem 0rem;
   box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2rem;
   position: relative;
@@ -78,16 +79,5 @@ function Page({ children }) {
     </>
   );
 }
-
-// export const getServerSideProps = async ({ req }) => {
-//   const session = await getSession({ req });
-//   console.log({ session });
-
-//   return {
-//     props: {
-//       session,
-//     },
-//   };
-// };
 
 export default Page;

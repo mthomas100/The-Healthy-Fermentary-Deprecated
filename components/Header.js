@@ -7,11 +7,8 @@ import { useLayout } from '../lib/layoutState';
 
 const HeaderStyles = styled.div`
   /* z-index: 100; */
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +17,7 @@ const HeaderStyles = styled.div`
   font-size: 45px;
   background-color: #1d1d1d;
   text-align: center;
+  padding: 3rem 0;
 
   a {
     color: white;
