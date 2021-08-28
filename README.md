@@ -4,4 +4,4 @@ A responsive eCommerce application utilizing the React framework Next.js, GraphQ
 
 ----
 
-### Live Version of Project (link forthcoming)
+### [Live Version of Project] (https://thehealthyfermentary.vercel.app/)
