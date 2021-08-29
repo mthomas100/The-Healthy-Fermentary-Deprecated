@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { useCart } from '../lib/cartState';
 import CartItem from './CartItem';
 import useComponentSize from '../lib/useComponentSize';
-import { useLayout } from '../lib/layoutState';
 
 const CartContentsStyles = styled.div``;
 
@@ -12,13 +11,6 @@ export default function CartContents({ view }) {
   const cartContentsRef = useRef(null);
 
   const { cartContents, cartIsHovering } = useCart();
-  const { setCartContentsSize } = useLayout();
-
-  const cartContentsSize = useComponentSize(cartContentsRef, cartContents);
-
-  useLayoutEffect(() => {
-    setCartContentsSize(cartContentsSize.height);
-  }, [cartContentsSize]);
 
   if (cartContents.length > 0) {
     return (

@@ -5,9 +5,10 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import styled from 'styled-components';
 import { Button as ButtonMUI, FormHelperText } from '@material-ui/core';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import uuid from 'react-uuid';
 import { useCart } from '../lib/cartState';
+import useComponentSize from '../lib/useComponentSize';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -31,12 +32,20 @@ const Button = styled(ButtonMUI)`
   }
 `;
 
+const AddToCartStyles = styled.div`
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+`;
+
 const quantityArrMap = Array.from(Array(10).keys());
 
-export default function AddToCart({ product }) {
+export default function AddToCart({ product, setAddToCartSize }) {
+  const ref = useRef(null);
   const classes = useStyles();
   const { modifyCartQuantity, openCart } = useCart();
   const [selectValue, setSelectValue] = useState(1);
+  setAddToCartSize(useComponentSize(ref));
 
   function handleAddToCart(e) {
     modifyCartQuantity(product, selectValue); // TODO: Needs to add X to whats already there
@@ -44,43 +53,45 @@ export default function AddToCart({ product }) {
   }
 
   return (
-    <FormControl
-      className={`${classes.formControl}`}
-      variant="outlined"
-      size="small"
-      style={{
-        padding: '2rem',
-        borderRadius: '1rem',
-        boxShadow: 'inset 4px 0px 8px 0 rgba(0, 0, 0, 0.1)',
-      }}
-    >
-      <Select
-        labelId="demo-simple-select-placeholder-label-label"
-        id="demo-simple-select-placeholder-label"
-        defaultValue="something"
-        value={selectValue}
-        onChange={(e) => setSelectValue(e.target.value)}
-        className={classes.selectEmpty}
-        displayEmpty
+    <AddToCartStyles ref={ref}>
+      <FormControl
+        className={`${classes.formControl}`}
+        variant="outlined"
+        size="small"
+        style={{
+          padding: '2rem',
+          borderRadius: '1rem',
+          boxShadow: 'inset 4px 0px 8px 0 rgba(0, 0, 0, 0.075)',
+        }}
       >
-        {quantityArrMap.map(
-          (_, i) =>
-            i > 0 && (
-              <MenuItem value={i} key={uuid()}>
-                {i}
-              </MenuItem>
-            )
-        )}
-      </Select>
-      <Button
-        onClick={handleAddToCart}
-        variant="contained"
-        color="primary"
-        classes={classes.btn}
-        size="large"
-      >
-        Add to Cart
-      </Button>
-    </FormControl>
+        <Select
+          labelId="demo-simple-select-placeholder-label-label"
+          id="demo-simple-select-placeholder-label"
+          defaultValue="something"
+          value={selectValue}
+          onChange={(e) => setSelectValue(e.target.value)}
+          className={classes.selectEmpty}
+          displayEmpty
+        >
+          {quantityArrMap.map(
+            (_, i) =>
+              i > 0 && (
+                <MenuItem value={i} key={uuid()}>
+                  {i}
+                </MenuItem>
+              )
+          )}
+        </Select>
+        <Button
+          onClick={handleAddToCart}
+          variant="contained"
+          color="primary"
+          classes={classes.btn}
+          size="large"
+        >
+          Add to Cart
+        </Button>
+      </FormControl>
+    </AddToCartStyles>
   );
 }

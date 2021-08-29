@@ -3,13 +3,13 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useRef, useEffect } from 'react';
 import Stepper from './Stepper';
-import { useLayout } from '../lib/layoutState';
+
 import { useWindowSize } from '../lib/useWindowSize';
 
 const CheckoutStyles = styled.div`
   position: relative;
   top: 2rem;
-  padding: 22rem 0 6rem 0;
+  padding: 0rem 0 6rem 0;
   gap: 2rem;
   justify-content: center;
   margin: 0 auto;
@@ -27,12 +27,6 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 export default function Checkout() {
   const checkoutRef = useRef();
-  const { setCheckoutLeftOffset } = useLayout();
-  const windowSize = useWindowSize();
-
-  useEffect(() => {
-    setCheckoutLeftOffset(checkoutRef.current.offsetLeft);
-  }, [windowSize]);
 
   return (
     <CheckoutStyles ref={checkoutRef}>

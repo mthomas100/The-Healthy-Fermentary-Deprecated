@@ -24,7 +24,6 @@ import CartSummaryNew from './CartSummaryNew';
 import { useCheckout } from '../lib/checkoutState';
 import { useCart } from '../lib/cartState';
 import CheckoutHeader from './CheckoutHeader';
-import { useLayout } from '../lib/layoutState';
 
 const useQontoStepIconStyles = makeStyles({
   root: {
@@ -243,8 +242,6 @@ export default function CustomizedSteppers() {
   const [submitIsDisabled, setSubmitIsDisabled] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
-
-  const { setStepperLeftOffset } = useLayout();
 
   async function submitOrder(e) {
     setSubmitIsDisabled(true);

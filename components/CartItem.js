@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRef, useEffect, useLayoutEffect } from 'react';
 import styled from 'styled-components';
-import { useLayout } from '../lib/layoutState';
+
 import useComponentSize from '../lib/useComponentSize';
 import QuantityIncrementor from './QuantityIncrementor';
 import QuantitySelector from './QuantitySelector';
@@ -141,12 +141,8 @@ export default function CartItem({
   cartEmpty = false,
 }) {
   const cartItemRef = useRef(null);
-  const { setCartItemSize } = useLayout();
-  const cartItemSize = useComponentSize(cartItemRef);
 
-  useLayoutEffect(() => {
-    setCartItemSize(cartItemSize.height);
-  }, [cartItemSize]);
+  const cartItemSize = useComponentSize(cartItemRef);
 
   return (
     <CartItemStyles

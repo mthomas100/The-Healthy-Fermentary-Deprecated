@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import Loading from './Loading';
-import { useLayout } from '../lib/layoutState';
 
 const HeaderStyles = styled.div`
   /* z-index: 100; */
@@ -25,7 +24,6 @@ const HeaderStyles = styled.div`
 `;
 
 export default function Header() {
-  const { productsLeftOffset, checkoutLeftOffset } = useLayout();
   const { pathname } = useRouter();
   return (
     <HeaderStyles pathname={pathname}>

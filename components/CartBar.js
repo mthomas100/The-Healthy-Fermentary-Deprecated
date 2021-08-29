@@ -6,7 +6,6 @@ import CartHeader from './CartHeader';
 import CartContents from './CartContents';
 import { useWindowSize } from '../lib/useWindowSize';
 import { useCart } from '../lib/cartState';
-import { useLayout } from '../lib/layoutState';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
@@ -75,11 +74,7 @@ export default function CartBar() {
     setCartIsHovering,
   } = useCart();
 
-  const { cartBarSizeMinimum } = useLayout();
-
   const { height: windowHeight } = useWindowSize();
-
-  useEffect(() => {}, [cartBarSizeMinimum]);
 
   return (
     <AnimatePresence before>
@@ -95,7 +90,6 @@ export default function CartBar() {
           cartItemTotal={cartItemTotal}
           cartOpen={cartOpen}
           cartIsHovering={cartIsHovering}
-          cartBarSizeMinimum={cartBarSizeMinimum}
         >
           <div className="cartBarWrapper">
             <motion.div

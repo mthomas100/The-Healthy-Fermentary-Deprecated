@@ -4,7 +4,6 @@ import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
 import CartIcon from './CartIcon';
 import useComponentSize from '../lib/useComponentSize';
-import { useLayout } from '../lib/layoutState';
 
 const CartHeaderStyles = styled.div`
   .cartIconWrapper {
@@ -39,13 +38,7 @@ const CartHeaderStyles = styled.div`
 
 export default function CartHeader() {
   const cartHeaderRef = useRef(null);
-  const cartHeaderSize = useComponentSize(cartHeaderRef);
   const { openCart, cartItemTotal, cartContents } = useCart();
-  const { setCartHeaderSize } = useLayout();
-
-  useLayoutEffect(() => {
-    setCartHeaderSize(cartHeaderSize.height);
-  }, [cartHeaderSize, cartItemTotal]);
 
   return (
     <CartHeaderStyles ref={cartHeaderRef}>

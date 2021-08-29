@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import { Typography as TypographyMUI } from '@material-ui/core';
 import Image from 'next/image';
 import styled from 'styled-components';
-import Link from 'next/link';
 import AddToCart from './AddToCart';
 
 const useStyles = makeStyles({
@@ -31,24 +30,25 @@ const TypographySecondary = styled(TypographyMUI)`
 const TypographyPrimary = styled(TypographyMUI)``;
 
 const ProductStyles = styled.div`
+  border: 2px solid red;
+  position: relative;
   min-width: 30rem;
   width: 30rem;
+  padding: 1rem;
+  padding-bottom: ${(props) => props.addToCartSize?.height}px;
   .addToCart {
     display: flex;
     flex-direction: row;
   }
 `;
 
-export default function Product({ product, productsArr }) {
+export default function Product({ product }) {
+  const [addToCartSize, setAddToCartSize] = useState();
   const productRef = useRef();
   const classes = useStyles();
 
-  useEffect(() => {
-    productsArr.push(productRef);
-  }, [productsArr]);
-
   return (
-    <ProductStyles ref={productRef}>
+    <ProductStyles addToCartSize={addToCartSize} ref={productRef}>
       {/* <CardActionArea disableRipple component="div"> */}
       {/* <Link href={`/products/${product.slug}`}>
         <a> */}
@@ -74,9 +74,8 @@ export default function Product({ product, productsArr }) {
         >
           {product.description}
         </TypographySecondary>
-
-        <AddToCart product={product} />
       </CardContent>
+      <AddToCart product={product} setAddToCartSize={setAddToCartSize} />
       {/* </CardActionArea> */}
     </ProductStyles>
   );
