@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import Product from './Product';
 import { useCart } from '../lib/cartState';
 import { useWindowSize } from '../lib/useWindowSize';
+import useComponentSize from '../lib/useComponentSize';
 
 const ProductsStyles = styled.div`
   display: flex;
@@ -27,12 +28,25 @@ const ProductsStyles = styled.div`
 
 export default function Products({ products }) {
   const { setCartIsHovering } = useCart();
+  const [contentSizeArray, setContentSizeArray] = useState([]);
+  const [maxContentHeight, setMaxContentHeight] = useState(undefined);
+  const windowSize = useWindowSize();
+
+  useLayoutEffect(() => {
+    setMaxContentHeight(Math.max(...contentSizeArray));
+    console.log(maxContentHeight);
+  }, [contentSizeArray, maxContentHeight]);
 
   return (
     <ProductsStyles onMouseOver={() => setCartIsHovering(false)}>
       <div className="products">
         {products.map((product) => (
-          <Product product={product} key={product.id} />
+          <Product
+            product={product}
+            key={product.id}
+            setContentSizeArray={setContentSizeArray}
+            maxContentHeight={maxContentHeight}
+          />
         ))}
       </div>
     </ProductsStyles>
