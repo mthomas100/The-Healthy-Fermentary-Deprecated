@@ -25,6 +25,8 @@ const Button = styled(ButtonMUI)`
   && {
     background-color: #000000c5;
     width: 100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 
     &:hover {
       background-color: #01050373;

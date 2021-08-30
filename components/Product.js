@@ -4,30 +4,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography as TypographyMUI,
   CardContent as CardContentMUI,
+  Card as CardMUI,
+  CardActionArea,
 } from '@material-ui/core';
 import Image from 'next/image';
 import styled from 'styled-components';
-import Card from '@material-ui/core/Card';
 import AddToCart from './AddToCart';
 import useComponentSize from '../lib/useComponentSize';
 import { useWindowSize } from '../lib/useWindowSize';
-
-const useStyles = makeStyles({
-  root: {
-    backgroundColor: 'var(--productThemeColor)',
-  },
-  image: {
-    height: '100%',
-    width: 'auto',
-    display: 'block',
-    // borderTopRightRadius: '2rem',
-    // borderTopLeftRadius: '2rem',
-  },
-  cartContent: {
-    // paddingBottom: 0,
-    borderRadius: 0,
-  },
-});
 
 const TypographySecondary = styled(TypographyMUI)`
   && {
@@ -38,8 +22,17 @@ const TypographySecondary = styled(TypographyMUI)`
 
 const TypographyPrimary = styled(TypographyMUI)``;
 
+const Card = styled(CardMUI)`
+  && {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+`;
+
 const CardContent = styled(CardContentMUI)`
-  min-height: ${(props) => props.maxContentHeight}px;
+  && {
+    min-height: ${(props) => props.maxContentHeight}px;
+  }
 `;
 
 const ProductStyles = styled.div`
@@ -47,10 +40,6 @@ const ProductStyles = styled.div`
   min-width: 30rem;
   width: 30rem;
   padding-bottom: ${(props) => props.addToCartSize?.height}px;
-  .addToCart {
-    display: flex;
-    flex-direction: row;
-  }
 `;
 
 export default function Product({
@@ -62,7 +51,6 @@ export default function Product({
   const productRef = useRef();
   const contentRef = useRef();
   const contentSize = useComponentSize(contentRef);
-  const classes = useStyles();
   const windowSize = useWindowSize();
 
   useEffect(() => {
@@ -71,9 +59,6 @@ export default function Product({
 
   return (
     <ProductStyles addToCartSize={addToCartSize} ref={productRef}>
-      {/* <CardActionArea disableRipple component="div"> */}
-      {/* <Link href={`/products/${product.slug}`}>
-        <a> */}
       <Card>
         <Image
           src={product.image.url}
@@ -81,16 +66,9 @@ export default function Product({
           height="100%"
           width="100%"
           layout="responsive"
-          className={classes.image}
         />
-        {/* </a>
-      </Link> */}
 
-        <CardContent
-          className={classes.cartContent}
-          ref={contentRef}
-          maxContentHeight={maxContentHeight}
-        >
+        <CardContent ref={contentRef} maxContentHeight={maxContentHeight}>
           <TypographyPrimary gutterBottom variant="h4" component="h4">
             {product.title}
           </TypographyPrimary>
@@ -103,7 +81,6 @@ export default function Product({
           </TypographySecondary>
         </CardContent>
         <AddToCart product={product} setAddToCartSize={setAddToCartSize} />
-        {/* </CardActionArea> */}
       </Card>
     </ProductStyles>
   );
