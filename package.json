@@ -62,6 +62,7 @@
     "react": "17.0.2",
     "react-apollo": "^3.1.5",
     "react-cookie": "^4.0.3",
+    "react-device-detect": "^1.17.0",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
     "react-sizeme": "^3.0.1",

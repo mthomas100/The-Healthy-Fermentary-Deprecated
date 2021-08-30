@@ -21,7 +21,7 @@ const CartControllerStyles = styled.div`
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     position: sticky;
     top: 4rem;
-    z-index: 3;
+    z-index: 30;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 50%;
     height: 5rem;

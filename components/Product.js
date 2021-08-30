@@ -14,7 +14,7 @@ import {
 
 const PriceStyles = styled.div`
   position: absolute;
-  z-index: 20;
+  z-index: 1;
   top: 5%;
   right: 5%;
   width: 50px;

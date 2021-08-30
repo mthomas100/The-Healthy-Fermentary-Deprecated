@@ -1,5 +1,6 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { useRouter } from 'next/router';
+import { isMobile } from 'react-device-detect';
 import theme from './styles/theme';
 import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
@@ -61,6 +62,7 @@ function Page({ children }) {
   const { pathname } = useRouter();
   console.log({ pathname });
   const windowSize = useWindowSize();
+  console.log('isMobile', isMobile);
   return (
     <>
       <GlobalStyles />
@@ -72,7 +74,12 @@ function Page({ children }) {
             <Header />
             {children}
             {pathname !== '/checkout' &&
-              (windowSize.width >= 700 ? <CartBar /> : <CartMobile />)}
+              // (windowSize.width >= 700 ? <CartBar /> : <CartMobile />)
+              (isMobile || windowSize.width <= 700 ? (
+                <CartMobile />
+              ) : (
+                <CartBar />
+              ))}
           </ContentStyles>
         </OuterWrapperStyles>
       </ThemeProvider>

@@ -16,6 +16,7 @@ const CartMobileStyles = styled(motion.div)`
   & * {
     pointer-events: all;
   }
+  z-index: 30;
 `;
 
 const CartPane = styled(motion.h1)`
