@@ -128,10 +128,12 @@ export default function CartMobile() {
     transitionIn: {
       type: 'spring',
       bounce: 0.2,
+      bounceStiffness: 100,
     },
     transitionOut: {
       ease: 'backIn',
       duration: 0.8,
+      bounceStiffness: 100,
     },
   };
 
