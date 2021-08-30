@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { Button as ButtonMUI, Typography } from '@material-ui/core';
+import Link from 'next/link';
 import { useCart } from '../lib/cartState';
 import CartContents from './CartContents';
 import CartController from './CartController';
@@ -158,9 +159,13 @@ export default function CartMobile() {
             <CartContents view="mobile" />
           </div>
           <div className="footer">
-            <Button variant="contained" color="primary" size="large">
-              <Typography variant="subtitle1">Checkout</Typography>
-            </Button>
+            <Link href="/checkout">
+              <a style={{ width: '100%' }}>
+                <Button variant="contained" color="primary" size="large">
+                  <Typography variant="subtitle1">Checkout</Typography>
+                </Button>
+              </a>
+            </Link>
           </div>
         </div>
       </CartPane>
