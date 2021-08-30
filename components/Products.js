@@ -30,7 +30,6 @@ export default function Products({ products }) {
   const { setCartIsHovering } = useCart();
   const [contentSizeArray, setContentSizeArray] = useState([]);
   const [maxContentHeight, setMaxContentHeight] = useState(undefined);
-  const windowSize = useWindowSize();
 
   useLayoutEffect(() => {
     setMaxContentHeight(Math.max(...contentSizeArray));
