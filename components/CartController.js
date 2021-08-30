@@ -61,7 +61,7 @@ export default function CartController() {
           onClick={() => toggleCartMobile()}
           variants={variants}
           animate={cartMobileOpen ? 'cartOpen' : 'cartClosed'}
-          transition={{ type: 'spring', bounce: 0.25 }}
+          transition={{ type: 'spring', ease: 'easeOut' }}
         >
           <CartButton />
         </motion.div>
