@@ -126,12 +126,12 @@ export default function CartMobile() {
       /* eslint-enable */
     },
     transitionIn: {
-      ease: 'easeIn',
-      duration: 0.5,
+      type: 'spring',
+      bounce: 0.2,
     },
     transitionOut: {
-      ease: 'easeOut',
-      duration: 0.5,
+      ease: 'backIn',
+      duration: 0.8,
     },
   };
 
