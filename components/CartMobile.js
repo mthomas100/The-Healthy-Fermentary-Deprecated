@@ -114,7 +114,7 @@ export default function CartMobile() {
     initial: {
       transform: `
         rotate(0deg)
-        translateX(-150%)
+        translateX(-250%)
       `,
     },
     animate: {
@@ -126,11 +126,11 @@ export default function CartMobile() {
       /* eslint-enable */
     },
     transitionIn: {
-      type: 'bounce',
-      duration: 1.15,
+      ease: 'easeIn',
+      duration: 0.5,
     },
     transitionOut: {
-      ease: 'easeIn',
+      ease: 'easeOut',
       duration: 0.5,
     },
   };
