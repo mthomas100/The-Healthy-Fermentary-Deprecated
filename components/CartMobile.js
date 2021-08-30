@@ -113,14 +113,14 @@ export default function CartMobile() {
   const variants = {
     initial: {
       transform: `
-        rotate(0deg)
+        
         translateX(-250%)
       `,
     },
     animate: {
       /* eslint-disable */
       transform: `
-      rotate(${cartMobileOpen ? '0deg' : '25deg'})
+      
       translateX(${cartMobileOpen ? '0%' : '-150%'}) 
       `,
       /* eslint-enable */
