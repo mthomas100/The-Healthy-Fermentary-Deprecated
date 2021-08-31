@@ -341,6 +341,7 @@ export default function CustomizedSteppers() {
           paddingLeft: '0',
           paddingRight: '0',
           backgroundColor: 'transparent',
+          margin: '0px',
         }}
       >
         {steps.map((label) => (
@@ -373,6 +374,7 @@ export default function CustomizedSteppers() {
                 flexDirection: 'column',
                 width: '100%',
                 alignItems: 'stretch',
+                padding: '0 3rem',
               }}
             >
               <Button

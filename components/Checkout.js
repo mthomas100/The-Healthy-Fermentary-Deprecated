@@ -4,12 +4,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useRef, useEffect } from 'react';
 import Stepper from './Stepper';
 
-import { useWindowSize } from '../lib/useWindowSize';
-
 const CheckoutStyles = styled.div`
   position: relative;
   top: 2rem;
-  padding: 0rem 0 6rem 0;
+  padding: 0rem 4rem 6rem 4rem;
   gap: 2rem;
   justify-content: center;
   margin: 0 auto;

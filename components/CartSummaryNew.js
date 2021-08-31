@@ -16,7 +16,8 @@ const CartSummaryNewStyles = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1rem 4rem;
+    padding: 1rem 0;
+    margin: 0 3rem;
 
     &:before {
       content: '';
@@ -49,7 +50,6 @@ const CartSummaryNewStyles = styled.div`
       grid-area: body;
       box-shadow: inset 0px 0px 16px 4px rgba(0, 0, 0, 0.04);
       border-radius: 2rem;
-      margin: 0 auto;
     }
     .footer {
       bottom: 0;

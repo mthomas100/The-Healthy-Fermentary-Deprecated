@@ -8,7 +8,7 @@ const FooterStyles = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 0;
+  padding: 1rem 4rem;
   /* box-shadow: 0px 0 5px 0px rgba(0, 0, 0, 0.2); */
   background-color: 'transparent';
   justify-content: flex-end;
