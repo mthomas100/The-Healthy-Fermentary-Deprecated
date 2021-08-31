@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import useComponentSize from '../lib/useComponentSize';
 import QuantityIncrementor from './QuantityIncrementor';
 import QuantitySelector from './QuantitySelector';
+import QuantityStatic from './QuantityStatic';
 
 const CartItemStyles = styled(motion.div)`
   margin: 0 auto;
@@ -139,6 +140,7 @@ export default function CartItem({
   index,
   cartIsHovering,
   cartEmpty = false,
+  mode,
 }) {
   const cartItemRef = useRef(null);
 
@@ -175,7 +177,11 @@ export default function CartItem({
                   </div>
 
                   <div className="quantity">
-                    <QuantityIncrementor product={product} />
+                    {mode === 'static' ? (
+                      <QuantityStatic product={product} />
+                    ) : (
+                      <QuantityIncrementor product={product} />
+                    )}
                   </div>
 
                   <div className="title rhs">{product.title}</div>

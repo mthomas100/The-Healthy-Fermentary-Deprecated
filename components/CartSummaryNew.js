@@ -80,7 +80,7 @@ const Button = styled(ButtonMUI)`
   }
 `;
 
-export default function CartSummaryNew() {
+export default function CartSummaryNew({ mode }) {
   return (
     <CartSummaryNewStyles>
       <div className="cartWrapper">
@@ -88,7 +88,7 @@ export default function CartSummaryNew() {
           <CartHeader />
         </div> */}
         <div className="body">
-          <CartContents view="mobile" />
+          <CartContents view="mobile" mode={mode} />
         </div>
         {/* <div className="footer">
           <Button

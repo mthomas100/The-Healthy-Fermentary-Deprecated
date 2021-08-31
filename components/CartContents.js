@@ -7,7 +7,7 @@ import useComponentSize from '../lib/useComponentSize';
 
 const CartContentsStyles = styled.div``;
 
-export default function CartContents({ view }) {
+export default function CartContents({ view, mode }) {
   const cartContentsRef = useRef(null);
 
   const { cartContents, cartIsHovering } = useCart();
@@ -22,6 +22,7 @@ export default function CartContents({ view }) {
               product={product}
               index={index}
               cartIsHovering={view === 'mobile' || cartIsHovering}
+              mode={mode}
             />
             <Divider style={{ margin: '0 1rem' }} light />
           </div>

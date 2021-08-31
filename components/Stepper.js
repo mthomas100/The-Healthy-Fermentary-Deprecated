@@ -195,7 +195,12 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <CartSummaryNew />;
+      return (
+        <div style={{ marginTop: '4rem' }}>
+          <CheckoutHeader>Cart Overview</CheckoutHeader>
+          <CartSummaryNew />
+        </div>
+      );
     case 1:
       return (
         <FormSection>
@@ -206,7 +211,7 @@ function getStepContent(step) {
     case 2:
       return (
         <>
-          <CartSummary mode="overview" />
+          <CartSummaryNew mode="static" />
           <FormSection>
             <PaymentDetails variant="outlined" />
           </FormSection>
