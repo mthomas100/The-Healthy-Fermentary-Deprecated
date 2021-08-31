@@ -1,6 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
+import { Typography as TypographyMUI } from '@material-ui/core';
 import theme from './styles/theme';
 import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
@@ -58,11 +59,34 @@ const ContentStyles = styled.div`
   }
 `;
 
+const UnderConstruction = styled.div`
+  height: 4rem;
+  border-top: solid 4px;
+  border-bottom: solid 4px;
+  background-color: yellow;
+  border-image: repeating-linear-gradient(
+      -75deg,
+      yellow,
+      yellow 10px,
+      black 10px,
+      black 20px
+    )
+    20;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .text {
+    text-align: center;
+  }
+`;
+
 function Page({ children }) {
   const { pathname } = useRouter();
-  console.log({ pathname });
   const windowSize = useWindowSize();
-  console.log('isMobile', isMobile);
+
   return (
     <>
       <GlobalStyles />
@@ -71,7 +95,13 @@ function Page({ children }) {
         {/* <TopImage /> */}
         <OuterWrapperStyles>
           <ContentStyles>
+            <UnderConstruction>
+              <TypographyMUI variant="h6">
+                Pardon the mess. This website is currently under construction.
+              </TypographyMUI>
+            </UnderConstruction>
             <Header />
+
             {children}
             {pathname !== '/checkout' &&
               // (windowSize.width >= 700 ? <CartBar /> : <CartMobile />)
