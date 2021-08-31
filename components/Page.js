@@ -60,7 +60,7 @@ const ContentStyles = styled.div`
 `;
 
 const UnderConstruction = styled.div`
-  height: 4rem;
+  height: auto;
   border-top: solid 4px;
   border-bottom: solid 4px;
   background-color: yellow;
@@ -77,9 +77,11 @@ const UnderConstruction = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
+  text-align: center;
 
   .text {
     text-align: center;
+    padding: 2rem;
   }
 `;
 
