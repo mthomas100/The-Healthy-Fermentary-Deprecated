@@ -1,7 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
-import { Typography as TypographyMUI } from '@material-ui/core';
+
 import theme from './styles/theme';
 import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
@@ -9,6 +9,7 @@ import Typography from './styles/Typography';
 import CartBar from './CartBar';
 import { useWindowSize } from '../lib/useWindowSize';
 import CartMobile from './CartMobile';
+import UnderConstruction from './UnderConstruction';
 
 // TODO: assign a global programmable value to color pattern background
 // TODO: create optional background insertable objects via backend
@@ -59,32 +60,6 @@ const ContentStyles = styled.div`
   }
 `;
 
-const UnderConstruction = styled.div`
-  height: auto;
-  border-top: solid 4px;
-  border-bottom: solid 4px;
-  background-color: yellow;
-  border-image: repeating-linear-gradient(
-      -75deg,
-      yellow,
-      yellow 10px,
-      black 10px,
-      black 20px
-    )
-    20;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-  text-align: center;
-
-  .text {
-    text-align: center;
-    padding: 2rem;
-  }
-`;
-
 function Page({ children }) {
   const { pathname } = useRouter();
   const windowSize = useWindowSize();
@@ -97,26 +72,16 @@ function Page({ children }) {
         {/* <TopImage /> */}
         <OuterWrapperStyles>
           <ContentStyles>
-            <UnderConstruction>
-              <TypographyMUI variant="h6">
-                Pardon the mess. This website is currently under construction.
-              </TypographyMUI>
-            </UnderConstruction>
+            <UnderConstruction />
             <Header />
 
             {children}
-            {
-              pathname !== '/checkout' &&
-                (isMobile || windowSize.width <= 700 ? (
-                  <CartMobile />
-                ) : (
-                  <CartBar />
-                ))
-
-              // <CartMobile />
-
-              // <CartBar />
-            }
+            {pathname !== '/checkout' &&
+              (isMobile || windowSize.width <= 700 ? (
+                <CartMobile />
+              ) : (
+                <CartBar />
+              ))}
           </ContentStyles>
         </OuterWrapperStyles>
       </ThemeProvider>
