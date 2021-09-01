@@ -3,33 +3,36 @@ import { useRef, useEffect, useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useCart } from '../lib/cartState';
 import CartItem from './CartItem';
-import useComponentSize from '../lib/useComponentSize';
 
-const CartContentsStyles = styled.div``;
+const CartContentsStyles = styled.div`
+  min-height: 101%;
+`;
 
 export default function CartContents({ view, mode }) {
-  const cartContentsRef = useRef(null);
-
   const { cartContents, cartIsHovering } = useCart();
 
-  if (cartContents.length > 0) {
-    return (
-      <CartContentsStyles ref={cartContentsRef}>
-        {cartContents.map((product, index) => (
-          <div className="cartItemWrapper" key={product.id}>
-            <CartItem
-              key={product.id}
-              product={product}
-              index={index}
-              cartIsHovering={view === 'mobile' || cartIsHovering}
-              mode={mode}
-            />
-            <Divider style={{ margin: '0 1rem' }} light />
-          </div>
-        ))}
-      </CartContentsStyles>
-    );
-  }
-  return <CartItem cartEmpty />;
-  // TODO: say something like "No items in cart currently"
+  return (
+    <>
+      {cartContents.length > 0 ? (
+        <CartContentsStyles>
+          {cartContents.map((product, index) => (
+            <div className="cartItemWrapper" key={product.id}>
+              <CartItem
+                key={product.id}
+                product={product}
+                index={index}
+                cartIsHovering={view === 'mobile' || cartIsHovering}
+                mode={mode}
+              />
+              <Divider style={{ margin: '0 1rem' }} light />
+            </div>
+          ))}
+        </CartContentsStyles>
+      ) : (
+        <CartContentsStyles>
+          <CartItem cartEmpty />
+        </CartContentsStyles>
+      )}
+    </>
+  );
 }

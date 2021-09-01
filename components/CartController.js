@@ -43,10 +43,7 @@ const CartControllerStyles = styled.div`
       bottom: 0;
       box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
       filter: blur(5px);
-      border-top-left-radius: 2rem;
-      border-top-right-radius: 0.5rem;
-      border-bottom-left-radius: 2rem;
-      border-bottom-right-radius: 0.5rem;
+      border-radius: 50%;
     }
   }
 `;

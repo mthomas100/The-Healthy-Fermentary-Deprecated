@@ -105,14 +105,18 @@ function Page({ children }) {
             <Header />
 
             {children}
-            {pathname !== '/checkout' && (
-              // (isMobile || windowSize.width <= 700 ? (
-              //   <CartMobile />
-              // ) : (
-              //   <CartBar />
-              // ))
-              <CartMobile />
-            )}
+            {
+              pathname !== '/checkout' &&
+                (isMobile || windowSize.width <= 700 ? (
+                  <CartMobile />
+                ) : (
+                  <CartBar />
+                ))
+
+              // <CartMobile />
+
+              // <CartBar />
+            }
           </ContentStyles>
         </OuterWrapperStyles>
       </ThemeProvider>
