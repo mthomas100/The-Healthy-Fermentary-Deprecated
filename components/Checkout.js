@@ -7,12 +7,23 @@ import Stepper from './Stepper';
 const CheckoutStyles = styled.div`
   position: relative;
   top: 2rem;
-  padding: 0rem 4rem 6rem 4rem;
+  padding: 0 4rem;
+  padding-bottom: 6rem;
   gap: 2rem;
   justify-content: center;
   margin: 0 auto;
   max-width: 600px;
   min-height: 100vh;
+
+  @media only screen and (max-width: 440px) {
+    padding: 0 0rem;
+    padding-bottom: 6rem;
+  }
+
+  @media only screen and (max-width: 350) {
+    padding: 0;
+    padding-bottom: 6rem;
+  }
 `;
 
 // Step Circle with # inside it

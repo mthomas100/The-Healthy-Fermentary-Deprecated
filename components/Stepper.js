@@ -388,6 +388,7 @@ export default function CustomizedSteppers() {
               <Button
                 variant="contained"
                 color="primary"
+                style={{ backgroundColor: 'black' }}
                 onClick={
                   activeStep === steps.length - 1 ? submitOrder : handleNext
                 }
