@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const FormSectionStyles = styled.div`
-  padding: 2rem 0;
   height: auto;
   max-width: 100%;
   min-width: 100%;
@@ -75,7 +74,10 @@ const FormSectionStyles = styled.div`
 function FormSection({ children }) {
   return (
     <FormSectionStyles>
-      <FormControl className="formControl" /* noValidate autoComplete="off" */>
+      <FormControl
+        className="formControl"
+        /* noValidate autoComplete="off" */ style={{ border: '1px solid red' }}
+      >
         {children}
       </FormControl>
     </FormSectionStyles>

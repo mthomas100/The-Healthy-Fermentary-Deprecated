@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { CardActionArea } from '@material-ui/core';
 import AddToCart from './AddToCart';
 import useComponentSize from '../lib/useComponentSize';
 import { useWindowSize } from '../lib/useWindowSize';
@@ -11,30 +12,7 @@ import {
   TypographyPrimary,
   TypographySecondary,
 } from './styles/ProductStyles';
-
-const PriceStyles = styled.div`
-  position: absolute;
-  z-index: 1;
-  top: 5%;
-  right: 5%;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #000000c5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .currency {
-    margin-right: 2px;
-  }
-
-  .price {
-    text-align: center;
-    color: white;
-    font-size: 1.3rem;
-  }
-`;
+import PriceTag from './PriceTag';
 
 export default function Product({
   product,
@@ -53,12 +31,7 @@ export default function Product({
 
   return (
     <ProductStyles addToCartSize={addToCartSize} ref={productRef}>
-      <PriceStyles>
-        <div className="price">
-          <span className="currency">₹</span>
-          {product.price}
-        </div>
-      </PriceStyles>
+      <PriceTag price={product.price} />
       <Card>
         <Image
           src={product.image.url}
@@ -80,6 +53,7 @@ export default function Product({
             {product.description}
           </TypographySecondary>
         </CardContent>
+
         <AddToCart product={product} setAddToCartSize={setAddToCartSize} />
       </Card>
     </ProductStyles>

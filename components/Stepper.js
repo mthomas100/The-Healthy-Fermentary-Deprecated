@@ -196,10 +196,10 @@ function getStepContent(step) {
   switch (step) {
     case 0:
       return (
-        <div style={{ marginTop: '4rem' }}>
+        <>
           <CheckoutHeader>Cart Overview</CheckoutHeader>
           <CartSummaryNew />
-        </div>
+        </>
       );
     case 1:
       return (
@@ -211,6 +211,7 @@ function getStepContent(step) {
     case 2:
       return (
         <>
+          <CheckoutHeader>Review & Payment</CheckoutHeader>
           <CartSummaryNew mode="static" />
           <FormSection>
             <PaymentDetails variant="outlined" />
@@ -369,7 +370,9 @@ export default function CustomizedSteppers() {
         ) : (
           <div>
             <Typography className={classes.instructions} component="div">
-              {getStepContent(activeStep)}
+              <div style={{ paddingTop: '4rem' }}>
+                {getStepContent(activeStep)}
+              </div>
             </Typography>
 
             <div

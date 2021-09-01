@@ -54,7 +54,7 @@ export default function CartSummaryFooter() {
       <Divider />
       <div className="price">
         <div className="text">TOTAL</div>
-        <div className="number">₹ 1050</div>
+        <div className="number">₹ {calcTotalPrice(cartContents) + 80}</div>
       </div>
     </FooterStyles>
   );

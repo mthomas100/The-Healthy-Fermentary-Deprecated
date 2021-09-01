@@ -1,13 +1,20 @@
 import { CardElement } from '@stripe/react-stripe-js';
+import styled from 'styled-components';
 import StripeTextField from './StripeTextField';
+
+const PaymentDetailsStyles = styled.div`
+  /* border: 3px solid green; */
+`;
 
 export default function PaymentDetails({ variant }) {
   return (
-    <>
+    <PaymentDetailsStyles className="fullWidth">
       <h1>Payment Details</h1>
       <div
-        className="textField stripeWrapper fullWidth"
-        style={{ fontSize: '2px', backgroundColor: 'transparent' }}
+        style={{
+          fontSize: '2px',
+          backgroundColor: 'transparent',
+        }}
       >
         <StripeTextField
           label="" //  "Credit Card"
@@ -15,6 +22,6 @@ export default function PaymentDetails({ variant }) {
           variant={variant}
         />
       </div>
-    </>
+    </PaymentDetailsStyles>
   );
 }

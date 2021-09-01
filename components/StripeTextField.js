@@ -82,6 +82,7 @@ StripeInput.propTypes = {
 
 const TextField = styled(TextFieldMUI)`
 background-color: 'transparent';
+border: 3px solid red;
 `;
 export default function StripeTextField(props) {
   const {

@@ -30,6 +30,7 @@ const Card = styled(CardMUI)`
 const CardContent = styled(CardContentMUI)`
   && {
     min-height: ${(props) => props.maxContentHeight}px;
+    pointer-events: none;
   }
 `;
 
