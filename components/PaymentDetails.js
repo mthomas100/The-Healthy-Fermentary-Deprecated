@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import StripeTextField from './StripeTextField';
 
 const PaymentDetailsStyles = styled.div`
-  /* border: 3px solid green; */
+  padding-top: 1rem;
 `;
 
 export default function PaymentDetails({ variant }) {

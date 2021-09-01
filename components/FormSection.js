@@ -6,6 +6,7 @@ const FormSectionStyles = styled.div`
   height: auto;
   max-width: 100%;
   min-width: 100%;
+  padding-bottom: 3rem;
 
   h1 {
     /* margin: 0 auto; */
@@ -48,10 +49,6 @@ const FormSectionStyles = styled.div`
   }
 
   @media only screen and (max-width: 660px) {
-    padding: 2rem 0.5rem;
-    .formControl {
-      padding: 5rem 2rem;
-    }
     .formControl * {
       grid-column: 1/3;
     }
@@ -74,10 +71,7 @@ const FormSectionStyles = styled.div`
 function FormSection({ children }) {
   return (
     <FormSectionStyles>
-      <FormControl
-        className="formControl"
-        /* noValidate autoComplete="off" */ style={{ border: '1px solid red' }}
-      >
+      <FormControl className="formControl" /* noValidate autoComplete="off" */>
         {children}
       </FormControl>
     </FormSectionStyles>
