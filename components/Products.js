@@ -33,7 +33,6 @@ export default function Products({ products }) {
 
   useLayoutEffect(() => {
     setMaxContentHeight(Math.max(...contentSizeArray));
-    console.log(maxContentHeight);
   }, [contentSizeArray, maxContentHeight]);
 
   return (

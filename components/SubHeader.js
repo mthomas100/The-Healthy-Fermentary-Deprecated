@@ -1,14 +1,25 @@
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { useWindowSize } from '../lib/useWindowSize';
+import useComponentSize from '../lib/useComponentSize';
 
 const SubHeaderStyles = styled.div`
   width: 100%;
   height: 7rem;
   background-color: #fcfcfc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow-x: auto;
   box-shadow: black;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border: 2px solid purple;
+`;
+
+const CategoriesStyles = styled.div`
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border: 2px solid green;
 `;
 
 const CategoryStyles = styled.div`
@@ -27,13 +38,24 @@ const CategoryStyles = styled.div`
 `;
 
 export default function SubHeader() {
+  const categoriesRef = useRef(null);
+  const windowSize = useWindowSize();
+  const categoriesSize = useComponentSize(categoriesRef);
+
+  useEffect(() => {
+    console.log('cat', categoriesSize.width);
+    console.log('window', windowSize.width);
+  }, [windowSize]);
+
   return (
     <SubHeaderStyles>
-      <CategoryStyles>All</CategoryStyles>
-      <CategoryStyles>Kombucha</CategoryStyles>
-      <CategoryStyles>Mead</CategoryStyles>
-      <CategoryStyles>Kombucha</CategoryStyles>
-      <CategoryStyles>Mead</CategoryStyles>
+      <CategoriesStyles ref={categoriesRef}>
+        <CategoryStyles>All</CategoryStyles>
+        <CategoryStyles>Kombucha</CategoryStyles>
+        <CategoryStyles>Mead</CategoryStyles>
+        <CategoryStyles>Kombucha</CategoryStyles>
+        <CategoryStyles>Mead</CategoryStyles>
+      </CategoriesStyles>
     </SubHeaderStyles>
   );
 }
