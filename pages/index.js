@@ -1,11 +1,13 @@
 import gql from 'graphql-tag';
 import React from 'react';
 import Products from '../components/Products';
+import SubHeader from '../components/SubHeader';
 import client from '../lib/apollo-client';
 
 export default function Home({ products }) {
   return (
     <>
+      <SubHeader />
       <Products products={products} />
     </>
   );

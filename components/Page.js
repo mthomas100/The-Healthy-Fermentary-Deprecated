@@ -20,7 +20,7 @@ const OuterWrapperStyles = styled.div`
   width: 100%;
   background-size: 400%;
   padding: 2rem 1rem;
-  background-color: beige;
+  background-color: #fff0c345;
 
   &:before {
     content: '';
@@ -44,7 +44,8 @@ const ContentStyles = styled.div`
   box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2rem;
   position: relative;
-  background-color: #efeee9cf;
+  /* background-color: #efeee9cf; */
+  background-color: #f7f7f7a4;
 
   &:before {
     content: '';
@@ -73,6 +74,7 @@ function Page({ children }) {
         <OuterWrapperStyles>
           <ContentStyles>
             <Header />
+
             {children}
             {pathname !== '/checkout' &&
               (isMobile || windowSize.width <= 700 ? (
