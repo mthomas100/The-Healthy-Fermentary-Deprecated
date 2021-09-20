@@ -74,7 +74,6 @@ function Page({ children }) {
         <OuterWrapperStyles>
           <ContentStyles>
             <Header />
-
             {children}
             {pathname !== '/checkout' &&
               (isMobile || windowSize.width <= 700 ? (

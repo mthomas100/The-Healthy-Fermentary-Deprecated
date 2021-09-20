@@ -10,7 +10,7 @@ export default function CheckoutHeader({ children }) {
       style={{
         textAlign: 'center',
         marginBottom: '2rem',
-        fontSize: '1.5rem',
+        fontSize: '1.6rem',
         fontWeight: 600,
       }}
     >
