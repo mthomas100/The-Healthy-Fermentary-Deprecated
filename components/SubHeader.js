@@ -5,32 +5,34 @@ import useComponentSize from '../lib/useComponentSize';
 
 const SubHeaderStyles = styled.div`
   width: 100%;
-  height: 7rem;
+  height: auto;
   background-color: #fcfcfc;
   overflow-x: auto;
   box-shadow: black;
   display: flex;
   align-items: center;
-  justify-content: left;
-  border: 2px solid purple;
+  justify-content: ${(props) => props.justifyContent};
+  padding: 3rem 1rem;
 `;
 
 const CategoriesStyles = styled.div`
   display: flex;
-  justify-content: left;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  border: 2px solid green;
+  row-gap: 1.5rem;
 `;
 
 const CategoryStyles = styled.div`
   height: 3rem;
-  padding: 0 3rem;
+  padding: 2rem 4rem;
   border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 2rem;
   background-color: #ffffff;
+  font-size: 1.2rem;
 
   &:not(:last-child) {
     margin-right: 2rem;
@@ -42,13 +44,12 @@ export default function SubHeader() {
   const windowSize = useWindowSize();
   const categoriesSize = useComponentSize(categoriesRef);
 
-  useEffect(() => {
-    console.log('cat', categoriesSize.width);
-    console.log('window', windowSize.width);
-  }, [windowSize]);
-
   return (
-    <SubHeaderStyles>
+    <SubHeaderStyles
+      justifyContent={
+        categoriesSize.width > windowSize.width ? 'left' : 'center'
+      }
+    >
       <CategoriesStyles ref={categoriesRef}>
         <CategoryStyles>All</CategoryStyles>
         <CategoryStyles>Kombucha</CategoryStyles>

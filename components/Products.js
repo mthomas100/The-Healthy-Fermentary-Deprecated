@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { useEffect, useLayoutEffect, useState, useRef } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import Product from './Product';
 import { useCart } from '../lib/cartState';
 import { useWindowSize } from '../lib/useWindowSize';
 import useComponentSize from '../lib/useComponentSize';
-import { useLayout } from '../lib/layoutState';
 
 const ProductsStyles = styled.div`
   display: flex;
@@ -28,23 +27,16 @@ const ProductsStyles = styled.div`
 `;
 
 export default function Products({ products }) {
-  const productsRef = useRef(null);
   const { setCartIsHovering } = useCart();
   const [contentSizeArray, setContentSizeArray] = useState([]);
   const [maxContentHeight, setMaxContentHeight] = useState(undefined);
 
-  const { setProductsWidth } = useLayout();
-
   useLayoutEffect(() => {
-    const productsWidth = useComponentSize(productsRef);
-    setProductsWidth(productsWidth);
-  }, []);
+    setMaxContentHeight(Math.max(...contentSizeArray));
+  }, [contentSizeArray, maxContentHeight]);
 
   return (
-    <ProductsStyles
-      onMouseOver={() => setCartIsHovering(false)}
-      ref={productsRef}
-    >
+    <ProductsStyles onMouseOver={() => setCartIsHovering(false)}>
       <div className="products">
         {products.map((product) => (
           <Product
