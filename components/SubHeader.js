@@ -23,7 +23,7 @@ const CategoriesStyles = styled.div`
   row-gap: 1.5rem;
 `;
 
-const CategoryStyles = styled.div`
+const CategoryButtonStyles = styled.div`
   height: 3rem;
   padding: 2rem 4rem;
   border: 1px solid black;
@@ -33,16 +33,25 @@ const CategoryStyles = styled.div`
   border-radius: 2rem;
   background-color: #ffffff;
   font-size: 1.2rem;
+  cursor: default;
 
   &:not(:last-child) {
     margin-right: 2rem;
   }
+
+  &:hover {
+    background-color: #dfdfdf;
+  }
 `;
 
-export default function SubHeader() {
+export default function SubHeader({ categories, setSelectedCategory }) {
   const categoriesRef = useRef(null);
   const windowSize = useWindowSize();
   const categoriesSize = useComponentSize(categoriesRef);
+
+  function handleCategoryButtonClick(category) {
+    setSelectedCategory(category);
+  }
 
   return (
     <SubHeaderStyles
@@ -51,11 +60,18 @@ export default function SubHeader() {
       }
     >
       <CategoriesStyles ref={categoriesRef}>
-        <CategoryStyles>All</CategoryStyles>
-        <CategoryStyles>Kombucha</CategoryStyles>
-        <CategoryStyles>Mead</CategoryStyles>
-        <CategoryStyles>Kombucha</CategoryStyles>
-        <CategoryStyles>Mead</CategoryStyles>
+        <CategoryButtonStyles
+          onClick={(e) => handleCategoryButtonClick(e.target.innerText)}
+        >
+          All
+        </CategoryButtonStyles>
+        {categories.map((category) => (
+          <CategoryButtonStyles
+            onClick={(e) => handleCategoryButtonClick(e.target.innerText)}
+          >
+            {category.name}
+          </CategoryButtonStyles>
+        ))}
       </CategoriesStyles>
     </SubHeaderStyles>
   );

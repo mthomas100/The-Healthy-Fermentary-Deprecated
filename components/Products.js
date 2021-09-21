@@ -26,7 +26,7 @@ const ProductsStyles = styled.div`
   }
 `;
 
-export default function Products({ products }) {
+export default function Products({ products, selectedCategory }) {
   const { setCartIsHovering } = useCart();
   const [contentSizeArray, setContentSizeArray] = useState([]);
   const [maxContentHeight, setMaxContentHeight] = useState(undefined);
@@ -38,14 +38,34 @@ export default function Products({ products }) {
   return (
     <ProductsStyles onMouseOver={() => setCartIsHovering(false)}>
       <div className="products">
-        {products.map((product) => (
-          <Product
-            product={product}
-            key={product.id}
-            setContentSizeArray={setContentSizeArray}
-            maxContentHeight={maxContentHeight}
-          />
-        ))}
+        {products.map((product) => {
+          const categoriesArray = product.categories.map(
+            (category) => category.name
+          );
+
+          if (selectedCategory !== 'All') {
+            if (categoriesArray.includes(selectedCategory)) {
+              return (
+                <Product
+                  product={product}
+                  key={product.id}
+                  setContentSizeArray={setContentSizeArray}
+                  maxContentHeight={maxContentHeight}
+                />
+              );
+            }
+          } else {
+            console.log('category is All');
+            return (
+              <Product
+                product={product}
+                key={product.id}
+                setContentSizeArray={setContentSizeArray}
+                maxContentHeight={maxContentHeight}
+              />
+            );
+          }
+        })}
       </div>
     </ProductsStyles>
   );

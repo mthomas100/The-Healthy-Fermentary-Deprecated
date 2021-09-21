@@ -1,20 +1,29 @@
 import gql from 'graphql-tag';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Products from '../components/Products';
 import SubHeader from '../components/SubHeader';
 import client from '../lib/apollo-client';
 
-export default function Home({ products }) {
+export default function Home({ categories, products }) {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  useEffect(() => {
+    console.log(selectedCategory);
+  }, [selectedCategory]);
+
   return (
     <>
-      <SubHeader />
-      <Products products={products} />
+      <SubHeader
+        categories={categories}
+        setSelectedCategory={setSelectedCategory}
+      />
+      <Products products={products} selectedCategory={selectedCategory} />
     </>
   );
 }
 
 export async function getStaticProps() {
-  const { data } = await client.query({
+  const { data: productsData } = await client.query({
     query: gql`
       query ALL_PRODUCTS_QUERY {
         products {
@@ -26,6 +35,22 @@ export async function getStaticProps() {
           }
           price
           slug
+          categories {
+            name
+            id
+          }
+        }
+      }
+    `,
+  });
+
+  const { data: categoriesData } = await client.query({
+    query: gql`
+      query ALL_CATEGORIES_QUERY {
+        categories {
+          name
+          slug
+          id
         }
       }
     `,
@@ -33,7 +58,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      products: data.products,
+      products: productsData.products,
+      categories: categoriesData.categories,
     },
   };
 }
