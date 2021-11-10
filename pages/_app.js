@@ -2,7 +2,10 @@ import NProgress from 'nprogress';
 import Router from 'next/router';
 import Page from '../components/Page';
 import '../components/styles/nprogress.css';
-
+// Tailwind CSS
+import 'tailwindcss/tailwind.css';
+import '../components/styles/globals.css';
+// Context
 import { CartStateProvider } from '../lib/cartState';
 import { CheckoutStateProvider } from '../lib/checkoutState';
 

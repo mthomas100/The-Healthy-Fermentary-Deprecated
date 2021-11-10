@@ -34,18 +34,10 @@ const Button = styled(ButtonMUI)`
   }
 `;
 
-const AddToCartStyles = styled.div`
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-`;
-
-export default function AddToCart({ product, setAddToCartSize }) {
-  const ref = useRef(null);
+export default function AddToCart({ product }) {
   const classes = useStyles();
   const { modifyCartQuantity, openCart } = useCart();
   const [selectValue, setSelectValue] = useState(1);
-  setAddToCartSize(useComponentSize(ref));
 
   function handleAddToCart(e) {
     modifyCartQuantity(product, selectValue); // TODO: Needs to add X to whats already there
@@ -53,16 +45,14 @@ export default function AddToCart({ product, setAddToCartSize }) {
   }
 
   return (
-    <AddToCartStyles ref={ref}>
-      <Button
-        onClick={handleAddToCart}
-        variant="contained"
-        color="primary"
-        classes={classes.btn}
-        size="large"
-      >
-        Add to Cart
-      </Button>
-    </AddToCartStyles>
+    <Button
+      onClick={handleAddToCart}
+      variant="contained"
+      color="primary"
+      classes={classes.btn}
+      size="large"
+    >
+      Add to Cart
+    </Button>
   );
 }

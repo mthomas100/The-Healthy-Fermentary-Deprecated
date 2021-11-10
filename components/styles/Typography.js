@@ -1,15 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 import '@fontsource/montserrat';
+import '@fontsource/inter';
 // import '@fontsource/reenie-beanie';
 
 const Typography = createGlobalStyle`
 
-  @font-face {
+  /* @font-face {
     font-family: 'radnika_next';
     src: url('/fonts/radnikanext-medium-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-  }
+  } */
 
   html {
     font-family: edo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
