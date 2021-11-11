@@ -13,10 +13,10 @@ export default function Home({ categories, products }) {
 
   return (
     <>
-      <SubHeader
+      {/* <SubHeader
         categories={categories}
         setSelectedCategory={setSelectedCategory}
-      />
+      /> */}
       <Products products={products} selectedCategory={selectedCategory} />
     </>
   );

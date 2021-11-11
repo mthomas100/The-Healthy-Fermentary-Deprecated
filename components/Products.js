@@ -30,17 +30,17 @@ export default function Products({ products, selectedCategory }) {
                   className="absolute inset-0 z-0"
                 />
               </div>
-              <div className="mt-4 flex flex-col py-2">
+              <div id="productInfo" className="mt-4 flex flex-col flex-1 gap-4">
                 <div
                   id="titleAndPrice"
-                  className="flex justify-between text-xl mb-4"
+                  className="flex justify-between text-xl"
                 >
                   <div id="title">{product.title}</div>
                   <div id="price">${product.price}</div>
                 </div>
                 <div
                   id="description"
-                  className="text-lg leading-[3rem] font-extralight"
+                  className="text-lg leading-[3rem] font-extralight  justify-self-start h-[130px]"
                 >
                   {product.description}
                 </div>

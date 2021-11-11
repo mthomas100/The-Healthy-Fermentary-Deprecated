@@ -21,19 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Button = styled(ButtonMUI)`
-  && {
-    background-color: #000000c5;
-    width: 100%;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-
-    &:hover {
-      background-color: #01050373;
-    }
-  }
-`;
-
 export default function AddToCart({ product }) {
   const classes = useStyles();
   const { modifyCartQuantity, openCart } = useCart();
@@ -45,14 +32,13 @@ export default function AddToCart({ product }) {
   }
 
   return (
-    <Button
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      className="bg-gray-800 text-gray-100 font-semibold uppercase git text-center py-4 rounded-lg"
       onClick={handleAddToCart}
-      variant="contained"
-      color="primary"
-      classes={classes.btn}
-      size="large"
     >
       Add to Cart
-    </Button>
+    </div>
   );
 }
