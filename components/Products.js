@@ -17,7 +17,7 @@ export default function Products({ products, selectedCategory }) {
   return (
     <div className="bg-white px-4 xs:px-8 md:px-12">
       <div className="max-w-full mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-        <div className="mt-2 grid gap-y-12 gap-x-4 grid-cols-1 xs:grid-cols-2 xs:gap-x-8 md:grid-cols-3 md:gap-x-12 lg:grid-cols-3 lg:gap-x-20">
+        <div className="mt-2 grid gap-y-12 gap-x-4 grid-cols-1 xs:grid-cols-1 xs:gap-x-8 sm:grid-cols-2 md:grid-cols-3 md:gap-x-12 lg:grid-cols-3 lg:gap-x-20">
           {products.map((product) => (
             <div key={product.id} className="group relative">
               <div className="relative w-full min-h-[30rem] bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
@@ -40,7 +40,7 @@ export default function Products({ products, selectedCategory }) {
                 </div>
                 <div
                   id="description"
-                  className="text-lg leading-[3rem] font-extralight  justify-self-start h-[130px]"
+                  className="text-lg leading-[3rem] font-extralight  justify-self-start min-h-[150px]"
                 >
                   {product.description}
                 </div>
