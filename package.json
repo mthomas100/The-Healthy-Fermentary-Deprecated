@@ -71,6 +71,7 @@
     "react-star-sky": "^1.0.0",
     "react-toastify": "^7.0.4",
     "react-transition-group": "^4.4.2",
+    "react-use": "^17.3.1",
     "react-uuid": "^1.0.2",
     "reactstrap": "^8.9.0",
     "rebass": "^4.0.7",
@@ -80,6 +81,7 @@
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5",
     "theme-ui": "^0.8.4",
+    "twin.macro": "^2.8.1",
     "waait": "^1.0.5",
     "yup": "^0.28.1"
   },

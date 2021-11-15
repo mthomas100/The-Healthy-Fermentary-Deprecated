@@ -10,6 +10,7 @@ import CartBar from './CartBar';
 import { useWindowSize } from '../lib/useWindowSize';
 import CartMobile from './CartMobile';
 import UnderConstruction from './UnderConstruction';
+import HeaderNew from './HeaderNew';
 
 // TODO: assign a global programmable value to color pattern background
 // TODO: create optional background insertable objects via backend
@@ -73,7 +74,8 @@ function Page({ children }) {
         {/* <TopImage /> */}
         <OuterWrapperStyles>
           <ContentStyles>
-            <Header />
+            {/* <Header /> */}
+            <HeaderNew />
 
             {children}
             {pathname !== '/checkout' &&
