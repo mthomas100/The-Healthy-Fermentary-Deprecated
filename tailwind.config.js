@@ -19,6 +19,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Inter', 'sans'],
+      montserrat: ['Montserrat', 'sans'],
     },
   },
   variants: {
