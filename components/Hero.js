@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import ReactPlayer from 'react-player';
-import { useWindowSize, useMeasure } from 'react-use';
-import useBreakpoint from '../lib/useBreakpoint';
+import { useMeasure } from 'react-use';
+import { useEffect } from 'react';
+import { useLayout } from '../lib/layoutState';
 
 export default function Hero() {
   const [headlineRef, { width: headlineWidth }] = useMeasure();
-
+  const [heroRef, { height: heroHeight }] = useMeasure();
+  const { setHeroHeight } = useLayout();
+  useEffect(() => {
+    setHeroHeight(heroHeight);
+  });
   return (
     <div className="relative py-32">
       <Image
@@ -18,12 +23,13 @@ export default function Hero() {
       />
       <div
         id="imageFilter"
-        className="z-10 absolute inset-0 bg-gray-500 opacity-50"
+        className="absolute inset-0 bg-gray-500 opacity-50"
+        ref={heroRef}
       />
       <div className="relative w-full min-h-full ">
         <div
           id="textAndVideo"
-          className="relative font-montserrat font-bold tracking-wide z-20 inset-0 flex flex-col justify-center items-center text-left  gap-y-7 sm:gap-y-10 lg:gap-y-16 text-3xl xs:text-5xl sm:text-6xl lg:text-8xl"
+          className="relative font-montserrat font-bold tracking-wide inset-0 flex flex-col justify-center items-center text-left  gap-y-7 sm:gap-y-10 lg:gap-y-16 text-3xl xs:text-5xl sm:text-6xl lg:text-8xl"
         >
           <div className="text-white">
             <span>Fermented Beverages</span>

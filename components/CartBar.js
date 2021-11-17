@@ -6,17 +6,19 @@ import CartHeader from './CartHeader';
 import CartContents from './CartContents';
 import { useWindowSize } from '../lib/useWindowSize';
 import { useCart } from '../lib/cartState';
+import { useLayout } from '../lib/layoutState';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
-  top: 28rem;
+  top: ${(props) =>
+    `${props.cartOffset}px`}; // Minimum amount of space between the top of the screen and the top of the cart bar
   right: 4px;
-  min-height: calc(100% - 28rem);
+  min-height: calc(100% - ${(props) => props.cartOffset}px);
   width: auto;
 
   .cartBarWrapper {
     position: sticky;
-    top: 10rem; //double this for carBar maxHeight
+    top: 0rem; // Amount of space from top of screen once section is scrolled to
     /* bottom: 10px; */
   }
 
@@ -75,6 +77,7 @@ export default function CartBar() {
   } = useCart();
 
   const { height: windowHeight } = useWindowSize();
+  const { cartOffset } = useLayout();
 
   return (
     <AnimatePresence before>
@@ -90,6 +93,7 @@ export default function CartBar() {
           cartItemTotal={cartItemTotal}
           cartOpen={cartOpen}
           cartIsHovering={cartIsHovering}
+          cartOffset={cartOffset}
         >
           <div className="cartBarWrapper">
             <motion.div
