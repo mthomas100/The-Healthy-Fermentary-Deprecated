@@ -44,7 +44,7 @@ export default function Products({ products }) {
     <div className="bg-white">
       <div
         id="productsContainer"
-        className="max-w-full py-16 px-[10px] md:px-[132px]"
+        className="max-w-full py-16 px-[10px] lg:px-[132px]"
       >
         <div
           className={`flex justify-center flex-wrap ${

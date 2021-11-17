@@ -75,7 +75,7 @@ function Page({ children }) {
         <OuterWrapperStyles>
           <ContentStyles>
             {/* <Header /> */}
-            <HeaderNew />
+            {/* <HeaderNew /> */}
 
             {children}
             {pathname !== '/checkout' &&

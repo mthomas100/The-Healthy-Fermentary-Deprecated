@@ -66,6 +66,7 @@
     "react-device-detect": "^1.17.0",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
+    "react-player": "^2.9.0",
     "react-sizeme": "^3.0.1",
     "react-spinners": "^0.11.0",
     "react-star-sky": "^1.0.0",
