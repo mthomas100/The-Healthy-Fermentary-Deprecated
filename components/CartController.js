@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCart } from '../lib/cartState';
 import CartButton from './CartButton';
+import { useLayout } from '../lib/layoutState';
 
 const variants = {
   cartClosed: {
@@ -15,7 +16,7 @@ const variants = {
 const CartControllerStyles = styled.div`
   position: absolute;
   right: 2rem;
-  top: 55rem;
+  top: ${(props) => `${props.cartOffset + 60}px`};
 
   .cartIconWrapper {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
@@ -50,8 +51,9 @@ const CartControllerStyles = styled.div`
 
 export default function CartController() {
   const { toggleCartMobile, cartMobileOpen } = useCart();
+  const { cartOffset } = useLayout();
   return (
-    <CartControllerStyles>
+    <CartControllerStyles cartOffset={cartOffset}>
       <AnimatePresence>
         <motion.div
           className="cartIconWrapper"
