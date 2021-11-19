@@ -29,7 +29,7 @@ export default function Hero() {
       <div className="relative w-full min-h-full ">
         <div
           id="textAndVideo"
-          className="relative font-montserrat font-bold tracking-wide inset-0 flex flex-col justify-center items-center text-left  gap-y-7 sm:gap-y-10 lg:gap-y-16 text-3xl xs:text-5xl sm:text-6xl lg:text-8xl"
+          className="relative font-montserrat font-bold tracking-wide inset-0 flex flex-col justify-center items-center text-left  gap-y-5 xxs:gap-y-7 sm:gap-y-10 lg:gap-y-16 text-2xl xxs:text-3xl xs:text-5xl sm:text-6xl lg:text-8xl"
         >
           <div className="text-white">
             <span>Fermented Beverages</span>
