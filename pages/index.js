@@ -8,7 +8,6 @@ import client from '../lib/apollo-client';
 
 export default function Home({ categories, products, hero }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  console.log(hero);
 
   useEffect(() => {
     console.log(selectedCategory);

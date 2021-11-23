@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Flex } from 'rebass/styled-components';
-import { useCart } from '../lib/cartState';
+import { useCart } from '../../lib/cartState';
 import CartSummaryFooter from './CartSummaryFooter';
-import CheckoutHeader from './CheckoutHeader';
+import CheckoutHeader from '../CheckoutHeader';
 import CartSummaryItem from './CartSummaryItem';
 
 const CartSummaryStyles = styled.div`

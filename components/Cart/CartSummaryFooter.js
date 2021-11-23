@@ -1,7 +1,7 @@
 import { Divider } from '@material-ui/core';
 import styled from 'styled-components';
-import calcTotalPrice from '../lib/calcTotalPrice';
-import { useCart } from '../lib/cartState';
+import calcTotalPrice from '../../lib/calcTotalPrice';
+import { useCart } from '../../lib/cartState';
 
 const FooterStyles = styled.div`
   position: relative;

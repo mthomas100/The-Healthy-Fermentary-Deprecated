@@ -3,7 +3,6 @@ import client from '../../lib/apollo-client';
 
 export default function Products({ error, product }) {
   console.log(error);
-  console.log(product);
 
   if (!error) {
     return (
