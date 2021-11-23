@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { useRef, useLayoutEffect } from 'react';
-import calcTotalPrice from '../lib/calcTotalPrice';
-import { useCart } from '../lib/cartState';
+import { useRef } from 'react';
+import calcTotalPrice from '../../lib/calcTotalPrice';
+import { useCart } from '../../lib/cartState';
 import CartIcon from './CartIcon';
-import useComponentSize from '../lib/useComponentSize';
 
 const CartHeaderStyles = styled.div`
   .cartIconWrapper {

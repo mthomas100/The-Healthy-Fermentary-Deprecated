@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { Button as ButtonMUI, Typography } from '@material-ui/core';
 import Link from 'next/link';
-import { useCart } from '../lib/cartState';
+import { useCart } from '../../lib/cartState';
 import CartContents from './CartContents';
 import CartController from './CartController';
 import CartHeader from './CartHeader';

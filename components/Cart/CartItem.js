@@ -1,10 +1,9 @@
 import { Typography } from '@material-ui/core';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
-import { useRef, useEffect, useLayoutEffect } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
-
-import useComponentSize from '../lib/useComponentSize';
+import useComponentSize from '../../lib/useComponentSize';
 import QuantityIncrementor from './QuantityIncrementor';
 import QuantitySelector from './QuantitySelector';
 import QuantityStatic from './QuantityStatic';

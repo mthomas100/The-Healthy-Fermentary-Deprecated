@@ -1,7 +1,6 @@
 import { Divider } from '@material-ui/core';
-import { useRef, useEffect, useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useCart } from '../lib/cartState';
+import { useCart } from '../../lib/cartState';
 import CartItem from './CartItem';
 
 const CartContentsStyles = styled.div`

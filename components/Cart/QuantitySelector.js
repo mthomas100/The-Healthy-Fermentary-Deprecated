@@ -4,9 +4,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import styled from 'styled-components';
-import { FormHelperText } from '@material-ui/core';
 import uuid from 'react-uuid';
-import { useCart } from '../lib/cartState';
+import { useCart } from '../../lib/cartState';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {

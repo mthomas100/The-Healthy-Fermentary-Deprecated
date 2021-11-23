@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { AnimatePresence, motion, useMotionValue } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import CheckoutButton from './CheckoutButton';
+import { AnimatePresence, motion } from 'framer-motion';
+import CheckoutButton from '../CheckoutButton';
 import CartHeader from './CartHeader';
 import CartContents from './CartContents';
-import { useWindowSize } from '../lib/useWindowSize';
-import { useCart } from '../lib/cartState';
-import { useLayout } from '../lib/layoutState';
+import { useWindowSize } from '../../lib/useWindowSize';
+import { useCart } from '../../lib/cartState';
+import { useLayout } from '../../lib/layoutState';
 
 const CartBarStyles = styled(motion.div)`
   position: absolute;
@@ -68,20 +67,14 @@ const variants = {
 };
 
 export default function CartBar() {
-  const {
-    cartContents,
-    cartItemTotal,
-    cartOpen,
-    cartIsHovering,
-    setCartIsHovering,
-  } = useCart();
+  const { cartItemTotal, cartOpen, cartIsHovering, setCartIsHovering } =
+    useCart();
 
   const { height: windowHeight } = useWindowSize();
   const { cartOffset } = useLayout();
 
   return (
     <AnimatePresence before>
-      {/* {cartOpen && cartContents.length > 0 && ( */}
       {cartOpen && (
         <CartBarStyles
           windowHeight={windowHeight}
@@ -106,13 +99,6 @@ export default function CartBar() {
                 e.stopPropagation();
                 setCartIsHovering(true);
               }}
-              /* animate={{
-              backgroundColor: `${
-                cartIsHovering
-                  ? 'rgba(255, 255, 255, 0.5)'
-                  : 'rgba(255, 255, 255, 0.2)'
-              }`,
-            }} */
               transition={{ duration: 2 }}
             >
               <CartHeader />

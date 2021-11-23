@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useCart } from '../lib/cartState';
+import { useCart } from '../../lib/cartState';
 import CartIcon from './CartIcon';
 import CartIconClose from './CartIconClose';
 

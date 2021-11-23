@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Box } from 'rebass/styled-components';
-import { FiShoppingCart } from 'react-icons/fi';
-import { useCart } from '../lib/cartState';
+import { GrClose } from 'react-icons/gr';
+import { useCart } from '../../lib/cartState';
 
-const CartIconStyles = styled(Box)`
+const CartIconCloseStyles = styled(Box)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -39,24 +39,16 @@ const CartIconStyles = styled(Box)`
   }
 `;
 
-export default function CartIcon() {
+export default function CartIconClose() {
   const { cartItemTotal } = useCart();
 
   return (
-    <CartIconStyles
+    <CartIconCloseStyles
       cartItemTotal={cartItemTotal}
       fontSize="30px"
       lineHeight="30px"
     >
-      {cartItemTotal >= 1 && (
-        <div className="itemCount">
-          <div className="bubble">
-            <div className="number">{cartItemTotal}</div>
-          </div>
-        </div>
-      )}
-
-      <FiShoppingCart />
-    </CartIconStyles>
+      <GrClose />
+    </CartIconCloseStyles>
   );
 }

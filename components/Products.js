@@ -1,13 +1,8 @@
-import styled from 'styled-components';
-import { useEffect, useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
-// import Product from './Product';
-import { useMeasure, useWindowSize } from 'react-use';
-import { useCart } from '../lib/cartState';
+import { useWindowSize } from 'react-use';
 import AddToCart from './AddToCart';
 
 function Product({ product }) {
-  const { width } = useWindowSize();
   return (
     <div className="group relative flex flex-col w-[275px]">
       <div className="relative w-full min-h-[30rem] bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
@@ -59,20 +54,3 @@ export default function Products({ products }) {
     </div>
   );
 }
-
-// export default function Products({ products }) {
-//   return (
-//     <div className="bg-white px-4 xs:px-8 md:px-12">
-//       <div className="max-w-full mx-auto py-16 px-4 xxs:p-8 xs:px-32 sm:py-24 sm:px-6 lg:px-8">
-//         <div className="mt-2 grid gap-y-12 gap-x-4 grid-cols-1 xxs:grid-cols-1 xs:grid-cols-2 xs:gap-x-8 sm:grid-cols-2 md:grid-cols-3 md:gap-x-12 lg:grid-cols-4 lg:gap-x-12">
-//           {products.map((product) => (
-//             <Product key={product.id} product={product} />
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-/* MAKE SITE CATEGORIES MORE PLEASING */
-/* MAKE SOME CART STATE ALWAYS BE OPEN */

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useCart } from '../lib/cartState';
+import { useCart } from '../../lib/cartState';
 import CartButton from './CartButton';
-import { useLayout } from '../lib/layoutState';
+import { useLayout } from '../../lib/layoutState';
 
 const variants = {
   cartClosed: {

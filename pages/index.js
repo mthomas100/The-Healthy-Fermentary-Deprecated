@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import CTA from '../components/CTA.js';
 import Hero from '../components/Hero.js';
 import Products from '../components/Products';
-import PromoSection from '../components/PromoSection.js';
 import SubHeader from '../components/SubHeader';
 import client from '../lib/apollo-client';
 
-export default function Home({ categories, products }) {
+export default function Home({ categories, products, hero }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  console.log(hero);
 
   useEffect(() => {
     console.log(selectedCategory);
@@ -20,8 +20,8 @@ export default function Home({ categories, products }) {
         categories={categories}
         setSelectedCategory={setSelectedCategory}
       /> */}
-      {/* <PromoSection /> */}
-      <Hero />
+
+      <Hero hero={hero} />
       <Products products={products} selectedCategory={selectedCategory} />
       <CTA />
     </>
@@ -62,10 +62,26 @@ export async function getStaticProps() {
     `,
   });
 
+  const { data: heroData } = await client.query({
+    query: gql`
+      query HERO_QUERY {
+        hero {
+          topText
+          bottomText
+          vimeoUrl
+          image {
+            url
+          }
+        }
+      }
+    `,
+  });
+
   return {
     props: {
       products: productsData.products,
       categories: categoriesData.categories,
+      hero: heroData.hero,
     },
   };
 }

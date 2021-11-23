@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 
-import { useCart } from '../lib/cartState';
+import { useCart } from '../../lib/cartState';
 
-const QuantityIncrementorStyles = styled.div`
+const QuantityStaticStyles = styled.div`
   font-family: 'Roboto';
-
   font-weight: 400;
-
-  margin: 0 auto;
-  box-shadow: inset 4px 0px 8px 0 rgba(0, 0, 0, 0.1);
+  margin: 0 2rem;
+  /* box-shadow: inset 4px 0px 8px 0 rgba(0, 0, 0, 0.1); */
   border-radius: 1rem;
   margin-top: 1rem;
 
@@ -45,23 +43,15 @@ const QuantityIncrementorStyles = styled.div`
   }
 `;
 
-export default function QuantityIncrementor({ product, componentOrigin }) {
+export default function QuantityStatic({ product, componentOrigin }) {
   const { id } = product;
   const { modifyCart } = useCart();
 
   return (
-    <QuantityIncrementorStyles>
+    <QuantityStaticStyles>
       <div className="border">
-        <AiFillMinusCircle
-          className="decrement"
-          onClick={() => modifyCart(id, 'decrement')}
-        />
         <div className="quantity">{product.quantity}</div>
-        <AiFillPlusCircle
-          className="increment"
-          onClick={() => modifyCart(id, 'increment')}
-        />
       </div>
-    </QuantityIncrementorStyles>
+    </QuantityStaticStyles>
   );
 }

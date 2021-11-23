@@ -1,16 +1,12 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
-
 import theme from './styles/theme';
-import Header from './Header';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
-import CartBar from './CartBar';
+import CartBar from './Cart/CartBar';
 import { useWindowSize } from '../lib/useWindowSize';
-import CartMobile from './CartMobile';
-import UnderConstruction from './UnderConstruction';
-import HeaderNew from './HeaderNew';
+import CartMobile from './Cart/CartMobile';
 
 // TODO: assign a global programmable value to color pattern background
 // TODO: create optional background insertable objects via backend
