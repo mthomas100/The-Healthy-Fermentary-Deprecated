@@ -67,7 +67,6 @@ function Page({ children }) {
       <GlobalStyles />
       <Typography />
       <ThemeProvider theme={theme}>
-        {/* <TopImage /> */}
         <OuterWrapperStyles>
           <ContentStyles>
             {/* <Header /> */}

@@ -58,6 +58,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en" dir="ltr">
         <Head>
+          <title>The Healthy Fermentary</title>
           {/* Inject the Segment snippet into the <head> of the document </head> */}
           {/* eslint-disable-next-line react/no-danger */}
           <script dangerouslySetInnerHTML={{ __html: this.renderSnipper() }} />

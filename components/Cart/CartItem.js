@@ -168,7 +168,7 @@ export default function CartItem({
                   <div className="pictureWrapper picture">
                     <Image
                       src={product.image.url}
-                      alt="Picture of the author"
+                      alt="Picture of Item"
                       height="100%"
                       width="100%"
                       layout="responsive"
@@ -213,7 +213,7 @@ export default function CartItem({
                   <div className="pictureWrapper picture">
                     <Image
                       src={product.image.url}
-                      alt="Picture of the author"
+                      alt="Picture of Item"
                       height="100%"
                       width="100%"
                       layout="responsive"

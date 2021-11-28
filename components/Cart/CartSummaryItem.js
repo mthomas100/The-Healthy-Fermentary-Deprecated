@@ -69,6 +69,7 @@ export default function CartSummaryItem({ product }) {
           height="100%"
           objectFit="cover"
           layout="responsive"
+          alt="Picture of Item"
         />
       </div>
       <div className="title">{product.title}</div>
