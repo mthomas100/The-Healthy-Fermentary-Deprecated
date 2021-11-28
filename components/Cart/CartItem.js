@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import styled from 'styled-components';
 import useComponentSize from '../../lib/useComponentSize';
+import getSmallCloudinary from '../../util/getSmallCloudinary';
 import QuantityIncrementor from './QuantityIncrementor';
 import QuantitySelector from './QuantitySelector';
 import QuantityStatic from './QuantityStatic';
@@ -172,6 +173,8 @@ export default function CartItem({
                       height="100%"
                       width="100%"
                       layout="responsive"
+                      placeholder="blur"
+                      blurDataURL={getSmallCloudinary(product.image.url)}
                     />
                   </div>
 

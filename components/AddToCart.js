@@ -18,7 +18,7 @@ export default function AddToCart({ product }) {
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <button
       type="button"
-      className="bg-gray-800 text-gray-100 font-semibold uppercase git text-center py-4 rounded-lg "
+      className="bg-gray-800 text-gray-100 font-semibold uppercase git text-center py-4 rounded-lg text-md"
       onClick={handleAddToCart}
     >
       Add to Cart

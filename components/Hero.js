@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player';
 import { useMeasure } from 'react-use';
 import { useEffect } from 'react';
 import { useLayout } from '../lib/layoutState';
+import getSmallCloudinary from '../util/getSmallCloudinary';
 
 export default function Hero({ hero }) {
   const [headlineRef, { width: headlineWidth }] = useMeasure();
@@ -12,6 +13,7 @@ export default function Hero({ hero }) {
   useEffect(() => {
     setHeroHeight(heroHeight);
   });
+
   return (
     <div className="relative py-32">
       <Image
@@ -21,6 +23,8 @@ export default function Hero({ hero }) {
         objectFit="cover"
         className="absolute inset-0 z-0 backdrop-filter backdrop-grayscale-0"
         priority
+        placeholder="blur"
+        blurDataURL={getSmallCloudinary(hero.image.url)}
       />
       <div
         id="imageFilter"

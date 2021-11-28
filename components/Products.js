@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useWindowSize } from 'react-use';
+import getSmallCloudinary from '../util/getSmallCloudinary';
 import AddToCart from './AddToCart';
 
 function Product({ product }) {
@@ -13,6 +14,8 @@ function Product({ product }) {
           objectFit="cover"
           objectPosition="30% 50%"
           className="absolute inset-0 z-0"
+          placeholder="blur"
+          blurDataURL={getSmallCloudinary(product.image.url)}
         />
       </div>
       <div id="productInfo" className="mt-4 flex flex-col flex-1 gap-4">

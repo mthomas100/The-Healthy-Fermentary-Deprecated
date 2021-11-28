@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Box } from 'rebass/styled-components';
 import Image from 'next/image';
+import getSmallCloudinary from '../../util/getSmallCloudinary';
 
 const CartSummaryItemStyles = styled(Box)`
   padding: 10px;
@@ -70,6 +71,8 @@ export default function CartSummaryItem({ product }) {
           objectFit="cover"
           layout="responsive"
           alt="Picture of Item"
+          placeholder="blur"
+          blurDataURL={getSmallCloudinary(product.image.url)}
         />
       </div>
       <div className="title">{product.title}</div>
