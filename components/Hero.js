@@ -20,6 +20,7 @@ export default function Hero({ hero }) {
         layout="fill"
         objectFit="cover"
         className="absolute inset-0 z-0 backdrop-filter backdrop-grayscale-0"
+        priority
       />
       <div
         id="imageFilter"
