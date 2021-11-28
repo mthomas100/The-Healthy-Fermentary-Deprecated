@@ -72,11 +72,11 @@ export default function CartSummaryItem({ product }) {
         />
       </div>
       <div className="title">{product.title}</div>
-      <div className="price">₹ {product.price}</div>
+      <div className="price">$ {product.price}</div>
       <div className="qtyTop"> Quantity</div>
       <div className="qtyBottom">{product.quantity}</div>
       <div className="totalTop">Total</div>
-      <div className="totalBottom">₹ {product.price}</div>
+      <div className="totalBottom">$ {product.price}</div>
     </CartSummaryItemStyles>
   );
 }

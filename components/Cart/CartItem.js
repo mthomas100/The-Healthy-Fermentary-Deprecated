@@ -187,7 +187,7 @@ export default function CartItem({
                   <div className="price rhs">
                     <div>&#xd7;</div>
                     <div className="value">
-                      <b>₹</b> {product.price}
+                      <b>$</b> {product.price}
                     </div>
                   </div>
                 </>

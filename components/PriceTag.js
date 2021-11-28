@@ -29,7 +29,7 @@ export default function PriceTag({ price }) {
   return (
     <PriceStyles>
       <div className="price">
-        <span className="currency">₹</span>
+        <span className="currency">$</span>
         {price}
       </div>
     </PriceStyles>

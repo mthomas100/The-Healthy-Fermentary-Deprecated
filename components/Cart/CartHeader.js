@@ -49,7 +49,7 @@ export default function CartHeader() {
         <div className="itemCount">{cartItemTotal} items</div>
 
         <div className="totalValue">
-          <b>₹</b> {calcTotalPrice(cartContents)}
+          <b>$</b> {calcTotalPrice(cartContents)}
         </div>
       </div>
     </CartHeaderStyles>

@@ -45,16 +45,16 @@ export default function CartSummaryFooter() {
     <FooterStyles>
       <div className="price">
         <div className="text">SUBTOTAL</div>
-        <div className="number">₹ {calcTotalPrice(cartContents)}</div>
+        <div className="number">$ {calcTotalPrice(cartContents)}</div>
       </div>
       <div className="price">
         <div className="text">SHIPPING</div>
-        <div className="number">₹ 80</div>
+        <div className="number">$ 80</div>
       </div>
       <Divider />
       <div className="price">
         <div className="text">TOTAL</div>
-        <div className="number">₹ {calcTotalPrice(cartContents) + 80}</div>
+        <div className="number">$ {calcTotalPrice(cartContents) + 80}</div>
       </div>
     </FooterStyles>
   );
