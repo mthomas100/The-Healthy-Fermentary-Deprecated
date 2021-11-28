@@ -1,6 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
+import Head from 'next/head';
 import theme from './styles/theme';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
@@ -64,6 +65,9 @@ function Page({ children }) {
 
   return (
     <>
+      <Head>
+        <title>The Healthy Fermentary</title>
+      </Head>
       <GlobalStyles />
       <Typography />
       <ThemeProvider theme={theme}>

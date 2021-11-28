@@ -16,15 +16,17 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   return (
-    <LayoutStateProvider>
-      <CartStateProvider>
-        <CheckoutStateProvider>
-          <Page>
-            <Component {...pageProps} />
-          </Page>
-        </CheckoutStateProvider>
-      </CartStateProvider>
-    </LayoutStateProvider>
+    <>
+      <LayoutStateProvider>
+        <CartStateProvider>
+          <CheckoutStateProvider>
+            <Page>
+              <Component {...pageProps} />
+            </Page>
+          </CheckoutStateProvider>
+        </CartStateProvider>
+      </LayoutStateProvider>
+    </>
   );
 }
 

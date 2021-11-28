@@ -16,13 +16,16 @@ function Product({ product }) {
         />
       </div>
       <div id="productInfo" className="mt-4 flex flex-col flex-1 gap-4">
-        <div id="titleAndPrice" className="flex justify-between text-xl">
+        <div
+          id="titleAndPrice"
+          className="flex justify-between text-xl font-semibold tracking-widest"
+        >
           <div id="title">{product.title}</div>
           <div id="price">${product.price}</div>
         </div>
         <div
           id="description"
-          className="text-lg leading-[3rem] font-extralight  justify-self-start flex-1 h-full"
+          className="text-xl leading-[3rem] font-extralight  justify-self-start flex-1 h-full"
         >
           {product.description}
         </div>
