@@ -6,6 +6,9 @@ export default function AddToCart({ product }) {
   const [selectValue] = useState(1);
 
   function handleAddToCart() {
+    global.analytics.track('Added to cart', {
+      product_title: product.title,
+    });
     modifyCartQuantity(product, selectValue); // TODO: Needs to add X to whats already there
     openCart();
   }

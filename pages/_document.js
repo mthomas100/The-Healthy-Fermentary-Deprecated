@@ -2,9 +2,29 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/styles';
+import * as snippet from '@segment/snippet';
 import { theme } from '../components/styles/materialStyles';
 
+// Add your segment Write Key from the segment dashboard
+const { ANALYTICS_WRITE_KEY, NODE_ENV } = process.env;
+
 class MyDocument extends Document {
+  // eslint-disable-next-line class-methods-use-this
+  renderSnipper() {
+    const opts = {
+      apiKey: ANALYTICS_WRITE_KEY,
+      // note: the page option only covers SSR tracking.
+      // Page.js is used to track other events using 'window.analytics.page()'
+      page: true,
+    };
+
+    if (NODE_ENV === 'development') {
+      return snippet.max(opts);
+    }
+
+    return snippet.min(opts);
+  }
+
   static async getInitialProps(ctx) {
     const styledComponentsSheet = new ServerStyleSheet();
     const materialSheets = new ServerStyleSheets();
@@ -38,6 +58,9 @@ class MyDocument extends Document {
     return (
       <Html lang="en" dir="ltr">
         <Head>
+          {/* Inject the Segment snippet into the <head> of the document </head> */}
+          {/* eslint-disable-next-line react/no-danger */}
+          <script dangerouslySetInnerHTML={{ __html: this.renderSnipper() }} />
           <meta charSet="utf-8" />
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />

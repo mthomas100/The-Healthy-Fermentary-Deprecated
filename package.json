@@ -24,6 +24,7 @@
     "@material-ui/pickers": "^3.2.10",
     "@material-ui/styles": "^4.11.4",
     "@rebass/preset": "^4.0.5",
+    "@segment/snippet": "^4.15.3",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.15.0",
     "@styled-icons/boxicons-solid": "^10.34.0",
