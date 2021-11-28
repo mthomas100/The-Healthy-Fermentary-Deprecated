@@ -49,12 +49,12 @@ export default function CartSummaryFooter() {
       </div>
       <div className="price">
         <div className="text">SHIPPING</div>
-        <div className="number">$ 80</div>
+        <div className="number">$ 6.99</div>
       </div>
       <Divider />
       <div className="price">
         <div className="text">TOTAL</div>
-        <div className="number">$ {calcTotalPrice(cartContents) + 80}</div>
+        <div className="number">$ {calcTotalPrice(cartContents) + 6.99}</div>
       </div>
     </FooterStyles>
   );
