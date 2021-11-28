@@ -2,17 +2,25 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import ReactPlayer from 'react-player';
 import { useMeasure } from 'react-use';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLayout } from '../lib/layoutState';
 import getSmallCloudinary from '../util/getSmallCloudinary';
+import HeroVideoFallback from './HeroVideoFallback';
 
 export default function Hero({ hero }) {
+  // State
+  const [videoReady, setVideoReady] = useState(false);
+
   const [headlineRef, { width: headlineWidth }] = useMeasure();
   const [heroRef, { height: heroHeight }] = useMeasure();
   const { setHeroHeight } = useLayout();
   useEffect(() => {
     setHeroHeight(heroHeight);
   });
+
+  useEffect(() => {
+    console.log('videoReady', videoReady);
+  }, [videoReady]);
 
   return (
     <div className="relative py-32">
@@ -45,11 +53,22 @@ export default function Hero({ hero }) {
             </span>
           </div>
 
+          {/* Display Skeleton on top of ReactPlayer while videoReady is false */}
+          {/* VideoFallBack Must have exactly the same styles as ReactPlayer and both must be absolute inside a relative parent container */}
+          {!videoReady && (
+            <div className="relative z-10">
+              <HeroVideoFallback />
+            </div>
+          )}
+
           <ReactPlayer
             className="mt-16"
             url={hero.vimeoUrl}
             width={headlineWidth}
             height={headlineWidth * 0.5625}
+            onReady={() => setVideoReady(true)}
+            onError={() => setVideoReady(false)}
+            // fallback={<HeroVideoFallback />}
             // height="auto"
             config={{
               file: {
