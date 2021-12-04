@@ -26,12 +26,6 @@ const CheckoutStyles = styled.div`
   }
 `;
 
-// Step Circle with # inside it
-// Line between dots
-// Centered (middle dot always middle of screen)
-// Current Step Colored. Finished Step Checked & Colored
-// make step # scheme generate programmatically
-
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 export default function Checkout() {

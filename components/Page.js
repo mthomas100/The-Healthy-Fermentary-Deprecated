@@ -18,7 +18,7 @@ const OuterWrapperStyles = styled.div`
   width: 100%;
   background-size: 400%;
   padding: 2rem 1rem;
-  background-color: #fff0c345;
+  background-color: #fbff0021;
 
   &:before {
     content: '';
