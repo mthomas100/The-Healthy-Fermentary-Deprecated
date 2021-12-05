@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import client from '../../lib/apollo-client';
 
 export default function Products({ error, product }) {
-  console.log(error);
+  // console.log(error);
 
   if (!error) {
     return (

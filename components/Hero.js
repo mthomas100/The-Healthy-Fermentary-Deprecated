@@ -17,10 +17,6 @@ export default function Hero({ hero }) {
     setHeroHeight(heroHeight);
   });
 
-  useEffect(() => {
-    console.log('videoReady', videoReady);
-  }, [videoReady]);
-
   return (
     <div className="relative py-32 rounded-t-3xl">
       <Image

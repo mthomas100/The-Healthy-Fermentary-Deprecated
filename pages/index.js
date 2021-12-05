@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import CTA from '../components/CTA.js';
 import Hero from '../components/Hero.js';
 import Products from '../components/Products';
-import SubHeader from '../components/SubHeader';
+import Categories from '../components/Categories';
 import client from '../lib/apollo-client';
 
 export default function Home({ categories, products, hero }) {
@@ -13,9 +13,10 @@ export default function Home({ categories, products, hero }) {
     <>
       {/* <Header /> */}
       <Hero hero={hero} />
-      <SubHeader
+      <Categories
         categories={categories}
         setSelectedCategory={setSelectedCategory}
+        selectedCategory={selectedCategory}
       />
       <Products products={products} selectedCategory={selectedCategory} />
       <CTA />

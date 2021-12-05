@@ -21,6 +21,11 @@ const CategoriesStyles = styled.div`
   justify-content: center;
   align-items: center;
   row-gap: 1.5rem;
+
+  .selected {
+    background-color: #000000c0;
+    color: white;
+  }
 `;
 
 const CategoryButtonStyles = styled.div`
@@ -46,7 +51,11 @@ const CategoryButtonStyles = styled.div`
   }
 `;
 
-export default function SubHeader({ categories, setSelectedCategory }) {
+export default function Categories({
+  categories,
+  setSelectedCategory,
+  selectedCategory,
+}) {
   const categoriesRef = useRef(null);
   const windowSize = useWindowSize();
   const categoriesSize = useComponentSize(categoriesRef);
@@ -64,12 +73,15 @@ export default function SubHeader({ categories, setSelectedCategory }) {
       <CategoriesStyles ref={categoriesRef}>
         <CategoryButtonStyles
           onClick={(e) => handleCategoryButtonClick(e.target.innerText)}
+          className={selectedCategory === 'All' ? 'selected' : ''}
         >
           All
         </CategoryButtonStyles>
         {categories.map((category) => (
           <CategoryButtonStyles
             onClick={(e) => handleCategoryButtonClick(e.target.innerText)}
+            key={category.name}
+            className={category.name === selectedCategory ? 'selected' : ''}
           >
             {category.name}
           </CategoryButtonStyles>
