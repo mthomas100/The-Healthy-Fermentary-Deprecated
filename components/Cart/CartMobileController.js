@@ -24,7 +24,7 @@ const CartMobileControllerStyles = styled.div`
   .cartIconWrapper {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     position: sticky;
-    top: 75%;
+    top: 40vh;
     z-index: 30;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 50%;

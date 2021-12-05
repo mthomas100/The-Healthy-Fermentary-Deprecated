@@ -224,9 +224,11 @@ function getStepContent(step) {
 }
 
 export default function CustomizedSteppers() {
+  const router = useRouter();
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(1);
   const steps = getSteps();
+  const { cartContents, closeCartMobile } = useCart();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -236,12 +238,16 @@ export default function CustomizedSteppers() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const handleBackStepZero = () => {
+    closeCartMobile();
+    router.push('/');
+  };
+
   const handleReset = () => {
     setActiveStep(0);
   };
-  const router = useRouter();
+
   const { inputs } = useCheckout();
-  const { cartContents } = useCart();
 
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
@@ -280,8 +286,6 @@ export default function CustomizedSteppers() {
       console.log(error);
       return setError(error);
     }
-
-    console.log('I DONT GET EXECUTED IF THERE IS AN ERROR IN PREV STEP');
 
     // 5. Send payment ID and Order Information to Server
 
@@ -400,7 +404,7 @@ export default function CustomizedSteppers() {
                 {activeStep === steps.length - 1 ? 'Submit Order' : 'Next'}
               </Button>
               <Button
-                onClick={activeStep === 0 ? () => router.push('/') : handleBack}
+                onClick={activeStep === 0 ? handleBackStepZero : handleBack}
                 className={classes.button}
                 fullWidth
                 size="large"

@@ -9,14 +9,11 @@ const FooterStyles = styled.div`
   left: 0;
   width: 100%;
   padding: 1rem 3rem;
-  /* box-shadow: 0px 0 5px 0px rgba(0, 0, 0, 0.2); */
   background-color: 'transparent';
   justify-content: flex-end;
   margin-top: auto;
 
   .price {
-    /* padding: 30px; */
-    /* background-color: #f4f3f3; */
     display: flex;
     font-family: 'Nunito';
     font-size: 1.6rem;
