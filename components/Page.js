@@ -44,6 +44,7 @@ const ContentStyles = styled.div`
   position: relative;
   /* background-color: #efeee9cf; */
   background-color: #f7f7f7a4;
+  position: relative;
 
   &:before {
     content: '';
@@ -73,9 +74,6 @@ function Page({ children }) {
       <ThemeProvider theme={theme}>
         <OuterWrapperStyles>
           <ContentStyles>
-            {/* <Header /> */}
-            {/* <HeaderNew /> */}
-
             {children}
             {pathname !== '/checkout' &&
               (isMobile || windowSize.width <= 700 ? (

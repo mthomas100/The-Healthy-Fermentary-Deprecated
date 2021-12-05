@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CTA from '../components/CTA.js';
 import Hero from '../components/Hero.js';
 import Products from '../components/Products';

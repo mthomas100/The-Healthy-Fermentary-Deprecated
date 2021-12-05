@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { Button as ButtonMUI } from '@material-ui/core';
 import { useRef } from 'react';
-// import useComponentSize from '../lib/useComponentSize';
 
 const Button = styled(ButtonMUI)`
   && {
@@ -15,7 +14,6 @@ const CheckoutButtonStyles = styled.div``;
 
 export default function CheckoutButton() {
   const checkoutButtonRef = useRef(null);
-  // const checkoutButtonSize = useComponentSize(checkoutButtonRef);
 
   return (
     <CheckoutButtonStyles ref={checkoutButtonRef}>

@@ -139,37 +139,38 @@ export default function CartMobile() {
   };
 
   return (
-    <CartMobileStyles>
+    <>
       <CartController />
-
-      <CartPane
-        variants={variants}
-        initial={variants.initial}
-        animate="animate"
-        className="mobileCart"
-        transition={
-          cartMobileOpen ? variants.transitionIn : variants.transitionOut
-        }
-      >
-        <div className="cartWrapper">
-          <div className="header">
-            <CartHeader />
+      <CartMobileStyles>
+        <CartPane
+          variants={variants}
+          initial={variants.initial}
+          animate="animate"
+          className="mobileCart"
+          transition={
+            cartMobileOpen ? variants.transitionIn : variants.transitionOut
+          }
+        >
+          <div className="cartWrapper">
+            <div className="header">
+              <CartHeader />
+            </div>
+            <div className="body">
+              <CartContents view="mobile" />
+            </div>
+            <div className="footer">
+              <Link href="/checkout">
+                <a style={{ width: '100%' }}>
+                  <Button variant="contained" color="primary" size="large">
+                    <Typography variant="subtitle1">Checkout</Typography>
+                  </Button>
+                </a>
+              </Link>
+            </div>
           </div>
-          <div className="body">
-            <CartContents view="mobile" />
-          </div>
-          <div className="footer">
-            <Link href="/checkout">
-              <a style={{ width: '100%' }}>
-                <Button variant="contained" color="primary" size="large">
-                  <Typography variant="subtitle1">Checkout</Typography>
-                </Button>
-              </a>
-            </Link>
-          </div>
-        </div>
-      </CartPane>
-    </CartMobileStyles>
+        </CartPane>
+      </CartMobileStyles>
+    </>
   );
 }
 

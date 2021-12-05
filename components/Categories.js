@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { useMeasure } from 'react-use';
 import { useWindowSize } from '../lib/useWindowSize';
-import useComponentSize from '../lib/useComponentSize';
+import { useLayout } from '../lib/layoutState';
 
-const SubHeaderStyles = styled.div`
+const CategoriesWrapperStyles = styled.div`
   width: 100%;
   height: auto;
   background-color: white;
@@ -13,18 +14,18 @@ const SubHeaderStyles = styled.div`
   align-items: center;
   justify-content: ${(props) => props.justifyContent};
   padding: 3rem 1rem;
-`;
 
-const CategoriesStyles = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  row-gap: 1.5rem;
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1.5rem;
 
-  .selected {
-    background-color: #000000c0;
-    color: white;
+    .selected {
+      background-color: #000000c0;
+      color: white;
+    }
   }
 `;
 
@@ -56,21 +57,23 @@ export default function Categories({
   setSelectedCategory,
   selectedCategory,
 }) {
-  const categoriesRef = useRef(null);
   const windowSize = useWindowSize();
-  const categoriesSize = useComponentSize(categoriesRef);
+  const [categoriesRef, { width, height }] = useMeasure();
+  const { setCategoriesHeight } = useLayout();
 
   function handleCategoryButtonClick(category) {
     setSelectedCategory(category);
   }
 
+  useEffect(() => {
+    setCategoriesHeight(height);
+  });
+
   return (
-    <SubHeaderStyles
-      justifyContent={
-        categoriesSize.width > windowSize.width ? 'left' : 'center'
-      }
+    <CategoriesWrapperStyles
+      justifyContent={width > windowSize.width ? 'left' : 'center'}
     >
-      <CategoriesStyles ref={categoriesRef}>
+      <div className="categories" ref={categoriesRef}>
         <CategoryButtonStyles
           onClick={(e) => handleCategoryButtonClick(e.target.innerText)}
           className={selectedCategory === 'All' ? 'selected' : ''}
@@ -86,7 +89,7 @@ export default function Categories({
             {category.name}
           </CategoryButtonStyles>
         ))}
-      </CategoriesStyles>
-    </SubHeaderStyles>
+      </div>
+    </CategoriesWrapperStyles>
   );
 }

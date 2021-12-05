@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRef } from 'react';
 import styled from 'styled-components';
-import useComponentSize from '../../lib/useComponentSize';
 import getSmallCloudinary from '../../util/getSmallCloudinary';
 import QuantityIncrementor from './QuantityIncrementor';
 import QuantitySelector from './QuantitySelector';
@@ -143,8 +142,6 @@ export default function CartItem({
   mode,
 }) {
   const cartItemRef = useRef(null);
-
-  const cartItemSize = useComponentSize(cartItemRef);
 
   return (
     <CartItemStyles

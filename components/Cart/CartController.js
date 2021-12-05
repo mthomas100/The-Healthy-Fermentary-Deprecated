@@ -9,14 +9,16 @@ const variants = {
     transform: 'translateY(-4rem)',
   },
   cartOpen: {
-    transform: 'translateY(4rem)',
+    transform: 'teeranslateY(4rem)',
   },
 };
 
 const CartControllerStyles = styled.div`
   position: absolute;
-  right: 2rem;
-  top: ${(props) => `${props.cartOffset + 60}px`};
+  z-index: 10;
+  top: ${(props) => props.cartOffset}px;
+  right: 16rem;
+  bottom: 8rem;
 
   .cartIconWrapper {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);

@@ -47,14 +47,23 @@ export default function Hero({ hero }) {
           </div>
 
           <div id="videoAndPreview" className="relative">
-            {!videoReady && (
+            {!videoReady && isMobile && (
               <div className="w-full border-gray-200 flex justify-center absolute mt-8">
                 <Image
-                  src={
-                    isMobile
-                      ? '/images/videoPlaceholderMobile.jpg'
-                      : '/images/videoPlaceholder.jpg'
-                  }
+                  src="/images/videoPlaceholderMobile.jpg"
+                  alt="Video Placeholder"
+                  width={headlineWidth}
+                  height={headlineWidth * 0.5625}
+                  layout="fixed"
+                  objectFit="contain"
+                  priority
+                />
+              </div>
+            )}
+            {!videoReady && !isMobile && (
+              <div className="w-full border-gray-200 flex justify-center absolute mt-8">
+                <Image
+                  src="/images/videoPlaceholderMobile.jpg"
                   alt="Video Placeholder"
                   width={headlineWidth}
                   height={headlineWidth * 0.5625}
