@@ -9,13 +9,12 @@ In this project I engineered eCommerce application for a customer in process of 
 🛑 **Development status:** MVP of Application developed. Increasing performance of sometimes jittery animations, refactoring codebase for increased readability and reusaability, and addition of TypeScript are among the highest development priorities going forward. 
 
 ### This Project Features the Following:
-- 🔥A uniquely implemented shopping cart system
-- 🔥Statically Generated Pages (via getStaticPaths and getStaticProps) - used for significantly faster load times
+- 🔥A distinct shopping cart experience Mobile and for Desktop, animated with Framer Motion
+- 🔥eCommerce features including CRUD functionality for cart items
+- 🔥Secure payments via Stripe.js
+- 🔥Backend shopping cart validation for fraudulent transaction prevention
+- 🔥Statically Generated Pages for quicker load times
 - 🔥Blurred image thumbnail loading - used for better site experience for users with slow internet connections
-- 🔥Advanced use of tailwindCSS (including use of its “Just In Time Mode” feature)
-- 🔥Automatic Graphql Type generation via Graphql Codegen (https://www.graphql-code-generator.com/) 
-- 🔥Typed react context usage, allowing for an awesome developer experience via VSCode intellisense 
-- 🔥A+ lighthouse scores in the following categories: Performance, Assessibility, SEO
 
 # Technologies Used
 
