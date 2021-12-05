@@ -31,7 +31,7 @@ export default function Hero({ hero }) {
       />
       <div
         id="imageFilter"
-        className="absolute inset-0 bg-gray-500 opacity-50 rounded-t-3xl"
+        className="absolute inset-0 bg-gray-500 opacity-40 rounded-t-3xl"
         ref={heroRef}
       />
       <div className="relative w-full min-h-full ">
