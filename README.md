@@ -36,19 +36,6 @@ In this project I engineered eCommerce application for a customer in process of 
 
 > "The React Framework for Production" [Next.js](https://nextjs.org/) gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.
 
-## Strapi (Backend)
-
-> [Strapi](Strapi.io) is the next-gen headless CMS, open-source, javascript, enabling content-rich experiences to be created, managed and exposed to any digital device.
-
-## MongoDB (Database)
-
-> Classified as a NoSQL database program, [MongoDB](https://www.mongodb.com/) uses JSON-like documents with optional schemas. 
-
-## Cloudinary
-
-> Developers and marketers use [Cloudinary](https://cloudinary.com/) to quickly and easily create, manage and deliver their digital experiences across any browser, device and bandwidth.
-
-
 ## Apollo GraphQL
 
 >Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, >>and modify application data, all while automatically updating your UI.
@@ -58,8 +45,6 @@ In this project I engineered eCommerce application for a customer in process of 
 
 >Online payment processing for internet businesses. Stripe is a suite of payment APIs that powers commerce for online businesses of all sizes
 >[Go To Documentation](https://stripe.com/docs/js)
-
-
 
 ## react-use
 
@@ -78,6 +63,17 @@ In this project I engineered eCommerce application for a customer in process of 
 > An opinionated code formatter; Supports many languages; Integrates with most editors.
 > [Go To Documentation](https://prettier.io/docs/en/index.html)
 
+## Strapi (Backend)
+
+> [Strapi](Strapi.io) is the next-gen headless CMS, open-source, javascript, enabling content-rich experiences to be created, managed and exposed to any digital device.
+
+## MongoDB (Database)
+
+> Classified as a NoSQL database program, [MongoDB](https://www.mongodb.com/) uses JSON-like documents with optional schemas. 
+
+## Cloudinary
+
+> Developers and marketers use [Cloudinary](https://cloudinary.com/) to quickly and easily create, manage and deliver their digital experiences across any browser, device and bandwidth.
 
 
 
