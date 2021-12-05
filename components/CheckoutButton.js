@@ -15,16 +15,11 @@ const CheckoutButtonStyles = styled.div``;
 
 export default function CheckoutButton() {
   const checkoutButtonRef = useRef(null);
-  const { setCartIsHovering } = useCart();
 
   return (
     <CheckoutButtonStyles ref={checkoutButtonRef}>
       <Link href="/checkout" passHref>
-        <Button
-          variant="outlined"
-          size="large"
-          onClick={() => setCartIsHovering(false)}
-        >
+        <Button variant="outlined" size="large">
           Checkout
         </Button>
       </Link>

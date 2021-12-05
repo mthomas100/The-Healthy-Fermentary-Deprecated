@@ -228,7 +228,7 @@ export default function CustomizedSteppers() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(1);
   const steps = getSteps();
-  const { cartContents, closeCartMobile } = useCart();
+  const { cartContents, closeCartMobile, setCartIsHovering } = useCart();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -239,6 +239,7 @@ export default function CustomizedSteppers() {
   };
 
   const handleBackStepZero = () => {
+    setCartIsHovering(false);
     closeCartMobile();
     router.push('/');
   };
