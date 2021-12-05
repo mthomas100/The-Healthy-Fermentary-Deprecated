@@ -4,7 +4,6 @@ import { Button as ButtonMUI, Typography } from '@material-ui/core';
 import Link from 'next/link';
 import { useCart } from '../../lib/cartState';
 import CartContents from './CartContents';
-import CartController from './CartController';
 import CartHeader from './CartHeader';
 
 const CartMobileStyles = styled(motion.div)`
@@ -22,6 +21,7 @@ const CartMobileStyles = styled(motion.div)`
 
 const CartPane = styled(motion.h1)`
   position: absolute;
+  z-index: 50;
   /* border: 3px solid #808080a2; */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 2rem;
@@ -140,7 +140,6 @@ export default function CartMobile() {
 
   return (
     <>
-      <CartController />
       <CartMobileStyles>
         <CartPane
           variants={variants}

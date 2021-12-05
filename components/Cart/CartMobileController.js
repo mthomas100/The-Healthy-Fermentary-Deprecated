@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCart } from '../../lib/cartState';
@@ -9,21 +10,21 @@ const variants = {
     transform: 'translateY(-4rem)',
   },
   cartOpen: {
-    transform: 'teeranslateY(4rem)',
+    transform: 'translateY(4rem)',
   },
 };
 
-const CartControllerStyles = styled.div`
+const CartMobileControllerStyles = styled.div`
   position: absolute;
-  z-index: 10;
+  z-index: 100;
   top: ${(props) => props.cartOffset}px;
-  right: 16rem;
+  right: 10%;
   bottom: 8rem;
 
   .cartIconWrapper {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     position: sticky;
-    top: 4rem;
+    top: 75%;
     z-index: 30;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 50%;
@@ -51,11 +52,21 @@ const CartControllerStyles = styled.div`
   }
 `;
 
-export default function CartController() {
+// const CartMobileControllerStyles = styled.div`
+//   position: absolute;
+//   z-index: 100;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   border: 10px solid red;
+// `;
+
+export default function CartMobileController() {
   const { toggleCartMobile, cartMobileOpen } = useCart();
   const { cartOffset } = useLayout();
   return (
-    <CartControllerStyles cartOffset={cartOffset}>
+    <CartMobileControllerStyles cartOffset={cartOffset}>
       <AnimatePresence>
         <motion.div
           className="cartIconWrapper"
@@ -67,6 +78,6 @@ export default function CartController() {
           <CartButton />
         </motion.div>
       </AnimatePresence>
-    </CartControllerStyles>
+    </CartMobileControllerStyles>
   );
 }

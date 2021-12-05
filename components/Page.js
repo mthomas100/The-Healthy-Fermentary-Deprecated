@@ -2,12 +2,14 @@ import styled, { ThemeProvider } from 'styled-components';
 import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 import theme from './styles/theme';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import CartBar from './Cart/CartBar';
 import { useWindowSize } from '../lib/useWindowSize';
 import CartMobile from './Cart/CartMobile';
+import CartMobileController from './Cart/CartMobileController';
 
 // TODO: assign a global programmable value to color pattern background
 // TODO: create optional background insertable objects via backend
@@ -44,7 +46,6 @@ const ContentStyles = styled.div`
   position: relative;
   /* background-color: #efeee9cf; */
   background-color: #f7f7f7a4;
-  position: relative;
 
   &:before {
     content: '';
@@ -61,8 +62,16 @@ const ContentStyles = styled.div`
 `;
 
 function Page({ children }) {
+  const [isMobileCartVisible, setIsMobileCartVisible] = useState(false);
   const { pathname } = useRouter();
   const windowSize = useWindowSize();
+
+  useEffect(() => {
+    if (windowSize.width <= 700 || isMobile) {
+      return setIsMobileCartVisible(true);
+    }
+    setIsMobileCartVisible(false);
+  }, [windowSize]);
 
   return (
     <>
@@ -76,8 +85,11 @@ function Page({ children }) {
           <ContentStyles>
             {children}
             {pathname !== '/checkout' &&
-              (isMobile || windowSize.width <= 700 ? (
-                <CartMobile />
+              (isMobileCartVisible ? (
+                <>
+                  <CartMobileController />
+                  <CartMobile />
+                </>
               ) : (
                 <CartBar />
               ))}
