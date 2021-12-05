@@ -1,10 +1,21 @@
+
+### [Live Version of Project](https://thehealthyfermentary.com)
+
+
 ### Project Description
 
 In this project I engineered eCommerce application for a customer in process of starting a fermented beverage delivery service, designed reusable react components to enable sophisticated shopping experience while maintaining a clean codebase, conceptualized and implemented both desktop-centric and mobile-centric designs, communicated with, implemented requests from, and updated customer throughout the process from conception to present. Technologies used: React.js (Next.js), GraphQL, Styled Components, tailwindCSS, framer motion, stripe.js
 
-----
+🛑 **Development status:** Frontend and 
 
-### [Live Version of Project](https://thehealthyfermentary.com)
+### This Project Features the Following:
+- 🔥A uniquely implemented shopping cart system
+- 🔥Statically Generated Pages (via getStaticPaths and getStaticProps) - used for significantly faster load times
+- 🔥Blurred image thumbnail loading - used for better site experience for users with slow internet connections
+- 🔥Advanced use of tailwindCSS (including use of its “Just In Time Mode” feature)
+- 🔥Automatic Graphql Type generation via Graphql Codegen (https://www.graphql-code-generator.com/) 
+- 🔥Typed react context usage, allowing for an awesome developer experience via VSCode intellisense 
+- 🔥A+ lighthouse scores in the following categories: Performance, Assessibility, SEO
 
 # Technologies Used
 
@@ -25,9 +36,17 @@ In this project I engineered eCommerce application for a customer in process of 
 
 > "The React Framework for Production" [Next.js](https://nextjs.org/) gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.
 
-## Strapi
+## Strapi (Backend)
 
 > [Strapi](Strapi.io) is the next-gen headless CMS, open-source, javascript, enabling content-rich experiences to be created, managed and exposed to any digital device.
+
+## MongoDB (Database)
+
+> Classified as a NoSQL database program, [MongoDB](https://www.mongodb.com/) uses JSON-like documents with optional schemas. 
+
+## Cloudinary
+
+> Developers and marketers use [Cloudinary](https://cloudinary.com/) to quickly and easily create, manage and deliver their digital experiences across any browser, device and bandwidth.
 
 
 ## Apollo GraphQL
@@ -35,10 +54,10 @@ In this project I engineered eCommerce application for a customer in process of 
 >Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, >>and modify application data, all while automatically updating your UI.
 >[Go To Documentation](https://www.apollographql.com/docs/react/)
 
-## GraphQL Codegen
+## Stripe.js
 
->Generate code from your GraphQL schema and GraphQL operations with a single function call regardless of your environment or code format.
->[Go To Documentation](https://www.graphql-code-generator.com/)
+>Online payment processing for internet businesses. Stripe is a suite of payment APIs that powers commerce for online businesses of all sizes
+>[Go To Documentation](https://stripe.com/docs/js)
 
 
 
