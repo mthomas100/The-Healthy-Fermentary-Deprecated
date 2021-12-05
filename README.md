@@ -1,7 +1,8 @@
 ### Project Description
 
-A responsive eCommerce application utilizing the React framework Next.js, GraphQL (apollo), scoped CSS (styled components) for the front end and the headless CMS strapi.js for the backend. Integrated stripe by implementing custom frontend and backend logic so as to enable secure credit card payments. Designed and implemented sophisticated animations using the library framer motion. 
+In this project I engineered eCommerce application for a customer in process of starting a fermented beverage delivery service, designed reusable react components to enable sophisticated shopping experience while maintaining a clean codebase, conceptualized and implemented both desktop-centric and mobile-centric designs, communicated with, implemented requests from, and updated customer throughout the process from conception to present. Technologies used: React.js (Next.js), GraphQL, Styled Components, tailwindCSS, framer motion, stripe.js
 
 ----
 
-### [Live Version of Project](https://thehealthyfermentary.vercel.app/)
+### [Live Version of Project](https://thehealthyfermentary.com)
+
