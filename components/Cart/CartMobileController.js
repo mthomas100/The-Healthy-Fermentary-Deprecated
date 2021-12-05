@@ -52,16 +52,6 @@ const CartMobileControllerStyles = styled.div`
   }
 `;
 
-// const CartMobileControllerStyles = styled.div`
-//   position: absolute;
-//   z-index: 100;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   border: 10px solid red;
-// `;
-
 export default function CartMobileController() {
   const { toggleCartMobile, cartMobileOpen } = useCart();
   const { cartOffset } = useLayout();
