@@ -9,18 +9,14 @@ import client from '../lib/apollo-client';
 export default function Home({ categories, products, hero }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  useEffect(() => {
-    console.log(selectedCategory);
-  }, [selectedCategory]);
-
   return (
     <>
-      {/* <SubHeader
+      {/* <Header /> */}
+      <Hero hero={hero} />
+      <SubHeader
         categories={categories}
         setSelectedCategory={setSelectedCategory}
-      /> */}
-
-      <Hero hero={hero} />
+      />
       <Products products={products} selectedCategory={selectedCategory} />
       <CTA />
     </>

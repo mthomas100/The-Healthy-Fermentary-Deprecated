@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import Image from 'next/image';
 import ReactPlayer from 'react-player';
 import { useMeasure } from 'react-use';
@@ -23,34 +22,32 @@ export default function Hero({ hero }) {
   }, [videoReady]);
 
   return (
-    <div className="relative py-32">
+    <div className="relative py-32 rounded-t-3xl">
       <Image
         src={hero.image.url}
         alt="Kombucha"
         layout="fill"
         objectFit="cover"
-        className="absolute inset-0 z-0 backdrop-filter backdrop-grayscale-0"
+        className="absolute inset-0 z-0 backdrop-filter backdrop-grayscale-0 rounded-t-3xl"
         priority
         placeholder="blur"
         blurDataURL={getSmallCloudinary(hero.image.url)}
       />
       <div
         id="imageFilter"
-        className="absolute inset-0 bg-gray-500 opacity-50"
+        className="absolute inset-0 bg-gray-500 opacity-50 rounded-t-3xl"
         ref={heroRef}
       />
       <div className="relative w-full min-h-full ">
         <div
           id="textAndVideo"
-          className="relative font-montserrat font-bold tracking-wide inset-0 flex flex-col justify-center items-center text-left  gap-y-5 xxs:gap-y-7 sm:gap-y-10 lg:gap-y-16 text-2xl xxs:text-3xl xs:text-5xl sm:text-6xl lg:text-8xl"
+          className="relative font-bold tracking-wide inset-0 flex flex-col justify-center items-center text-left  gap-y-5 xxs:gap-y-7 sm:gap-y-10 lg:gap-y-16 text-[50px] md:text-[65px] "
         >
-          <div className="text-white rounded-md">
-            <span>{hero.topText}</span>
-          </div>
-          <div ref={headlineRef}>
-            <span className="bg-white text-black p-2 sm:p-4">
-              {hero.bottomText}
-            </span>
+          <div
+            className="text-white rounded-md  text-center  font-reenieBeanie tracking-widest p-2 sm:p-4"
+            ref={headlineRef}
+          >
+            <span className="leading-relaxed">The Healthy Fermentary</span>
           </div>
 
           <div id="videoAndPreview" className="relative">
@@ -97,6 +94,9 @@ export default function Hero({ hero }) {
                 }}
               />
             </div>
+            {/* <div className="text-white rounded-md  text-center mt-20 font-reenieBeanie">
+              <span>The Healthy Fermentary</span>
+            </div> */}
           </div>
         </div>
       </div>

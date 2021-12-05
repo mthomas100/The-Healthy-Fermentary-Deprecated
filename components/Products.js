@@ -38,23 +38,34 @@ function Product({ product }) {
   );
 }
 
-export default function Products({ products }) {
+export default function Products({ products, selectedCategory }) {
   const { width } = useWindowSize();
   const weirdWidth = width > 950 && width < 1200;
   return (
-    <div className="bg-white">
+    <div className="bg-white pb-10" style={{ minHeight: '300px' }}>
       <div
         id="productsContainer"
-        className="max-w-full py-16 px-[10px] lg:px-[132px]"
+        className="max-w-full px-[10px] lg:px-[132px]"
       >
         <div
           className={`flex justify-center flex-wrap ${
             weirdWidth ? 'gap-x-32' : 'gap-x-16'
           } gap-y-16`}
         >
-          {products.map((product) => (
-            <Product key={product.id} product={product} />
-          ))}
+          {products.map((product) => {
+            const categoriesArray = [];
+            product.categories.map((category) => {
+              categoriesArray.push(category.name);
+            });
+
+            if (selectedCategory === 'All') {
+              return <Product key={product.id} product={product} />;
+            }
+
+            if (categoriesArray.includes(selectedCategory)) {
+              return <Product key={product.id} product={product} />;
+            }
+          })}
         </div>
       </div>
     </div>

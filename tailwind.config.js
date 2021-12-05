@@ -20,6 +20,7 @@ module.exports = {
     fontFamily: {
       sans: ['Inter', 'sans'],
       montserrat: ['Montserrat', 'sans'],
+      reenieBeanie: ['Reenie Beanie', 'sans'],
     },
   },
   variants: {

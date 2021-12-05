@@ -13,13 +13,15 @@ const HeaderStyles = styled.div`
   align-items: center;
   width: 100%;
   font-family: 'Reenie Beanie';
-  font-size: 45px;
-  background-color: #1d1d1d;
+  font-weight: bold;
+  font-size: 70px;
+  letter-spacing: 1rem;
+  background-color: #000000;
   text-align: center;
   padding: 3rem 0;
 
   a {
-    color: white;
+    color: #ffffff;
   }
 `;
 

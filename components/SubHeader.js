@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 import { useWindowSize } from '../lib/useWindowSize';
 import useComponentSize from '../lib/useComponentSize';
@@ -6,7 +6,7 @@ import useComponentSize from '../lib/useComponentSize';
 const SubHeaderStyles = styled.div`
   width: 100%;
   height: auto;
-  background-color: #fcfcfc;
+  background-color: white;
   overflow-x: auto;
   box-shadow: black;
   display: flex;
@@ -26,7 +26,8 @@ const CategoriesStyles = styled.div`
 const CategoryButtonStyles = styled.div`
   height: 3rem;
   padding: 2rem 4rem;
-  border: 1px solid black;
+  border: 2px solid black;
+  box-shadow: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +41,8 @@ const CategoryButtonStyles = styled.div`
   }
 
   &:hover {
-    background-color: #dfdfdf;
+    background-color: #000000c0;
+    color: white;
   }
 `;
 
