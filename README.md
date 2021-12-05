@@ -6,3 +6,63 @@ In this project I engineered eCommerce application for a customer in process of 
 
 ### [Live Version of Project](https://thehealthyfermentary.com)
 
+# Technologies Used
+
+## Superplate
+
+>[Superplate](https://github.com/pankod/superplate) is a well-structured production-ready frontend boilerplate with Typescript, Jest, testing-library, styled-component, Sass, Css, .env, Fetch, Axios, Reverse Proxy, >Bundle Analyzer and 30+ plugin. For now, only creates projects for React and Next.js
+
+## Framer Motion 
+
+>[Framer Motion](https://www.framer.com/motion/) A production-ready motion library for React. Utilize the power behind Framer, the best prototyping tool for teams. Proudly open source.
+
+## TailwindCSS
+
+>A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
+>[Go To Documentation](https://tailwindcss.com/docs)
+
+## NextJS
+
+> "The React Framework for Production" [Next.js](https://nextjs.org/) gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.
+
+## Strapi
+
+> [Strapi](Strapi.io) is the next-gen headless CMS, open-source, javascript, enabling content-rich experiences to be created, managed and exposed to any digital device.
+
+
+## Apollo GraphQL
+
+>Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, >>and modify application data, all while automatically updating your UI.
+>[Go To Documentation](https://www.apollographql.com/docs/react/)
+
+## GraphQL Codegen
+
+>Generate code from your GraphQL schema and GraphQL operations with a single function call regardless of your environment or code format.
+>[Go To Documentation](https://www.graphql-code-generator.com/)
+
+
+
+## react-use
+
+>A Collection of useful React hooks.
+>[Go To Documentation](https://github.com/streamich/react-use)
+
+
+## ESLint
+
+> A pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript. Maintain your code quality with ease.
+> [Go To Documentation](https://eslint.org/docs/user-guide/getting-started)
+
+
+## Prettier
+
+> An opinionated code formatter; Supports many languages; Integrates with most editors.
+> [Go To Documentation](https://prettier.io/docs/en/index.html)
+
+
+
+
+
+## License
+
+MIT
