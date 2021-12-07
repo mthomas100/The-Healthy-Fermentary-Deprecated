@@ -2,7 +2,7 @@ import Image from 'next/image';
 import ReactPlayer from 'react-player';
 import { useMeasure } from 'react-use';
 import { useEffect, useState } from 'react';
-import { isMobile } from 'react-device-detect';
+import SkeletonLoader from 'tiny-skeleton-loader-react';
 import { useLayout } from '../lib/layoutState';
 import getSmallCloudinary from '../util/getSmallCloudinary';
 
@@ -47,29 +47,12 @@ export default function Hero({ hero }) {
           </div>
 
           <div id="videoAndPreview" className="relative">
-            {!videoReady && isMobile && (
+            {!videoReady && (
               <div className="w-full border-gray-200 flex justify-center absolute mt-8">
-                <Image
-                  src="/images/videoPlaceholderMobile.jpg"
-                  alt="Video Placeholder"
+                <SkeletonLoader
                   width={headlineWidth}
                   height={headlineWidth * 0.5625}
-                  layout="fixed"
-                  objectFit="contain"
-                  priority
-                />
-              </div>
-            )}
-            {!videoReady && !isMobile && (
-              <div className="w-full border-gray-200 flex justify-center absolute mt-8">
-                <Image
-                  src="/images/videoPlaceholderMobile.jpg"
-                  alt="Video Placeholder"
-                  width={headlineWidth}
-                  height={headlineWidth * 0.5625}
-                  layout="fixed"
-                  objectFit="contain"
-                  priority
+                  background="#9b9da3"
                 />
               </div>
             )}
