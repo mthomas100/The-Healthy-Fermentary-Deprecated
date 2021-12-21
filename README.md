@@ -7,8 +7,6 @@
 
 In this project I engineered eCommerce application for a customer in process of starting a fermented beverage delivery service, designed reusable react components to enable sophisticated shopping experience while maintaining a clean codebase, conceptualized and implemented both desktop-centric and mobile-centric designs, communicated with, implemented requests from, and updated customer throughout the process from conception to present. Technologies used: React.js (Next.js), GraphQL, Styled Components, tailwindCSS, framer motion, stripe.js
 
-🛑 **Development status:** MVP of Application developed. Increasing performance of sometimes jittery animations, refactoring codebase for increased readability and reusaability, and addition of TypeScript are among the highest development priorities going forward. 
-
 ### This Project Features the Following:
 -A distinct shopping cart experience Mobile and for Desktop, animated with Framer Motion
 -eCommerce features including CRUD functionality for cart items
