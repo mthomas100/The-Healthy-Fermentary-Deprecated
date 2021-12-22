@@ -54,20 +54,24 @@ const CartMobileControllerStyles = styled.div`
 
 export default function CartMobileController() {
   const { toggleCartMobile, cartMobileOpen } = useCart();
-  const { cartOffset } = useLayout();
+  const { cartOffset, cartIsInitialized } = useLayout();
   return (
-    <CartMobileControllerStyles cartOffset={cartOffset}>
-      <AnimatePresence>
-        <motion.div
-          className="cartIconWrapper"
-          onClick={() => toggleCartMobile()}
-          variants={variants}
-          animate={cartMobileOpen ? 'cartOpen' : 'cartClosed'}
-          transition={{ ease: 'easeInOut', duration: 0.5 }}
-        >
-          <CartButton />
-        </motion.div>
-      </AnimatePresence>
-    </CartMobileControllerStyles>
+    <>
+      {cartIsInitialized && (
+        <CartMobileControllerStyles cartOffset={cartOffset}>
+          <AnimatePresence>
+            <motion.div
+              className="cartIconWrapper"
+              onClick={() => toggleCartMobile()}
+              variants={variants}
+              animate={cartMobileOpen ? 'cartOpen' : 'cartClosed'}
+              transition={{ ease: 'easeInOut', duration: 0.5 }}
+            >
+              <CartButton />
+            </motion.div>
+          </AnimatePresence>
+        </CartMobileControllerStyles>
+      )}
+    </>
   );
 }

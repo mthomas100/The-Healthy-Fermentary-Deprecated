@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { useMeasure } from 'react-use';
 import { useWindowSize } from '../lib/useWindowSize';
@@ -65,7 +65,7 @@ export default function Categories({
     setSelectedCategory(category);
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setCategoriesHeight(height);
   });
 

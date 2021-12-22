@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import ReactPlayer from 'react-player';
 import { useMeasure } from 'react-use';
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import SkeletonLoader from 'tiny-skeleton-loader-react';
 import { useLayout } from '../lib/layoutState';
 import getSmallCloudinary from '../util/getSmallCloudinary';
@@ -13,7 +13,7 @@ export default function Hero({ hero }) {
   const [headlineRef, { width: headlineWidth }] = useMeasure();
   const [heroRef, { height: heroHeight }] = useMeasure();
   const { setHeroHeight } = useLayout();
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHeroHeight(heroHeight);
   });
 
@@ -82,9 +82,6 @@ export default function Hero({ hero }) {
                 }}
               />
             </div>
-            {/* <div className="text-white rounded-md  text-center mt-20 font-reenieBeanie">
-              <span>The Healthy Fermentary</span>
-            </div> */}
           </div>
         </div>
       </div>

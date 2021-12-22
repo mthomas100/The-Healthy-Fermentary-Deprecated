@@ -5,6 +5,7 @@ import Hero from '../components/Hero.js';
 import Products from '../components/Products';
 import Categories from '../components/Categories';
 import client from '../lib/apollo-client';
+import { useLayout } from '../lib/layoutState.js';
 
 export default function Home({ categories, products, hero }) {
   const [selectedCategory, setSelectedCategory] = useState('All');

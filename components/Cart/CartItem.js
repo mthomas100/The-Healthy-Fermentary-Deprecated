@@ -1,11 +1,9 @@
-import { Typography } from '@material-ui/core';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRef } from 'react';
 import styled from 'styled-components';
 import getSmallCloudinary from '../../util/getSmallCloudinary';
 import QuantityIncrementor from './QuantityIncrementor';
-import QuantitySelector from './QuantitySelector';
 import QuantityStatic from './QuantityStatic';
 
 const CartItemStyles = styled(motion.div)`
@@ -186,9 +184,7 @@ export default function CartItem({
                   <div className="title rhs">{product.title}</div>
                   <div className="price rhs">
                     <div>&#xd7;</div>
-                    <div className="value">
-                      <b>$</b> {product.price}
-                    </div>
+                    <div className="value">$ {product.price}</div>
                   </div>
                 </>
               ) : (
