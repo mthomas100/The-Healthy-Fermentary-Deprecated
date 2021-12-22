@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import Stepper from './Stepper';
 
 const CheckoutStyles = styled.div`
@@ -35,8 +35,6 @@ export default function Checkout() {
     <CheckoutStyles ref={checkoutRef}>
       <Elements stripe={stripePromise}>
         <Stepper />
-        {/* <CheckoutForm />
-        <CartSummary /> */}
       </Elements>
     </CheckoutStyles>
   );

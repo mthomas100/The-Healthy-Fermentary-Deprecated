@@ -55,10 +55,16 @@ const CartMobileControllerStyles = styled.div`
 export default function CartMobileController() {
   const { toggleCartMobile, cartMobileOpen } = useCart();
   const { cartOffset, cartIsInitialized } = useLayout();
+
+  // If cartMobileOpen is true, cartMobileController should be offtset by 0px
+  // If cartMobileOpen is false, cartMobileController should be offset by cartOffset
+
+  const cartMobileControllerOffset = cartMobileOpen ? 0 : cartOffset; // TODO: This change should be animated
+
   return (
     <>
       {cartIsInitialized && (
-        <CartMobileControllerStyles cartOffset={cartOffset}>
+        <CartMobileControllerStyles cartOffset={cartMobileControllerOffset}>
           <AnimatePresence>
             <motion.div
               className="cartIconWrapper"

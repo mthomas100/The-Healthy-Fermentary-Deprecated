@@ -1,14 +1,8 @@
 import { TextField } from '@material-ui/core';
-import { useEffect } from 'react';
 import { useCheckout } from '../lib/checkoutState';
 
 export default function Address({ variant }) {
   const { inputs, handleChange, resetForm } = useCheckout();
-
-  useEffect(() => {
-    // REFACTORING OPPORTUNITY
-    // search file for its "name" => dynamically send this as a state val for context
-  }, []);
 
   return (
     <>

@@ -1,5 +1,4 @@
 import { Text } from 'rebass';
-import { fontFamily } from 'styled-system';
 
 export default function HeaderLink({
   children,

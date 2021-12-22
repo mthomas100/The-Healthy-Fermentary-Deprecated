@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { Button as ButtonMUI } from '@material-ui/core';
 import { useRef } from 'react';
-import { useCart } from '../lib/cartState';
 
 const Button = styled(ButtonMUI)`
   && {

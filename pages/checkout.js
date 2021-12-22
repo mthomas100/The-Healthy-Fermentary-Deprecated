@@ -5,7 +5,7 @@ import Checkout from '../components/Checkout';
 
 export default function CheckoutPage() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isPageLoaded, setIsPageLoaded] = useState(false); // this helps
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
